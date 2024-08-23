@@ -131,7 +131,7 @@
           <!-- Default box -->
           <div class="card">
               <div class="card-header">
-                  <h3 class="card-title">Daftar Lomba</h3>
+                  <h3 class="card-title">Daftar Rules</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
