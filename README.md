@@ -38,7 +38,7 @@ Berikut adalah langkah-langkah untuk meng-clone repository ini ke dalam folder `
    - Pastikan Apache dan MySQL di XAMPP sudah berjalan.
    - Akses website melalui browser dengan URL:
      ```
-     http://localhost/web_lomba/public
+     http://localhost:8080/
      ```
 
 ## Aturan Kolaborasi
