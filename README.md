@@ -73,6 +73,7 @@ Website ini menggunakan fitur **Migration** dari CodeIgniter 4 untuk manajemen p
 - **Kolaborasi Efektif:** Informasikan kepada anggota lain jika Anda sedang mengedit atau mengerjakan halaman tertentu untuk menghindari konflik.
 - **Kehadiran Meeting:** Usahakan hadir saat meeting yang dijadwalkan. Kehadiran sangat penting untuk sinkronisasi pekerjaan dan pembahasan masalah. Jika tidak hadir, poin Anda akan berkurang sebagai konsekuensi. **Batas maksimal ketidakhadiran adalah 2 kali pertemuan.** Ketidakhadiran lebih dari itu dapat mempengaruhi kontribusi Anda dalam proyek.
 - **Respons terhadap Chat di Grup:** Usahakan selalu merespons chat yang dikirim oleh anggota tim di grup WhatsApp. Komunikasi yang baik sangat penting untuk kelancaran proyek dan menghindari miskomunikasi.
+- **Prioritas Kerja:** Usahakan menyelesaikan task Anda terlebih dahulu sebelum meluangkan waktu untuk hiburan seperti Machine Learning, Minecraft, atau Genshin Impact. Manajemen waktu yang baik akan memastikan bahwa tugas-tugas proyek selesai tepat waktu tanpa mengorbankan waktu hiburan Anda.
 
 ## Penghargaan
 
