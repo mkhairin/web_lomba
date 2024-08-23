@@ -1,10 +1,23 @@
-# web_lomba
- Repository website untuk lomba HIMA TRKJ
+# Web Lomba - HIMA TRKJ
 
--- Buat db db_trkj di phpmyadmin masing2
--- Usahakan aktif dan cepat tanggap jika diperlukan!
--- Minimal mengerjakan task 1x sehari, Maks semampunya
--- Usahakan menuliskan commit dengan jelas dan deskriptif contoh : Update halaman admin, jangan nulis aku cinta dia!!! karena dia gak peduli
--- Setiap ingin melakukan pengerjaan usahakan di pull di github dsktp!!!
--- Setiap ingin push wajib memberi tahu anggota lain di grub whatsapp!!!
--- Wajib memberi tahu anggota lain ketika sedang mengedit atau mengerjakan bagian halaman apa, biar tidak conflict!!!
+Repository untuk pengembangan website lomba HIMA TRKJ.
+
+## Persiapan Database
+
+1. Buat database dengan nama `db_trkj` di phpMyAdmin masing-masing.
+2. Pastikan database terkonfigurasi dengan benar sebelum melanjutkan pengembangan.
+
+## Aturan Kolaborasi
+
+- **Responsif & Proaktif:** Usahakan selalu aktif dan cepat tanggap jika diperlukan, terutama dalam komunikasi antar anggota tim.
+- **Komitmen Harian:** Mengerjakan setidaknya satu task per hari adalah minimal, kerjakan lebih banyak jika mampu.
+- **Deskripsi Commit yang Jelas:** Selalu tuliskan commit dengan jelas dan deskriptif. Contoh: `Update halaman admin` adalah deskripsi yang baik, hindari menggunakan deskripsi yang tidak relevan seperti `aku cinta dia`.
+- **Pull Sebelum Mengerjakan:** Sebelum mulai mengerjakan tugas, selalu lakukan `pull` dari GitHub Desktop untuk memastikan Anda bekerja dengan versi terbaru.
+- **Pemberitahuan Sebelum Push:** Sebelum melakukan push ke repository, wajib memberitahu anggota lain melalui grup WhatsApp.
+- **Kolaborasi Efektif:** Informasikan kepada anggota lain jika Anda sedang mengedit atau mengerjakan halaman tertentu untuk menghindari konflik.
+
+## Tips Pengembangan
+
+- **Manajemen Konflik:** Selalu berkoordinasi dengan anggota tim jika terdapat potensi konflik pada saat merging.
+- **Dokumentasi:** Setiap perubahan signifikan pada kode atau struktur aplikasi harus didokumentasikan di commit atau di README jika perlu.
+- **Testing:** Lakukan testing secara berkala pada halaman yang Anda kerjakan untuk memastikan tidak ada bug yang terlewat.
