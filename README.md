@@ -72,6 +72,7 @@ Website ini menggunakan fitur **Migration** dari CodeIgniter 4 untuk manajemen p
 - **Pemberitahuan Sebelum Push:** Sebelum melakukan push ke repository, wajib memberitahu anggota lain melalui grup WhatsApp.
 - **Kolaborasi Efektif:** Informasikan kepada anggota lain jika Anda sedang mengedit atau mengerjakan halaman tertentu untuk menghindari konflik.
 - **Kehadiran Meeting:** Usahakan hadir saat meeting yang dijadwalkan. Kehadiran sangat penting untuk sinkronisasi pekerjaan dan pembahasan masalah. Jika tidak hadir, poin Anda akan berkurang sebagai konsekuensi. **Batas maksimal ketidakhadiran adalah 2 kali pertemuan.** Ketidakhadiran lebih dari itu dapat mempengaruhi kontribusi Anda dalam proyek.
+- **Respons terhadap Chat di Grup:** Usahakan selalu merespons chat yang dikirim oleh anggota tim di grup WhatsApp. Komunikasi yang baik sangat penting untuk kelancaran proyek dan menghindari miskomunikasi.
 
 ## Penghargaan
 
