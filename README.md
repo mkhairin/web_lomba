@@ -7,6 +7,40 @@ Repository untuk pengembangan website lomba HIMA TRKJ.
 1. Buat database dengan nama `db_trkj` di phpMyAdmin masing-masing.
 2. Pastikan database terkonfigurasi dengan benar sebelum melanjutkan pengembangan.
 
+## Cara Clone Repository ke `htdocs` XAMPP
+
+Berikut adalah langkah-langkah untuk meng-clone repository ini ke dalam folder `htdocs` XAMPP menggunakan GitHub Desktop:
+
+1. **Buka GitHub Desktop:**
+   - Pastikan GitHub Desktop sudah terinstall di komputer Anda.
+
+2. **Clone Repository:**
+   - Klik `File` > `Clone Repository...`.
+   - Di tab `URL`, masukkan URL repository GitHub ini.
+   - Pilih lokasi `Local Path` di folder `htdocs` XAMPP Anda. Biasanya terletak di:
+     ```
+     C:\xampp\htdocs\web_lomba
+     ```
+   - Klik `Clone` untuk mulai mengunduh repository ke komputer Anda.
+
+3. **Konfigurasi CodeIgniter 4:**
+   - Setelah repository berhasil di-clone, buka file `.env` di dalam folder project Anda.
+   - Atur konfigurasi database agar sesuai dengan pengaturan lokal Anda, seperti berikut:
+     ```
+     database.default.hostname = localhost
+     database.default.database = db_trkj
+     database.default.username = root
+     database.default.password =
+     database.default.DBDriver = MySQLi
+     ```
+
+4. **Jalankan XAMPP:**
+   - Pastikan Apache dan MySQL di XAMPP sudah berjalan.
+   - Akses website melalui browser dengan URL:
+     ```
+     http://localhost/web_lomba/public
+     ```
+
 ## Aturan Kolaborasi
 
 - **Responsif & Proaktif:** Usahakan selalu aktif dan cepat tanggap jika diperlukan, terutama dalam komunikasi antar anggota tim.
