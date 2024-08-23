@@ -38,7 +38,29 @@ Berikut adalah langkah-langkah untuk meng-clone repository ini ke dalam folder `
    - Pastikan Apache dan MySQL di XAMPP sudah berjalan.
    - Akses website melalui browser dengan URL:
      ```
-     http://localhost:8080/
+     http://localhost/web_lomba/public
+     ```
+
+## Penggunaan Migration di CodeIgniter 4
+
+Website ini menggunakan fitur **Migration** dari CodeIgniter 4 untuk manajemen perubahan skema database. Berikut adalah langkah-langkah untuk menggunakan migration:
+
+1. **Menjalankan Migration:**
+   - Untuk menjalankan migration, buka terminal di direktori project Anda dan jalankan perintah berikut:
+     ```bash
+     php spark migrate
+     ```
+
+2. **Rollback Migration:**
+   - Jika ada perubahan tabel yang perlu dilakukan, rollback terlebih dahulu sebelum mengedit migration:
+     ```bash
+     php spark migrate:rollback
+     ```
+
+3. **Migration Ulang:**
+   - Setelah melakukan perubahan pada migration, jalankan migration ulang untuk mengaplikasikan perubahan:
+     ```bash
+     php spark migrate
      ```
 
 ## Aturan Kolaborasi
