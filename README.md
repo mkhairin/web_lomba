@@ -73,6 +73,10 @@ Website ini menggunakan fitur **Migration** dari CodeIgniter 4 untuk manajemen p
 - **Kolaborasi Efektif:** Informasikan kepada anggota lain jika Anda sedang mengedit atau mengerjakan halaman tertentu untuk menghindari konflik.
 - **Kehadiran Meeting:** Usahakan hadir saat meeting yang dijadwalkan. Kehadiran sangat penting untuk sinkronisasi pekerjaan dan pembahasan masalah. Jika tidak hadir, poin Anda akan berkurang sebagai konsekuensi. **Batas maksimal ketidakhadiran adalah 2 kali pertemuan.** Ketidakhadiran lebih dari itu dapat mempengaruhi kontribusi Anda dalam proyek.
 
+## Penghargaan
+
+- **Anggota dengan Commit Terbanyak:** Anggota tim yang memiliki jumlah commit terbanyak di akhir proyek akan menerima **LinkedIn Recommendation** dari ketua proyek sebagai bentuk penghargaan atas kontribusi dan dedikasinya.
+
 ## Tips Pengembangan
 
 - **Manajemen Konflik:** Selalu berkoordinasi dengan anggota tim jika terdapat potensi konflik pada saat merging.
