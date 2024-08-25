@@ -90,7 +90,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="card-body">
-                            <div class="row">
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Minimal</label>
@@ -149,7 +149,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Daftar Rules</h3>
+                <h3 class="card-title">Daftar Lomba</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -157,17 +157,29 @@
                     <thead>
                         <tr>
                             <th style="width: 10px">No</th>
-                            <th>Nama</th>
-                            <th>Jenis Lomba</th>
+                            <th>Kategori</th>
+                            <th>Deskripsi</th>
+                            <th>Deadline</th>
+                            <th>Status</th>
                             <th style="width: 200px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1.</td>
-                            <td>John Doe</td>
-                            <td>Fotografi</td>
+                            <td>Pemogramanan</td>
+                            <td style="text-align: justify;">
+                                Selamat datang di Lomba Pemrograman Poltek, ajang kompetisi bergengsi untuk para programmer dan developer dari seluruh Indonesia! Di sini, kreativitas, logika, dan keterampilan teknis Anda akan diuji melalui serangkaian tantangan pemrograman yang dirancang untuk mengasah kemampuan dan membuktikan siapa yang terbaik di bidangnya.
+                                Apa yang Bisa Anda Harapkan?
+                                Tantangan Beragam: Lomba ini terdiri dari berbagai kategori, termasuk pengembangan aplikasi web, mobile, keamanan siber, dan algoritma. Setiap tantangan dirancang untuk menguji kemampuan pemrograman Anda dalam berbagai aspek.
+                                Hadiah Menarik: Menangkan hadiah total puluhan juta rupiah, sertifikat, serta peluang eksklusif untuk bergabung dengan perusahaan teknologi terkemuka.
+                                Mentorship dan Workshop: Dapatkan bimbingan langsung dari para ahli industri dan ikuti berbagai workshop yang akan membantu Anda meningkatkan keterampilan pemrograman.
+                            </td>
+
+                            <td>02/06/2025</td>
+                            <td>Dibuka</td>
                             <td>
+
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                     data-target="#modal-lg-update">Update</button>
                                 <button type="button" class="btn btn-danger btn-sm">Delete</button>

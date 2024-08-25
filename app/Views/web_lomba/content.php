@@ -74,5 +74,5 @@
 </div>
 
 <div class="container">
-<h1 class="display-6 fw-bold mt-5">Sponsorship</h1>
+    <h1 class="display-6 fw-bold mt-5">Sponsorship</h1>
 </div>

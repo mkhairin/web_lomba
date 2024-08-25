@@ -125,7 +125,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Daftar Rules</h3>
+                <h3 class="card-title">Daftar Sponsor</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -133,16 +133,16 @@
                     <thead>
                         <tr>
                             <th style="width: 10px">No</th>
-                            <th>Nama</th>
-                            <th>Jenis Lomba</th>
+                            <th>Nama Sponsor</th>
+                            <th>Logo Sponsor</th>
                             <th style="width: 200px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1.</td>
-                            <td>John Doe</td>
-                            <td>Fotografi</td>
+                            <td>Eren Yeager</td>
+                            <td>Ini Nanti input gambar?</td>
                             <td>
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                     data-target="#modal-lg-update">Update</button>

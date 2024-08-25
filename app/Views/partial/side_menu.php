@@ -33,7 +33,8 @@
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
                     <a href="/admin" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <i class="nav-icon fas fa-home"></i>
+
                         <p>
                             Dashboard
                         </p>
@@ -41,10 +42,28 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="admin/daftar_lomba" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <a href="/daftar_lomba" class="nav-link">
+                        <i class="nav-icon fas fa-trophy"></i>
                         <p>
                             Daftar Lomba
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/daftar_rules" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Daftar Rules
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/daftar_sponsor" class="nav-link">
+                        <i class="nav-icon fas fa-handshake"></i>
+                        <p>
+                            Daftar Sponsor
                         </p>
                     </a>
                 </li>
