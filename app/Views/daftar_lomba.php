@@ -177,7 +177,7 @@
                             </td>
 
                             <td>02/06/2025</td>
-                            <td>Dibuka</td>
+                            <td><span class="badge rounded-pill text-bg-primary bg-primary" style="opacity: 50%;">Dibuka</span></td>
                             <td>
 
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
