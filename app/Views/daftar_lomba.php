@@ -27,29 +27,41 @@
                         </div>
                         <div class="modal-body">
                             <div class="card-body">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Enter email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1"
-                                        placeholder="Password">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputFile">File input</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                                            <label class="custom-file-label" for="exampleInputFile">Choose
-                                                file</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">Upload</span>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Minimal</label>
+                                            <select class="form-control select2" style="width: 100%;">
+                                                <option selected="selected">Alabama</option>
+                                                <option>Alaska</option>
+                                                <option>California</option>
+                                                <option>Delaware</option>
+                                                <option>Tennessee</option>
+                                                <option>Texas</option>
+                                                <option>Washington</option>
+                                            </select>
                                         </div>
                                     </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>Disabled Result</label>
+                                            <select class="form-control select2" style="width: 100%;">
+                                                <option selected="selected">Alabama</option>
+                                                <option>Alaska</option>
+                                                <option disabled="disabled">California (disabled)</option>
+                                                <option>Delaware</option>
+                                                <option>Tennessee</option>
+                                                <option>Texas</option>
+                                                <option>Washington</option>
+                                            </select>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
                                 </div>
+                                <!-- /.row -->
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -78,29 +90,41 @@
                         </div>
                         <div class="modal-body">
                             <div class="card-body">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail2">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail2"
-                                        placeholder="Enter email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword2">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword2"
-                                        placeholder="Password">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputFile2">File input</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="exampleInputFile2">
-                                            <label class="custom-file-label" for="exampleInputFile2">Choose
-                                                file</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">Upload</span>
+                            <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Minimal</label>
+                                            <select class="form-control select2" style="width: 100%;">
+                                                <option selected="selected">Alabama</option>
+                                                <option>Alaska</option>
+                                                <option>California</option>
+                                                <option>Delaware</option>
+                                                <option>Tennessee</option>
+                                                <option>Texas</option>
+                                                <option>Washington</option>
+                                            </select>
                                         </div>
                                     </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>Disabled Result</label>
+                                            <select class="form-control select2" style="width: 100%;">
+                                                <option selected="selected">Alabama</option>
+                                                <option>Alaska</option>
+                                                <option disabled="disabled">California (disabled)</option>
+                                                <option>Delaware</option>
+                                                <option>Tennessee</option>
+                                                <option>Texas</option>
+                                                <option>Washington</option>
+                                            </select>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
                                 </div>
+                                <!-- /.row -->
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -117,7 +141,7 @@
         </form>
 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
-            Launch Large Modal
+            Tambah Data
         </button>
 
         <br> <br>

@@ -5,8 +5,8 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'DashboardController::index');
-$routes->get('/daftar_lomba', 'DashboardController::daftarLomba');
+$routes->get('/admin', 'DashboardController::index');
+$routes->get('admin/daftar_lomba', 'DashboardController::daftarLomba');
 $routes->get('/daftar_rules', 'DashboardController::daftarRules');
 $routes->get('/daftar_sponsor', 'DashboardController::daftarSponsor');
 

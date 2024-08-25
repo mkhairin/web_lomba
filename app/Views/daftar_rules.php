@@ -117,7 +117,7 @@
         </form>
 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
-            Launch Large Modal
+            Tambah Data
         </button>
 
         <br> <br>
