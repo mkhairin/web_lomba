@@ -41,4 +41,34 @@ class DashboardController extends BaseController
         echo view('daftar_sponsor');
         echo view('partial/footer');
     }
+
+    public function daftarJuara()
+    {
+        $header['title']='Daftar Juara';
+        echo view('partial/header',$header);
+        echo view('partial/top_menu');
+        echo view('partial/side_menu');
+        echo view('daftar_juara');
+        echo view('partial/footer');
+    }
+
+    public function daftarPeserta()
+    {
+        $header['title']='Daftar Peserta';
+        echo view('partial/header',$header);
+        echo view('partial/top_menu');
+        echo view('partial/side_menu');
+        echo view('daftar_peserta');
+        echo view('partial/footer');
+    }
+
+    public function daftarSekolah()
+    {
+        $header['title']='Daftar Juara';
+        echo view('partial/header',$header);
+        echo view('partial/top_menu');
+        echo view('partial/side_menu');
+        echo view('daftar_sekolah');
+        echo view('partial/footer');
+    }
 }

@@ -42,7 +42,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="/daftar_lomba" class="nav-link">
+                    <a href="/daftar-lomba" class="nav-link">
                         <i class="nav-icon fas fa-trophy"></i>
                         <p>
                             Daftar Lomba
@@ -51,7 +51,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="/daftar_rules" class="nav-link">
+                    <a href="/daftar-rules" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Daftar Rules
@@ -60,7 +60,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="/daftar_sponsor" class="nav-link">
+                    <a href="/daftar-sponsor" class="nav-link">
                         <i class="nav-icon fas fa-handshake"></i>
                         <p>
                             Daftar Sponsor
@@ -69,7 +69,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="/daftar_sponsor" class="nav-link">
+                    <a href="/daftar-sekolah" class="nav-link">
                         <i class="nav-icon fas fa-handshake"></i>
                         <p>
                             Daftar Sekolah/Tim
@@ -78,7 +78,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="/daftar_sponsor" class="nav-link">
+                    <a href="/daftar-peserta" class="nav-link">
                         <i class="nav-icon fas fa-handshake"></i>
                         <p>
                             Daftar Peserta
@@ -87,16 +87,16 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="/daftar_sponsor" class="nav-link">
+                    <a href="/daftar-pembimbing" class="nav-link">
                         <i class="nav-icon fas fa-handshake"></i>
                         <p>
-                            Daftar Pemimbing
+                            Daftar Pembimbing
                         </p>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="/daftar_sponsor" class="nav-link">
+                    <a href="/daftar-juara" class="nav-link">
                         <i class="nav-icon fas fa-handshake"></i>
                         <p>
                             Daftar Juara
