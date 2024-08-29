@@ -20,6 +20,11 @@ class Peserta extends Migration
                 'constraint'        => 5,
                 'unsigned'          =>  true,
             ],
+            'id_pembimbing' => [
+                'type'              => 'INT',
+                'constraint'        => 5,
+                'unsigned'          =>  true,
+            ],
             'id_sekolah' => [
                 'type'              => 'INT',
                 'constraint'        => 5,
@@ -42,6 +47,7 @@ class Peserta extends Migration
         $this->forge->addKey('id_peserta', true);
         $this->forge->addForeignKey('id_lomba', 'Lomba', 'id_lomba', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('id_sekolah', 'Sekolah', 'id_sekolah', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_pembimbing', 'Pembimbing', 'id_pembimbing', 'CASCADE', 'CASCADE');
         $this->forge->createTable('Peserta');
     }
 
