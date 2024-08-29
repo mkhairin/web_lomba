@@ -24,10 +24,13 @@ class Juara extends Migration
                 'constraint'    => 20
             ]
         ]);
+
+        $this->forge->addKey('id_juara', true);
+        $this->forge->createTable('Juara');
     }
 
     public function down()
     {
-        //
+        $this->forge->dropTable('Juara');
     }
 }
