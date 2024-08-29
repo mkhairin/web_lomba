@@ -33,7 +33,7 @@
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
                     <a href="/admin" class="nav-link">
-                    <i class="nav-icon fas fa-home"></i>
+                        <i class="nav-icon fas fa-home"></i>
 
                         <p>
                             Dashboard
@@ -64,6 +64,42 @@
                         <i class="nav-icon fas fa-handshake"></i>
                         <p>
                             Daftar Sponsor
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/daftar_sponsor" class="nav-link">
+                        <i class="nav-icon fas fa-handshake"></i>
+                        <p>
+                            Daftar Sekolah/Tim
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/daftar_sponsor" class="nav-link">
+                        <i class="nav-icon fas fa-handshake"></i>
+                        <p>
+                            Daftar Peserta
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/daftar_sponsor" class="nav-link">
+                        <i class="nav-icon fas fa-handshake"></i>
+                        <p>
+                            Daftar Pemimbing
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/daftar_sponsor" class="nav-link">
+                        <i class="nav-icon fas fa-handshake"></i>
+                        <p>
+                            Daftar Juara
                         </p>
                     </a>
                 </li>
