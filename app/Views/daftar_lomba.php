@@ -159,6 +159,8 @@
                             <th style="width: 10px">No</th>
                             <th>Kategori</th>
                             <th>Deskripsi</th>
+                            <th>Aturan</th>
+                            <th>Link</th>
                             <th>Deadline</th>
                             <th>Status</th>
                             <th style="width: 200px">Aksi</th>
@@ -175,7 +177,8 @@
                                 Hadiah Menarik: Menangkan hadiah total puluhan juta rupiah, sertifikat, serta peluang eksklusif untuk bergabung dengan perusahaan teknologi terkemuka.
                                 Mentorship dan Workshop: Dapatkan bimbingan langsung dari para ahli industri dan ikuti berbagai workshop yang akan membantu Anda meningkatkan keterampilan pemrograman.
                             </td>
-
+                            <td>02/06/2025</td>
+                            <td>02/06/2025</td>
                             <td>02/06/2025</td>
                             <td><span class="badge rounded-pill text-bg-primary bg-primary" style="opacity: 50%;">Dibuka</span></td>
                             <td>
