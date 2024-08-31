@@ -10,42 +10,53 @@ class Lomba extends Migration
     {
         $this->forge->addField([
             'id_lomba' => [
-                'type'              =>  'INT',
-                'constraint'        =>  5,
-                'unsigned'          =>  true,
-                'auto_increment'    => true
+                'type'           => 'INT',
+                'constraint'     => 5,
+                'unsigned'       => true,
+                'auto_increment' => true,
             ],
             'nama' => [
-                'type'              => 'VARCHAR',
-                'constraint'        =>  '255'
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
             ],
             'deskripsi' => [
-                'type'              => 'VARCHAR',
-                'constraint'        => '255'
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
             ],
             'peraturan' => [
-                'type'              =>  'VARCHAR',
-                'constraint'        =>  '255'
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'link_peraturan' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
             ],
             'tgl_dibuka' => [
-                'type'              => 'DATE'
+                'type' => 'DATE',
             ],
             'tgl_ditutup' => [
-                'type'              => 'DATE'
+                'type' => 'DATE',
             ],
             'status' => [
-                'type'              =>  'VARCHAR',
-                'constraint'        =>  '255'
-            ]
-            ]);
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'created_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
+            'updated_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
+        ]);
 
-            $this->forge->addKey('id_lomba', true);
-            $this->forge->createTable('Lomba');
-
+        $this->forge->addKey('id_lomba', true);
+        $this->forge->createTable('lomba');
     }
 
     public function down()
     {
-        $this->forge->dropTable('Lomba');
+        $this->forge->dropTable('lomba');
     }
 }

@@ -10,35 +10,43 @@ class Users extends Migration
     {
         $this->forge->addField([
             'id_user' => [
-                'type'              => 'INT',
-                'constraint'        => 5,
-                'unsigned'          =>  true,
-                'auto_increment'    => true
+                'type'           => 'INT',
+                'constraint'     => 5,
+                'unsigned'       => true,
+                'auto_increment' => true,
             ],
             'username' => [
-                'type'              => 'VARCHAR',
-                'constraint'        => '255'
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
             ],
             'password' => [
-                'type'              => 'VARCHAR',
-                'constraint'        => '255'
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
             ],
             'tim_lomba' => [
-                'type'              => 'VARCHAR',
-                'constraint'        => '255'
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
             ],
             'jenis_lomba' => [
-                'type'              => 'VARCHAR',
-                'constraint'        => '255'
-            ]
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'created_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
+            'updated_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
         ]);
 
         $this->forge->addKey('id_user', true);
-        $this->forge->createTable('User');
+        $this->forge->createTable('users');
     }
 
     public function down()
     {
-        $this->forge->dropTable('User');
+        $this->forge->dropTable('users');
     }
 }

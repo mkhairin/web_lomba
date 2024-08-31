@@ -10,27 +10,35 @@ class Sponsor extends Migration
     {
         $this->forge->addField([
             'id_sponsor' => [
-                'type'              =>  'INT',
-                'constraint'        =>  5,
-                'unsigned'          =>  true,
-                'auto_increment'    => true
+                'type'           => 'INT',
+                'constraint'     => 5,
+                'unsigned'       => true,
+                'auto_increment' => true,
             ],
             'nama_sponsor' => [
-                'type'              => 'VARCHAR',
-                'constraint'        =>  '255'
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
             ],
             'logo' => [
-                'type'              => 'VARCHAR',
-                'constraint'        => '255'
-            ]
-            ]);
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'created_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
+            'updated_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
+        ]);
 
-            $this->forge->addKey('id_sponsor', true);
-            $this->forge->createTable('Sponsor');
+        $this->forge->addKey('id_sponsor', true);
+        $this->forge->createTable('sponsor');
     }
 
     public function down()
     {
-        $this->forge->dropTable('Sponsor');
+        $this->forge->dropTable('sponsor');
     }
 }
