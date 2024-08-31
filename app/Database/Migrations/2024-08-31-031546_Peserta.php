@@ -46,8 +46,8 @@ class Peserta extends Migration
 
         $this->forge->addKey('id_peserta', true);
         $this->forge->addForeignKey('id_lomba', 'lomba', 'id_lomba', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('id_pembimbing', 'sekolah', 'id_sekolah', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('id_sekolah', 'pembimbing', 'id_pembimbing', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_pembimbing', 'pembimbing', 'id_pembimbing', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_sekolah', 'sekolah', 'id_sekolah', 'CASCADE', 'CASCADE');
         $this->forge->createTable('peserta');
     }
 
