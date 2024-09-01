@@ -252,7 +252,8 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            <canvas id="donutChart"
+                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -276,28 +277,29 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <canvas class="chart" id="line-chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            <canvas class="chart" id="line-chart"
+                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer bg-transparent">
                             <div class="row">
                                 <div class="col-4 text-center">
-                                    <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60"
-                                        data-fgColor="#39CCCC">
+                                    <input type="text" class="knob" data-readonly="true" value="20" data-width="60"
+                                        data-height="60" data-fgColor="#39CCCC">
 
                                     <div class="text-white">Mail-Orders</div>
                                 </div>
                                 <!-- ./col -->
                                 <div class="col-4 text-center">
-                                    <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60"
-                                        data-fgColor="#39CCCC">
+                                    <input type="text" class="knob" data-readonly="true" value="50" data-width="60"
+                                        data-height="60" data-fgColor="#39CCCC">
 
                                     <div class="text-white">Online</div>
                                 </div>
                                 <!-- ./col -->
                                 <div class="col-4 text-center">
-                                    <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60"
-                                        data-fgColor="#39CCCC">
+                                    <input type="text" class="knob" data-readonly="true" value="30" data-width="60"
+                                        data-height="60" data-fgColor="#39CCCC">
 
                                     <div class="text-white">In-Store</div>
                                 </div>
@@ -321,7 +323,8 @@
                             <div class="card-tools">
                                 <!-- button with a dropdown -->
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
+                                    <button type="button" class="btn btn-success btn-sm dropdown-toggle"
+                                        data-toggle="dropdown" data-offset="-52">
                                         <i class="fas fa-bars"></i>
                                     </button>
                                     <div class="dropdown-menu" role="menu">

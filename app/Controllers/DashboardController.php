@@ -71,4 +71,13 @@ class DashboardController extends BaseController
         echo view('daftar_sekolah');
         echo view('partial/footer');
     }
+    public function daftarPembimbing()
+    {
+        $header['title'] = 'Daftar Pembimbing';
+        echo view('partial/header', $header);
+        echo view('partial/top_menu');
+        echo view('partial/side_menu');
+        echo view('daftar_pembimbing');
+        echo view('partial/footer');
+    }
 }

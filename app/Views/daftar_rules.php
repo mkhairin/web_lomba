@@ -133,8 +133,8 @@
                     <thead>
                         <tr>
                             <th style="width: 10px">No</th>
-                            <th>Nama</th>
-                            <th>Jenis Lomba</th>
+                            <th>Kategori</th>
+                            <th>Peraturan</th>
                             <th style="width: 200px">Aksi</th>
                         </tr>
                     </thead>

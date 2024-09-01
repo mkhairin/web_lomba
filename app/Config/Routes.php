@@ -15,6 +15,7 @@ $routes->get('/daftar-sponsor', 'DashboardController::daftarSponsor');
 $routes->get('/daftar-juara', 'DashboardController::daftarJuara');
 $routes->get('/daftar-peserta', 'DashboardController::daftarPeserta');
 $routes->get('/daftar-sekolah', 'DashboardController::daftarSekolah');
+$routes->get('/daftar-pembimbing', 'DashboardController::daftarPembimbing');
 
 
 

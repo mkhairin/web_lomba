@@ -31,21 +31,24 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="kategori">Kategori</label>
-                                            <input type="text" class="form-control" id="kategori" placeholder="Masukkan kategori">
+                                            <input type="text" class="form-control" id="kategori"
+                                                placeholder="Masukkan kategori">
                                         </div>
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="deskripsi">Deskripsi</label>
-                                            <input type="text" class="form-control" id="deskripsi" placeholder="Masukkan deskripsi">
+                                            <input type="text" class="form-control" id="deskripsi"
+                                                placeholder="Masukkan deskripsi">
                                         </div>
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="link">Link</label>
-                                            <input type="url" class="form-control" id="link" placeholder="Masukkan link">
+                                            <input type="url" class="form-control" id="link"
+                                                placeholder="Masukkan link">
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -70,7 +73,8 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="aturan">Aturan</label>
-                                            <textarea class="form-control" id="aturan" rows="4" placeholder="Masukkan aturan"></textarea>
+                                            <textarea class="form-control" id="aturan" rows="4"
+                                                placeholder="Masukkan aturan"></textarea>
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -110,21 +114,24 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="kategori">Kategori</label>
-                                            <input type="text" class="form-control" id="kategori" placeholder="Masukkan kategori">
+                                            <input type="text" class="form-control" id="kategori"
+                                                placeholder="Masukkan kategori">
                                         </div>
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="deskripsi">Deskripsi</label>
-                                            <input type="text" class="form-control" id="deskripsi" placeholder="Masukkan deskripsi">
+                                            <input type="text" class="form-control" id="deskripsi"
+                                                placeholder="Masukkan deskripsi">
                                         </div>
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="link">Link</label>
-                                            <input type="url" class="form-control" id="link" placeholder="Masukkan link">
+                                            <input type="url" class="form-control" id="link"
+                                                placeholder="Masukkan link">
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -149,7 +156,8 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="aturan">Aturan</label>
-                                            <textarea class="form-control" id="aturan" rows="4" placeholder="Masukkan aturan"></textarea>
+                                            <textarea class="form-control" id="aturan" rows="4"
+                                                placeholder="Masukkan aturan"></textarea>
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -188,21 +196,24 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="kategori">Kategori</label>
-                                            <input type="text" class="form-control" id="kategori" placeholder="Masukkan kategori">
+                                            <input type="text" class="form-control" id="kategori"
+                                                placeholder="Masukkan kategori">
                                         </div>
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="deskripsi">Deskripsi</label>
-                                            <input type="text" class="form-control" id="deskripsi" placeholder="Masukkan deskripsi">
+                                            <input type="text" class="form-control" id="deskripsi"
+                                                placeholder="Masukkan deskripsi">
                                         </div>
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="link">Link</label>
-                                            <input type="url" class="form-control" id="link" placeholder="Masukkan link">
+                                            <input type="url" class="form-control" id="link"
+                                                placeholder="Masukkan link">
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -227,7 +238,8 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="aturan">Aturan</label>
-                                            <textarea class="form-control" id="aturan" rows="4" placeholder="Masukkan aturan"></textarea>
+                                            <textarea class="form-control" id="aturan" rows="4"
+                                                placeholder="Masukkan aturan"></textarea>
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -281,16 +293,24 @@
                             <td>1.</td>
                             <td>Pemogramanan</td>
                             <td style="text-align: justify;">
-                                Selamat datang di Lomba Pemrograman Poltek, ajang kompetisi bergengsi untuk para programmer dan developer dari seluruh Indonesia! Di sini, kreativitas, logika, dan keterampilan teknis Anda akan diuji melalui serangkaian tantangan pemrograman yang dirancang untuk mengasah kemampuan dan membuktikan siapa yang terbaik di bidangnya.
+                                Selamat datang di Lomba Pemrograman Poltek, ajang kompetisi bergengsi untuk para
+                                programmer dan developer dari seluruh Indonesia! Di sini, kreativitas, logika, dan
+                                keterampilan teknis Anda akan diuji melalui serangkaian tantangan pemrograman yang
+                                dirancang untuk mengasah kemampuan dan membuktikan siapa yang terbaik di bidangnya.
                                 Apa yang Bisa Anda Harapkan?
-                                Tantangan Beragam: Lomba ini terdiri dari berbagai kategori, termasuk pengembangan aplikasi web, mobile, keamanan siber, dan algoritma. Setiap tantangan dirancang untuk menguji kemampuan pemrograman Anda dalam berbagai aspek.
-                                Hadiah Menarik: Menangkan hadiah total puluhan juta rupiah, sertifikat, serta peluang eksklusif untuk bergabung dengan perusahaan teknologi terkemuka.
-                                Mentorship dan Workshop: Dapatkan bimbingan langsung dari para ahli industri dan ikuti berbagai workshop yang akan membantu Anda meningkatkan keterampilan pemrograman.
+                                Tantangan Beragam: Lomba ini terdiri dari berbagai kategori, termasuk pengembangan
+                                aplikasi web, mobile, keamanan siber, dan algoritma. Setiap tantangan dirancang untuk
+                                menguji kemampuan pemrograman Anda dalam berbagai aspek.
+                                Hadiah Menarik: Menangkan hadiah total puluhan juta rupiah, sertifikat, serta peluang
+                                eksklusif untuk bergabung dengan perusahaan teknologi terkemuka.
+                                Mentorship dan Workshop: Dapatkan bimbingan langsung dari para ahli industri dan ikuti
+                                berbagai workshop yang akan membantu Anda meningkatkan keterampilan pemrograman.
                             </td>
                             <td>02/06/2025</td>
                             <td>02/06/2025</td>
                             <td>02/06/2025</td>
-                            <td><span class="badge rounded-pill text-bg-primary bg-primary" style="opacity: 50%;">Dibuka</span></td>
+                            <td><span class="badge rounded-pill text-bg-primary bg-primary"
+                                    style="opacity: 50%;">Dibuka</span></td>
                             <td>
 
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"

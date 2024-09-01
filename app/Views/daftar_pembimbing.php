@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Daftar Peserta</h1>
+                    <h1>Daftar Pembimbing</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -149,7 +149,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Daftar Peserta</h3>
+                <h3 class="card-title">Daftar Juara</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -157,10 +157,10 @@
                     <thead>
                         <tr>
                             <th style="width: 10px">No</th>
-                            <th>Nama Peserta</th>
-                            <th>Pembimbing</th>
+                            <th>Nama Pembimbing</th>
                             <th>Sekolah</th>
                             <th>Lomba</th>
+
 
                             <th style="width: 200px">Aksi</th>
                         </tr>
@@ -168,9 +168,11 @@
                     <tbody>
                         <tr>
                             <td>1.</td>
-                            <td>mwehehe</td>
-                            <td>kenny</td>
-                            <td>poltek</td>
+                            <td>Pemogramanan</td>
+                            <td style="text-align: justify;">poltek
+                            </td>
+
+                            <td>Pemprograman</td>
 
                             <td><span class="badge rounded-pill text-bg-primary bg-primary"
                                     style="opacity: 50%;">Dibuka</span></td>
