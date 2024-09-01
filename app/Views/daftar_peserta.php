@@ -14,13 +14,13 @@
     <!-- Main content -->
     <section class="content">
 
-        <!-- Modal Add -->
-        <form>
+           <!-- Modal Add -->
+           <form action="/daftar-sekolah/insert" method="post">
             <div class="modal fade" id="modal-lg">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Tambah Daftar Lomba</h4>
+                            <h4 class="modal-title">Tambah Daftar Peserta</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -28,36 +28,54 @@
                         <div class="modal-body">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Minimal</label>
-                                            <select class="form-control select2" style="width: 100%;">
-                                                <option selected="selected">Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>California</option>
-                                                <option>Delaware</option>
-                                                <option>Tennessee</option>
-                                                <option>Texas</option>
-                                                <option>Washington</option>
+                                            <label for="kategori">Kategori</label>
+                                            <input type="text" class="form-control" id="kategori"
+                                                placeholder="Masukkan kategori">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="deskripsi">Deskripsi</label>
+                                            <input type="text" class="form-control" id="deskripsi"
+                                                placeholder="Masukkan deskripsi">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="link">Link</label>
+                                            <input type="url" class="form-control" id="link"
+                                                placeholder="Masukkan link">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="deadline">Deadline</label>
+                                            <input type="date" class="form-control" id="deadline">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="status">Status</label>
+                                            <select class="form-control select2" id="status" style="width: 100%;">
+                                                <option selected="selected">Aktif</option>
+                                                <option>Non-Aktif</option>
+                                                <option>Pending</option>
                                             </select>
                                         </div>
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-md-6">
-                                        <!-- /.form-group -->
+                                    <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Disabled Result</label>
-                                            <select class="form-control select2" style="width: 100%;">
-                                                <option selected="selected">Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>California</option>
-                                                <option>Delaware</option>
-                                                <option>Tennessee</option>
-                                                <option>Texas</option>
-                                                <option>Washington</option>
-                                            </select>
+                                            <label for="aturan">Aturan</label>
+                                            <textarea class="form-control" id="aturan" rows="4"
+                                                placeholder="Masukkan aturan"></textarea>
                                         </div>
-                                        <!-- /.form-group -->
                                     </div>
                                     <!-- /.col -->
                                 </div>
@@ -67,7 +85,7 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                     <!-- /.modal-content -->

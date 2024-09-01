@@ -62,15 +62,6 @@ class DashboardController extends BaseController
         echo view('partial/footer');
     }
 
-    public function daftarSekolah()
-    {
-        $header['title']='Daftar Juara';
-        echo view('partial/header',$header);
-        echo view('partial/top_menu');
-        echo view('partial/side_menu');
-        echo view('daftar_sekolah');
-        echo view('partial/footer');
-    }
     public function daftarPembimbing()
     {
         $header['title'] = 'Daftar Pembimbing';
@@ -79,5 +70,75 @@ class DashboardController extends BaseController
         echo view('partial/side_menu');
         echo view('daftar_pembimbing');
         echo view('partial/footer');
+    }
+
+
+
+
+
+
+    // sekolah methods
+    public function daftarSekolah()
+    {
+        $Model = new \App\Models\SekolahModel();
+        $header['title']='Daftar Sekolah';
+
+        $data['dataSekolah'] = $Model->getdata();
+
+        echo view('partial/header',$header);
+        echo view('partial/top_menu');
+        echo view('partial/side_menu');
+        echo view('daftar_sekolah', $data);
+        echo view('partial/footer');
+    }
+
+    public function sekolahInsert(){
+        $Model = new \App\Models\SekolahModel();
+        $data = [
+            'id_sekolah' => $this->request->getPost("id"),
+            'nama_sekolah' => $this->request->getPost("nama_sekolah"),
+            'alamat' => $this->request->getPost("alamat"),
+        ];
+
+        if ($Model->insertData($data)) {
+            session()->setFlashdata('success', 'Data Berhasil Ditambah!');
+        } else {
+            session()->setFlashdata('error', 'Data Gagal Ditambah!');
+        }
+
+        return redirect()->to('/daftar-sekolah');
+    }
+
+    public function updateData($id)
+    {
+
+        $Model = new \App\Models\SekolahModel();
+        $data = [
+            'id_sekolah' => $this->request->getPost("id"),
+            'nama_sekolah' => $this->request->getPost("nama_sekolah"),
+            'alamat' => $this->request->getPost("alamat"),
+        ];
+
+        if ($Model->updateData($id, $data)) {
+            session()->setFlashdata('success', 'Data Berhasil Diubah!');
+        } else {
+            session()->setFlashdata('error', 'Data Gagal Diubah!');
+        }
+
+        return redirect()->to('/daftar-sekolah');
+    }
+
+    public function deleteData($id)
+    {
+
+        $Model = new \App\Models\SekolahModel();
+        if ($Model == true) {
+            $Model->deleteData($id);
+            session()->setFlashdata('success', 'Data Berhasil Dihapus!');
+        } else {
+            session()->setFlashdata('error', 'Data Gagal Dihapus!');
+        }
+
+        return redirect()->to('/daftar-sekolah');
     }
 }
