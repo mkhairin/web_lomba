@@ -19,9 +19,9 @@ $routes->get('/daftar-pembimbing', 'DashboardController::daftarPembimbing');
 
 
 $routes->get('/daftar-sekolah', 'DashboardController::daftarSekolah');
-$routes->post('/daftar-sekolah/insert', 'DashboardController::insertData');
-$routes->post('/daftar-sekolah/update/(:num)', 'DashboardController::updateData/$1');
-$routes->get('/daftar-sekolah/delete/(:num)', 'DashboardController::deleteData/$1');
+$routes->post('/daftar-sekolah/insert', 'DashboardController::insertDataSekolah');
+$routes->post('/daftar-sekolah/update/(:num)', 'DashboardController::updateDataSekolah/$1');
+$routes->get('/daftar-sekolah/delete/(:num)', 'DashboardController::deleteDataSekolah/$1');
 
 
 

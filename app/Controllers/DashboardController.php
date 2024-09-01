@@ -92,7 +92,7 @@ class DashboardController extends BaseController
         echo view('partial/footer');
     }
 
-    public function sekolahInsert(){
+    public function insertDataSekolah(){
         $Model = new \App\Models\SekolahModel();
         $data = [
             'id_sekolah' => $this->request->getPost("id"),
@@ -109,7 +109,7 @@ class DashboardController extends BaseController
         return redirect()->to('/daftar-sekolah');
     }
 
-    public function updateData($id)
+    public function updateDataSekolah($id)
     {
 
         $Model = new \App\Models\SekolahModel();
@@ -128,7 +128,7 @@ class DashboardController extends BaseController
         return redirect()->to('/daftar-sekolah');
     }
 
-    public function deleteData($id)
+    public function deleteDataSekolah($id)
     {
 
         $Model = new \App\Models\SekolahModel();
