@@ -61,9 +61,10 @@
             <!-- /.modal -->
         </form>
 
-        <!-- Modal Update -->
-        <form>
-            <div class="modal fade" id="modal-update">
+            <!-- Modal Update -->
+             <?php foreach($dataSponsor as $data) : ?>
+            <form action="/daftar-sponsor/update/<?= $data->id_sponsor?>" method="post" enctype="multipart/form-data">
+            <div class="modal fade" id="modal-lg-update<?= $data->id_sponsor?>">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -76,19 +77,21 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
+                                        <input type="hidden" name="id" id="id">
                                         <div class="form-group">
-                                            <label for="kategori">Kategori</label>
-                                            <input type="text" class="form-control" id="kategori" placeholder="Masukkan kategori">
+                                            <label for="nama_sponsor">Nama Sponsor</label>
+                                            <input type="text" class="form-control" id="nama_sponsor" name="nama_sponsor"
+                                                value="<?= $data->nama_sponsor?>">
                                         </div>
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="link">Link</label>
-                                            <input type="url" class="form-control" id="link" placeholder="Masukkan link">
+                                            <label for="logo">Logo</label>
+                                            <input type="file" class="form-control" id="logo" name="logo"
+                                                value="<?= $data->logo?>">
                                         </div>
                                     </div>
-                                    <!-- /.col -->
                                 </div>
                                 <!-- /.row -->
                             </div>
@@ -105,6 +108,7 @@
             </div>
             <!-- /.modal -->
         </form>
+        <?php endforeach; ?>
 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
             Tambah Data
@@ -129,14 +133,15 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i = 1 ?>
                         <?php foreach ($dataSponsor as $data) : ?>
                             <tr>
-                                <td>1.</td>
+                                <td><?= $i++ ?></td>
                                 <td><?= $data->nama_sponsor ?></td>
                                 <td><img src="/img/sponsor/<?= $data->logo ?>" class="img-thumbnail" alt="Logo Sponsor" width="100px"></td>
                                 <td>
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                        data-target="#modal-update">Update</button>
+                                        data-target="#modal-lg-update<?= $data->id_sponsor?>">Update</button>
                                     <button type="button" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                             </tr>

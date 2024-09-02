@@ -28,4 +28,8 @@ class SponsorModel extends Model
         $builder->insert($data);
     }
 
+    public function updateData($id, $data)
+    {
+        $this->update($id, $data);
+    }
 }

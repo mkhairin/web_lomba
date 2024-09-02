@@ -213,7 +213,7 @@ class DashboardController extends BaseController
     public function insertDataSponsor()
     {
         $Model = new \App\Models\SponsorModel();
-    
+
         // Validasi input termasuk file
         $validationRules = [
             'nama_sponsor' => 'required',
@@ -226,23 +226,23 @@ class DashboardController extends BaseController
                 ]
             ]
         ];
-    
+
         if (!$this->validate($validationRules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
-    
+
         $file = $this->request->getFile('logo');
-    
+
         if ($file->isValid() && !$file->hasMoved()) {
             $newName = $file->getRandomName();
             $file->move('./img/sponsor', $newName);
-    
+
             $data = [
                 'id_sponsor' => $this->request->getPost('id'),
                 'nama_sponsor' => $this->request->getPost('nama_sponsor'),
                 'logo' => $newName
             ];
-    
+
             if ($Model->insert($data)) {  // Perbaikan: menggunakan metode 'insert' bawaan CodeIgniter
                 session()->setFlashdata('success', 'Data Berhasil Ditambah!');
             } else {
@@ -251,8 +251,54 @@ class DashboardController extends BaseController
         } else {
             session()->setFlashdata('error', 'File Gagal Diunggah!');
         }
-    
+
         return redirect()->to('/daftar-sponsor');
     }
-    
+
+    public function updateDataSponsor($id)
+    {
+        $Model = new \App\Models\SponsorModel();
+
+        // Validasi input termasuk file
+        $validationRules = [
+            'nama_sponsor' => 'required',
+            'logo' => [
+                'rules' => 'mime_in[logo,image/jpg,image/jpeg,image/png]|max_size[logo,2048]',
+                'errors' => [
+                    'mime_in' => 'Hanya file dengan ekstensi jpg, jpeg, atau png yang diizinkan.',
+                    'max_size' => 'Ukuran file maksimal adalah 2MB.'
+                ]
+            ]
+        ];
+
+        if (!$this->validate($validationRules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $file = $this->request->getFile('logo');
+        $data = [
+            'nama_sponsor' => $this->request->getPost('nama_sponsor')
+        ];
+
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            // Hapus logo lama jika ada
+            $oldData = $Model->find($id);
+            if ($oldData && !empty($oldData['logo']) && file_exists('./img/sponsor/' . $oldData['logo'])) {
+                unlink('./img/sponsor/' . $oldData['logo']);
+            }
+
+            // Pindahkan logo baru
+            $newName = $file->getRandomName();
+            $file->move('./img/sponsor', $newName);
+            $data['logo'] = $newName;
+        }
+
+        if ($Model->updateData($id, $data)) {
+            session()->setFlashdata('success', 'Data Berhasil Diperbarui!');
+        } else {
+            session()->setFlashdata('error', 'Data Gagal Diperbarui!');
+        }
+
+        return redirect()->to('/daftar-sponsor');
+    }
 }
