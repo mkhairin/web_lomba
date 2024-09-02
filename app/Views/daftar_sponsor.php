@@ -15,7 +15,7 @@
     <section class="content">
 
         <!-- Modal Add -->
-        <form>
+        <form action="/daftar-sponsor/insert" method="post" enctype="multipart/form-data">
             <div class="modal fade" id="modal-lg">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -29,19 +29,21 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
+                                        <input type="hidden" name="id" id="id">
                                         <div class="form-group">
-                                            <label for="kategori">Kategori</label>
-                                            <input type="text" class="form-control" id="kategori" placeholder="Masukkan kategori">
+                                            <label for="nama_sponsor">Nama Sponsor</label>
+                                            <input type="text" class="form-control" id="nama_sponsor" name="nama_sponsor"
+                                                placeholder="Masukkan kategori">
                                         </div>
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="link">Link</label>
-                                            <input type="url" class="form-control" id="link" placeholder="Masukkan link">
+                                            <label for="logo">Logo</label>
+                                            <input type="file" class="form-control" id="logo" name="logo"
+                                                placeholder="Masukkan deskripsi">
                                         </div>
                                     </div>
-                                    <!-- /.col -->
                                 </div>
                                 <!-- /.row -->
                             </div>
@@ -105,7 +107,7 @@
         </form>
 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
-            Launch Large Modal
+            Tambah Data
         </button>
 
         <br> <br>
@@ -127,16 +129,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1.</td>
-                            <td>Eren Yeager</td>
-                            <td>Ini Nanti input gambar?</td>
-                            <td>
-                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                    data-target="#modal-update">Update</button>
-                                <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                            </td>
-                        </tr>
+                        <?php foreach ($dataSponsor as $data) : ?>
+                            <tr>
+                                <td>1.</td>
+                                <td><?= $data->nama_sponsor ?></td>
+                                <td><img src="/img/sponsor/<?= $data->logo ?>" class="img-thumbnail" alt="Logo Sponsor" width="100px"></td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                        data-target="#modal-update">Update</button>
+                                    <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                         <!-- Tambahkan lebih banyak baris sesuai kebutuhan -->
                     </tbody>
                 </table>

@@ -11,7 +11,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/admin', 'DashboardController::index');
 $routes->get('/daftar-lomba', 'DashboardController::daftarLomba');
 $routes->get('/daftar-rules', 'DashboardController::daftarRules');
-$routes->get('/daftar-sponsor', 'DashboardController::daftarSponsor');
+
 
 $routes->get('/daftar-peserta', 'DashboardController::daftarPeserta');
 $routes->get('/daftar-pembimbing', 'DashboardController::daftarPembimbing');
@@ -28,6 +28,10 @@ $routes->get('/daftar-juara', 'DashboardController::daftarJuara');
 $routes->post('/daftar-juara/insert', 'DashboardController::insertDataJuara');
 $routes->post('/daftar-juara/update/(:num)', 'DashboardController::updateDataJuara/$1');
 $routes->get('/daftar-juara/delete/(:num)', 'DashboardController::deleteDataJuara/$1');
+
+// Sponsor
+$routes->get('/daftar-sponsor', 'DashboardController::daftarSponsor');
+$routes->post('/daftar-sponsor/insert', 'DashboardController::insertDataSponsor');
 
 
 // Halaman Lomba

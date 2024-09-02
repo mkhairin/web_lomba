@@ -34,16 +34,6 @@ class DashboardController extends BaseController
         echo view('partial/footer');
     }
 
-    public function daftarSponsor()
-    {
-        $header['title'] = 'Daftar Sponsor';
-        echo view('partial/header', $header);
-        echo view('partial/top_menu');
-        echo view('partial/side_menu');
-        echo view('daftar_sponsor');
-        echo view('partial/footer');
-    }
-
 
     public function daftarPeserta()
     {
@@ -162,7 +152,7 @@ class DashboardController extends BaseController
             'total_hadiah' => $this->request->getPost('total_hadiah')
         ];
 
-        if($Model->insertData($data)) {
+        if ($Model->insertData($data)) {
             session()->setFlashdata('success', 'Data Berhasil Ditambah!');
         } else {
             session()->setFlashdata('error', 'Data Gagal Ditambah!');
@@ -180,7 +170,7 @@ class DashboardController extends BaseController
             'total_hadiah' => $this->request->getPost('total_hadiah')
         ];
 
-        if($Model->updateData($id, $data)) {
+        if ($Model->updateData($id, $data)) {
             session()->setFlashdata('success', 'Data Berhasil Diubah!');
         } else {
             session()->setFlashdata('error', 'Data Gagal Diubah!');
@@ -202,4 +192,67 @@ class DashboardController extends BaseController
 
         return redirect()->to('/daftar-juara');
     }
+
+
+    // sponsor methods
+    public function daftarSponsor()
+    {
+        $Model = new \App\Models\SponsorModel();
+
+        $header['title'] = 'Daftar Sponsor';
+
+        $data['dataSponsor'] = $Model->getdata();
+
+        echo view('partial/header', $header);
+        echo view('partial/top_menu');
+        echo view('partial/side_menu');
+        echo view('daftar_sponsor', $data);
+        echo view('partial/footer');
+    }
+
+    public function insertDataSponsor()
+    {
+        $Model = new \App\Models\SponsorModel();
+    
+        // Validasi input termasuk file
+        $validationRules = [
+            'nama_sponsor' => 'required',
+            'logo' => [
+                'rules' => 'uploaded[logo]|mime_in[logo,image/jpg,image/jpeg,image/png]|max_size[logo,2048]',
+                'errors' => [
+                    'uploaded' => 'File logo harus diunggah.',
+                    'mime_in' => 'Hanya file dengan ekstensi jpg, jpeg, atau png yang diizinkan.',
+                    'max_size' => 'Ukuran file maksimal adalah 2MB.'
+                ]
+            ]
+        ];
+    
+        if (!$this->validate($validationRules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+    
+        $file = $this->request->getFile('logo');
+    
+        if ($file->isValid() && !$file->hasMoved()) {
+            $newName = $file->getRandomName();
+            $file->move('./img/sponsor', $newName);
+    
+            $data = [
+                'id_sponsor' => $this->request->getPost('id'),
+                'nama_sponsor' => $this->request->getPost('nama_sponsor'),
+                'logo' => $newName
+            ];
+    
+            if ($Model->insert($data)) {  // Perbaikan: menggunakan metode 'insert' bawaan CodeIgniter
+                session()->setFlashdata('success', 'Data Berhasil Ditambah!');
+            } else {
+                session()->setFlashdata('error', 'Data Gagal Ditambah!');
+            }
+        } else {
+            session()->setFlashdata('error', 'File Gagal Diunggah!');
+        }
+    
+        return redirect()->to('/daftar-sponsor');
+    }
+    
 }
