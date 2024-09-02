@@ -17,7 +17,7 @@ $routes->get('/daftar-peserta', 'DashboardController::daftarPeserta');
 $routes->get('/daftar-pembimbing', 'DashboardController::daftarPembimbing');
 
 
-
+// Sekolah
 $routes->get('/daftar-sekolah', 'DashboardController::daftarSekolah');
 $routes->post('/daftar-sekolah/insert', 'DashboardController::insertDataSekolah');
 $routes->post('/daftar-sekolah/update/(:num)', 'DashboardController::updateDataSekolah/$1');
