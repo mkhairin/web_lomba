@@ -31,6 +31,7 @@
                                     <!-- /.col -->
                                     <div class="col-md-4">
                                         <div class="form-group">
+                                            <input type="hidden" name="id" id="id">
                                             <label for="status">Sekolah</label>
                                             <select class="form-control select" id="sekolah" name="id_sekolah" style="width: 100%;">
                                                 <?php foreach ($dataSekolah as $data) : ?>
@@ -75,67 +76,67 @@
         </form>
 
         <!-- Modal Update -->
-        <form>
-            <div class="modal fade" id="modal-lg-update">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Update Daftar Lomba</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Minimal</label>
-                                            <select class="form-control select2" style="width: 100%;">
-                                                <option selected="selected">Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>California</option>
-                                                <option>Delaware</option>
-                                                <option>Tennessee</option>
-                                                <option>Texas</option>
-                                                <option>Washington</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-md-6">
-                                        <!-- /.form-group -->
-                                        <div class="form-group">
-                                            <label>Disabled Result</label>
-                                            <select class="form-control select2" style="width: 100%;">
-                                                <option selected="selected">Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>California</option>
-                                                <option>Delaware</option>
-                                                <option>Tennessee</option>
-                                                <option>Texas</option>
-                                                <option>Washington</option>
-                                            </select>
-                                        </div>
-                                        <!-- /.form-group -->
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                                <!-- /.row -->
+        <?php foreach ($dataPembimbing as $pembimbing) : ?>
+            <form action="/daftar-pembimbing/update/<?= $pembimbing->id_pembimbing ?>" method="post">
+                <div class="modal fade" id="modal-lg-update<?= $pembimbing->id_pembimbing?>">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Tambah Daftar Pembimbing</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <!-- /.card-body -->
+                            <div class="modal-body">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <!-- /.col -->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <input type="hidden" name="id" id="id">
+                                                <label for="status">Sekolah</label>
+                                                <select class="form-control select" id="sekolah" name="id_sekolah" style="width: 100%;">
+                                                    <?php foreach ($dataSekolah as $data) : ?>
+                                                        <option value="<?= $data->id_sekolah; ?>"><?= $data->nama_sekolah; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="nama_pembimbing">Nama Pembimbing</label>
+                                                <input type="text" class="form-control" id="nama_pembimbing" name="nama_pembimbing"
+                                                   value="<?= $pembimbing->nama_pembimbing ?>">
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="lomba">Lomba</label>
+                                                <select class="form-control select" id="lomba" name="lomba" style="width: 100%;">
+                                                    <option value="<?= $pembimbing->lomba ?>"><?= $pembimbing->lomba ?></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <!-- /.row -->
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
                         </div>
-                        <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                        <!-- /.modal-content -->
                     </div>
-                    <!-- /.modal-content -->
+                    <!-- /.modal-dialog -->
                 </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- /.modal -->
-        </form>
+                <!-- /.modal -->
+            </form>
+        <?php endforeach; ?>
 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
             Tambah Data
@@ -161,17 +162,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i = 1 ?>
                         <?php foreach ($dataPembimbing as $data) : ?>
                             <tr>
-                                <td>1.</td>
+                                <td><?= $i++ ?></td>
                                 <td><?= $data->nama_sekolah ?></td>
-                                <td style="text-align: justify;">poltek
+                                <td style="text-align: justify;"><?= $data->nama_pembimbing ?>
                                 </td>
-                                <td>Pemprograman</td>
+                                <td><?= $data->lomba ?></td>
                                 <td>
 
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                        data-target="#modal-lg-update">Update</button>
+                                        data-target="#modal-lg-update<?= $data->id_pembimbing ?>">Update</button>
                                     <button type="button" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                             </tr>

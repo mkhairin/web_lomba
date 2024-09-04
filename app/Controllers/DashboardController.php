@@ -295,7 +295,7 @@ class DashboardController extends BaseController
         return redirect()->to('/daftar-sponsor');
     }
 
-    public function deleteDataSponsor($id) 
+    public function deleteDataSponsor($id)
     {
         $Model = new \App\Models\SponsorModel();
 
@@ -328,9 +328,65 @@ class DashboardController extends BaseController
         echo view('partial/footer');
     }
 
-
     public function insertDataPembimbing()
     {
+        $Model = new \App\Models\PembimbingModel();
 
+        $data = [
+            'id_pembimbing' => $this->request->getPost('id'),
+            'id_sekolah' => $this->request->getPost('id_sekolah'),
+            'nama_pembimbing' => $this->request->getPost('nama_pembimbing'),
+            'lomba' => $this->request->getPost('lomba')
+        ];
+
+        if ($Model->insertData($data)) {
+            session()->setFlashdata('success', 'Data Berhasil Ditambah!');
+        } else {
+            session()->setFlashdata('error', 'Data Gagal Ditambah!');
+        }
+
+        return redirect()->to('/daftar-pembimbing');
     }
+
+    public function updateDataPembimbing($id)
+    {
+        $Model = new \App\Models\PembimbingModel();
+
+        $data = [
+            'id_pembimbing' => $this->request->getPost('id'),
+            'id_sekolah' => $this->request->getPost('id_sekolah'),
+            'nama_pembimbing' => $this->request->getPost('nama_pembimbing'),
+            'lomba' => $this->request->getPost('lomba')
+        ];
+
+        if ($Model->updateData($id, $data)) {
+            session()->setFlashdata('success', 'Data Berhasil Diubah!');
+        } else {
+            session()->setFlashdata('error', 'Data Gagal Diubah!');
+        }
+
+        return redirect()->to('/daftar-pembimbing');
+    }
+
+    public function deleteDataPembimbing($id)
+    {
+        $Model = new \app\Models\PembimbingModel();
+
+        if ($Model == true) {
+            $Model->deleteData($id);
+            session()->setFlashdata('success', 'Data Berhasil Dihapus!');
+        } else {
+            session()->setFlashdata('error', 'Data Gagal Dihapus!');
+        }
+
+        return redirect()->to('/daftar-pembimbing');
+    }
+
+
+
+
+
+
+
+    
 }
