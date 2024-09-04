@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\PembimbingModel;
-
 class DashboardController extends BaseController
 {
     public function index()
@@ -13,16 +11,6 @@ class DashboardController extends BaseController
         echo view('partial/top_menu');
         echo view('partial/side_menu');
         echo view('dashboard_admin');
-        echo view('partial/footer');
-    }
-
-    public function daftarLomba()
-    {
-        $header['title'] = 'Daftar Lomba';
-        echo view('partial/header', $header);
-        echo view('partial/top_menu');
-        echo view('partial/side_menu');
-        echo view('daftar_lomba');
         echo view('partial/footer');
     }
 
@@ -311,7 +299,7 @@ class DashboardController extends BaseController
 
 
 
-
+    // pembimbing methods
     public function daftarPembimbing()
     {
         $Model = new \App\Models\PembimbingModel();
@@ -383,10 +371,37 @@ class DashboardController extends BaseController
     }
 
 
+    public function daftarLomba()
+    {
+        $header['title'] = 'Daftar Lomba';
+        echo view('partial/header', $header);
+        echo view('partial/top_menu');
+        echo view('partial/side_menu');
+        echo view('daftar_lomba');
+        echo view('partial/footer');
+    }
 
+    public function insertDataLomba()
+    {
+        $Model = new \App\Models\LombaModel();
+        $data = [
+            'id' => $this->request->getPost('id'),
+            'nama' => $this->request->getPost('nama'),
+            'deskripsi' => $this->request->getPost('deskripsi'),
+            'peraturan' => $this->request->getPost('peraturan'),
+            'peraturan' => $this->request->getPost('peraturan'),
+            'link_peraturan' => $this->request->getPost('link_peraturan'),
+            'tgl_dibuka' => $this->request->getPost('tgl_dibuka'),
+            'tgl_ditutup' => $this->request->getPost('tgl_ditutup'),
+            'status' => $this->request->getPost('status')
+        ];
 
+        if ($Model->insertData($data)) {
+            session()->setFlashdata('success', 'Data Berhasil Ditambah!');
+        } else {
+            session()->setFlashdata('error', 'Data Gagal Ditambah!');
+        }
 
-
-
-    
+        return redirect()->to('/daftar-lomba');
+    }
 }

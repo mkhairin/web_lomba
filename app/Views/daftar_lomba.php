@@ -14,8 +14,8 @@
     <!-- Main content -->
     <section class="content">
 
-        <!-- Modal Add -->
-        <form>
+    <!-- Modal Add -->
+    <form action="/daftar-lomba/insert" method="post">
             <div class="modal fade" id="modal-lg">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -28,10 +28,11 @@
                         <div class="modal-body">
                             <div class="card-body">
                                 <div class="row">
+                                    <input type="hidden" name="id" id="id">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="kategori">Kategori</label>
-                                            <input type="text" class="form-control" id="kategori"
+                                            <input type="text" class="form-control" id="nama" name="nama"
                                                 placeholder="Masukkan kategori">
                                         </div>
                                     </div>
@@ -39,7 +40,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="deskripsi">Deskripsi</label>
-                                            <input type="text" class="form-control" id="deskripsi"
+                                            <input type="text" class="form-control" id="deskripsi" name="deskripsi"
                                                 placeholder="Masukkan deskripsi">
                                         </div>
                                     </div>
@@ -47,22 +48,29 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="link">Link</label>
-                                            <input type="url" class="form-control" id="link"
+                                            <input type="url" class="form-control" id="link_peraturan" id="link_peraturan" name="link_peraturan"
                                                 placeholder="Masukkan link">
                                         </div>
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="deadline">Deadline</label>
-                                            <input type="date" class="form-control" id="deadline">
+                                            <label for="tgl_dibuka">Tgl Dibuka</label>
+                                            <input type="date" class="form-control" id="tgl_dibuka" name="tgl_dibuka">
+                                        </div>
+                                    </div>
+                                     <!-- /.col -->
+                                     <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="tgl_ditutup">Tgl Ditutup</label>
+                                            <input type="date" class="form-control" id="tgl_ditutup" name="tgl_ditutup">
                                         </div>
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="status">Status</label>
-                                            <select class="form-control select2" id="status" style="width: 100%;">
+                                            <select class="form-control select2" id="status" name="status" style="width: 100%;">
                                                 <option selected="selected">Aktif</option>
                                                 <option>Non-Aktif</option>
                                                 <option>Pending</option>
@@ -73,7 +81,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="aturan">Aturan</label>
-                                            <textarea class="form-control" id="aturan" rows="4"
+                                            <textarea class="form-control" id="aturan" rows="4" id="peraturan" name="peraturan"
                                                 placeholder="Masukkan aturan"></textarea>
                                         </div>
                                     </div>
@@ -97,86 +105,6 @@
 
 
 
-        <!-- Modal Update -->
-        <form>
-            <div class="modal fade" id="modal-update">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Tambah Daftar Lomba</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="kategori">Kategori</label>
-                                            <input type="text" class="form-control" id="kategori"
-                                                placeholder="Masukkan kategori">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="deskripsi">Deskripsi</label>
-                                            <input type="text" class="form-control" id="deskripsi"
-                                                placeholder="Masukkan deskripsi">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="link">Link</label>
-                                            <input type="url" class="form-control" id="link"
-                                                placeholder="Masukkan link">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="deadline">Deadline</label>
-                                            <input type="date" class="form-control" id="deadline">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="status">Status</label>
-                                            <select class="form-control select2" id="status" style="width: 100%;">
-                                                <option selected="selected">Aktif</option>
-                                                <option>Non-Aktif</option>
-                                                <option>Pending</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="aturan">Aturan</label>
-                                            <textarea class="form-control" id="aturan" rows="4"
-                                                placeholder="Masukkan aturan"></textarea>
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                                <!-- /.row -->
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- /.modal -->
-        </form>
 
 
         <!-- Modal Delete -->

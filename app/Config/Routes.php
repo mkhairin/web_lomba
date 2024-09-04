@@ -35,10 +35,15 @@ $routes->post('/daftar-sponsor/insert', 'DashboardController::insertDataSponsor'
 $routes->post('/daftar-sponsor/update/(:num)', 'DashboardController::updateDataSponsor/$1');
 $routes->get('/daftar-sponsor/delete/(:num)', 'DashboardController::deleteDataSponsor/$1');
 
-
+// Pembimbing
 $routes->get('/daftar-pembimbing', 'DashboardController::daftarPembimbing');
 $routes->post('/daftar-pembimbing/insert', 'DashboardController::insertDataPembimbing');
 $routes->post('/daftar-pembimbing/update/(:num)', 'DashboardController::updateDataPembimbing/$1');
+$routes->get('/daftar-pembimbing/delete/(:num)', 'DashboardController::deleteDataPembimbing/$1');
+
+
+$routes->get('/daftar-lomba', 'DashboardController::daftarLomba');
+$routes->post('/daftar-lomba/insert', 'DashboardController::insertDataLomba');
 
 // Halaman Lomba
 $routes->get('/', 'HomeLombaTRKJ::home');

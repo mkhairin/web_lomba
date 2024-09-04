@@ -174,7 +174,7 @@
 
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                         data-target="#modal-lg-update<?= $data->id_pembimbing ?>">Update</button>
-                                    <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                        <a class="btn btn-danger btn-sm" href="/daftar-pembimbing/delete/<?= $data->id_pembimbing ?>" role="button">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
