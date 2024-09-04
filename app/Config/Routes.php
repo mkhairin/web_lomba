@@ -33,6 +33,7 @@ $routes->get('/daftar-juara/delete/(:num)', 'DashboardController::deleteDataJuar
 $routes->get('/daftar-sponsor', 'DashboardController::daftarSponsor');
 $routes->post('/daftar-sponsor/insert', 'DashboardController::insertDataSponsor');
 $routes->post('/daftar-sponsor/update/(:num)', 'DashboardController::updateDataSponsor/$1');
+$routes->get('/daftar-sponsor/delete/(:num)', 'DashboardController::deleteDataSponsor/$1');
 
 // Halaman Lomba
 $routes->get('/', 'HomeLombaTRKJ::home');

@@ -32,4 +32,13 @@ class SponsorModel extends Model
     {
         $this->update($id, $data);
     }
+
+    public function deleteData($id) 
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('sponsor');
+        $builder->where('id_sponsor', $id);
+        $builder->delete();
+    }
 }
+

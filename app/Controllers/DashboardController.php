@@ -301,4 +301,9 @@ class DashboardController extends BaseController
 
         return redirect()->to('/daftar-sponsor');
     }
+
+    public function deleteDataSponsor($id) 
+    {
+        
+    }
 }
