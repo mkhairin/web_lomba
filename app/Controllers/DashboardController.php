@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\PembimbingModel;
+
 class DashboardController extends BaseController
 {
     public function index()
@@ -44,17 +46,6 @@ class DashboardController extends BaseController
         echo view('daftar_peserta');
         echo view('partial/footer');
     }
-
-    public function daftarPembimbing()
-    {
-        $header['title'] = 'Daftar Pembimbing';
-        echo view('partial/header', $header);
-        echo view('partial/top_menu');
-        echo view('partial/side_menu');
-        echo view('daftar_pembimbing');
-        echo view('partial/footer');
-    }
-
 
 
 
@@ -194,6 +185,8 @@ class DashboardController extends BaseController
     }
 
 
+
+
     // sponsor methods
     public function daftarSponsor()
     {
@@ -304,6 +297,40 @@ class DashboardController extends BaseController
 
     public function deleteDataSponsor($id) 
     {
-        
+        $Model = new \App\Models\SponsorModel();
+
+        if ($Model == true) {
+            $Model->deleteData($id);
+            session()->setFlashdata('success', 'Data Berhasil Dihapus!');
+        } else {
+            session()->setFlashdata('error', 'Data Gagal Dihapus!');
+        }
+
+        return redirect()->to('/daftar-sponsor');
+    }
+
+
+
+
+    public function daftarPembimbing()
+    {
+        $Model = new \App\Models\PembimbingModel();
+        $ModelSekolah = new \App\Models\SekolahModel();
+
+        $data['dataPembimbing'] = $Model->getDataPembimbing();
+        $data['dataSekolah'] = $ModelSekolah->getdata();
+
+        $header['title'] = 'Daftar Pembimbing';
+        echo view('partial/header', $header);
+        echo view('partial/top_menu');
+        echo view('partial/side_menu');
+        echo view('daftar_pembimbing', $data);
+        echo view('partial/footer');
+    }
+
+
+    public function insertDataPembimbing()
+    {
+
     }
 }

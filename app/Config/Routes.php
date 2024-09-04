@@ -14,7 +14,7 @@ $routes->get('/daftar-rules', 'DashboardController::daftarRules');
 
 
 $routes->get('/daftar-peserta', 'DashboardController::daftarPeserta');
-$routes->get('/daftar-pembimbing', 'DashboardController::daftarPembimbing');
+
 
 
 // Sekolah
@@ -34,6 +34,10 @@ $routes->get('/daftar-sponsor', 'DashboardController::daftarSponsor');
 $routes->post('/daftar-sponsor/insert', 'DashboardController::insertDataSponsor');
 $routes->post('/daftar-sponsor/update/(:num)', 'DashboardController::updateDataSponsor/$1');
 $routes->get('/daftar-sponsor/delete/(:num)', 'DashboardController::deleteDataSponsor/$1');
+
+
+$routes->get('/daftar-pembimbing', 'DashboardController::daftarPembimbing');
+$routes->post('/daftar-pembimbing/insert', 'DashboardController::insertDataPembimbing');
 
 // Halaman Lomba
 $routes->get('/', 'HomeLombaTRKJ::home');
