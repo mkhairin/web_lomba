@@ -432,4 +432,18 @@ class DashboardController extends BaseController
 
         return redirect()->to('/daftar-lomba');
     }
+
+    public function deleteDataLomba($id)
+    {
+        $Model = new \app\Models\LombaModel();
+
+        if ($Model == true) {
+            $Model->deleteData($id);
+            session()->setFlashdata('success', 'Data Berhasil Dihapus!');
+        } else {
+            session()->setFlashdata('error', 'Data Gagal Dihapus!');
+        }
+
+        return redirect()->to('/daftar-lomba');
+    }
 }

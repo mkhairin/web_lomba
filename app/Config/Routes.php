@@ -45,6 +45,7 @@ $routes->get('/daftar-pembimbing/delete/(:num)', 'DashboardController::deleteDat
 $routes->get('/daftar-lomba', 'DashboardController::daftarLomba');
 $routes->post('/daftar-lomba/insert', 'DashboardController::insertDataLomba');
 $routes->post('/daftar-lomba/update/(:num)', 'DashboardController::updateDataLomba/$1');
+$routes->get('/daftar-lomba/delete/(:num)', 'DashboardController::deleteDataLomba/$1');
 
 // Halaman Lomba
 $routes->get('/', 'HomeLombaTRKJ::home');

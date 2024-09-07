@@ -240,8 +240,7 @@
 
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                         data-target="#modal-lg-update<?= $data->id_lomba ?>">Update</button>
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#modal-delete">Delete</button>
+                                        <a class="btn btn-danger btn-sm" href="/daftar-lomba/delete/<?= $data->id_lomba ?>" role="button">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
