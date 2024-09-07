@@ -373,11 +373,15 @@ class DashboardController extends BaseController
 
     public function daftarLomba()
     {
+        $Model = new \App\Models\LombaModel();
+
+        $data['dataLomba'] = $Model->getdata();
+
         $header['title'] = 'Daftar Lomba';
         echo view('partial/header', $header);
         echo view('partial/top_menu');
         echo view('partial/side_menu');
-        echo view('daftar_lomba');
+        echo view('daftar_lomba', $data);
         echo view('partial/footer');
     }
 
@@ -385,7 +389,7 @@ class DashboardController extends BaseController
     {
         $Model = new \App\Models\LombaModel();
         $data = [
-            'id' => $this->request->getPost('id'),
+            'id_lomba' => $this->request->getPost('id'),
             'nama' => $this->request->getPost('nama'),
             'deskripsi' => $this->request->getPost('deskripsi'),
             'peraturan' => $this->request->getPost('peraturan'),
@@ -400,6 +404,30 @@ class DashboardController extends BaseController
             session()->setFlashdata('success', 'Data Berhasil Ditambah!');
         } else {
             session()->setFlashdata('error', 'Data Gagal Ditambah!');
+        }
+
+        return redirect()->to('/daftar-lomba');
+    }
+
+    public function updateDataLomba($id)
+    {
+        $Model = new \App\Models\LombaModel();
+        $data = [
+            'id_lomba' => $this->request->getPost('id'),
+            'nama' => $this->request->getPost('nama'),
+            'deskripsi' => $this->request->getPost('deskripsi'),
+            'peraturan' => $this->request->getPost('peraturan'),
+            'peraturan' => $this->request->getPost('peraturan'),
+            'link_peraturan' => $this->request->getPost('link_peraturan'),
+            'tgl_dibuka' => $this->request->getPost('tgl_dibuka'),
+            'tgl_ditutup' => $this->request->getPost('tgl_ditutup'),
+            'status' => $this->request->getPost('status')
+        ];
+
+        if ($Model->updateData($id, $data)) {
+            session()->setFlashdata('success', 'Data Berhasil Diubah!');
+        } else {
+            session()->setFlashdata('error', 'Data Gagal Diubah!');
         }
 
         return redirect()->to('/daftar-lomba');
