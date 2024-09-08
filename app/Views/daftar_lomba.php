@@ -28,15 +28,15 @@
                         <div class="modal-body">
                             <div class="card-body">
                                 <div class="row">
-                                    <input type="hidden" name="id" id="id">
+                                    <!-- Kategori Lomba -->
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="kategori">Kategori</label>
+                                            <label for="nama">Kategori</label>
                                             <input type="text" class="form-control" id="nama" name="nama"
                                                 placeholder="Masukkan kategori">
                                         </div>
                                     </div>
-                                    <!-- /.col -->
+                                    <!-- Deskripsi Lomba -->
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="deskripsi">Deskripsi</label>
@@ -44,48 +44,47 @@
                                                 placeholder="Masukkan deskripsi">
                                         </div>
                                     </div>
-                                    <!-- /.col -->
+                                    <!-- Link Peraturan -->
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="link">Link</label>
-                                            <input type="url" class="form-control" id="link_peraturan" id="link_peraturan" name="link_peraturan"
+                                            <label for="link_peraturan">Link</label>
+                                            <input type="url" class="form-control" id="link_peraturan" name="link_peraturan"
                                                 placeholder="Masukkan link">
                                         </div>
                                     </div>
-                                    <!-- /.col -->
+                                    <!-- Tanggal Dibuka -->
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="tgl_dibuka">Tgl Dibuka</label>
                                             <input type="date" class="form-control" id="tgl_dibuka" name="tgl_dibuka">
                                         </div>
                                     </div>
-                                    <!-- /.col -->
+                                    <!-- Tanggal Ditutup -->
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="tgl_ditutup">Tgl Ditutup</label>
                                             <input type="date" class="form-control" id="tgl_ditutup" name="tgl_ditutup">
                                         </div>
                                     </div>
-                                    <!-- /.col -->
+                                    <!-- Status Lomba -->
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="status">Status</label>
                                             <select class="form-control select" id="status" name="status" style="width: 100%;">
-                                                <option selected="selected">Aktif</option>
-                                                <option>Non-Aktif</option>
-                                                <option>Pending</option>
+                                                <option value="Aktif" selected>Aktif</option>
+                                                <option value="Non-Aktif">Non-Aktif</option>
+                                                <option value="Pending">Pending</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <!-- /.col -->
+                                    <!-- Peraturan Lomba -->
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="aturan">Aturan</label>
-                                            <textarea class="form-control" id="aturan" rows="4" id="peraturan" name="peraturan"
+                                            <label for="peraturan">Aturan</label>
+                                            <textarea class="form-control" id="peraturan" rows="4" name="peraturan"
                                                 placeholder="Masukkan aturan"></textarea>
                                         </div>
                                     </div>
-                                    <!-- /.col -->
                                 </div>
                                 <!-- /.row -->
                             </div>
@@ -102,6 +101,7 @@
             </div>
             <!-- /.modal -->
         </form>
+
 
 
         <!-- Modal Update -->
