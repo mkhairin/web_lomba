@@ -70,7 +70,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="status">Status</label>
-                                            <select class="form-control select2" id="status" name="status" style="width: 100%;">
+                                            <select class="form-control select" id="status" name="status" style="width: 100%;">
                                                 <option selected="selected">Aktif</option>
                                                 <option>Non-Aktif</option>
                                                 <option>Pending</option>
@@ -217,8 +217,8 @@
                             <th>Kategori</th>
                             <th>Deskripsi</th>
                             <th>Aturan</th>
-                            <th>Link</th>
-                            <th>Deadline</th>
+                            <th>Tgl Buka</th>
+                            <th>Tgl Tutup</th>
                             <th>Status</th>
                             <th style="width: 200px">Aksi</th>
                         </tr>

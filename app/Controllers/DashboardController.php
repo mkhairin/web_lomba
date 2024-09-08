@@ -293,7 +293,7 @@ class DashboardController extends BaseController
         $ModelSekolah = new \App\Models\SekolahModel();
 
         $data['dataPembimbing'] = $Model->getDataPembimbing();
-        $data['dataSekolah'] = $ModelSekolah->getdata();
+        $data['dataSekolah'] = $ModelSekolah->getDataSekolah();
 
         $header['title'] = 'Daftar Pembimbing';
         echo view('partial/header', $header);
