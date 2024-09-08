@@ -28,6 +28,7 @@
 
         <!-- Modal Add -->
         <form action="/daftar-sekolah/insert" method="post">
+        <?php csrf_field() ?>
             <div class="modal fade" id="modal-lg">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -77,6 +78,7 @@
         <?php foreach ($dataSekolah as $data): ?>
             <!-- Modal Update -->
             <form action="/daftar-sekolah/update/<?= $data->id_sekolah ?>" method="post">
+            <?php csrf_field() ?>
                 <div class="modal fade" id="modal-lg-update<?= $data->id_sekolah ?>">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">

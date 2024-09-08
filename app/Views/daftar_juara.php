@@ -16,6 +16,7 @@
 
         <!-- Modal Add -->
         <form action="/daftar-juara/insert" method="post">
+            <?php csrf_field() ?>
             <div class="modal fade" id="modal-lg">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -64,6 +65,7 @@
         <!-- Modal Update -->
         <?php foreach ($dataJuara as $data) : ?>
             <form action="/daftar-juara/update/<?= $data->id_juara ?>" method="post">
+                <?php csrf_field() ?>
                 <div class="modal fade" id="modal-lg-update<?= $data->id_juara ?>">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -89,7 +91,7 @@
                                             <div class="form-group">
                                                 <label for="total_hadiah">Total Hadiah</label>
                                                 <input type="number" class="form-control" id="total_hadiah" name="total_hadiah"
-                                                value="<?= $data->total_hadiah ?>">
+                                                    value="<?= $data->total_hadiah ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -146,7 +148,7 @@
 
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                         data-target="#modal-lg-update<?= $data->id_juara ?>">Update</button>
-                                        <a class="btn btn-danger btn-sm" href="/daftar-juara/delete/<?= $data->id_juara?>" role="button">Delete</a>
+                                    <a class="btn btn-danger btn-sm" href="/daftar-juara/delete/<?= $data->id_juara ?>" role="button">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

@@ -16,6 +16,7 @@
 
         <!-- Modal Add -->
         <form action="/daftar-peserta/insert" method="post">
+        <?php csrf_field() ?>
             <div class="modal fade" id="modal-lg">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -91,6 +92,7 @@
         <!-- Modal Update -->
         <?php foreach ($dataPeserta as $data) : ?>
             <form action="/daftar-peserta/update/<?= $data->id_peserta ?>" method="post">
+            <?php csrf_field() ?>
                 <div class="modal fade" id="modal-lg-update<?= $data->id_peserta ?>">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
