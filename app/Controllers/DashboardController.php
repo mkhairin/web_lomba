@@ -82,20 +82,20 @@ class DashboardController extends BaseController
             'nama_sekolah' => 'required|min_length[10]|max_length[100]',
             'alamat' => 'required|min_length[10]|max_length[255]'
         ]);
-    
+
         // Cek validasi input
         if (!$this->validate($validation->getRules())) {
             // Jika validasi gagal, simpan pesan error ke flashdata
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
-    
+
         // Jika validasi berhasil, lanjutkan ke update data
         $Model = new \App\Models\SekolahModel();
         $data = [
             'nama_sekolah' => $this->request->getPost("nama_sekolah"),
             'alamat' => $this->request->getPost("alamat"),
         ];
-    
+
         // Update data sekolah berdasarkan id
         if ($Model->update($id, $data)) {
             session()->setFlashdata('success', 'Data Berhasil Diubah!');
@@ -105,7 +105,7 @@ class DashboardController extends BaseController
             return redirect()->back()->withInput(); // Redirect balik dengan input jika gagal
         }
     }
-    
+
 
     public function deleteDataSekolah($id)
     {
@@ -144,14 +144,13 @@ class DashboardController extends BaseController
         $validation = \Config\Services::validation();
         $validation->setRules([
             'juara' => 'required|min_length[1]|max_length[50]',
-            'total_hadiah' => 'required|numeric|min_length[1]|max_length[11]'
+            'total_hadiah' => 'required|numeric'
         ]);
 
         // Cek validasi input
         if (!$this->validate($validation->getRules())) {
-            // Jika validasi gagal
-            session()->setFlashdata('error', $validation->getErrors());
-            return redirect()->back()->withInput();
+            // Jika validasi gagal, simpan pesan error ke flashdata
+            return redirect()->back()->withInput()->with('validation', $this->validator);
         }
 
         // Jika validasi berhasil, lanjutkan ke insert data
@@ -162,14 +161,15 @@ class DashboardController extends BaseController
             'total_hadiah' => $this->request->getPost('total_hadiah')
         ];
 
-        if ($Model->insertData($data)) {
+        if ($Model->insert($data)) {  // Gunakan insert() bawaan CodeIgniter
             session()->setFlashdata('success', 'Data Berhasil Ditambah!');
+            return redirect()->to('/daftar-juara');
         } else {
             session()->setFlashdata('error', 'Data Gagal Ditambah!');
+            return redirect()->back()->withInput();
         }
-
-        return redirect()->to('/daftar-juara');
     }
+
 
 
     public function updateDataJuara($id)
@@ -178,14 +178,13 @@ class DashboardController extends BaseController
         $validation = \Config\Services::validation();
         $validation->setRules([
             'juara' => 'required|min_length[1]|max_length[50]',
-            'total_hadiah' => 'required|numeric|min_length[1]|max_length[11]'
+            'total_hadiah' => 'required|numeric'
         ]);
 
         // Cek validasi input
         if (!$this->validate($validation->getRules())) {
-            // Jika validasi gagal
-            session()->setFlashdata('error', $validation->getErrors());
-            return redirect()->back()->withInput();
+            // Jika validasi gagal, simpan pesan error ke flashdata
+            return redirect()->back()->withInput()->with('validation', $this->validator);
         }
 
         // Jika validasi berhasil, lanjutkan ke update data
@@ -198,11 +197,11 @@ class DashboardController extends BaseController
 
         if ($Model->updateData($id, $data)) {
             session()->setFlashdata('success', 'Data Berhasil Diubah!');
+            return redirect()->to('/daftar-juara');
         } else {
             session()->setFlashdata('error', 'Data Gagal Diubah!');
+            return redirect()->back()->withInput();
         }
-
-        return redirect()->to('/daftar-juara');
     }
 
     public function deleteDataJuara($id)
@@ -363,22 +362,21 @@ class DashboardController extends BaseController
         echo view('partial/footer');
     }
 
+
     public function insertDataPembimbing()
     {
         // Aturan validasi
         $validation = \Config\Services::validation();
         $validation->setRules([
-            'id' => 'required|numeric',
-            'id_sekolah' => 'required|numeric',
+            'id_sekolah' => 'required',
             'nama_pembimbing' => 'required|min_length[3]|max_length[100]',
             'lomba' => 'required|min_length[3]|max_length[100]'
         ]);
 
         // Cek validasi input
         if (!$this->validate($validation->getRules())) {
-            // Jika validasi gagal
-            session()->setFlashdata('error', $validation->getErrors());
-            return redirect()->back()->withInput();
+            // Jika validasi gagal, kembalikan ke halaman sebelumnya dengan pesan error
+            return redirect()->back()->withInput()->with('validation', $this->validator);
         }
 
         // Jika validasi berhasil, lanjutkan ke insert data
@@ -390,13 +388,14 @@ class DashboardController extends BaseController
             'lomba' => $this->request->getPost('lomba')
         ];
 
-        if ($Model->insertData($data)) {
+        // Menggunakan insert() method bawaan CodeIgniter jika insertData tidak ada
+        if ($Model->insert($data)) {
             session()->setFlashdata('success', 'Data Berhasil Ditambah!');
+            return redirect()->to('/daftar-pembimbing');
         } else {
             session()->setFlashdata('error', 'Data Gagal Ditambah!');
+            return redirect()->back()->withInput();
         }
-
-        return redirect()->to('/daftar-pembimbing');
     }
 
 
@@ -413,12 +412,11 @@ class DashboardController extends BaseController
 
         // Cek validasi input
         if (!$this->validate($validation->getRules())) {
-            // Jika validasi gagal
-            session()->setFlashdata('error', $validation->getErrors());
-            return redirect()->back()->withInput();
+            // Jika validasi gagal, simpan pesan error ke flashdata dan kembalikan ke halaman sebelumnya
+            return redirect()->back()->withInput()->with('validation', $this->validator);
         }
 
-        // Jika validasi berhasil, lanjutkan ke insert data
+        // Jika validasi berhasil, lanjutkan ke update data
         $Model = new \App\Models\PembimbingModel();
 
         $data = [
@@ -428,14 +426,16 @@ class DashboardController extends BaseController
             'lomba' => $this->request->getPost('lomba')
         ];
 
-        if ($Model->updateData($id, $data)) {
+        // Update data, pastikan method updateData ada dalam model
+        if ($Model->update($id, $data)) {
             session()->setFlashdata('success', 'Data Berhasil Diubah!');
+            return redirect()->to('/daftar-pembimbing');
         } else {
             session()->setFlashdata('error', 'Data Gagal Diubah!');
+            return redirect()->back()->withInput();
         }
-
-        return redirect()->to('/daftar-pembimbing');
     }
+
 
     public function deleteDataPembimbing($id)
     {
@@ -483,9 +483,8 @@ class DashboardController extends BaseController
 
         // Cek validasi input
         if (!$this->validate($validation->getRules())) {
-            // Jika validasi gagal
-            session()->setFlashdata('error', $validation->getErrors());
-            return redirect()->back()->withInput();
+            // Jika validasi gagal, simpan pesan error ke flashdata
+            return redirect()->back()->withInput()->with('validation', $this->validator);
         }
 
         // Jika validasi berhasil, lanjutkan ke insert data
@@ -501,13 +500,13 @@ class DashboardController extends BaseController
             'status' => $this->request->getPost('status')
         ];
 
-        if ($Model->insertData($data)) {
+        if ($Model->insert($data)) {
             session()->setFlashdata('success', 'Data Berhasil Ditambah!');
+            return redirect()->to('/daftar-lomba');
         } else {
             session()->setFlashdata('error', 'Data Gagal Ditambah!');
+            return redirect()->back()->withInput();
         }
-
-        return redirect()->to('/daftar-lomba');
     }
 
     public function updateDataLomba($id)
@@ -527,18 +526,15 @@ class DashboardController extends BaseController
 
         // Cek validasi input
         if (!$this->validate($validation->getRules())) {
-            // Jika validasi gagal
-            session()->setFlashdata('error', $validation->getErrors());
-            return redirect()->back()->withInput();
+            // Jika validasi gagal, simpan pesan error ke flashdata
+            return redirect()->back()->withInput()->with('validation', $this->validator);
         }
 
         // Jika validasi berhasil, lanjutkan ke update data
         $Model = new \App\Models\LombaModel();
         $data = [
-            'id_lomba' => $this->request->getPost('id'),
             'nama' => $this->request->getPost('nama'),
             'deskripsi' => $this->request->getPost('deskripsi'),
-            'peraturan' => $this->request->getPost('peraturan'),
             'peraturan' => $this->request->getPost('peraturan'),
             'link_peraturan' => $this->request->getPost('link_peraturan'),
             'tgl_dibuka' => $this->request->getPost('tgl_dibuka'),
@@ -548,12 +544,13 @@ class DashboardController extends BaseController
 
         if ($Model->updateData($id, $data)) {
             session()->setFlashdata('success', 'Data Berhasil Diubah!');
+            return redirect()->to('/daftar-lomba');
         } else {
             session()->setFlashdata('error', 'Data Gagal Diubah!');
+            return redirect()->back()->withInput();
         }
-
-        return redirect()->to('/daftar-lomba');
     }
+
 
     public function deleteDataLomba($id)
     {
@@ -607,9 +604,8 @@ class DashboardController extends BaseController
 
         // Cek validasi input
         if (!$this->validate($validation->getRules())) {
-            // Jika validasi gagal
-            session()->setFlashdata('error', $validation->getErrors());
-            return redirect()->back()->withInput();
+            // Jika validasi gagal, simpan pesan error ke flashdata
+            return redirect()->back()->withInput()->with('validation', $this->validator);
         }
 
         // Jika validasi berhasil, lanjutkan ke insert data
@@ -624,13 +620,12 @@ class DashboardController extends BaseController
 
         if ($Model->insertData($data)) {
             session()->setFlashdata('success', 'Data Berhasil Ditambah!');
+            return redirect()->to('/daftar-peserta');
         } else {
             session()->setFlashdata('error', 'Data Gagal Ditambah!');
+            return redirect()->back()->withInput();
         }
-
-        return redirect()->to('/daftar-peserta');
     }
-
 
     public function updateDataPeserta($id)
     {
@@ -646,9 +641,8 @@ class DashboardController extends BaseController
 
         // Cek validasi input
         if (!$this->validate($validation->getRules())) {
-            // Jika validasi gagal
-            session()->setFlashdata('error', $validation->getErrors());
-            return redirect()->back()->withInput();
+            // Jika validasi gagal, simpan pesan error ke flashdata
+            return redirect()->back()->withInput()->with('validation', $this->validator);
         }
 
         // Jika validasi berhasil, lanjutkan ke update data
@@ -663,12 +657,13 @@ class DashboardController extends BaseController
 
         if ($Model->updateData($id, $data)) {
             session()->setFlashdata('success', 'Data Berhasil Diubah!');
+            return redirect()->to('/daftar-peserta');
         } else {
             session()->setFlashdata('error', 'Data Gagal Diubah!');
+            return redirect()->back()->withInput();
         }
-
-        return redirect()->to('/daftar-peserta');
     }
+
 
     public function deleteDataPeserta($id)
     {
