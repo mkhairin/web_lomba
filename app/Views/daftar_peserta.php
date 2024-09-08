@@ -14,8 +14,8 @@
     <!-- Main content -->
     <section class="content">
 
-           <!-- Modal Add -->
-           <form action="/daftar-sekolah/insert" method="post">
+        <!-- Modal Add -->
+        <form action="/daftar-peserta/insert" method="post">
             <div class="modal fade" id="modal-lg">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -28,53 +28,38 @@
                         <div class="modal-body">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="kategori">Kategori</label>
-                                            <input type="text" class="form-control" id="kategori"
-                                                placeholder="Masukkan kategori">
-                                        </div>
-                                    </div>
                                     <!-- /.col -->
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="deskripsi">Deskripsi</label>
-                                            <input type="text" class="form-control" id="deskripsi"
-                                                placeholder="Masukkan deskripsi">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="link">Link</label>
-                                            <input type="url" class="form-control" id="link"
-                                                placeholder="Masukkan link">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="deadline">Deadline</label>
-                                            <input type="date" class="form-control" id="deadline">
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="status">Status</label>
-                                            <select class="form-control select2" id="status" style="width: 100%;">
-                                                <option selected="selected">Aktif</option>
-                                                <option>Non-Aktif</option>
-                                                <option>Pending</option>
+                                            <input type="hidden" name="id" id="id">
+                                            <label for="id_lomba">Kategori Lomba</label>
+                                            <select class="form-control select" id="id_lomba" name="id_lomba" style="width: 100%;">
+                                                <?php foreach ($dataLomba as $data) : ?>
+                                                    <option value="<?= $data->id_lomba; ?>"><?= $data->nama; ?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-md-12">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="aturan">Aturan</label>
-                                            <textarea class="form-control" id="aturan" rows="4"
-                                                placeholder="Masukkan aturan"></textarea>
+                                            <label for="id_pembimbing">Pembimbing</label>
+                                            <select class="form-control select" id="id_pembimbing" name="id_pembimbing" style="width: 100%;">
+                                                <?php foreach ($dataPembimbing as $data) : ?>
+                                                    <option value="<?= $data->id_pembimbing; ?>"><?= $data->nama_pembimbing; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="id_sekolah">Sekolah</label>
+                                            <select class="form-control select" id="id_sekolah" name="id_sekolah" style="width: 100%;">
+                                                <?php foreach ($dataSekolah as $data) : ?>
+                                                    <option value="<?= $data->id_sekolah; ?>"><?= $data->nama_sekolah; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -95,68 +80,7 @@
             <!-- /.modal -->
         </form>
 
-        <!-- Modal Update -->
-        <form>
-            <div class="modal fade" id="modal-lg-update">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Update Daftar Lomba</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Minimal</label>
-                                            <select class="form-control select2" style="width: 100%;">
-                                                <option selected="selected">Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>California</option>
-                                                <option>Delaware</option>
-                                                <option>Tennessee</option>
-                                                <option>Texas</option>
-                                                <option>Washington</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-md-6">
-                                        <!-- /.form-group -->
-                                        <div class="form-group">
-                                            <label>Disabled Result</label>
-                                            <select class="form-control select2" style="width: 100%;">
-                                                <option selected="selected">Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>California</option>
-                                                <option>Delaware</option>
-                                                <option>Tennessee</option>
-                                                <option>Texas</option>
-                                                <option>Washington</option>
-                                            </select>
-                                        </div>
-                                        <!-- /.form-group -->
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                                <!-- /.row -->
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- /.modal -->
-        </form>
+    
 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
             Tambah Data

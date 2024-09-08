@@ -13,7 +13,7 @@ class SekolahModel extends Model
         'alamat',
     ];
 
-    public function getdata()
+    public function getDataSekolah()
     {
         $db = \Config\Database::connect();
         $builder = $db->table('sekolah');

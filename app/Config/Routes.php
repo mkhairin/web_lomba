@@ -13,9 +13,6 @@ $routes->get('/daftar-lomba', 'DashboardController::daftarLomba');
 $routes->get('/daftar-rules', 'DashboardController::daftarRules');
 
 
-$routes->get('/daftar-peserta', 'DashboardController::daftarPeserta');
-
-
 
 // Sekolah
 $routes->get('/daftar-sekolah', 'DashboardController::daftarSekolah');
@@ -46,6 +43,10 @@ $routes->get('/daftar-lomba', 'DashboardController::daftarLomba');
 $routes->post('/daftar-lomba/insert', 'DashboardController::insertDataLomba');
 $routes->post('/daftar-lomba/update/(:num)', 'DashboardController::updateDataLomba/$1');
 $routes->get('/daftar-lomba/delete/(:num)', 'DashboardController::deleteDataLomba/$1');
+
+
+$routes->get('/daftar-peserta', 'DashboardController::daftarPeserta');
+$routes->post('/daftar-peserta/insert', 'DashboardController::insertDataPeserta');
 
 // Halaman Lomba
 $routes->get('/', 'HomeLombaTRKJ::home');

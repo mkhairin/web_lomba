@@ -25,19 +25,6 @@ class DashboardController extends BaseController
     }
 
 
-    public function daftarPeserta()
-    {
-        $header['title'] = 'Daftar Peserta';
-        echo view('partial/header', $header);
-        echo view('partial/top_menu');
-        echo view('partial/side_menu');
-        echo view('daftar_peserta');
-        echo view('partial/footer');
-    }
-
-
-
-
 
     // sekolah methods
     public function daftarSekolah()
@@ -45,7 +32,7 @@ class DashboardController extends BaseController
         $Model = new \App\Models\SekolahModel();
         $header['title'] = 'Daftar Sekolah';
 
-        $data['dataSekolah'] = $Model->getdata();
+        $data['dataSekolah'] = $Model->getDataSekolah();
 
         echo view('partial/header', $header);
         echo view('partial/top_menu');
@@ -375,7 +362,7 @@ class DashboardController extends BaseController
     {
         $Model = new \App\Models\LombaModel();
 
-        $data['dataLomba'] = $Model->getdata();
+        $data['dataLomba'] = $Model->getDataLomba();
 
         $header['title'] = 'Daftar Lomba';
         echo view('partial/header', $header);
@@ -446,4 +433,32 @@ class DashboardController extends BaseController
 
         return redirect()->to('/daftar-lomba');
     }
+
+
+
+    public function daftarPeserta()
+    {
+        $ModelPeserta = new \App\Models\PesertaModel();
+        $ModelLomba = new \App\Models\LombaModel();
+        $ModelPembimbing = new \App\Models\PembimbingModel();
+        $ModelSekolah = new \App\Models\SekolahModel();
+
+        $data['dataPeserta'] = $ModelPeserta->getDataPeserta();
+        $data['dataLomba'] = $ModelLomba->getDataLomba();
+        $data['dataPembimbing'] = $ModelPembimbing->getDataPembimbing();
+        $data['dataSekolah'] = $ModelSekolah->getDataSekolah ();
+
+        $header['title'] = 'Daftar Peserta';
+
+    
+        echo view('partial/header', $header);
+        echo view('partial/top_menu');
+        echo view('partial/side_menu');
+        echo view('daftar_peserta', $data);
+        echo view('partial/footer');
+    }
+
+
+
+    
 }

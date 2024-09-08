@@ -16,7 +16,7 @@ class LombaModel extends Model {
         'status'
     ];
 
-    public function getdata()
+    public function getDataLomba()
     {
         $db = \Config\Database::connect();
         $builder = $db->table('lomba');
