@@ -13,14 +13,21 @@
 
     <!-- Main content -->
     <section class="content">
+        <?php $validation = \Config\Services::validation(); ?>
 
-    <?php $validation = \Config\Services::validation(); ?>
+        <!-- Pesan sukses -->
+        <?php if (session()->getFlashdata('success')): ?>
+            <div class="alert alert-success">
+                <?= session()->getFlashdata('success'); ?>
+            </div>
+        <?php endif; ?>
 
-<?php if ($validation->getErrors()): ?>
-    <div class="alert alert-danger">
-        <?= $validation->listErrors(); ?>
-    </div>
-<?php endif; ?>
+        <!-- Pesan error general -->
+        <?php if (session()->getFlashdata('error')): ?>
+            <div class="alert alert-danger">
+                <?= session()->getFlashdata('error'); ?>
+            </div>
+        <?php endif; ?>
 
         <!-- Modal Add -->
         <form action="/daftar-juara/insert" method="post">

@@ -206,9 +206,10 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i = 1 ?>
                         <?php foreach ($dataPeserta as $data) : ?>
                             <tr>
-                                <td>1.</td>
+                                <td><?= $i++ ?></td>
                                 <td><?= $data->nama_peserta ?></td>
                                 <td><?= $data->nama_pembimbing ?></td>
                                 <td><?= $data->nama_sekolah ?></td>

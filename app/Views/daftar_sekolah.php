@@ -13,13 +13,16 @@
 
     <!-- Main content -->
     <section class="content">
+        <?php $validation = \Config\Services::validation(); ?>
 
+        <!-- Pesan sukses -->
         <?php if (session()->getFlashdata('success')): ?>
             <div class="alert alert-success">
                 <?= session()->getFlashdata('success'); ?>
             </div>
         <?php endif; ?>
 
+        <!-- Pesan error general -->
         <?php if (session()->getFlashdata('error')): ?>
             <div class="alert alert-danger">
                 <?= session()->getFlashdata('error'); ?>
@@ -28,7 +31,7 @@
 
         <!-- Modal Add -->
         <form action="/daftar-sekolah/insert" method="post">
-        <?php csrf_field() ?>
+            <?php csrf_field() ?>
             <div class="modal fade" id="modal-lg">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -78,7 +81,7 @@
         <?php foreach ($dataSekolah as $data): ?>
             <!-- Modal Update -->
             <form action="/daftar-sekolah/update/<?= $data->id_sekolah ?>" method="post">
-            <?php csrf_field() ?>
+                <?php csrf_field() ?>
                 <div class="modal fade" id="modal-lg-update<?= $data->id_sekolah ?>">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">

@@ -52,9 +52,8 @@ class DashboardController extends BaseController
 
         // Cek validasi input
         if (!$this->validate($validation->getRules())) {
-            // Jika validasi gagal
-            session()->setFlashdata('error', $validation->getErrors());
-            return redirect()->back()->withInput();
+            // Jika validasi gagal, simpan pesan error ke flashdata
+            return redirect()->back()->withInput()->with('validation', $this->validator);
         }
 
         // Jika validasi berhasil, lanjutkan ke insert data
@@ -65,15 +64,15 @@ class DashboardController extends BaseController
             'alamat' => $this->request->getPost("alamat"),
         ];
 
-        if ($Model->insertData($data)) {
+        // Cek apakah data berhasil di-insert
+        if ($Model->insert($data)) {
             session()->setFlashdata('success', 'Data Berhasil Ditambah!');
+            return redirect()->back()->withInput();
         } else {
             session()->setFlashdata('error', 'Data Gagal Ditambah!');
+            return redirect()->back()->withInput(); // Mengembalikan ke halaman sebelumnya dengan input lama
         }
-
-        return redirect()->to('/daftar-sekolah');
     }
-
 
     public function updateDataSekolah($id)
     {
@@ -83,29 +82,30 @@ class DashboardController extends BaseController
             'nama_sekolah' => 'required|min_length[10]|max_length[100]',
             'alamat' => 'required|min_length[10]|max_length[255]'
         ]);
-
+    
         // Cek validasi input
         if (!$this->validate($validation->getRules())) {
-            // Jika validasi gagal
-            session()->setFlashdata('error', $validation->getErrors());
-            return redirect()->back()->withInput();
+            // Jika validasi gagal, simpan pesan error ke flashdata
+            return redirect()->back()->withInput()->with('validation', $this->validator);
         }
-
+    
+        // Jika validasi berhasil, lanjutkan ke update data
         $Model = new \App\Models\SekolahModel();
         $data = [
-            'id_sekolah' => $this->request->getPost("id"),
             'nama_sekolah' => $this->request->getPost("nama_sekolah"),
             'alamat' => $this->request->getPost("alamat"),
         ];
-
-        if ($Model->updateData($id, $data)) {
+    
+        // Update data sekolah berdasarkan id
+        if ($Model->update($id, $data)) {
             session()->setFlashdata('success', 'Data Berhasil Diubah!');
+            return redirect()->to('/daftar-sekolah'); // Redirect ke daftar sekolah jika sukses
         } else {
             session()->setFlashdata('error', 'Data Gagal Diubah!');
+            return redirect()->back()->withInput(); // Redirect balik dengan input jika gagal
         }
-
-        return redirect()->to('/daftar-sekolah');
     }
+    
 
     public function deleteDataSekolah($id)
     {

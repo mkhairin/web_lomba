@@ -16,9 +16,17 @@
 
         <?php $validation = \Config\Services::validation(); ?>
 
-        <?php if ($validation->getErrors()): ?>
+        <!-- Pesan sukses -->
+        <?php if (session()->getFlashdata('success')): ?>
+            <div class="alert alert-success">
+                <?= session()->getFlashdata('success'); ?>
+            </div>
+        <?php endif; ?>
+
+        <!-- Pesan error general -->
+        <?php if (session()->getFlashdata('error')): ?>
             <div class="alert alert-danger">
-                <?= $validation->listErrors(); ?>
+                <?= session()->getFlashdata('error'); ?>
             </div>
         <?php endif; ?>
 
