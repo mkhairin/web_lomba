@@ -104,14 +104,14 @@
         </form>
 
 
+        <!-- Modal Update -->
         <?php foreach ($dataLomba as $data) : ?>
-            <!-- Modal Update -->
             <form action="/daftar-lomba/update/<?= $data->id_lomba ?>" method="post">
                 <div class="modal fade" id="modal-lg-update<?= $data->id_lomba ?>">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Tambah Daftar Lomba</h4>
+                                <h4 class="modal-title">Update Daftar Lomba</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -119,64 +119,68 @@
                             <div class="modal-body">
                                 <div class="card-body">
                                     <div class="row">
-                                        <input type="hidden" name="id" id="id">
+                                        <!-- Hidden Input for ID -->
+                                        <input type="hidden" name="id" id="id" value="<?= $data->id_lomba ?>">
+
+                                        <!-- Kategori Lomba -->
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="kategori">Kategori</label>
+                                                <label for="nama">Kategori</label>
                                                 <input type="text" class="form-control" id="nama" name="nama"
-                                                    value="<?= $data->nama ?>">
+                                                    value="<?= $data->nama ?>" placeholder="Masukkan Kategori Lomba">
                                             </div>
                                         </div>
-                                        <!-- /.col -->
+                                        <!-- Deskripsi Lomba -->
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="deskripsi">Deskripsi</label>
                                                 <input type="text" class="form-control" id="deskripsi" name="deskripsi"
-                                                    value="<?= $data->deskripsi ?>">
+                                                    value="<?= $data->deskripsi ?>" placeholder="Masukkan Deskripsi Lomba">
                                             </div>
                                         </div>
-                                        <!-- /.col -->
+                                        <!-- Link Peraturan -->
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="link">Link</label>
-                                                <input type="url" class="form-control" id="link_peraturan" id="link_peraturan" name="link_peraturan"
-                                                    value="<?= $data->link_peraturan ?>">
+                                                <label for="link_peraturan">Link</label>
+                                                <input type="url" class="form-control" id="link_peraturan" name="link_peraturan"
+                                                    value="<?= $data->link_peraturan ?>" placeholder="Masukkan Link Peraturan">
                                             </div>
                                         </div>
-                                        <!-- /.col -->
+                                        <!-- Tanggal Dibuka -->
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="tgl_dibuka">Tgl Dibuka</label>
-                                                <input type="date" class="form-control" id="tgl_dibuka" name="tgl_dibuka" value="<?= $data->tgl_dibuka ?>">
+                                                <input type="date" class="form-control" id="tgl_dibuka" name="tgl_dibuka"
+                                                    value="<?= $data->tgl_dibuka ?>">
                                             </div>
                                         </div>
-                                        <!-- /.col -->
+                                        <!-- Tanggal Ditutup -->
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="tgl_ditutup">Tgl Ditutup</label>
-                                                <input type="date" class="form-control" id="tgl_ditutup" name="tgl_ditutup" value="<?= $data->tgl_ditutup ?>">
+                                                <input type="date" class="form-control" id="tgl_ditutup" name="tgl_ditutup"
+                                                    value="<?= $data->tgl_ditutup ?>">
                                             </div>
                                         </div>
-                                        <!-- /.col -->
+                                        <!-- Status Lomba -->
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="status">Status</label>
                                                 <select class="form-control select" id="status" name="status" style="width: 100%;">
-                                                    <option selected="selected"><?= $data->status ?></option>
-                                                    <option>Non-Aktif</option>
-                                                    <option>Pending</option>
+                                                    <option value="<?= $data->status ?>" selected><?= $data->status ?></option>
+                                                    <option value="Non-Aktif">Non-Aktif</option>
+                                                    <option value="Pending">Pending</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <!-- /.col -->
+                                        <!-- Peraturan Lomba -->
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="peraturan">Aturan</label>
                                                 <textarea class="form-control" rows="4" id="peraturan" name="peraturan"
-                                                    value="<?= $data->peraturan ?>"><?= $data->peraturan ?></textarea>
+                                                    placeholder="Masukkan Peraturan"><?= $data->peraturan ?></textarea>
                                             </div>
                                         </div>
-                                        <!-- /.col -->
                                     </div>
                                     <!-- /.row -->
                                 </div>
@@ -194,6 +198,7 @@
                 <!-- /.modal -->
             </form>
         <?php endforeach; ?>
+
 
 
 
@@ -224,9 +229,10 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i = 1 ?>
                         <?php foreach ($dataLomba as $data) : ?>
                             <tr>
-                                <td>1.</td>
+                                <td><?= $i++ ?></td>
                                 <td><?= $data->nama ?></td>
                                 <td style="text-align: justify;">
                                     <?= $data->deskripsi ?>
@@ -240,7 +246,7 @@
 
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                         data-target="#modal-lg-update<?= $data->id_lomba ?>">Update</button>
-                                        <a class="btn btn-danger btn-sm" href="/daftar-lomba/delete/<?= $data->id_lomba ?>" role="button">Delete</a>
+                                    <a class="btn btn-danger btn-sm" href="/daftar-lomba/delete/<?= $data->id_lomba ?>" role="button">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
