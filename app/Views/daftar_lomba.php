@@ -14,6 +14,14 @@
     <!-- Main content -->
     <section class="content">
 
+        <?php $validation = \Config\Services::validation(); ?>
+
+        <?php if ($validation->getErrors()): ?>
+            <div class="alert alert-danger">
+                <?= $validation->listErrors(); ?>
+            </div>
+        <?php endif; ?>
+
         <!-- Modal Add -->
         <form action="/daftar-lomba/insert" method="post">
             <?php csrf_field() ?>
@@ -102,8 +110,6 @@
             </div>
             <!-- /.modal -->
         </form>
-
-
 
         <!-- Modal Update -->
         <?php foreach ($dataLomba as $data) : ?>
@@ -200,8 +206,6 @@
                 <!-- /.modal -->
             </form>
         <?php endforeach; ?>
-
-
 
 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">

@@ -14,6 +14,14 @@
     <!-- Main content -->
     <section class="content">
 
+        <?php $validation = \Config\Services::validation(); ?>
+
+        <?php if ($validation->getErrors()): ?>
+            <div class="alert alert-danger">
+                <?= $validation->listErrors(); ?>
+            </div>
+        <?php endif; ?>
+
         <!-- Modal Add -->
         <form action="/daftar-sponsor/insert" method="post" enctype="multipart/form-data">
             <?php csrf_field() ?>

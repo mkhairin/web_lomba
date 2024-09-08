@@ -14,6 +14,15 @@
     <!-- Main content -->
     <section class="content">
 
+        <?php $validation = \Config\Services::validation(); ?>
+
+        <?php if ($validation->getErrors()): ?>
+            <div class="alert alert-danger">
+                <?= $validation->listErrors(); ?>
+            </div>
+        <?php endif; ?>
+
+
         <!-- Modal Add -->
         <form action="/daftar-pembimbing/insert" method="post">
             <?php csrf_field() ?>

@@ -14,9 +14,17 @@
     <!-- Main content -->
     <section class="content">
 
+        <?php $validation = \Config\Services::validation(); ?>
+
+        <?php if ($validation->getErrors()): ?>
+            <div class="alert alert-danger">
+                <?= $validation->listErrors(); ?>
+            </div>
+        <?php endif; ?>
+
         <!-- Modal Add -->
         <form action="/daftar-peserta/insert" method="post">
-        <?php csrf_field() ?>
+            <?php csrf_field() ?>
             <div class="modal fade" id="modal-lg">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -92,7 +100,7 @@
         <!-- Modal Update -->
         <?php foreach ($dataPeserta as $data) : ?>
             <form action="/daftar-peserta/update/<?= $data->id_peserta ?>" method="post">
-            <?php csrf_field() ?>
+                <?php csrf_field() ?>
                 <div class="modal fade" id="modal-lg-update<?= $data->id_peserta ?>">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -209,7 +217,7 @@
 
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                         data-target="#modal-lg-update<?= $data->id_peserta ?>">Update</button>
-                                        <a class="btn btn-danger btn-sm" href="/daftar-peserta/delete/<?= $data->id_peserta ?>" role="button">Delete</a>
+                                    <a class="btn btn-danger btn-sm" href="/daftar-peserta/delete/<?= $data->id_peserta ?>" role="button">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

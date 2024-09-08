@@ -43,6 +43,21 @@ class DashboardController extends BaseController
 
     public function insertDataSekolah()
     {
+        // Aturan validasi
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'nama_sekolah' => 'required|min_length[10]|max_length[100]',
+            'alamat' => 'required|min_length[10]|max_length[255]'
+        ]);
+
+        // Cek validasi input
+        if (!$this->validate($validation->getRules())) {
+            // Jika validasi gagal
+            session()->setFlashdata('error', $validation->getErrors());
+            return redirect()->back()->withInput();
+        }
+
+        // Jika validasi berhasil, lanjutkan ke insert data
         $Model = new \App\Models\SekolahModel();
         $data = [
             'id_sekolah' => $this->request->getPost("id"),
@@ -59,8 +74,22 @@ class DashboardController extends BaseController
         return redirect()->to('/daftar-sekolah');
     }
 
+
     public function updateDataSekolah($id)
     {
+        // Aturan validasi
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'nama_sekolah' => 'required|min_length[10]|max_length[100]',
+            'alamat' => 'required|min_length[10]|max_length[255]'
+        ]);
+
+        // Cek validasi input
+        if (!$this->validate($validation->getRules())) {
+            // Jika validasi gagal
+            session()->setFlashdata('error', $validation->getErrors());
+            return redirect()->back()->withInput();
+        }
 
         $Model = new \App\Models\SekolahModel();
         $data = [
@@ -111,6 +140,21 @@ class DashboardController extends BaseController
 
     public function insertDataJuara()
     {
+        // Aturan validasi
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'juara' => 'required|min_length[1]|max_length[50]',
+            'total_hadiah' => 'required|numeric|min_length[1]|max_length[11]'
+        ]);
+
+        // Cek validasi input
+        if (!$this->validate($validation->getRules())) {
+            // Jika validasi gagal
+            session()->setFlashdata('error', $validation->getErrors());
+            return redirect()->back()->withInput();
+        }
+
+        // Jika validasi berhasil, lanjutkan ke insert data
         $Model = new \App\Models\JuaraModel();
         $data = [
             'id_juara' => $this->request->getPost('id'),
@@ -127,8 +171,24 @@ class DashboardController extends BaseController
         return redirect()->to('/daftar-juara');
     }
 
+
     public function updateDataJuara($id)
     {
+        // Aturan validasi
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'juara' => 'required|min_length[1]|max_length[50]',
+            'total_hadiah' => 'required|numeric|min_length[1]|max_length[11]'
+        ]);
+
+        // Cek validasi input
+        if (!$this->validate($validation->getRules())) {
+            // Jika validasi gagal
+            session()->setFlashdata('error', $validation->getErrors());
+            return redirect()->back()->withInput();
+        }
+
+        // Jika validasi berhasil, lanjutkan ke update data
         $Model = new \App\Models\JuaraModel();
         $data = [
             'id_juara' => $this->request->getPost('id'),
@@ -305,8 +365,24 @@ class DashboardController extends BaseController
 
     public function insertDataPembimbing()
     {
-        $Model = new \App\Models\PembimbingModel();
+        // Aturan validasi
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'id' => 'required|numeric',
+            'id_sekolah' => 'required|numeric',
+            'nama_pembimbing' => 'required|min_length[3]|max_length[100]',
+            'lomba' => 'required|min_length[3]|max_length[100]'
+        ]);
 
+        // Cek validasi input
+        if (!$this->validate($validation->getRules())) {
+            // Jika validasi gagal
+            session()->setFlashdata('error', $validation->getErrors());
+            return redirect()->back()->withInput();
+        }
+
+        // Jika validasi berhasil, lanjutkan ke insert data
+        $Model = new \App\Models\PembimbingModel();
         $data = [
             'id_pembimbing' => $this->request->getPost('id'),
             'id_sekolah' => $this->request->getPost('id_sekolah'),
@@ -323,8 +399,26 @@ class DashboardController extends BaseController
         return redirect()->to('/daftar-pembimbing');
     }
 
+
     public function updateDataPembimbing($id)
     {
+        // Aturan validasi
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'id' => 'required|numeric',
+            'id_sekolah' => 'required|numeric',
+            'nama_pembimbing' => 'required|min_length[3]|max_length[100]',
+            'lomba' => 'required|min_length[3]|max_length[100]'
+        ]);
+
+        // Cek validasi input
+        if (!$this->validate($validation->getRules())) {
+            // Jika validasi gagal
+            session()->setFlashdata('error', $validation->getErrors());
+            return redirect()->back()->withInput();
+        }
+
+        // Jika validasi berhasil, lanjutkan ke insert data
         $Model = new \App\Models\PembimbingModel();
 
         $data = [
@@ -374,12 +468,32 @@ class DashboardController extends BaseController
 
     public function insertDataLomba()
     {
+        // Aturan validasi
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'id' => 'required|numeric',
+            'nama' => 'required|min_length[3]|max_length[100]',
+            'deskripsi' => 'required|min_length[5]',
+            'peraturan' => 'required',
+            'link_peraturan' => 'permit_empty|valid_url',
+            'tgl_dibuka' => 'required|valid_date[Y-m-d]',
+            'tgl_ditutup' => 'required|valid_date[Y-m-d]',
+            'status' => 'required|in_list[aktif,nonaktif]'
+        ]);
+
+        // Cek validasi input
+        if (!$this->validate($validation->getRules())) {
+            // Jika validasi gagal
+            session()->setFlashdata('error', $validation->getErrors());
+            return redirect()->back()->withInput();
+        }
+
+        // Jika validasi berhasil, lanjutkan ke insert data
         $Model = new \App\Models\LombaModel();
         $data = [
             'id_lomba' => $this->request->getPost('id'),
             'nama' => $this->request->getPost('nama'),
             'deskripsi' => $this->request->getPost('deskripsi'),
-            'peraturan' => $this->request->getPost('peraturan'),
             'peraturan' => $this->request->getPost('peraturan'),
             'link_peraturan' => $this->request->getPost('link_peraturan'),
             'tgl_dibuka' => $this->request->getPost('tgl_dibuka'),
@@ -398,6 +512,27 @@ class DashboardController extends BaseController
 
     public function updateDataLomba($id)
     {
+        // Aturan validasi
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'id' => 'required|numeric',
+            'nama' => 'required|min_length[3]|max_length[100]',
+            'deskripsi' => 'required|min_length[5]',
+            'peraturan' => 'required',
+            'link_peraturan' => 'permit_empty|valid_url',
+            'tgl_dibuka' => 'required|valid_date[Y-m-d]',
+            'tgl_ditutup' => 'required|valid_date[Y-m-d]',
+            'status' => 'required|in_list[aktif,nonaktif]'
+        ]);
+
+        // Cek validasi input
+        if (!$this->validate($validation->getRules())) {
+            // Jika validasi gagal
+            session()->setFlashdata('error', $validation->getErrors());
+            return redirect()->back()->withInput();
+        }
+
+        // Jika validasi berhasil, lanjutkan ke update data
         $Model = new \App\Models\LombaModel();
         $data = [
             'id_lomba' => $this->request->getPost('id'),
@@ -446,11 +581,11 @@ class DashboardController extends BaseController
         $data['dataPeserta'] = $ModelPeserta->getDataPeserta();
         $data['dataLomba'] = $ModelLomba->getDataLomba();
         $data['dataPembimbing'] = $ModelPembimbing->getDataPembimbing();
-        $data['dataSekolah'] = $ModelSekolah->getDataSekolah ();
+        $data['dataSekolah'] = $ModelSekolah->getDataSekolah();
 
         $header['title'] = 'Daftar Peserta';
 
-    
+
         echo view('partial/header', $header);
         echo view('partial/top_menu');
         echo view('partial/side_menu');
@@ -460,6 +595,24 @@ class DashboardController extends BaseController
 
     public function insertDataPeserta()
     {
+        // Aturan validasi
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'id' => 'required|numeric',
+            'id_lomba' => 'required|numeric',
+            'id_pembimbing' => 'required|numeric',
+            'id_sekolah' => 'required|numeric',
+            'nama_peserta' => 'required|min_length[3]|max_length[100]'
+        ]);
+
+        // Cek validasi input
+        if (!$this->validate($validation->getRules())) {
+            // Jika validasi gagal
+            session()->setFlashdata('error', $validation->getErrors());
+            return redirect()->back()->withInput();
+        }
+
+        // Jika validasi berhasil, lanjutkan ke insert data
         $Model = new \App\Models\PesertaModel();
         $data = [
             'id_peserta' => $this->request->getPost('id'),
@@ -478,8 +631,27 @@ class DashboardController extends BaseController
         return redirect()->to('/daftar-peserta');
     }
 
+
     public function updateDataPeserta($id)
     {
+        // Aturan validasi
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'id' => 'required|numeric',
+            'id_lomba' => 'required|numeric',
+            'id_pembimbing' => 'required|numeric',
+            'id_sekolah' => 'required|numeric',
+            'nama_peserta' => 'required|min_length[3]|max_length[100]'
+        ]);
+
+        // Cek validasi input
+        if (!$this->validate($validation->getRules())) {
+            // Jika validasi gagal
+            session()->setFlashdata('error', $validation->getErrors());
+            return redirect()->back()->withInput();
+        }
+
+        // Jika validasi berhasil, lanjutkan ke update data
         $Model = new \App\Models\PesertaModel();
         $data = [
             'id_peserta' => $this->request->getPost('id'),
@@ -511,6 +683,4 @@ class DashboardController extends BaseController
 
         return redirect()->to('/daftar-peserta');
     }
-
-    
 }
