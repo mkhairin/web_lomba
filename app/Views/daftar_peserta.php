@@ -207,7 +207,7 @@
 
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                         data-target="#modal-lg-update<?= $data->id_peserta ?>">Update</button>
-                                    <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                        <a class="btn btn-danger btn-sm" href="/daftar-peserta/delete/<?= $data->id_peserta ?>" role="button">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
