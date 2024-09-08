@@ -8,6 +8,9 @@ class Peserta extends Migration
 {
     public function up()
     {
+        // Nonaktifkan foreign key checks
+        $this->db->query('SET FOREIGN_KEY_CHECKS=0;');
+
         $this->forge->addField([
             'id_peserta' => [
                 'type'           => 'INT',
@@ -49,10 +52,19 @@ class Peserta extends Migration
         $this->forge->addForeignKey('id_pembimbing', 'pembimbing', 'id_pembimbing', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('id_sekolah', 'sekolah', 'id_sekolah', 'CASCADE', 'CASCADE');
         $this->forge->createTable('peserta');
+
+         // Aktifkan kembali foreign key checks
+         $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
     }
 
     public function down()
     {
+        // Nonaktifkan foreign key checks
+        $this->db->query('SET FOREIGN_KEY_CHECKS=0;');
+
         $this->forge->dropTable('peserta');
+
+        // Aktifkan kembali foreign key checks
+        $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
