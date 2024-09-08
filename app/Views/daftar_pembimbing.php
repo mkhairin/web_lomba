@@ -78,11 +78,11 @@
         <!-- Modal Update -->
         <?php foreach ($dataPembimbing as $pembimbing) : ?>
             <form action="/daftar-pembimbing/update/<?= $pembimbing->id_pembimbing ?>" method="post">
-                <div class="modal fade" id="modal-lg-update<?= $pembimbing->id_pembimbing?>">
+                <div class="modal fade" id="modal-lg-update<?= $pembimbing->id_pembimbing ?>">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Tambah Daftar Pembimbing</h4>
+                                <h4 class="modal-title">Update Daftar Pembimbing</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -90,36 +90,38 @@
                             <div class="modal-body">
                                 <div class="card-body">
                                     <div class="row">
-                                        <!-- /.col -->
+                                        <!-- Kolom Sekolah -->
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <input type="hidden" name="id" id="id">
-                                                <label for="status">Sekolah</label>
-                                                <select class="form-control select" id="sekolah" name="id_sekolah" style="width: 100%;">
-                                                    <?php foreach ($dataSekolah as $data) : ?>
-                                                        <option value="<?= $data->id_sekolah; ?>"><?= $data->nama_sekolah; ?></option>
+                                                <input type="hidden" name="id" id="id" value="<?= $pembimbing->id_pembimbing; ?>">
+                                                <label for="id_sekolah">Sekolah</label>
+                                                <select class="form-control select" id="id_sekolah" name="id_sekolah" style="width: 100%;">
+                                                    <?php foreach ($dataSekolah as $sekolah) : ?>
+                                                        <option value="<?= $sekolah->id_sekolah; ?>" <?= ($sekolah->id_sekolah == $pembimbing->id_sekolah) ? 'selected' : ''; ?>>
+                                                            <?= $sekolah->nama_sekolah; ?>
+                                                        </option>
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>
                                         </div>
-                                        <!-- /.col -->
+                                        <!-- Kolom Nama Pembimbing -->
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="nama_pembimbing">Nama Pembimbing</label>
                                                 <input type="text" class="form-control" id="nama_pembimbing" name="nama_pembimbing"
-                                                   value="<?= $pembimbing->nama_pembimbing ?>">
+                                                    value="<?= $pembimbing->nama_pembimbing; ?>" placeholder="Masukkan Nama Pembimbing">
                                             </div>
                                         </div>
-                                        <!-- /.col -->
+                                        <!-- Kolom Lomba -->
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="lomba">Lomba</label>
                                                 <select class="form-control select" id="lomba" name="lomba" style="width: 100%;">
                                                     <option value="<?= $pembimbing->lomba ?>"><?= $pembimbing->lomba ?></option>
+                                                    <!-- Jika ada data lomba lain, tambahkan opsi di sini -->
                                                 </select>
                                             </div>
                                         </div>
-                                        <!-- /.col -->
                                     </div>
                                     <!-- /.row -->
                                 </div>
@@ -137,6 +139,7 @@
                 <!-- /.modal -->
             </form>
         <?php endforeach; ?>
+
 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
             Tambah Data
@@ -174,7 +177,7 @@
 
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                         data-target="#modal-lg-update<?= $data->id_pembimbing ?>">Update</button>
-                                        <a class="btn btn-danger btn-sm" href="/daftar-pembimbing/delete/<?= $data->id_pembimbing ?>" role="button">Delete</a>
+                                    <a class="btn btn-danger btn-sm" href="/daftar-pembimbing/delete/<?= $data->id_pembimbing ?>" role="button">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
