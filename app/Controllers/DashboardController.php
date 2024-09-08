@@ -468,17 +468,18 @@ class DashboardController extends BaseController
 
     public function insertDataLomba()
     {
+        $Model = new \App\Models\LombaModel();
+
         // Aturan validasi
         $validation = \Config\Services::validation();
         $validation->setRules([
-            'id' => 'required|numeric',
-            'nama' => 'required|min_length[3]|max_length[100]',
-            'deskripsi' => 'required|min_length[5]',
+            'nama' => 'required',
+            'deskripsi' => 'required',
             'peraturan' => 'required',
-            'link_peraturan' => 'permit_empty|valid_url',
-            'tgl_dibuka' => 'required|valid_date[Y-m-d]',
-            'tgl_ditutup' => 'required|valid_date[Y-m-d]',
-            'status' => 'required|in_list[aktif,nonaktif]'
+            'link_peraturan' => 'required',
+            'tgl_dibuka' => 'required',
+            'tgl_ditutup' => 'required',
+            'status' => 'required'
         ]);
 
         // Cek validasi input
@@ -488,7 +489,6 @@ class DashboardController extends BaseController
         }
 
         // Jika validasi berhasil, lanjutkan ke insert data
-        $Model = new \App\Models\LombaModel();
         $data = [
             'id_lomba' => $this->request->getPost('id'),
             'nama' => $this->request->getPost('nama'),
@@ -509,27 +509,27 @@ class DashboardController extends BaseController
         }
     }
 
+
     public function updateDataLomba($id)
     {
         // Aturan validasi
         $validation = \Config\Services::validation();
         $validation->setRules([
-            'id' => 'required|numeric',
-            'nama' => 'required|min_length[3]|max_length[100]',
-            'deskripsi' => 'required|min_length[5]',
+            'nama' => 'required',
+            'deskripsi' => 'required',
             'peraturan' => 'required',
-            'link_peraturan' => 'permit_empty|valid_url',
-            'tgl_dibuka' => 'required|valid_date[Y-m-d]',
-            'tgl_ditutup' => 'required|valid_date[Y-m-d]',
-            'status' => 'required|in_list[aktif,nonaktif]'
+            'link_peraturan' => 'required',
+            'tgl_dibuka' => 'required',
+            'tgl_ditutup' => 'required',
+            'status' => 'required'
         ]);
-
+    
         // Cek validasi input
         if (!$this->validate($validation->getRules())) {
             // Jika validasi gagal, simpan pesan error ke flashdata
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
-
+    
         // Jika validasi berhasil, lanjutkan ke update data
         $Model = new \App\Models\LombaModel();
         $data = [
@@ -541,7 +541,7 @@ class DashboardController extends BaseController
             'tgl_ditutup' => $this->request->getPost('tgl_ditutup'),
             'status' => $this->request->getPost('status')
         ];
-
+    
         if ($Model->updateData($id, $data)) {
             session()->setFlashdata('success', 'Data Berhasil Diubah!');
             return redirect()->to('/daftar-lomba');
@@ -550,6 +550,7 @@ class DashboardController extends BaseController
             return redirect()->back()->withInput();
         }
     }
+    
 
 
     public function deleteDataLomba($id)
@@ -595,10 +596,10 @@ class DashboardController extends BaseController
         // Aturan validasi
         $validation = \Config\Services::validation();
         $validation->setRules([
-            'id' => 'required|numeric',
-            'id_lomba' => 'required|numeric',
-            'id_pembimbing' => 'required|numeric',
-            'id_sekolah' => 'required|numeric',
+            'id' => 'required',
+            'id_lomba' => 'required',
+            'id_pembimbing' => 'required',
+            'id_sekolah' => 'required',
             'nama_peserta' => 'required|min_length[3]|max_length[100]'
         ]);
 
@@ -632,10 +633,10 @@ class DashboardController extends BaseController
         // Aturan validasi
         $validation = \Config\Services::validation();
         $validation->setRules([
-            'id' => 'required|numeric',
-            'id_lomba' => 'required|numeric',
-            'id_pembimbing' => 'required|numeric',
-            'id_sekolah' => 'required|numeric',
+            'id' => 'required',
+            'id_lomba' => 'required',
+            'id_pembimbing' => 'required',
+            'id_sekolah' => 'required',
             'nama_peserta' => 'required|min_length[3]|max_length[100]'
         ]);
 

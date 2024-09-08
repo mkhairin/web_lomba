@@ -30,6 +30,7 @@
             </div>
         <?php endif; ?>
 
+
         <!-- Modal Add -->
         <form action="/daftar-lomba/insert" method="post">
             <?php csrf_field() ?>
