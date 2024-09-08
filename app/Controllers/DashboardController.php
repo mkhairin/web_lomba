@@ -478,7 +478,25 @@ class DashboardController extends BaseController
         return redirect()->to('/daftar-peserta');
     }
 
+    public function updateDataPeserta($id)
+    {
+        $Model = new \App\Models\PesertaModel();
+        $data = [
+            'id_peserta' => $this->request->getPost('id'),
+            'id_lomba' => $this->request->getPost('id_lomba'),
+            'id_pembimbing' => $this->request->getPost('id_pembimbing'),
+            'id_sekolah' => $this->request->getPost('id_sekolah'),
+            'nama_peserta' => $this->request->getPost('nama_peserta')
+        ];
 
+        if ($Model->updateData($id, $data)) {
+            session()->setFlashdata('success', 'Data Berhasil Diubah!');
+        } else {
+            session()->setFlashdata('error', 'Data Gagal Diubah!');
+        }
+
+        return redirect()->to('/daftar-peserta');
+    }
 
     
 }
