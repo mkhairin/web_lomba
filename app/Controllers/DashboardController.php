@@ -458,6 +458,26 @@ class DashboardController extends BaseController
         echo view('partial/footer');
     }
 
+    public function insertDataPeserta()
+    {
+        $Model = new \App\Models\PesertaModel();
+        $data = [
+            'id_peserta' => $this->request->getPost('id'),
+            'id_lomba' => $this->request->getPost('id_lomba'),
+            'id_pembimbing' => $this->request->getPost('id_pembimbing'),
+            'id_sekolah' => $this->request->getPost('id_sekolah'),
+            'nama_peserta' => $this->request->getPost('nama_peserta')
+        ];
+
+        if ($Model->insertData($data)) {
+            session()->setFlashdata('success', 'Data Berhasil Ditambah!');
+        } else {
+            session()->setFlashdata('error', 'Data Gagal Ditambah!');
+        }
+
+        return redirect()->to('/daftar-peserta');
+    }
+
 
 
     

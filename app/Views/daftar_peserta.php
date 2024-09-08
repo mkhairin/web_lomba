@@ -63,6 +63,14 @@
                                         </div>
                                     </div>
                                     <!-- /.col -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="nama_peserta">Nama Peserta</label>
+                                            <input type="text" class="form-control" id="nama_peserta" name="nama_peserta"
+                                                placeholder="Masukkan Nama Peserta">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
                                 </div>
                                 <!-- /.row -->
                             </div>
@@ -80,7 +88,7 @@
             <!-- /.modal -->
         </form>
 
-    
+
 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
             Tambah Data
@@ -108,14 +116,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach($dataPeserta as $data) :?>
                         <tr>
                             <td>1.</td>
-                            <td>mwehehe</td>
-                            <td>kenny</td>
-                            <td>poltek</td>
-
-                            <td><span class="badge rounded-pill text-bg-primary bg-primary"
-                                    style="opacity: 50%;">Dibuka</span></td>
+                            <td><?= $data->nama_peserta?></td>
+                            <td><?= $data->nama_pembimbing?></td>
+                            <td><?= $data->nama_sekolah?></td>
+                            <td><?= $data->nama?></td>
                             <td>
 
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
@@ -123,6 +130,7 @@
                                 <button type="button" class="btn btn-danger btn-sm">Delete</button>
                             </td>
                         </tr>
+                        <?php endforeach; ?>
                         <!-- Tambahkan lebih banyak baris sesuai kebutuhan -->
                     </tbody>
                 </table>

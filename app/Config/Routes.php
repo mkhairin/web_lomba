@@ -38,13 +38,13 @@ $routes->post('/daftar-pembimbing/insert', 'DashboardController::insertDataPembi
 $routes->post('/daftar-pembimbing/update/(:num)', 'DashboardController::updateDataPembimbing/$1');
 $routes->get('/daftar-pembimbing/delete/(:num)', 'DashboardController::deleteDataPembimbing/$1');
 
-
+// Lomba
 $routes->get('/daftar-lomba', 'DashboardController::daftarLomba');
 $routes->post('/daftar-lomba/insert', 'DashboardController::insertDataLomba');
 $routes->post('/daftar-lomba/update/(:num)', 'DashboardController::updateDataLomba/$1');
 $routes->get('/daftar-lomba/delete/(:num)', 'DashboardController::deleteDataLomba/$1');
 
-
+// Peserta
 $routes->get('/daftar-peserta', 'DashboardController::daftarPeserta');
 $routes->post('/daftar-peserta/insert', 'DashboardController::insertDataPeserta');
 
