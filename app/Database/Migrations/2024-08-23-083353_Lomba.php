@@ -34,6 +34,10 @@ class Lomba extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
+            'link_pendaftaran' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
             'tgl_dibuka' => [
                 'type' => 'DATE',
             ],

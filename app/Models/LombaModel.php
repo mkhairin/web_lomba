@@ -11,6 +11,7 @@ class LombaModel extends Model {
         'deskripsi',
         'peraturan',
         'link_peraturan',
+        'link_pendaftaran',
         'tgl_dibuka',
         'tgl_ditutup',
         'status',

@@ -66,8 +66,16 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="link_peraturan">Link</label>
-                                            <input type="url" class="form-control" id="link_peraturan" name="link_peraturan"
-                                                placeholder="Masukkan link">
+                                            <input type="text" class="form-control" id="link_peraturan" name="link_peraturan"
+                                                placeholder="Masukkan link aturan">
+                                        </div>
+                                    </div>
+                                    <!-- Link Pendaftaran -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="link_pendaftaran">Link</label>
+                                            <input type="text" class="form-control" id="link_pendaftaran" name="link_pendaftaran"
+                                                placeholder="Masukkan link pendaftaran">
                                         </div>
                                     </div>
                                     <!-- Tanggal Dibuka -->
@@ -159,8 +167,16 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="link_peraturan">Link</label>
-                                                <input type="url" class="form-control" id="link_peraturan" name="link_peraturan"
-                                                    value="<?= $data->link_peraturan ?>" placeholder="Masukkan Link Peraturan">
+                                                <input type="text" class="form-control" id="link_peraturan" name="link_peraturan"
+                                                    value="<?= $data->link_peraturan ?>" placeholder="Masukkan link aturan">
+                                            </div>
+                                        </div>
+                                        <!-- Link Pendaftaran -->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="link_pendaftaran">Link</label>
+                                                <input type="text" class="form-control" id="link_pendaftaran" name="link_pendaftaran"
+                                                    value="<?= $data->link_pendaftaran ?>" placeholder="Masukkan link pendaftaran">
                                             </div>
                                         </div>
                                         <!-- Tanggal Dibuka -->
