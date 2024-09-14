@@ -54,8 +54,8 @@
                             <!-- /.card-body -->
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-dark">Save changes</button>
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -105,8 +105,8 @@
                             <!-- /.card-body -->
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-dark">Save changes</button>
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -116,7 +116,7 @@
             <!-- /.modal -->
         </form>
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal-lg">
             Tambah Data
         </button>
 
@@ -144,9 +144,9 @@
                             <td>John Doe</td>
                             <td>Fotografi</td>
                             <td>
-                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
                                     data-target="#modal-lg-update">Update</button>
-                                <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                <button type="button" class="btn btn-dark btn-sm">Delete</button>
                             </td>
                         </tr>
                         <!-- Tambahkan lebih banyak baris sesuai kebutuhan -->
