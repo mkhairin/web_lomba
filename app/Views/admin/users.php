@@ -96,8 +96,8 @@
                                             <select class="form-control select" id="roles" name="roles"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>Pilih Role</option>
-                                                <option value="admin">Admin</option>
-                                                <option value="user">User</option>
+                                                <option value="Admin">Admin</option>
+                                                <option value="User">User</option>
                                             </select>
                                         </div>
                                     </div>
@@ -208,8 +208,8 @@
                                                 style="width: 100%;">
                                                 <option value="" disabled>Pilih Role</option>
                                                 <option value="admin"
-                                                    <?= ($user->roles == 'admin') ? 'selected' : '' ?>>Admin</option>
-                                                <option value="user" <?= ($user->roles == 'user') ? 'selected' : '' ?>>
+                                                    <?= ($user->roles == 'Admin') ? 'selected' : '' ?>>Admin</option>
+                                                <option value="user" <?= ($user->roles == 'User') ? 'selected' : '' ?>>
                                                     User</option>
                                             </select>
                                         </div>

@@ -66,5 +66,7 @@ $routes->get('/admin/user', 'UsersController::daftarUser');
 $routes->post('/user/insert', 'UsersController::insert');
 $routes->post('/user/update/(:num)', 'UsersController::update/$1');
 
+$routes->get('/login', 'LoginController::login');
+
 // Halaman Lomba
 $routes->get('/', 'HomeLombaTRKJ::home');

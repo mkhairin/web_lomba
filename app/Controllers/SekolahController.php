@@ -23,7 +23,7 @@ class SekolahController extends BaseController
         echo view('partial/header', $header);
         echo view('partial/top_menu');
         echo view('partial/side_menu');
-        echo view('daftar_sekolah', $data);
+        echo view('admin/daftar_sekolah', $data);
         echo view('partial/footer');
 
         return $this->response;

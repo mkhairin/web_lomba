@@ -29,7 +29,7 @@ class UsersController extends BaseController
         echo view('partial/header', $header);
         echo view('partial/top_menu');
         echo view('partial/side_menu');
-        echo view('users', $data);
+        echo view('admin/users', $data);
         echo view('partial/footer');
     }
 
@@ -72,7 +72,7 @@ class UsersController extends BaseController
         return redirect()->to('/admin/user');
     }
 
-    public function update(): RedirectResponse
+    public function update($id): RedirectResponse
     {
         $userModel = new \App\Models\UsersModel();
         $validationRules = [
@@ -98,7 +98,7 @@ class UsersController extends BaseController
                 'roles' => esc($this->request->getPost('roles'))
             ];
 
-            if ($userModel->update($data)) {
+            if ($userModel->update($id, $data)) {
                 session()->setFlashdata('success', 'Data Berhasil Ditambah!');
             } else {
                 throw new Exception('Data gagal ditambah.');

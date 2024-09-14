@@ -25,7 +25,7 @@ class PesertaController extends BaseController
         echo view('partial/header', $header);
         echo view('partial/top_menu');
         echo view('partial/side_menu');
-        echo view('daftar_peserta', $data);
+        echo view('admin/daftar_peserta', $data);
         echo view('partial/footer');
     }
 

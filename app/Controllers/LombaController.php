@@ -25,7 +25,7 @@ class LombaController extends BaseController
             echo view('partial/header', $header);
             echo view('partial/top_menu');
             echo view('partial/side_menu');
-            echo view('daftar_lomba', $data);
+            echo view('admin/daftar_lomba', $data);
             echo view('partial/footer');
 
         } catch (Exception $e) {
