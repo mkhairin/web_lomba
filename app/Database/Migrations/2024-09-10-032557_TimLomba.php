@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Peserta extends Migration
+class TimLomba extends Migration
 {
     public function up()
     {
@@ -12,11 +12,16 @@ class Peserta extends Migration
         $this->db->query('SET FOREIGN_KEY_CHECKS=0;');
 
         $this->forge->addField([
-            'id_peserta' => [
+            'id_tim_lomba' => [
                 'type'           => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
-                'auto_increment' => true
+                'auto_increment' => true,
+            ],
+            'id_sekolah' => [
+                'type'       => 'INT',
+                'constraint' => 5,
+                'unsigned'   => true,
             ],
             'id_lomba' => [
                 'type'       => 'INT',
@@ -28,18 +33,9 @@ class Peserta extends Migration
                 'constraint' => 5,
                 'unsigned'   => true,
             ],
-            'id_sekolah' => [
-                'type'       => 'INT',
-                'constraint' => 5,
-                'unsigned'   => true,
-            ],
-            'nama_peserta' => [
+            'nama_tim' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '255'
-            ],
-            'no_handphone' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '20',
+                'constraint' => '30',
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -51,14 +47,14 @@ class Peserta extends Migration
             ],
         ]);
 
-        $this->forge->addKey('id_peserta', true);
+        $this->forge->addKey('id_tim_lomba', true);
+        $this->forge->addForeignKey('id_sekolah', 'sekolah', 'id_sekolah', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('id_lomba', 'lomba', 'id_lomba', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('id_pembimbing', 'pembimbing', 'id_pembimbing', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('id_sekolah', 'sekolah', 'id_sekolah', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('peserta');
+        $this->forge->createTable('tim_lomba');
 
-         // Aktifkan kembali foreign key checks
-         $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
+        // Aktifkan kembali foreign key checks
+        $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
     }
 
     public function down()
@@ -66,7 +62,7 @@ class Peserta extends Migration
         // Nonaktifkan foreign key checks
         $this->db->query('SET FOREIGN_KEY_CHECKS=0;');
 
-        $this->forge->dropTable('peserta');
+        $this->forge->dropTable('tim_lomba');
 
         // Aktifkan kembali foreign key checks
         $this->db->query('SET FOREIGN_KEY_CHECKS=1;');

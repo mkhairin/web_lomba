@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Peserta extends Migration
+class TimLolos extends Migration
 {
     public function up()
     {
@@ -12,18 +12,18 @@ class Peserta extends Migration
         $this->db->query('SET FOREIGN_KEY_CHECKS=0;');
 
         $this->forge->addField([
-            'id_peserta' => [
+            'id_tim_lolos' => [
                 'type'           => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
-                'auto_increment' => true
+                'auto_increment' => true,
             ],
-            'id_lomba' => [
+            'id_tim_lomba' => [
                 'type'       => 'INT',
                 'constraint' => 5,
                 'unsigned'   => true,
             ],
-            'id_pembimbing' => [
+            'id_lomba' => [
                 'type'       => 'INT',
                 'constraint' => 5,
                 'unsigned'   => true,
@@ -33,32 +33,36 @@ class Peserta extends Migration
                 'constraint' => 5,
                 'unsigned'   => true,
             ],
-            'nama_peserta' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '255'
+            'id_pembimbing' => [
+                'type'       => 'INT',
+                'constraint' => 5,
+                'unsigned'   => true,
             ],
-            'no_handphone' => [
+            'nilai' => [
+                'type'       => 'INT',
+                'constraint' => 5,
+            ],
+            'status' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '20',
             ],
             'created_at' => [
                 'type' => 'DATETIME',
-                'null' => true,
             ],
             'updated_at' => [
                 'type' => 'DATETIME',
-                'null' => true,
             ],
         ]);
 
-        $this->forge->addKey('id_peserta', true);
+        $this->forge->addKey('id_tim_lolos', true);
+        $this->forge->addForeignKey('id_tim_lomba', 'tim_lomba', 'id_tim_lomba', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('id_lomba', 'lomba', 'id_lomba', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('id_pembimbing', 'pembimbing', 'id_pembimbing', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('id_sekolah', 'sekolah', 'id_sekolah', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('peserta');
+        $this->forge->addForeignKey('id_pembimbing', 'pembimbing', 'id_pembimbing', 'CASCADE', 'CASCADE');
+        $this->forge->createTable('tim_lolos');
 
-         // Aktifkan kembali foreign key checks
-         $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
+        // Aktifkan kembali foreign key checks
+        $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
     }
 
     public function down()
@@ -66,7 +70,7 @@ class Peserta extends Migration
         // Nonaktifkan foreign key checks
         $this->db->query('SET FOREIGN_KEY_CHECKS=0;');
 
-        $this->forge->dropTable('peserta');
+        $this->forge->dropTable('tim_lolos');
 
         // Aktifkan kembali foreign key checks
         $this->db->query('SET FOREIGN_KEY_CHECKS=1;');

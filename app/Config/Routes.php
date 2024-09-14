@@ -9,46 +9,62 @@ use CodeIgniter\Router\RouteCollection;
 
  //admin
 $routes->get('/admin', 'DashboardController::index');
-$routes->get('/daftar-lomba', 'DashboardController::daftarLomba');
-$routes->get('/daftar-rules', 'DashboardController::daftarRules');
-
+// $routes->get('/daftar-lomba', 'DashboardController::daftarLomba');
+// $routes->get('/daftar-rules', 'DashboardController::daftarRules');
 
 
 // Sekolah
-$routes->get('/daftar-sekolah', 'DashboardController::daftarSekolah');
-$routes->post('/daftar-sekolah/insert', 'DashboardController::insertDataSekolah');
-$routes->post('/daftar-sekolah/update/(:num)', 'DashboardController::updateDataSekolah/$1');
-$routes->get('/daftar-sekolah/delete/(:num)', 'DashboardController::deleteDataSekolah/$1');
+$routes->get('/daftar-sekolah', 'SekolahController::sekolahView');
+$routes->post('/daftar-sekolah/insert', 'SekolahController::insert');
+$routes->post('/daftar-sekolah/update/(:num)', 'SekolahController::update/$1');
+$routes->get('/daftar-sekolah/delete/(:num)', 'SekolahController::delete/$1');
 
 // Juara
-$routes->get('/daftar-juara', 'DashboardController::daftarJuara');
-$routes->post('/daftar-juara/insert', 'DashboardController::insertDataJuara');
-$routes->post('/daftar-juara/update/(:num)', 'DashboardController::updateDataJuara/$1');
-$routes->get('/daftar-juara/delete/(:num)', 'DashboardController::deleteDataJuara/$1');
+$routes->get('/daftar-juara', 'JuaraController::juaraView');
+$routes->post('/daftar-juara/insert', 'JuaraController::insert');
+$routes->post('/daftar-juara/update/(:num)', 'JuaraController::update/$1');
+$routes->get('/daftar-juara/delete/(:num)', 'JuaraController::delete/$1');
 
 // Sponsor
-$routes->get('/daftar-sponsor', 'DashboardController::daftarSponsor');
-$routes->post('/daftar-sponsor/insert', 'DashboardController::insertDataSponsor');
-$routes->post('/daftar-sponsor/update/(:num)', 'DashboardController::updateDataSponsor/$1');
-$routes->get('/daftar-sponsor/delete/(:num)', 'DashboardController::deleteDataSponsor/$1');
+$routes->get('/daftar-sponsor', 'SponsorController::sponsorView');
+$routes->post('/daftar-sponsor/insert', 'SponsorController::insert');
+$routes->post('/daftar-sponsor/update/(:num)', 'SponsorController::update/$1');
+$routes->get('/daftar-sponsor/delete/(:num)', 'SponsorController::delete/$1');
 
 // Pembimbing
-$routes->get('/daftar-pembimbing', 'DashboardController::daftarPembimbing');
-$routes->post('/daftar-pembimbing/insert', 'DashboardController::insertDataPembimbing');
-$routes->post('/daftar-pembimbing/update/(:num)', 'DashboardController::updateDataPembimbing/$1');
-$routes->get('/daftar-pembimbing/delete/(:num)', 'DashboardController::deleteDataPembimbing/$1');
+$routes->get('/daftar-pembimbing', 'PembimbingController::pembimbingView');
+$routes->post('/daftar-pembimbing/insert', 'PembimbingController::insert');
+$routes->post('/daftar-pembimbing/update/(:num)', 'PembimbingController::update/$1');
+$routes->get('/daftar-pembimbing/delete/(:num)', 'PembimbingController::delete/$1');
 
 // Lomba
-$routes->get('/daftar-lomba', 'DashboardController::daftarLomba');
-$routes->post('/daftar-lomba/insert', 'DashboardController::insertDataLomba');
-$routes->post('/daftar-lomba/update/(:num)', 'DashboardController::updateDataLomba/$1');
-$routes->get('/daftar-lomba/delete/(:num)', 'DashboardController::deleteDataLomba/$1');
+$routes->get('/daftar-lomba', 'LombaController::lombaView');
+$routes->post('/daftar-lomba/insert', 'LombaController::insert');
+$routes->post('/daftar-lomba/update/(:num)', 'LombaController::update/$1');
+$routes->get('/daftar-lomba/delete/(:num)', 'LombaController::delete/$1');
 
 // Peserta
-$routes->get('/daftar-peserta', 'DashboardController::daftarPeserta');
-$routes->post('/daftar-peserta/insert', 'DashboardController::insertDataPeserta');
-$routes->post('/daftar-peserta/update/(:num)', 'DashboardController::updateDataPeserta/$1');
-$routes->get('/daftar-peserta/delete/(:num)', 'DashboardController::deleteDataPeserta/$1');
+$routes->get('/daftar-peserta', 'PesertaController::daftarPeserta');
+$routes->post('/daftar-peserta/insert', 'PesertaController::insert');
+$routes->post('/daftar-peserta/update/(:num)', 'PesertaController::update/$1');
+$routes->get('/daftar-peserta/delete/(:num)', 'PesertaController::delete/$1');
+
+// Tim Lomba
+$routes->get('/tim-lomba', 'TimLombaController::daftarTimLomba');
+$routes->post('/tim-lomba/insert', 'TimLombaController::insert');
+$routes->post('/tim-lomba/update/(:num)', 'TimLombaController::update/$1');
+$routes->get('/tim-lomba/delete/(:num)', 'TimLombaController::delete/$1');
+
+
+// Tim Lolos
+$routes->get('/tim-lolos', 'TimLolosController::daftarTimLolos');
+$routes->post('/tim-lolos/insert', 'TimLolosController::insert');
+$routes->post('/tim-lolos/update/(:num)', 'TimLolosController::update/$1');
+
+
+$routes->get('/admin/user', 'UsersController::daftarUser');
+$routes->post('/user/insert', 'UsersController::insert');
+$routes->post('/user/update/(:num)', 'UsersController::update/$1');
 
 // Halaman Lomba
 $routes->get('/', 'HomeLombaTRKJ::home');

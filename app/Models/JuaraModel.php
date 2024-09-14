@@ -1,15 +1,20 @@
 <?php
 
 namespace App\Models;
+
 use CodeIgniter\Model;
 
-class JuaraModel extends Model {
+class JuaraModel extends Model
+{
     protected $table = 'juara';
     protected $primaryKey = 'id_juara';
     protected $allowedFields = [
         'juara',
-        'total_hadiah'
+        'total_hadiah',
     ];
+    protected $useTimestamps = true;
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
 
     public function getdata()
     {
@@ -17,7 +22,6 @@ class JuaraModel extends Model {
         $builder = $db->table('juara');
         $query = $builder->get();
         return $query->getResult();
-
     }
 
     public function insertData($data)
@@ -32,7 +36,7 @@ class JuaraModel extends Model {
         $this->update($id, $data);
     }
 
-    public function deleteData($id) 
+    public function deleteData($id)
     {
         $db = \Config\Database::connect();
         $builder = $db->table('juara');

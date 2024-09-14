@@ -1,5 +1,5 @@
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper py-3">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -110,7 +110,7 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-dark">Save changes</button>
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -205,7 +205,7 @@
                             </div>
                             <div class="modal-footer justify-content-between">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                <button type="submit" class="btn btn-dark">Save changes</button>
                             </div>
                         </div>
                         <!-- /.modal-content -->
@@ -217,30 +217,30 @@
         <?php endforeach; ?>
 
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal-lg">
             Tambah Data
         </button>
 
         <br> <br>
 
         <!-- Default box -->
-        <div class="card">
+        <div class="card shadow-none border border-0 mb-5">
             <div class="card-header">
                 <h3 class="card-title">Daftar Lomba</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-striped">
                     <thead>
                         <tr>
-                            <th style="width: 10px">No</th>
+                            <th style="width: 10px">#</th>
                             <th>Kategori</th>
                             <th>Deskripsi</th>
                             <th>Aturan</th>
                             <th>Tgl Buka</th>
                             <th>Tgl Tutup</th>
                             <th>Status</th>
-                            <th style="width: 200px">Aksi</th>
+                            <th style="width: 100px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -255,13 +255,13 @@
                                 <td><?= $data->peraturan ?></td>
                                 <td><?= $data->tgl_dibuka ?></td>
                                 <td><?= $data->tgl_ditutup ?></td>
-                                <td><span class="badge rounded-pill text-bg-primary bg-primary"
+                                <td><span class="badge rounded text-bg-primary bg-primary"
                                         style="opacity: 50%;"><?= $data->status ?></span></td>
                                 <td>
 
-                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                        data-target="#modal-lg-update<?= $data->id_lomba ?>">Update</button>
-                                    <a class="btn btn-danger btn-sm" href="/daftar-lomba/delete/<?= $data->id_lomba ?>" role="button">Delete</a>
+                                    <button type="button" class="btn btn-dark btn-sm rounded" data-toggle="modal"
+                                        data-target="#modal-lg-update<?= $data->id_lomba ?>"><i class="bi bi-pencil-square"></i></button>
+                                    <a class="btn btn-dark btn-sm rounded" href="/daftar-lomba/delete/<?= $data->id_lomba ?>" role="button"><i class="bi bi-trash3-fill"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

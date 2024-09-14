@@ -12,10 +12,15 @@ class PesertaModel extends Model
         'id_lomba',
         'id_pembimbing',
         'id_sekolah',
-        'nama_peserta'
+        'nama_peserta',
+        'no_handphone',
     ];
 
-    public function getDataPeserta()
+    protected $useTimestamps = true;
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
+
+    public function getdata()
     {
         $db = \Config\Database::connect();
         $builder = $db->table('peserta');
@@ -33,7 +38,6 @@ class PesertaModel extends Model
         return $query->getResult(); // Mengembalikan hasil sebagai objek
     }
     
-
     public function insertData($data)
     {
         $db = \Config\Database::connect();

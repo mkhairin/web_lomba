@@ -1,5 +1,5 @@
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper py-3">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -128,20 +128,20 @@
             </form>
         <?php endforeach; ?>
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal-lg">
             Tambah Data
         </button>
 
         <br> <br>
 
         <!-- Default box -->
-        <div class="card">
+        <div class="card shadow-none border border-0">
             <div class="card-header">
                 <h3 class="card-title">Daftar Sekolah</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-striped">
                     <thead>
                         <tr>
                             <th style="width: 10px">No</th>

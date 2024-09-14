@@ -8,6 +8,8 @@ class Sekolah extends Migration
 {
     public function up()
     {
+        $this->db->query('SET FOREIGN_KEY_CHECKS=0;');
+
         $this->forge->addField([
             'id_sekolah' => [
                 'type'           => 'INT',
@@ -34,10 +36,14 @@ class Sekolah extends Migration
         ]);
         $this->forge->addKey('id_sekolah', true);
         $this->forge->createTable('sekolah');
+
+        $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
     }
 
     public function down()
     {
+        $this->db->query('SET FOREIGN_KEY_CHECKS=0;');
         $this->forge->dropTable('sekolah');
+        $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

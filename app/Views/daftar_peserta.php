@@ -1,5 +1,5 @@
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper py-3">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -38,33 +38,38 @@
                             <div class="card-body">
                                 <div class="row">
                                     <!-- /.col -->
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <input type="hidden" name="id" id="id">
                                             <label for="id_lomba">Kategori Lomba</label>
                                             <select class="form-control select" id="id_lomba" name="id_lomba" style="width: 100%;">
-                                                <?php foreach ($dataLomba as $data) : ?>
-                                                    <option value="<?= $data->id_lomba; ?>"><?= $data->nama; ?></option>
+                                                <option value="" selected>Pilih Kategori</option>
+                                                <?php foreach ($dataLomba as $lomba) : ?>
+                                                    <option value="<?= $lomba->id_lomba; ?>"><?= $lomba->nama; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="id_pembimbing">Pembimbing</label>
                                             <select class="form-control select" id="id_pembimbing" name="id_pembimbing" style="width: 100%;">
+                                                <option value="" selected>Pilih Pembimbing</option>
                                                 <?php foreach ($dataPembimbing as $data) : ?>
                                                     <option value="<?= $data->id_pembimbing; ?>"><?= $data->nama_pembimbing; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <!-- /.col -->
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="id_sekolah">Sekolah</label>
                                             <select class="form-control select" id="id_sekolah" name="id_sekolah" style="width: 100%;">
+                                                <option value="" selected>Pilih Sekolah</option>
                                                 <?php foreach ($dataSekolah as $data) : ?>
                                                     <option value="<?= $data->id_sekolah; ?>"><?= $data->nama_sekolah; ?></option>
                                                 <?php endforeach; ?>
@@ -72,7 +77,7 @@
                                         </div>
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="nama_peserta">Nama Peserta</label>
                                             <input type="text" class="form-control" id="nama_peserta" name="nama_peserta"
@@ -180,20 +185,20 @@
         <?php endforeach; ?>
 
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal-lg">
             Tambah Data
         </button>
 
         <br> <br>
 
         <!-- Default box -->
-        <div class="card">
+        <div class="card shadow-none border border-0">
             <div class="card-header">
                 <h3 class="card-title">Daftar Peserta</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-striped">
                     <thead>
                         <tr>
                             <th style="width: 10px">No</th>

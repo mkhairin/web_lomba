@@ -13,6 +13,10 @@ class SponsorModel extends Model
         'logo',
     ];
 
+    protected $useTimestamps = true;
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
+
     public function getdata()
     {
         $db = \Config\Database::connect();
@@ -33,7 +37,7 @@ class SponsorModel extends Model
         $this->update($id, $data);
     }
 
-    public function deleteData($id) 
+    public function deleteData($id)
     {
         $db = \Config\Database::connect();
         $builder = $db->table('sponsor');
@@ -41,4 +45,3 @@ class SponsorModel extends Model
         $builder->delete();
     }
 }
-

@@ -1,5 +1,5 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-light-primary">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
         <span class="brand-text font-weight-light">Dashboard</span>
@@ -15,11 +15,11 @@
         </div>
 
         <!-- SidebarSearch Form -->
-        <div class="form-inline">
+        <div class="form-inline ">
             <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control form-control-sidebar border border-0" type="search" placeholder="Search" aria-label="Search">
                 <div class="input-group-append">
-                    <button class="btn btn-sidebar">
+                    <button class="btn btn-dark">
                         <i class="fas fa-search fa-fw"></i>
                     </button>
                 </div>
@@ -45,7 +45,7 @@
                     <a href="/daftar-lomba" class="nav-link">
                         <i class="nav-icon fas fa-trophy"></i>
                         <p>
-                            Daftar Lomba
+                            Lomba
                         </p>
                     </a>
                 </li>
@@ -63,7 +63,7 @@
                     <a href="/daftar-sponsor" class="nav-link">
                         <i class="nav-icon fas fa-handshake"></i>
                         <p>
-                            Daftar Sponsor
+                           Sponsor
                         </p>
                     </a>
                 </li>
@@ -72,7 +72,7 @@
                     <a href="/daftar-sekolah" class="nav-link">
                         <i class="nav-icon fas fa-handshake"></i>
                         <p>
-                            Daftar Sekolah/Tim
+                            Sekolah
                         </p>
                     </a>
                 </li>
@@ -81,7 +81,7 @@
                     <a href="/daftar-peserta" class="nav-link">
                         <i class="nav-icon fas fa-handshake"></i>
                         <p>
-                            Daftar Peserta
+                           Peserta
                         </p>
                     </a>
                 </li>
@@ -90,7 +90,16 @@
                     <a href="/daftar-pembimbing" class="nav-link">
                         <i class="nav-icon fas fa-handshake"></i>
                         <p>
-                            Daftar Pembimbing
+                            Pembimbing
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/admin/user" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Users
                         </p>
                     </a>
                 </li>
@@ -99,7 +108,25 @@
                     <a href="/daftar-juara" class="nav-link">
                         <i class="nav-icon fas fa-handshake"></i>
                         <p>
-                            Daftar Juara
+                            Juara
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/tim-lomba" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Tim Lomba
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/tim-lolos" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Tim Lolos
                         </p>
                     </a>
                 </li>

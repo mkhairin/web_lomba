@@ -13,7 +13,11 @@ class SekolahModel extends Model
         'alamat',
     ];
 
-    public function getDataSekolah()
+    protected $useTimestamps = true;
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
+
+    public function getdata()
     {
         $db = \Config\Database::connect();
         $builder = $db->table('sekolah');

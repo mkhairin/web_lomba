@@ -1,0 +1,117 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Models\SekolahModel;
+use CodeIgniter\HTTP\ResponseInterface;
+use CodeIgniter\HTTP\RedirectResponse;
+
+class SekolahController extends BaseController
+{
+    protected $sekolahModel;
+
+    public function __construct()
+    {
+        $this->sekolahModel = new SekolahModel();
+    }
+
+    // sekolah methods
+    public function sekolahView(): ResponseInterface
+    {
+        $header['title'] = 'Daftar Sekolah';
+        $data['dataSekolah'] = $this->sekolahModel->getdata();
+        echo view('partial/header', $header);
+        echo view('partial/top_menu');
+        echo view('partial/side_menu');
+        echo view('daftar_sekolah', $data);
+        echo view('partial/footer');
+
+        return $this->response;
+    }
+
+    public function insert(): RedirectResponse
+    {
+        // Aturan validasi
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'nama_sekolah' => 'required',
+            'alamat' => 'required'
+        ]);
+    
+        // Cek validasi input
+        if (!$this->validate($validation->getRules())) {
+            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+        }
+    
+        // Jika validasi berhasil, lanjutkan ke insert data
+        $data = [
+            'nama_sekolah' => esc($this->request->getPost("nama_sekolah")),
+            'alamat' => esc($this->request->getPost("alamat")),
+        ];
+    
+        try {
+            // Asumsikan insertData mengembalikan ID baru atau false jika gagal
+            if ($this->sekolahModel->insert($data)) {
+                session()->setFlashdata('success', 'Data Berhasil Ditambah!');
+            } else {
+                session()->setFlashdata('error', 'Data Gagal Ditambah!');
+            }
+        } catch (\Exception $e) {
+            log_message('error', $e->getMessage());  // Logging error details
+            session()->setFlashdata('error', 'Terjadi kesalahan pada server!');
+        }
+    
+        return redirect()->to('/daftar-sekolah'); // Redirect ke halaman daftar setelah insert
+    }
+
+    public function update($id): RedirectResponse
+    {
+        // Aturan validasi
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'nama_sekolah' => 'required',
+            'alamat' => 'required'
+        ]);
+
+        // Cek validasi input
+        if (!$this->validate($validation->getRules())) {
+            return redirect()->back()->withInput()->with('validation', $this->validator);
+        }
+
+        // Jika validasi berhasil, lanjutkan ke update data
+        $data = [
+            'id_sekolah' => esc($this->request->getPost("id")),
+            'nama_sekolah' => esc($this->request->getPost("nama_sekolah")),
+            'alamat' => esc($this->request->getPost("alamat")),
+        ];
+
+        try {
+            if ($this->sekolahModel->update($id, $data)) {
+                session()->setFlashdata('success', 'Data Berhasil Diubah!');
+            } else {
+                session()->setFlashdata('error', 'Data Gagal Diubah!');
+            }
+        } catch (\Exception $e) {
+            log_message('error', $e->getMessage());  // Logging error details
+            session()->setFlashdata('error', 'Terjadi kesalahan pada server!');
+        }
+
+        return redirect()->to('/daftar-sekolah');
+    }
+
+    public function delete($id): RedirectResponse
+    {
+        try {
+            if ($this->sekolahModel->deleteData($id)) {
+                session()->setFlashdata('success', 'Data Berhasil Dihapus!');
+            } else {
+                session()->setFlashdata('error', 'Data Gagal Dihapus!');
+            }
+        } catch (\Exception $e) {
+            log_message('error', $e->getMessage());  // Logging error details
+            session()->setFlashdata('error', 'Terjadi kesalahan pada server!');
+        }
+
+        return redirect()->to('/daftar-sekolah');
+    }
+}

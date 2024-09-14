@@ -23,14 +23,18 @@ class Pembimbing extends Migration
                 'constraint' => 5,
                 'unsigned'   => true,
             ],
-            'nama_pembimbing' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '255',
-            ],
             'id_lomba' => [
                 'type'       => 'INT',
                 'constraint' => 5,
                 'unsigned'   => true,
+            ],
+            'nama_pembimbing' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'no_handphone' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '20',
             ],
             'created_at' => [
                 'type' => 'DATETIME',

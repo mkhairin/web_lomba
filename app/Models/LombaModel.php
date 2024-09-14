@@ -13,10 +13,14 @@ class LombaModel extends Model {
         'link_peraturan',
         'tgl_dibuka',
         'tgl_ditutup',
-        'status'
+        'status',
     ];
 
-    public function getDataLomba()
+    protected $useTimestamps = true;
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
+
+    public function getdata()
     {
         $db = \Config\Database::connect();
         $builder = $db->table('lomba');
