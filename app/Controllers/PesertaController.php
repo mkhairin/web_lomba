@@ -9,6 +9,12 @@ class PesertaController extends BaseController
 {
     public function daftarPeserta()
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         $ModelPeserta = new \App\Models\PesertaModel();
         $ModelLomba = new \App\Models\LombaModel();
         $ModelPembimbing = new \App\Models\PembimbingModel();
@@ -31,6 +37,12 @@ class PesertaController extends BaseController
 
     public function insert()
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         // Aturan validasi
         $validation = \Config\Services::validation();
         $validation->setRules([
@@ -73,6 +85,12 @@ class PesertaController extends BaseController
 
     public function update($id)
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         // Aturan validasi
         $validation = \Config\Services::validation();
         $validation->setRules([
@@ -116,6 +134,12 @@ class PesertaController extends BaseController
 
     public function delete($id)
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         // Pastikan model diinstansiasi dengan benar
         $Model = new \App\Models\PesertaModel();
 

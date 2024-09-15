@@ -13,6 +13,11 @@ class UsersController extends BaseController
 
     public function daftarUser()
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
 
         $sekolahModel = new \App\Models\SekolahModel();
         $timLombaModel = new \App\Models\TimLombaModel();
@@ -35,6 +40,12 @@ class UsersController extends BaseController
 
     public function insert(): RedirectResponse
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         $userModel = new \App\Models\UsersModel();
         $validationRules = [
             'username' => 'required',
@@ -42,7 +53,7 @@ class UsersController extends BaseController
             'id_sekolah' => 'required',
             'id_tim_lomba' => 'required',
             'id_lomba' => 'required',
-            'roles' => 'required'
+            'role' => 'required'
         ];
 
         if (!$this->validate($validationRules)) {
@@ -50,13 +61,15 @@ class UsersController extends BaseController
         }
 
         try {
+            $password = esc($this->request->getPost('password'));
+            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
             $data = [
                 'username' => esc($this->request->getPost('username')),
-                'password' => esc($this->request->getPost('password')),
+                'password' => $passwordHash,
                 'id_sekolah' => esc($this->request->getPost('id_sekolah')),
                 'id_tim_lomba' => esc($this->request->getPost('id_tim_lomba')),
                 'id_lomba' => esc($this->request->getPost('id_lomba')),
-                'roles' => esc($this->request->getPost('roles'))
+                'role' => esc($this->request->getPost('roles'))
             ];
 
             if ($userModel->insert($data)) {
@@ -69,11 +82,17 @@ class UsersController extends BaseController
             return redirect()->back()->withInput();
         }
 
-        return redirect()->to('/admin/user');
+        return redirect()->to('/user');
     }
 
     public function update($id): RedirectResponse
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         $userModel = new \App\Models\UsersModel();
         $validationRules = [
             'username' => 'required',
@@ -81,7 +100,7 @@ class UsersController extends BaseController
             'id_sekolah' => 'required',
             'id_tim_lomba' => 'required',
             'id_lomba' => 'required',
-            'roles' => 'required'
+            'role' => 'required'
         ];
 
         if (!$this->validate($validationRules)) {
@@ -89,9 +108,11 @@ class UsersController extends BaseController
         }
 
         try {
+            $password = esc($this->request->getPost('password'));
+            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
             $data = [
                 'username' => esc($this->request->getPost('username')),
-                'password' => esc($this->request->getPost('password')),
+                'password' => $passwordHash,
                 'id_sekolah' => esc($this->request->getPost('id_sekolah')),
                 'id_tim_lomba' => esc($this->request->getPost('id_tim_lomba')),
                 'id_lomba' => esc($this->request->getPost('id_lomba')),
@@ -108,6 +129,6 @@ class UsersController extends BaseController
             return redirect()->back()->withInput();
         }
 
-        return redirect()->to('/admin/user');
+        return redirect()->to('/user');
     }
 }

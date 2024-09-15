@@ -14,30 +14,51 @@ class LombaController extends BaseController
     public function __construct()
     {
         $this->lombaModel = new LombaModel();
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
     }
 
-    public function lombaView(): string
+    public function lombaView()
     {
+       // Check if user is admin
+       $session = session();
+       if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+           return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+       }
+    
         try {
+            // Ambil data lomba dari model
             $data['dataLomba'] = $this->lombaModel->getdata();
             $header['title'] = 'Daftar Lomba';
-
+    
+            // Load views
             echo view('partial/header', $header);
             echo view('partial/top_menu');
             echo view('partial/side_menu');
             echo view('admin/daftar_lomba', $data);
             echo view('partial/footer');
-
+    
         } catch (Exception $e) {
+            // Set error jika terjadi masalah
             session()->setFlashdata('error', 'Gagal memuat data lomba: ' . $e->getMessage());
             return redirect()->back();
         }
-
+    
         return '';
     }
+    
 
     public function insert(): RedirectResponse
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         // Aturan validasi
         $validationRules = [
             'nama' => 'required',
@@ -82,6 +103,12 @@ class LombaController extends BaseController
 
     public function update($id): RedirectResponse
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         $validationRules = [
             'nama' => 'required',
             'deskripsi' => 'required',
@@ -125,6 +152,12 @@ class LombaController extends BaseController
 
     public function delete($id): RedirectResponse
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         try {
             $lomba = $this->lombaModel->find($id);
             

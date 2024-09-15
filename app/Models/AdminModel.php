@@ -9,7 +9,7 @@ class AdminModel extends Model {
     protected $allowedFields = [
         'username',
         'password',
-        'roles',
+        'role',
     ];
 
     protected $useTimestamps = true;

@@ -13,11 +13,22 @@ class SponsorController extends BaseController
     public function __construct()
     {
         $this->sponsorModel = new SponsorModel();
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
     }
 
     // Method to list all sponsors
     public function sponsorView(): ResponseInterface
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         $header['title'] = 'Daftar Sponsor';
         $data['dataSponsor'] = $this->sponsorModel->getdata();
 
@@ -33,6 +44,12 @@ class SponsorController extends BaseController
     // Method to insert sponsor data
     public function insert(): RedirectResponse
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         // Input validation rules including file validation
         $validationRules = [
             'nama_sponsor' => 'required',
@@ -83,6 +100,11 @@ class SponsorController extends BaseController
     // Method to update sponsor data
     public function update($id): RedirectResponse
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
         // Input validation rules
         $validationRules = [
             'nama_sponsor' => 'required',
@@ -131,6 +153,11 @@ class SponsorController extends BaseController
     // Method to delete sponsor data
     public function delete($id): RedirectResponse
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
         $sponsor = $this->sponsorModel->find($id);
 
         if ($sponsor && $this->sponsorModel->delete($id)) {

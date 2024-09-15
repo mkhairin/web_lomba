@@ -29,18 +29,21 @@ class Users extends Migration
                 'type'       => 'INT',
                 'constraint' => 5,
                 'unsigned'   => true,
+                'null' => true,
             ],
             'id_tim_lomba' => [
                 'type'       => 'INT',
                 'constraint' => 5,
                 'unsigned'   => true,
+                'null' => true,
             ],
             'id_lomba' => [
                 'type'       => 'INT',
                 'constraint' => 5,
                 'unsigned'   => true,
+                'null' => true,
             ],
-            'roles' => [
+            'role' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '10',
             ],

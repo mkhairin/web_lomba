@@ -15,10 +15,21 @@ class TimLombaController extends BaseController
     public function __construct()
     {
         $timLombaModel = new TimLombaModel();
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
     }
 
     public function daftarTimLomba()
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         $timLombaModel = new \App\Models\TimLombaModel();
         $sekolahModel = new \App\Models\SekolahModel();
         $lombaModel = new \App\Models\LombaModel();
@@ -38,6 +49,12 @@ class TimLombaController extends BaseController
 
     public function insert(): RedirectResponse
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         // Instansiasi model TimLombaModel
         $timLombaModel = new \App\Models\TimLombaModel();
 
@@ -83,6 +100,12 @@ class TimLombaController extends BaseController
 
     public function update($id): RedirectResponse
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         // Instansiasi model TimLombaModel
         $timLombaModel = new \App\Models\TimLombaModel();
     
@@ -128,6 +151,12 @@ class TimLombaController extends BaseController
 
     public function delete($id): ResponseInterface
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         // Instansiasi model TimLombaModel
         $timLombaModel = new \App\Models\TimLombaModel();
     

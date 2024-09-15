@@ -13,11 +13,22 @@ class SekolahController extends BaseController
     public function __construct()
     {
         $this->sekolahModel = new SekolahModel();
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
     }
 
     // sekolah methods
     public function sekolahView(): ResponseInterface
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         $header['title'] = 'Daftar Sekolah';
         $data['dataSekolah'] = $this->sekolahModel->getdata();
         echo view('partial/header', $header);
@@ -31,6 +42,12 @@ class SekolahController extends BaseController
 
     public function insert(): RedirectResponse
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         // Aturan validasi
         $validation = \Config\Services::validation();
         $validation->setRules([
@@ -66,6 +83,12 @@ class SekolahController extends BaseController
 
     public function update($id): RedirectResponse
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         // Aturan validasi
         $validation = \Config\Services::validation();
         $validation->setRules([
@@ -101,6 +124,12 @@ class SekolahController extends BaseController
 
     public function delete($id): RedirectResponse
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         try {
             if ($this->sekolahModel->deleteData($id)) {
                 session()->setFlashdata('success', 'Data Berhasil Dihapus!');

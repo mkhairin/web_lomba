@@ -14,11 +14,22 @@ class JuaraController extends BaseController
     public function __construct()
     {
         $this->juaraModel = new JuaraModel();
+
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
     }
 
-    // juara methods
     public function juaraView(): ResponseInterface
     {
+        // Check admin access again if needed
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         $header['title'] = 'Daftar Juara';
         $data['dataJuara'] = $this->juaraModel->getdata();
         echo view('partial/header', $header);
@@ -31,36 +42,35 @@ class JuaraController extends BaseController
 
     public function insert(): RedirectResponse
     {
-        // CSRF Protection is enabled by default in CodeIgniter 4
-        
-        // Aturan validasi
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         $validation = \Config\Services::validation();
         $validation->setRules([
             'juara' => 'required|min_length[1]|max_length[50]',
             'total_hadiah' => 'required|numeric'
         ]);
 
-        // Cek validasi input
         if (!$this->validate($validation->getRules())) {
-            // Jika validasi gagal, simpan pesan error ke flashdata
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
 
-        // Jika validasi berhasil, lanjutkan ke insert data
         $data = [
-            'id_juara' => esc($this->request->getPost('id')),  // Escaping input
+            'id_juara' => esc($this->request->getPost('id')),
             'juara' => esc($this->request->getPost('juara')),
             'total_hadiah' => esc($this->request->getPost('total_hadiah'))
         ];
 
         try {
-            if ($this->juaraModel->insert($data)) {  // Gunakan insert() bawaan CodeIgniter
+            if ($this->juaraModel->insert($data)) {
                 session()->setFlashdata('success', 'Data Berhasil Ditambah!');
             } else {
                 session()->setFlashdata('error', 'Data Gagal Ditambah!');
             }
         } catch (\Exception $e) {
-            log_message('error', $e->getMessage());  // Log error details
+            log_message('error', $e->getMessage());
             session()->setFlashdata('error', 'Terjadi kesalahan pada server!');
         }
 
@@ -69,20 +79,21 @@ class JuaraController extends BaseController
 
     public function update($id): RedirectResponse
     {
-        // Aturan validasi
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         $validation = \Config\Services::validation();
         $validation->setRules([
             'juara' => 'required|min_length[1]|max_length[50]',
             'total_hadiah' => 'required|numeric'
         ]);
 
-        // Cek validasi input
         if (!$this->validate($validation->getRules())) {
-            // Jika validasi gagal, simpan pesan error ke flashdata
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
 
-        // Jika validasi berhasil, lanjutkan ke update data
         $data = [
             'id_juara' => esc($this->request->getPost('id')),
             'juara' => esc($this->request->getPost('juara')),
@@ -96,7 +107,7 @@ class JuaraController extends BaseController
                 session()->setFlashdata('error', 'Data Gagal Diubah!');
             }
         } catch (\Exception $e) {
-            log_message('error', $e->getMessage());  // Log error details
+            log_message('error', $e->getMessage());
             session()->setFlashdata('error', 'Terjadi kesalahan pada server!');
         }
 
@@ -105,6 +116,11 @@ class JuaraController extends BaseController
 
     public function delete($id): RedirectResponse
     {
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         try {
             if ($this->juaraModel->delete($id)) {
                 session()->setFlashdata('success', 'Data Berhasil Dihapus!');
@@ -112,7 +128,7 @@ class JuaraController extends BaseController
                 session()->setFlashdata('error', 'Data Gagal Dihapus!');
             }
         } catch (\Exception $e) {
-            log_message('error', $e->getMessage());  // Log error details
+            log_message('error', $e->getMessage());
             session()->setFlashdata('error', 'Terjadi kesalahan pada server!');
         }
 

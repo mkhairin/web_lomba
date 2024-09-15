@@ -14,7 +14,7 @@ class UsersModel extends Model
         'id_sekolah',
         'id_tim_lomba',
         'id_lomba',
-        'roles',
+        'role',
     ];
 
     protected $useTimestamps = true;

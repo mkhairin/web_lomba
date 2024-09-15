@@ -96,7 +96,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="/admin/user" class="nav-link">
+                    <a href="/user" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Users

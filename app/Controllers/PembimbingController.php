@@ -18,25 +18,44 @@ class PembimbingController extends BaseController
         $this->modelPembimbing = new \App\Models\PembimbingModel();
         $this->modelSekolah = new \App\Models\SekolahModel();
         $this->modelLomba = new \App\Models\LombaModel();
+        
+      // Check if user is admin
+      $session = session();
+      if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+          return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+      }
     }
 
     // Method daftar pembimbing
     public function pembimbingView()
     {
-            $data['dataPembimbing'] = $this->modelPembimbing->getdata();
-            $data['dataSekolah'] = $this->modelSekolah->getdata();
-            $data['dataLomba'] = $this->modelLomba->getdata();
-            $header['title'] = 'Daftar Pembimbing';
-            echo view('partial/header', $header);
-            echo view('partial/top_menu');
-            echo view('partial/side_menu');
-            echo view('admin/daftar_pembimbing', $data);
-            echo view('partial/footer');
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+        
+        $data['dataPembimbing'] = $this->modelPembimbing->getdata();
+        $data['dataSekolah'] = $this->modelSekolah->getdata();
+        $data['dataLomba'] = $this->modelLomba->getdata();
+        $header['title'] = 'Daftar Pembimbing';
+        echo view('partial/header', $header);
+        echo view('partial/top_menu');
+        echo view('partial/side_menu');
+        echo view('admin/daftar_pembimbing', $data);
+        echo view('partial/footer');
     }
 
     // Method insert pembimbing
     public function insert(): ResponseInterface
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
+
         // Aturan validasi
         $validation = \Config\Services::validation();
         $validation->setRules([
@@ -77,6 +96,12 @@ class PembimbingController extends BaseController
     // Method update pembimbing
     public function update($id): ResponseInterface
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         // Aturan validasi
         $validation = \Config\Services::validation();
         $validation->setRules([
@@ -114,6 +139,13 @@ class PembimbingController extends BaseController
     // Method delete pembimbing
     public function delete($id): ResponseInterface
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
+
         try {
             // Cek apakah data ada
             $pembimbing = $this->modelPembimbing->find($id);

@@ -26,7 +26,7 @@ class Admin extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '30',
             ],
-            'roles' => [
+            'role' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '30',
             ],

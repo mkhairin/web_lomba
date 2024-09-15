@@ -11,6 +11,12 @@ class TimLolosController extends BaseController
 {
     public function daftarTimLolos()
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         $timLolosModel = new \App\Models\TimLolosModel();
         $timLombaModel = new \App\Models\TimLombaModel();
         $sekolahModel = new \App\Models\SekolahModel();
@@ -32,6 +38,12 @@ class TimLolosController extends BaseController
 
     public function insert(): RedirectResponse
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         $timLolosModel = new \App\Models\TimLolosModel();
         $validationRules = [
             'id_tim_lomba' => 'required',
@@ -71,6 +83,12 @@ class TimLolosController extends BaseController
 
     public function update($id): RedirectResponse
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         $timLolosModel = new \App\Models\TimLolosModel();
         $validationRules = [
             'id_tim_lomba' => 'required',
@@ -110,6 +128,12 @@ class TimLolosController extends BaseController
 
     public function delete($id): ResponseInterface
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         $timLolosModel = new \App\Models\TimLolosModel();
 
         try {

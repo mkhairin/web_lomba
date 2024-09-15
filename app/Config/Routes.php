@@ -6,12 +6,15 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
+// Rute untuk halaman login dan otentikasi
+$routes->get('/login', 'LoginController::login');
+$routes->post('/login/auth', 'LoginController::loginAuth');
 
- //admin
+// Halaman Lomba (Public Route)
+$routes->get('/landing-page', 'HomeLombaTRKJ::home');
+
+// Admin dashboard
 $routes->get('/admin', 'DashboardController::index');
-// $routes->get('/daftar-lomba', 'DashboardController::daftarLomba');
-// $routes->get('/daftar-rules', 'DashboardController::daftarRules');
-
 
 // Sekolah
 $routes->get('/daftar-sekolah', 'SekolahController::sekolahView');
@@ -55,18 +58,12 @@ $routes->post('/tim-lomba/insert', 'TimLombaController::insert');
 $routes->post('/tim-lomba/update/(:num)', 'TimLombaController::update/$1');
 $routes->get('/tim-lomba/delete/(:num)', 'TimLombaController::delete/$1');
 
-
 // Tim Lolos
 $routes->get('/tim-lolos', 'TimLolosController::daftarTimLolos');
 $routes->post('/tim-lolos/insert', 'TimLolosController::insert');
 $routes->post('/tim-lolos/update/(:num)', 'TimLolosController::update/$1');
 
-
-$routes->get('/admin/user', 'UsersController::daftarUser');
+// User management
+$routes->get('/user', 'UsersController::daftarUser');
 $routes->post('/user/insert', 'UsersController::insert');
 $routes->post('/user/update/(:num)', 'UsersController::update/$1');
-
-$routes->get('/login', 'LoginController::login');
-
-// Halaman Lomba
-$routes->get('/', 'HomeLombaTRKJ::home');
