@@ -6,6 +6,12 @@ class DashboardController extends BaseController
 {
     public function index()
     {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
         $header['title'] = 'Dashboard';
         echo view('partial/header', $header);
         echo view('partial/top_menu');
@@ -23,5 +29,4 @@ class DashboardController extends BaseController
         echo view('daftar_rules');
         echo view('partial/footer');
     }
-
 }
