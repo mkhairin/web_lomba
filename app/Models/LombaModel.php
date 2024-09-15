@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Models;
+
 use CodeIgniter\Model;
 
-class LombaModel extends Model {
+class LombaModel extends Model
+{
     protected $table = 'lomba';
     protected $primaryKey = 'id_lomba';
     protected $allowedFields = [
@@ -27,8 +29,8 @@ class LombaModel extends Model {
         $builder = $db->table('lomba');
         $query = $builder->get();
         return $query->getResult();
-
     }
+
 
     public function insertData($data)
     {
@@ -42,7 +44,7 @@ class LombaModel extends Model {
         $this->update($id, $data);
     }
 
-    public function deleteData($id) 
+    public function deleteData($id)
     {
         $db = \Config\Database::connect();
         $builder = $db->table('lomba');

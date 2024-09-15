@@ -67,3 +67,6 @@ $routes->post('/tim-lolos/update/(:num)', 'TimLolosController::update/$1');
 $routes->get('/user', 'UsersController::daftarUser');
 $routes->post('/user/insert', 'UsersController::insert');
 $routes->post('/user/update/(:num)', 'UsersController::update/$1');
+
+// User Dashboard
+$routes->get('/user-dashboard', 'UserDashboardController::index');

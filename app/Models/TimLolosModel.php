@@ -34,4 +34,20 @@ class TimLolosModel extends Model
         return $query->getResult();
     }
 
+    public function getDataWhere($params)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('tim_lolos');
+        $builder->select('tim_lolos.*, tim_lomba.nama_tim, sekolah.nama_sekolah, lomba.nama, pembimbing.nama_pembimbing');
+        $builder->join('tim_lomba', 'tim_lomba.id_tim_lomba = tim_lolos.id_tim_lomba', 'left');
+        $builder->join('sekolah', 'sekolah.id_sekolah = tim_lolos.id_sekolah', 'left');
+        $builder->join('lomba', 'lomba.id_lomba = tim_lolos.id_lomba', 'left');
+        $builder->join('pembimbing', 'pembimbing.id_pembimbing = tim_lolos.id_pembimbing', 'left');
+        // Menggunakan where secara eksplisit untuk fleksibilitas
+        $builder->where('nama', $params);
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+
 }
