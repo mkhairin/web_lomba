@@ -5,6 +5,7 @@ class HomeLombaTRKJ extends BaseController
 
     public function home()
     {
+
         $header['title']='Home';
         echo view('web_lomba/header',$header);
         echo view('web_lomba/home');

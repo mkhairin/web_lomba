@@ -20,8 +20,8 @@ class LoginController extends BaseController
     public function loginAuth()
     {
         // Mengambil data username dan password dari form
-        $username = $this->request->getPost("username");
-        $password = $this->request->getPost("password");
+        $username = esc($this->request->getPost("username"));
+        $password = esc($this->request->getPost("password"));
 
         // Memanggil model Users
         $userModel = new UsersModel();
@@ -43,7 +43,7 @@ class LoginController extends BaseController
             if ($user['role'] === 'admin') {
                 return redirect()->to('/admin');
             } elseif ($user['role'] === 'user') {
-                return redirect()->to('/landing-page');
+                return redirect()->to('/user-dashboard');
             }
         } else {
             // Jika autentikasi gagal, tampilkan pesan kesalahan

@@ -7,6 +7,10 @@
                 <div class="col-sm-6">
                     <h1>Dashboard User</h1>
                 </div>
+                <div class="col-sm-6 d-flex mt-3">
+                    <h6 class="mx-2">Jam</h6>
+                    <small><?= $jam ?></small>
+                </div>
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -149,10 +153,10 @@
                                         <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">IT</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="custom-tabs-four-messages-tab" data-toggle="pill" href="#custom-tabs-four-messages" role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">Messages</a>
+                                        <a class="nav-link" id="custom-tabs-four-messages-tab" data-toggle="pill" href="#custom-tabs-four-messages" role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">Desain Grafis</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="custom-tabs-four-settings-tab" data-toggle="pill" href="#custom-tabs-four-settings" role="tab" aria-controls="custom-tabs-four-settings" aria-selected="false">Settings</a>
+                                        <a class="nav-link" id="custom-tabs-four-settings-tab" data-toggle="pill" href="#custom-tabs-four-settings" role="tab" aria-controls="custom-tabs-four-settings" aria-selected="false">Cisco</a>
                                     </li>
                                 </ul>
                             </div>
@@ -188,7 +192,7 @@
                                         </table>
                                     </div>
                                     <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
-                                    <table id="example1" class="table table-striped">
+                                        <table id="example1" class="table table-striped">
                                             <thead>
                                                 <tr>
                                                     <th style="width: 10px">#</th>
@@ -217,10 +221,62 @@
                                         </table>
                                     </div>
                                     <div class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
-                                        Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
+                                        <table id="example1" class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 10px">#</th>
+                                                    <th>Kategori</th>
+                                                    <th>Sekolah</th>
+                                                    <th>Pembimbing</th>
+                                                    <th>Nilai</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $i = 1 ?>
+                                                <?php foreach ($desainGrafis as $dataGrafis) : ?>
+                                                    <tr>
+                                                        <td><?= $i++ ?></td>
+                                                        <td><?= $dataGrafis->nama ?></td>
+                                                        <td style="text-align: justify;">
+                                                            <?= $dataGrafis->nama_sekolah ?>
+                                                        </td>
+                                                        <td><?= $dataGrafis->nama_pembimbing ?></td>
+                                                        <td><?= $dataGrafis->nilai ?></td>
+                                                        <td><?= $dataGrafis->status ?></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                     <div class="tab-pane fade" id="custom-tabs-four-settings" role="tabpanel" aria-labelledby="custom-tabs-four-settings-tab">
-                                        Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
+                                        <table id="example1" class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 10px">#</th>
+                                                    <th>Kategori</th>
+                                                    <th>Sekolah</th>
+                                                    <th>Pembimbing</th>
+                                                    <th>Nilai</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $i = 1 ?>
+                                                <?php foreach ($cisco as $dataCisco) : ?>
+                                                    <tr>
+                                                        <td><?= $i++ ?></td>
+                                                        <td><?= $dataCisco->nama ?></td>
+                                                        <td style="text-align: justify;">
+                                                            <?= $dataCisco->nama_sekolah ?>
+                                                        </td>
+                                                        <td><?= $dataCisco->nama_pembimbing ?></td>
+                                                        <td><?= $dataCisco->nilai ?></td>
+                                                        <td><?= $dataCisco->status ?></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
