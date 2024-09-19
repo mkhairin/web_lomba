@@ -63,6 +63,10 @@ $routes->get('/tim-lolos', 'TimLolosController::daftarTimLolos');
 $routes->post('/tim-lolos/insert', 'TimLolosController::insert');
 $routes->post('/tim-lolos/update/(:num)', 'TimLolosController::update/$1');
 
+$routes->get('/daftar-soal', 'SoalController::index');
+
+$routes->get('/daftar-pengumpulan', 'PengumpulanController::index');
+
 // User management
 $routes->get('/user', 'UsersController::daftarUser');
 $routes->post('/user/insert', 'UsersController::insert');
