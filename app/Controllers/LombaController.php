@@ -63,7 +63,6 @@ class LombaController extends BaseController
         $validationRules = [
             'nama' => 'required',
             'deskripsi' => 'required',
-            'peraturan' => 'required',
             'link_peraturan' => 'required',
             'link_pendaftaran' => 'required',
             'tgl_dibuka' => 'required',
@@ -79,7 +78,6 @@ class LombaController extends BaseController
             $data = [
                 'nama' => esc($this->request->getPost('nama')),
                 'deskripsi' => esc($this->request->getPost('deskripsi')),
-                'peraturan' => esc($this->request->getPost('peraturan')),
                 'link_peraturan' => esc($this->request->getPost('link_peraturan')),
                 'link_pendaftaran' => esc($this->request->getPost('link_pendaftaran')),
                 'tgl_dibuka' => esc($this->request->getPost('tgl_dibuka')),
@@ -112,7 +110,6 @@ class LombaController extends BaseController
         $validationRules = [
             'nama' => 'required',
             'deskripsi' => 'required',
-            'peraturan' => 'required',
             'link_peraturan' => 'required',
             'link_pendaftaran' => 'required',
             'tgl_dibuka' => 'required',
@@ -128,7 +125,6 @@ class LombaController extends BaseController
             $data = [
                 'nama' => esc($this->request->getPost('nama')),
                 'deskripsi' => esc($this->request->getPost('deskripsi')),
-                'peraturan' => esc($this->request->getPost('peraturan')),
                 'link_peraturan' => esc($this->request->getPost('link_peraturan')),
                 'link_pendaftaran' => esc($this->request->getPost('link_pendaftaran')),
                 'tgl_dibuka' => esc($this->request->getPost('tgl_dibuka')),

@@ -11,7 +11,6 @@ class LombaModel extends Model
     protected $allowedFields = [
         'nama',
         'deskripsi',
-        'peraturan',
         'link_peraturan',
         'link_pendaftaran',
         'tgl_dibuka',

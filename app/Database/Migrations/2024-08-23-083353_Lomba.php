@@ -26,10 +26,6 @@ class Lomba extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'peraturan' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '255',
-            ],
             'link_peraturan' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',

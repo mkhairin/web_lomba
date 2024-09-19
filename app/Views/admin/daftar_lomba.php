@@ -212,13 +212,13 @@
                                             </div>
                                         </div>
                                         <!-- Peraturan Lomba -->
-                                        <div class="col-md-12">
+                                        <!-- <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="peraturan">Aturan</label>
                                                 <textarea class="form-control" rows="4" id="peraturan" name="peraturan"
-                                                    placeholder="Masukkan Peraturan" required><?= $data->peraturan ?></textarea>
+                                                    placeholder="Masukkan Peraturan" required></textarea>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <!-- /.row -->
                                 </div>
