@@ -145,8 +145,10 @@
                             <td>Fotografi</td>
                             <td>
                                 <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
-                                    data-target="#modal-lg-update">Update</button>
-                                <button type="button" class="btn btn-dark btn-sm">Delete</button>
+                                    data-target="#modal-lg-update"><i
+                                        class="bi bi-pencil-square"></i></button>
+                                <button type="button" class="btn btn-dark btn-sm"><i
+                                        class="bi bi-trash3-fill"></i></button>
                             </td>
                         </tr>
                         <!-- Tambahkan lebih banyak baris sesuai kebutuhan -->

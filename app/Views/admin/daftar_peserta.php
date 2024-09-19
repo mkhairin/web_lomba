@@ -234,9 +234,11 @@
                                 <td>
 
                                     <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
-                                        data-target="#modal-lg-update<?= $data->id_peserta ?>">Update</button>
+                                        data-target="#modal-lg-update<?= $data->id_peserta ?>"><i
+                                            class="bi bi-pencil-square"></i></button>
                                     <a class="btn btn-dark btn-sm" href="/daftar-peserta/delete/<?= $data->id_peserta ?>"
-                                        role="button">Delete</a>
+                                        role="button"><i
+                                            class="bi bi-trash3-fill"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

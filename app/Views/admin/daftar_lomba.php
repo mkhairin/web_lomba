@@ -51,7 +51,7 @@
                                         <div class="form-group">
                                             <label for="nama">Kategori</label>
                                             <input type="text" class="form-control" id="nama" name="nama"
-                                                placeholder="Masukkan kategori"required>
+                                                placeholder="Masukkan kategori" required>
                                         </div>
                                     </div>
                                     <!-- Deskripsi Lomba -->

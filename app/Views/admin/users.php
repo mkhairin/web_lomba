@@ -56,7 +56,6 @@
                                                         <?= $timLomba->nama_tim ?></option>
                                                 <?php endforeach; ?>
                                             </select>
-
                                         </div>
                                     </div>
                                     <!-- Kategori Lomba -->
@@ -71,7 +70,6 @@
                                                         <?= $sekolah->nama_sekolah ?></option>
                                                 <?php endforeach; ?>
                                             </select>
-
                                         </div>
                                     </div>
                                 </div>
@@ -102,7 +100,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <!-- /.row -->
                             </div>
                             <!-- /.card-body -->
@@ -232,7 +229,6 @@
             </form>
         <?php endforeach; ?>
 
-
         <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal-lg">
             Tambah Data
         </button>
@@ -246,42 +242,46 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example1" class="table table-striped table-responsive">
-                    <thead>
-                        <tr>
-                            <th style="width: 10px">#</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Sekolah</th>
-                            <th>Tim</th>
-                            <th>Kategori Lomba</th>
-                            <th>Roles</th>
-                            <th style="width: 200px">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $i = 1 ?>
-                        <?php foreach ($dataUsers as $user) : ?>
+                <div class="table-responsive"> <!-- Add this wrapper -->
+                    <table id="example1" class="table table-striped">
+                        <thead>
                             <tr>
-                                <td><?= $i++ ?></td>
-                                <td><?= $user->username ?></td>
-                                <td style="text-align: justify;">
-                                    <?= substr($user->password, 0, 10) . '...' ?>
-                                </td>
-                                <td><?= $user->nama_sekolah ?></td>
-                                <td><?= $user->nama_tim ?></td>
-                                <td><?= $user->nama ?></td>
-                                <td><?= $user->role ?></td>
-                                <td>
-                                    <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
-                                        data-target="#modal-lg-update<?= $user->id_user ?>">Update</button>
-                                    <a class="btn btn-dark btn-sm" href="/user/delete/<?= $user->id_user ?>"
-                                        role="button">Delete</a>
-                                </td>
+                                <th style="width: 10px">#</th>
+                                <th>Username</th>
+                                <th>Password</th>
+                                <th>Sekolah</th>
+                                <th>Tim</th>
+                                <th>Kategori Lomba</th>
+                                <th>Roles</th>
+                                <th style="width: 200px">Aksi</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1 ?>
+                            <?php foreach ($dataUsers as $user) : ?>
+                                <tr>
+                                    <td><?= $i++ ?></td>
+                                    <td><?= $user->username ?></td>
+                                    <td style="text-align: justify;">
+                                        <?= substr($user->password, 0, 10) . '...' ?>
+                                    </td>
+                                    <td><?= $user->nama_sekolah ?></td>
+                                    <td><?= $user->nama_tim ?></td>
+                                    <td><?= $user->nama ?></td>
+                                    <td><?= $user->role ?></td>
+                                    <td>
+                                        <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
+                                            data-target="#modal-lg-update<?= $user->id_user ?>"><i
+                                                class="bi bi-pencil-square"></i></button>
+                                        <a class="btn btn-dark btn-sm" href="/user/delete/<?= $user->id_user ?>"
+                                            role="button"><i
+                                                class="bi bi-trash3-fill"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div> <!-- End of table-responsive wrapper -->
             </div>
             <!-- /.card-body -->
         </div>
