@@ -49,7 +49,7 @@
                                         <div class="form-group">
                                             <label for="kategori">Nama Sekolah</label>
                                             <input type="text" class="form-control" id="nama_sekolah"
-                                                name="nama_sekolah" placeholder="Masukkan kategori">
+                                                name="nama_sekolah" placeholder="Masukkan kategori" required>
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -57,7 +57,7 @@
                                         <div class="form-group">
                                             <label for="deskripsi">Alamat</label>
                                             <input type="text" class="form-control" id="alamat" name="alamat"
-                                                placeholder="Masukkan deskripsi">
+                                                placeholder="Masukkan deskripsi" required>
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +99,7 @@
                                         <div class="form-group">
                                             <label for="nama_sekolah">Nama Sekolah</label>
                                             <input type="text" class="form-control" id="nama_sekolah"
-                                                name="nama_sekolah" value="<?= $data->nama_sekolah ?>">
+                                                name="nama_sekolah" value="<?= $data->nama_sekolah ?>" required>
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -107,7 +107,7 @@
                                         <div class="form-group">
                                             <label for="alamat">Alamat</label>
                                             <input type="text" class="form-control" id="alamat" name="alamat"
-                                                value="<?= $data->alamat ?>">
+                                                value="<?= $data->alamat ?>" required>
                                         </div>
                                     </div>
                                 </div>

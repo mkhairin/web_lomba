@@ -66,7 +66,7 @@
                                         <div class="form-group">
                                             <label for="nama_pembimbing">Nama Pembimbing</label>
                                             <input type="text" class="form-control" id="nama_pembimbing"
-                                                name="nama_pembimbing" placeholder="Masukkan Nama">
+                                                name="nama_pembimbing" placeholder="Masukkan Nama" required>
                                         </div>
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@
                                         <div class="form-group">
                                             <label for="no_handphone">No Handphone</label>
                                             <input type="text" class="form-control" id="no_handphone"
-                                                name="no_handphone" placeholder="Masukkan Nomor Hp">
+                                                name="no_handphone" placeholder="Masukkan Nomor Hp" required>
                                         </div>
                                     </div>
                                 </div>
@@ -148,7 +148,7 @@
                                             <label for="nama_pembimbing">Nama Pembimbing</label>
                                             <input type="text" class="form-control" id="nama_pembimbing"
                                                 name="nama_pembimbing" value="<?= $pembimbing->nama_pembimbing; ?>"
-                                                placeholder="Masukkan Nama Pembimbing">
+                                                placeholder="Masukkan Nama Pembimbing" required>
                                         </div>
                                     </div>
                                 </div>
@@ -171,7 +171,7 @@
                                         <div class="form-group">
                                             <label for="no_handphone">No Handphone</label>
                                             <input type="text" class="form-control" id="no_handphone"
-                                                name="no_handphone" value="<?= $pembimbing->no_handphone ?>">
+                                                name="no_handphone" value="<?= $pembimbing->no_handphone ?>" required>
                                         </div>
                                     </div>
                                 </div>

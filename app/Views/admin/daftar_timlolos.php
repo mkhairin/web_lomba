@@ -91,7 +91,7 @@
                                         <div class="form-group">
                                             <label for="nilai">Nilai Skor</label>
                                             <input type="number" class="form-control" id="nilai" name="nilai"
-                                                placeholder="Masukkan Nilai Akhir">
+                                                placeholder="Masukkan Nilai Akhir" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -204,7 +204,7 @@
                                         <div class="form-group">
                                             <label for="nilai">Nilai Skor</label>
                                             <input type="number" class="form-control" id="nilai" name="nilai"
-                                                value="<?= $timlolos->nilai ?>" placeholder="Masukkan Nilai Akhir">
+                                                value="<?= $timlolos->nilai ?>" placeholder="Masukkan Nilai Akhir" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

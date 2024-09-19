@@ -50,7 +50,7 @@
                                         <div class="form-group">
                                             <label for="nama_sponsor">Nama Sponsor</label>
                                             <input type="text" class="form-control" id="nama_sponsor"
-                                                name="nama_sponsor" placeholder="Masukkan kategori">
+                                                name="nama_sponsor" placeholder="Masukkan kategori" required>
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -58,7 +58,7 @@
                                         <div class="form-group">
                                             <label for="logo">Logo</label>
                                             <input type="file" class="form-control" id="logo" name="logo"
-                                                placeholder="Masukkan deskripsi">
+                                                placeholder="Masukkan deskripsi" required>
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +99,7 @@
                                         <div class="form-group">
                                             <label for="nama_sponsor">Nama Sponsor</label>
                                             <input type="text" class="form-control" id="nama_sponsor"
-                                                name="nama_sponsor" value="<?= $data->nama_sponsor ?>">
+                                                name="nama_sponsor" value="<?= $data->nama_sponsor ?>" required>
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -107,7 +107,7 @@
                                         <div class="form-group">
                                             <label for="logo">Logo</label>
                                             <input type="file" class="form-control" id="logo" name="logo"
-                                                value="<?= $data->logo ?>">
+                                                value="<?= $data->logo ?>" required>
                                         </div>
                                     </div>
                                 </div>

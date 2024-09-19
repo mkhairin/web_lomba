@@ -33,14 +33,14 @@
                                         <div class="form-group">
                                             <label for="username">Username</label>
                                             <input type="text" class="form-control" name="username" id="username"
-                                                placeholder="Masukkan Username">
+                                                placeholder="Masukkan Username" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="password">Password</label>
                                             <input type="text" class="form-control" name="password" id="password"
-                                                placeholder="Masukkan Password">
+                                                placeholder="Masukkan Password" required>
                                         </div>
                                     </div>
                                 </div>
@@ -139,14 +139,14 @@
                                             <div class="form-group">
                                                 <label for="username">Username</label>
                                                 <input type="text" class="form-control" name="username" id="username"
-                                                    value="<?= esc($user->username) ?>" placeholder="Masukkan Username">
+                                                    value="<?= esc($user->username) ?>" placeholder="Masukkan Username" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="password">Password</label>
                                                 <input type="text" class="form-control" name="password" id="password"
-                                                    value="<?= esc($user->password) ?>" placeholder="Masukkan Password">
+                                                    value="<?= esc($user->password) ?>" placeholder="Masukkan Password" required>
                                             </div>
                                         </div>
                                     </div>

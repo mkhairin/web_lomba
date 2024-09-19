@@ -48,7 +48,7 @@
                                         <div class="form-group">
                                             <label for="nama_tim">Nama Tim</label>
                                             <input type="text" class="form-control" id="nama_tim" name="nama_tim"
-                                                placeholder="Masukkan Nama Tim">
+                                                placeholder="Masukkan Nama Tim" required>
                                         </div>
                                     </div>
                                     <!-- Kategori Lomba -->
