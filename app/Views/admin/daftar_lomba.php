@@ -105,13 +105,13 @@
                                         </div>
                                     </div>
                                     <!-- Peraturan Lomba -->
-                                    <div class="col-md-12">
+                                    <!-- <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="peraturan">Aturan</label>
                                             <textarea class="form-control" id="peraturan" rows="4" name="peraturan"
                                                 placeholder="Masukkan aturan" required></textarea>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- /.row -->
                             </div>
