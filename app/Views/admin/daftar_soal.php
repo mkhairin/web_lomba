@@ -14,6 +14,76 @@
     <!-- Main content -->
     <section class="content">
 
+        <?php $validation = \Config\Services::validation(); ?>
+
+        <!-- Pesan sukses -->
+        <?php if (session()->getFlashdata('success')): ?>
+            <div class="alert alert-success">
+                <?= session()->getFlashdata('success'); ?>
+            </div>
+        <?php endif; ?>
+
+        <!-- Pesan error general -->
+        <?php if (session()->getFlashdata('error')): ?>
+            <div class="alert alert-danger">
+                <?= session()->getFlashdata('error'); ?>
+            </div>
+        <?php endif; ?>
+
+        <!-- Modal Add -->
+        <form action="/daftar-soal/insert" method="post">
+            <?php csrf_field() ?>
+            <div class="modal fade" id="modal-lg">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Tambah Daftar Soal</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <div class="row">
+                                    <input type="hidden" name="id_soal" id="id_soal">
+                                    <!-- Kategori Lomba -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="id_lomba">Kategori</label>
+                                            <select class="form-control select" id="id_lomba" name="id_lomba"
+                                                style="width: 100%;">
+                                                <option value="Aktif" selected>Pilih Kategori</option>
+                                                <?php foreach ($dataLomba as $lomba) : ?>
+                                                    <option value="<?= $lomba->id_lomba ?>"><?= $lomba->nama ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Link Peraturan -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="link_soal">Link Soal</label>
+                                            <input type="text" class="form-control" id="link_soal"
+                                                name="link_soal" placeholder="Masukkan link soal">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-dark">Save changes</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+        </form>
+
         <!-- Tombol tambah data -->
         <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal-lg">
             Tambah Data
@@ -31,7 +101,7 @@
                 <table id="example1" class="table table-striped">
                     <thead>
                         <tr>
-                            <th style="width: 10px">No</th>
+                            <th style="width: 10px">#</th>
                             <th>Kategori</th>
                             <th>Link Soal</th>
                             <th style="width: 200px">Aksi</th>
@@ -39,39 +109,20 @@
                     </thead>
                     <tbody>
                         <!-- Tambahkan data statik -->
-                        <tr>
-                            <td>1</td>
-                            <td>Programming</td>
-                            <td><a href="#">Link Soal Programming</a></td>
-                            <td>
-                                <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-pencil-square"></i>
-                                    Update</button>
-                                <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-trash3-fill"></i>
-                                    Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Fotografi</td>
-                            <td><a href="#">Link Soal Fotografi</a></td>
-                            <td>
-                                <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-pencil-square"></i>
-                                    Update</button>
-                                <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-trash3-fill"></i>
-                                    Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Videografi</td>
-                            <td><a href="#">Link Soal Videografi</a></td>
-                            <td>
-                                <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-pencil-square"></i>
-                                    Update</button>
-                                <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-trash3-fill"></i>
-                                    Delete</button>
-                            </td>
-                        </tr>
+                        <?php $i = 1; ?>
+                        <?php foreach ($dataSoal as $soal) : ?>
+                            <tr>
+                                <td><?= $i++ ?></td>
+                                <td><?= $soal->nama ?></td>
+                                <td><a href="<?= $soal->link_soal ?>">Link Soal <?= $soal->nama ?></a></td>
+                                <td>
+                                    <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-pencil-square"></i>
+                                        Update</button>
+                                    <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-trash3-fill"></i>
+                                        Delete</button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                         <!-- Tambahkan lebih banyak baris sesuai kebutuhan -->
                     </tbody>
                 </table>

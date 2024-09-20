@@ -115,6 +115,24 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="/daftar-pengumpulan" class="nav-link">
+                        <i class="nav-icon fas fa-check-circle"></i> <!-- Icon for Qualified Teams -->
+                        <p>
+                            Daftar Pengumpulan
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/daftar-soal" class="nav-link">
+                        <i class="nav-icon fas fa-check-circle"></i> <!-- Icon for Qualified Teams -->
+                        <p>
+                            Daftar Soal
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-item" style="border-bottom: 1px solid #dee2e6; margin-bottom: 4px;">
                     <a href="/daftar-juara" class="nav-link">
                         <i class="nav-icon fas fa-medal"></i> <!-- Icon for Winners -->

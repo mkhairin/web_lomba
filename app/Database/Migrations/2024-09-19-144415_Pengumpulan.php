@@ -27,6 +27,10 @@ class Pengumpulan extends Migration
             'type'       => 'VARCHAR',
                 'constraint' => '255'
             ],
+            'status' => [
+                'type'       => 'VARCHAR',
+                    'constraint' => '20'
+                ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,

@@ -11,9 +11,21 @@ class PengumpulanModel extends Model
     protected $allowedFields = [
         'id_lomba',
         'link_pengumpulan',
+        'status'
     ];
 
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
+
+    public function getdata()
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('pengumpulan');
+        $builder->select('pengumpulan.*, lomba.nama');
+        $builder->join('lomba', 'lomba.id_lomba = pengumpulan.id_lomba', 'left');
+
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }
