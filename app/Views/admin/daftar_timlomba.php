@@ -51,6 +51,29 @@
                                                 placeholder="Masukkan Nama Tim" required>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="ketua_tim">Ketua Tim</label>
+                                            <input type="text" class="form-control" id="ketua_tim" name="ketua_tim"
+                                                placeholder="Masukkan Nama Tim" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="anggota">Nama Anggota</label>
+                                            <input type="text" class="form-control" id="anggota" name="anggota"
+                                                placeholder="Masukkan Nama Tim" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="no_ketua">No Ketua</label>
+                                            <input type="number" class="form-control" id="no_ketua" name="no_ketua"
+                                                placeholder="Masukkan Nama Tim" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <!-- Kategori Lomba -->
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -66,8 +89,6 @@
 
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <!-- Deskripsi Lomba -->
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -135,6 +156,29 @@
                                                     value="<?= $timLomba->nama_tim ?>" required>
                                             </div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="ketua_tim">Ketua Tim</label>
+                                                <input type="text" class="form-control" id="ketua_tim" name="ketua_tim"
+                                                    value="<?= $timLomba->ketua_tim ?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="anggota">Nama Anggota</label>
+                                                <input type="text" class="form-control" id="anggota" name="anggota"
+                                                    value="<?= $timLomba->anggota ?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="no_ketua">No Ketua</label>
+                                                <input type="number" class="form-control" id="no_ketua" name="no_ketua"
+                                                    value="<?= $timLomba->no_ketua ?>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <!-- Sekolah -->
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -151,8 +195,6 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <!-- Kategori Lomba -->
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -217,10 +259,13 @@
                     <thead>
                         <tr>
                             <th style="width: 10px">#</th>
+                            <th>Nama Tim</th>
                             <th>Sekolah</th>
                             <th>Kategori</th>
                             <th>Pembimbing</th>
-                            <th>Nama Tim</th>
+                            <th>Ketua</th>
+                            <th>Anggota</th>
+                            <th>No Ketua</th>
                             <th style="width: 200px">Aksi</th>
                         </tr>
                     </thead>
@@ -229,12 +274,15 @@
                         <?php foreach ($dataTimLomba as $timLomba) : ?>
                             <tr>
                                 <td><?= $i++ ?></td>
+                                <td><?= $timLomba->nama_tim ?></td>
                                 <td><?= $timLomba->nama_sekolah ?></td>
                                 <td style="text-align: justify;">
                                     <?= $timLomba->nama ?>
                                 </td>
                                 <td><?= $timLomba->nama_pembimbing ?></td>
-                                <td><?= $timLomba->nama_tim ?></td>
+                                <td><?= $timLomba->ketua_tim ?></td>
+                                <td><?= $timLomba->anggota ?></td>
+                                <td><?= $timLomba->no_ketua ?></td>
                                 <td>
                                     <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
                                         data-target="#modal-lg-update<?= $timLomba->id_tim_lomba ?>"><i

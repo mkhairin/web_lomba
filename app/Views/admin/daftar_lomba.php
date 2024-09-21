@@ -251,47 +251,51 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example1" class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th style="width: 10px">#</th>
-                            <th>Kategori</th>
-                            <th>Deskripsi</th>
-                            <th>Aturan</th>
-                            <th>Tgl Buka</th>
-                            <th>Tgl Tutup</th>
-                            <th>Status</th>
-                            <th style="width: 100px">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $i = 1 ?>
-                        <?php foreach ($dataLomba as $data) : ?>
+                <div class="table-responsive">
+                    <table id="example1" class="table table-striped">
+                        <thead>
                             <tr>
-                                <td><?= $i++ ?></td>
-                                <td><?= $data->nama ?></td>
-                                <td style="text-align: justify;">
-                                    <?= $data->deskripsi ?>
-                                </td>
-                                <td><?= $data->peraturan ?></td>
-                                <td><?= $data->tgl_dibuka ?></td>
-                                <td><?= $data->tgl_ditutup ?></td>
-                                <td><span class="badge rounded text-bg-primary bg-primary"
-                                        style="opacity: 50%;"><?= $data->status ?></span></td>
-                                <td>
-
-                                    <button type="button" class="btn btn-dark btn-sm rounded" data-toggle="modal"
-                                        data-target="#modal-lg-update<?= $data->id_lomba ?>"><i
-                                            class="bi bi-pencil-square"></i></button>
-                                    <a class="btn btn-dark btn-sm rounded"
-                                        href="/daftar-lomba/delete/<?= $data->id_lomba ?>" role="button"><i
-                                            class="bi bi-trash3-fill"></i></a>
-                                </td>
+                                <th style="width: 10px">#</th>
+                                <th>Kategori</th>
+                                <th>Deskripsi</th>
+                                <th>Link Aturan</th>
+                                <th>Link Pendaftaran</th>
+                                <th>Tgl Buka</th>
+                                <th>Tgl Tutup</th>
+                                <th>Status</th>
+                                <th style="width: 100px">Aksi</th>
                             </tr>
-                        <?php endforeach; ?>
-                        <!-- Tambahkan lebih banyak baris sesuai kebutuhan -->
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1 ?>
+                            <?php foreach ($dataLomba as $data) : ?>
+                                <tr>
+                                    <td><?= $i++ ?></td>
+                                    <td><?= $data->nama ?></td>
+                                    <td style="text-align: justify;">
+                                        <?= $data->deskripsi ?>
+                                    </td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td><?= $data->tgl_dibuka ?></td>
+                                    <td><?= $data->tgl_ditutup ?></td>
+                                    <td><span class="badge rounded text-bg-primary bg-primary"
+                                            style="opacity: 50%;"><?= $data->status ?></span></td>
+                                    <td>
+
+                                        <button type="button" class="btn btn-dark btn-sm rounded" data-toggle="modal"
+                                            data-target="#modal-lg-update<?= $data->id_lomba ?>"><i
+                                                class="bi bi-pencil-square"></i></button>
+                                        <a class="btn btn-dark btn-sm rounded"
+                                            href="/daftar-lomba/delete/<?= $data->id_lomba ?>" role="button"><i
+                                                class="bi bi-trash3-fill"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                            <!-- Tambahkan lebih banyak baris sesuai kebutuhan -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <!-- /.card-body -->
         </div>

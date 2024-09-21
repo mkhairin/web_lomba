@@ -33,6 +33,11 @@ class Peserta extends Migration
                 'constraint' => 5,
                 'unsigned'   => true,
             ],
+            'id_tim_lomba' => [
+                'type'       => 'INT',
+                'constraint' => 5,
+                'unsigned'   => true,
+            ],
             'nama_peserta' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255'
@@ -55,10 +60,11 @@ class Peserta extends Migration
         $this->forge->addForeignKey('id_lomba', 'lomba', 'id_lomba', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('id_pembimbing', 'pembimbing', 'id_pembimbing', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('id_sekolah', 'sekolah', 'id_sekolah', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_tim_lomba', 'tim_lomba', 'id_tim_lomba', 'CASCADE', 'CASCADE');
         $this->forge->createTable('peserta');
 
-         // Aktifkan kembali foreign key checks
-         $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
+        // Aktifkan kembali foreign key checks
+        $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
     }
 
     public function down()

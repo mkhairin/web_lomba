@@ -13,6 +13,9 @@ class TimLombaModel extends Model
         'id_lomba',
         'id_pembimbing',
         'nama_tim',
+        'ketua_tim',
+        'anggota',
+        'no_ketua'
     ];
 
     protected $useTimestamps = true;
@@ -43,13 +46,11 @@ class TimLombaModel extends Model
         $this->update($id, $data);
     }
 
-    public function deleteData($id) 
+    public function deleteData($id)
     {
         $db = \Config\Database::connect();
         $builder = $db->table('tim_lomba');
         $builder->where('id_tim_lomba', $id);
         $builder->delete();
     }
-
-
 }

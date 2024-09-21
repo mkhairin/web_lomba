@@ -63,7 +63,10 @@ class TimLombaController extends BaseController
             'id_sekolah' => 'required|integer',
             'id_lomba' => 'required|integer',
             'id_pembimbing' => 'required|integer',
-            'nama_tim' => 'required|string|max_length[100]'
+            'nama_tim' => 'required|string|max_length[100]',
+            'ketua_tim' => 'required|string|max_length[100]',
+            'anggota' => 'required|string|max_length[100]',
+            'no_ketua' => 'required'
         ];
 
         // Jika validasi gagal, kembalikan ke halaman sebelumnya dengan input dan pesan validasi
@@ -78,7 +81,10 @@ class TimLombaController extends BaseController
                 'id_sekolah' => esc($this->request->getPost('id_sekolah')),
                 'id_lomba' => esc($this->request->getPost('id_lomba')),
                 'id_pembimbing' => esc($this->request->getPost('id_pembimbing')),
-                'nama_tim' => esc($this->request->getPost('nama_tim'))
+                'nama_tim' => esc($this->request->getPost('nama_tim')),
+                'ketua_tim' => esc($this->request->getPost('ketua_tim')),
+                'anggota' => esc($this->request->getPost('anggota')),
+                'no_ketua' => esc($this->request->getPost('no_ketua')),
             ];
 
             // Masukkan data ke database dan cek keberhasilannya
@@ -108,20 +114,23 @@ class TimLombaController extends BaseController
 
         // Instansiasi model TimLombaModel
         $timLombaModel = new \App\Models\TimLombaModel();
-    
+
         // Aturan validasi input
         $validationRules = [
             'id_sekolah' => 'required|integer',
             'id_lomba' => 'required|integer',
             'id_pembimbing' => 'required|integer',
-            'nama_tim' => 'required|string|max_length[100]'
+            'nama_tim' => 'required|string|max_length[100]',
+            'ketua_tim' => 'required|string|max_length[100]',
+            'anggota' => 'required|string|max_length[100]',
+            'no_ketua' => 'required'
         ];
-    
+
         // Jika validasi gagal, kembalikan ke halaman sebelumnya dengan input dan pesan validasi
         if (!$this->validate($validationRules)) {
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
-    
+
         // Proses update data
         try {
             // Mengamankan data input menggunakan esc() dan memvalidasi input
@@ -129,9 +138,12 @@ class TimLombaController extends BaseController
                 'id_sekolah' => esc($this->request->getPost('id_sekolah')),
                 'id_lomba' => esc($this->request->getPost('id_lomba')),
                 'id_pembimbing' => esc($this->request->getPost('id_pembimbing')),
-                'nama_tim' => esc($this->request->getPost('nama_tim'))
+                'nama_tim' => esc($this->request->getPost('nama_tim')),
+                'ketua_tim' => esc($this->request->getPost('ketua_tim')),
+                'anggota' => esc($this->request->getPost('anggota')),
+                'no_ketua' => esc($this->request->getPost('no_ketua')),
             ];
-    
+
             // Cek apakah data berhasil diupdate
             if ($timLombaModel->update($id, $data)) {
                 session()->setFlashdata('success', 'Data Berhasil Diubah!');
@@ -143,11 +155,11 @@ class TimLombaController extends BaseController
             session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
             return redirect()->back()->withInput();
         }
-    
+
         // Redirect ke halaman tim-lomba jika berhasil
         return redirect()->to('/tim-lomba');
     }
-    
+
 
     public function delete($id): ResponseInterface
     {
@@ -159,7 +171,7 @@ class TimLombaController extends BaseController
 
         // Instansiasi model TimLombaModel
         $timLombaModel = new \App\Models\TimLombaModel();
-    
+
         try {
             // Periksa apakah ID valid dan data berhasil dihapus
             if ($timLombaModel->find($id)) {
@@ -175,9 +187,8 @@ class TimLombaController extends BaseController
             // Penanganan error dan menampilkan pesan kesalahan
             session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
-    
+
         // Redirect ke halaman tim-lomba setelah operasi selesai
         return redirect()->to('/tim-lomba');
     }
-    
 }

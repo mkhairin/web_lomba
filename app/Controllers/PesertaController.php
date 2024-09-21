@@ -19,14 +19,15 @@ class PesertaController extends BaseController
         $ModelLomba = new \App\Models\LombaModel();
         $ModelPembimbing = new \App\Models\PembimbingModel();
         $ModelSekolah = new \App\Models\SekolahModel();
+        $ModelTimLomba = new \App\Models\TimLombaModel();
 
         $data['dataPeserta'] = $ModelPeserta->getdata();
         $data['dataLomba'] = $ModelLomba->getdata();
         $data['dataPembimbing'] = $ModelPembimbing->getdata();
         $data['dataSekolah'] = $ModelSekolah->getdata();
+        $data['dataTimLomba'] = $ModelTimLomba->getdata();
 
         $header['title'] = 'Daftar Peserta';
-
 
         echo view('partial/header', $header);
         echo view('partial/top_menu');
@@ -49,6 +50,7 @@ class PesertaController extends BaseController
             'id_lomba' => 'required|integer',
             'id_pembimbing' => 'required|integer',
             'id_sekolah' => 'required|integer',
+            'id_tim_lomba' => 'required|integer',
             'nama_peserta' => 'required|alpha_space'
         ]);
 
@@ -62,6 +64,7 @@ class PesertaController extends BaseController
         $id_lomba = $this->request->getPost('id_lomba', FILTER_SANITIZE_NUMBER_INT);
         $id_pembimbing = $this->request->getPost('id_pembimbing', FILTER_SANITIZE_NUMBER_INT);
         $id_sekolah = $this->request->getPost('id_sekolah', FILTER_SANITIZE_NUMBER_INT);
+        $id_tim_lomba = $this->request->getPost('id_tim_lomba', FILTER_SANITIZE_NUMBER_INT);
         $nama_peserta = $this->request->getPost('nama_peserta', FILTER_SANITIZE_STRING);
 
         // Jika validasi berhasil, lanjutkan ke insert data
@@ -70,6 +73,7 @@ class PesertaController extends BaseController
             'id_lomba' => $id_lomba,
             'id_pembimbing' => $id_pembimbing,
             'id_sekolah' => $id_sekolah,
+            'id_tim_lomba' => $id_tim_lomba,
             'nama_peserta' => htmlspecialchars($nama_peserta, ENT_QUOTES, 'UTF-8') // XSS protection
         ];
 
@@ -97,6 +101,7 @@ class PesertaController extends BaseController
             'id_lomba' => 'required|integer',
             'id_pembimbing' => 'required|integer',
             'id_sekolah' => 'required|integer',
+            'id_tim_lomba' => 'required|integer',
             'nama_peserta' => 'required|alpha_space'
         ]);
 
@@ -110,6 +115,7 @@ class PesertaController extends BaseController
         $id_lomba = $this->request->getPost('id_lomba', FILTER_SANITIZE_NUMBER_INT);
         $id_pembimbing = $this->request->getPost('id_pembimbing', FILTER_SANITIZE_NUMBER_INT);
         $id_sekolah = $this->request->getPost('id_sekolah', FILTER_SANITIZE_NUMBER_INT);
+        $id_tim_lomba = $this->request->getPost('id_tim_lomba', FILTER_SANITIZE_NUMBER_INT);
         $nama_peserta = $this->request->getPost('nama_peserta', FILTER_SANITIZE_STRING);
 
         // Jika validasi berhasil, lanjutkan ke update data
@@ -118,6 +124,7 @@ class PesertaController extends BaseController
             'id_lomba' => $id_lomba,
             'id_pembimbing' => $id_pembimbing,
             'id_sekolah' => $id_sekolah,
+            'id_tim_lomba' => $id_tim_lomba,
             'nama_peserta' => htmlspecialchars($nama_peserta, ENT_QUOTES, 'UTF-8') // XSS protection
         ];
 

@@ -84,6 +84,20 @@
                                     <!-- /.col -->
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label for="id_tim_lomba">Tim Lomba</label>
+                                            <select class="form-control select" id="id_tim_lomba" name="id_tim_lomba"
+                                                style="width: 100%;">
+                                                <option value="" selected>Pilih Tim</option>
+                                                <?php foreach ($dataTimLomba as $data) : ?>
+                                                    <option value="<?= $data->id_tim_lomba; ?>"><?= $data->nama_tim; ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label for="nama_peserta">Nama Peserta</label>
                                             <input type="text" class="form-control" id="nama_peserta"
                                                 name="nama_peserta" placeholder="Masukkan Nama Peserta" required>
@@ -164,6 +178,20 @@
                                                         <option value="<?= $sekolah->id_sekolah; ?>"
                                                             <?= ($sekolah->id_sekolah == $data->id_sekolah) ? 'selected' : ''; ?>>
                                                             <?= $sekolah->nama_sekolah; ?>
+                                                        </option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="id_tim_lomba">Tim Lomba</label>
+                                                <select class="form-control select" id="id_tim_lomba" name="id_tim_lomba"
+                                                    style="width: 100%;">
+                                                    <option value="" selected>Pilih Tim</option>
+                                                    <?php foreach ($dataTimLomba as $data) : ?>
+                                                        <option value="<?= ($dataTimLomba->id_tim_lomba == $data->id_tim_lomba) ? 'selected' : ''; ?>"><?= $dataTimLomba->nama_tim; ?>
                                                         </option>
                                                     <?php endforeach; ?>
                                                 </select>

@@ -37,6 +37,18 @@ class TimLomba extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '30',
             ],
+            'ketua_tim' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'anggota' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'no_ketua' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '30',
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,

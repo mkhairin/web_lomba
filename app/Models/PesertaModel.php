@@ -12,6 +12,7 @@ class PesertaModel extends Model
         'id_lomba',
         'id_pembimbing',
         'id_sekolah',
+        'id_tim_lomba',
         'nama_peserta',
         'no_handphone',
     ];
@@ -25,19 +26,17 @@ class PesertaModel extends Model
         $db = \Config\Database::connect();
         $builder = $db->table('peserta');
         // Ambil kolom yang diperlukan dari tabel peserta, pembimbing, sekolah, dan lomba
-        $builder->select('peserta.*, pembimbing.nama_pembimbing, sekolah.nama_sekolah, lomba.nama'); 
-        // Join ke tabel lomba
+        $builder->select('peserta.*, pembimbing.nama_pembimbing, sekolah.nama_sekolah, lomba.nama, tim_lomba.nama_tim');
         $builder->join('lomba', 'lomba.id_lomba = peserta.id_lomba', 'left');
-        // Join ke tabel pembimbing
         $builder->join('pembimbing', 'pembimbing.id_pembimbing = peserta.id_pembimbing', 'left');
-        // Join ke tabel sekolah
-        $builder->join('sekolah', 'sekolah.id_sekolah = pembimbing.id_sekolah', 'left');
+        $builder->join('sekolah', 'sekolah.id_sekolah = peserta.id_sekolah', 'left');
+        $builder->join('tim_lomba', 'tim_lomba.id_sekolah = peserta.id_tim_lomba', 'left');
         // Eksekusi query
         $query = $builder->get();
-    
+
         return $query->getResult(); // Mengembalikan hasil sebagai objek
     }
-    
+
     public function insertData($data)
     {
         $db = \Config\Database::connect();
