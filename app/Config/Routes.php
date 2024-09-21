@@ -76,3 +76,4 @@ $routes->post('/user/update/(:num)', 'UsersController::update/$1');
 
 // User Dashboard
 $routes->get('/user-dashboard', 'UserDashboardController::index');
+$routes->get('/user-dashboard-lomba', 'UserDashboardController::dashboardLomba');

@@ -190,8 +190,8 @@
                                                 <select class="form-control select" id="id_tim_lomba" name="id_tim_lomba"
                                                     style="width: 100%;">
                                                     <option value="" selected>Pilih Tim</option>
-                                                    <?php foreach ($dataTimLomba as $data) : ?>
-                                                        <option value="<?= ($dataTimLomba->id_tim_lomba == $data->id_tim_lomba) ? 'selected' : ''; ?>"><?= $dataTimLomba->nama_tim; ?>
+                                                    <?php foreach ($dataTimLomba as $dataTim) : ?>
+                                                        <option value="<?= ($dataTim->id_tim_lomba == $data->id_tim_lomba) ? 'selected' : ''; ?>"><?= $dataTim->nama_tim; ?>
                                                         </option>
                                                     <?php endforeach; ?>
                                                 </select>

@@ -53,7 +53,6 @@ class UsersController extends BaseController
             'id_sekolah' => 'required',
             'id_tim_lomba' => 'required',
             'id_lomba' => 'required',
-            'role' => 'required'
         ];
 
         if (!$this->validate($validationRules)) {
@@ -69,7 +68,7 @@ class UsersController extends BaseController
                 'id_sekolah' => esc($this->request->getPost('id_sekolah')),
                 'id_tim_lomba' => esc($this->request->getPost('id_tim_lomba')),
                 'id_lomba' => esc($this->request->getPost('id_lomba')),
-                'role' => esc($this->request->getPost('roles'))
+                'role' => esc($this->request->getPost('role'))
             ];
 
             if ($userModel->insert($data)) {
@@ -100,7 +99,6 @@ class UsersController extends BaseController
             'id_sekolah' => 'required',
             'id_tim_lomba' => 'required',
             'id_lomba' => 'required',
-            'role' => 'required'
         ];
 
         if (!$this->validate($validationRules)) {
@@ -116,7 +114,7 @@ class UsersController extends BaseController
                 'id_sekolah' => esc($this->request->getPost('id_sekolah')),
                 'id_tim_lomba' => esc($this->request->getPost('id_tim_lomba')),
                 'id_lomba' => esc($this->request->getPost('id_lomba')),
-                'roles' => esc($this->request->getPost('roles'))
+                'role' => esc($this->request->getPost('role'))
             ];
 
             if ($userModel->update($id, $data)) {

@@ -10,7 +10,11 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-                <a href="#" class="d-block">User</a>
+                <?php foreach ($dataUser as $user) : ?>
+                    <a href="#" class="d-block">
+                        <?= $user->username; ?>
+                    </a>
+                <?php endforeach; ?>
             </div>
         </div>
 
@@ -32,11 +36,20 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="/user-dashboard" class="nav-link">
+                    <a href="/user-dashboard-lomba" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
 
                         <p>
                             Dashboard
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/user-dashboard" class="nav-link">
+                        <i class="nav-icon fas fa-home"></i>
+
+                        <p>
+                            Info Lomba
                         </p>
                     </a>
                 </li>

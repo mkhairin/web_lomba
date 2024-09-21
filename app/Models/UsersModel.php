@@ -33,4 +33,16 @@ class UsersModel extends Model
         return $query->getResult();
     }
 
+    public function getDataWhere($params)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('users');
+        $builder->select('users.*, sekolah.nama_sekolah, tim_lomba.nama_tim,  lomba.nama');
+        $builder->join('sekolah', 'sekolah.id_sekolah = users.id_sekolah', 'left');
+        $builder->join('tim_lomba', 'tim_lomba.id_tim_lomba = users.id_tim_lomba', 'left');
+        $builder->join('lomba', 'lomba.id_lomba = users.id_lomba', 'left');
+        $builder->where('username', $params);
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }

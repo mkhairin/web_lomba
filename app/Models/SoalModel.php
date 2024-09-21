@@ -27,4 +27,17 @@ class SoalModel extends Model
         $query = $builder->get();
         return $query->getResult();
     }
+
+    public function getDataWhere($params)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('soal');
+        $builder->select('soal.*, lomba.nama');
+        $builder->join('lomba', 'lomba.id_lomba = soal.id_lomba', 'left');
+        // Menggunakan where secara eksplisit untuk fleksibilitas
+        $builder->where('nama', $params);
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
 }
