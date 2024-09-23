@@ -84,4 +84,25 @@ class UserDashboardController extends BaseController
         echo view('user/dashboard_lomba', $data);
         echo view('partial/footer');
     }
+
+    public function dashboarduser()
+    {
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'user') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
+        $kategoriLomba = $session->get('lomba');
+        $username = $session->get('username');
+
+        $data['dataSoal'] = $this->soalModel->getDataWhere($kategoriLomba);
+        $data['dataUser'] = $this->userModel->getDataWhere($username);
+
+        $header['title'] = 'Dashboard User';
+        // echo view('partial/header', $header);
+        // echo view('partial/top_menu');
+        // echo view('user/side_menu', $data);
+        echo view('user/dist/dashboarduser', $data);
+        // echo view('partial/footer');
+    }
 }
