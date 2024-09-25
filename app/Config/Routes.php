@@ -78,3 +78,4 @@ $routes->post('/user/update/(:num)', 'UsersController::update/$1');
 $routes->get('/user-dashboard', 'UserDashboardController::index');
 $routes->get('/user-dashboard-lomba', 'UserDashboardController::dashboardLomba');
 $routes->get('/user-dashboarduser', 'UserDashboardController::dashboarduser');
+$routes->get('/informasi-lainnya', 'UserDashboardController::informasiView');
