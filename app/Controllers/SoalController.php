@@ -3,7 +3,10 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\SoalModel;
+use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
+use Exception;
 
 class SoalController extends BaseController
 {
@@ -122,5 +125,26 @@ class SoalController extends BaseController
         }
 
         return redirect()->to('/daftar-soal'); // Redirect ke halaman daftar setelah insert
+    }
+
+    public function delete($id): RedirectResponse
+    {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
+        }
+
+        try {
+            if ($this->modelSoal->delete($id)) {
+                session()->setFlashdata('success', 'Data Berhasil Dihapus!');
+            } else {
+                throw new Exception('Gagal menghapus data.');
+            }
+        } catch (Exception $e) {
+            session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
+
+        return redirect()->to('/daftar-soal');
     }
 }

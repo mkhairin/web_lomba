@@ -175,8 +175,7 @@
                                     <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
                                         data-target="#modal-lg-update<?= $soal->id_soal ?>"><i
                                             class="bi bi-pencil-square"></i></button>
-                                    <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-trash3-fill"></i>
-                                        Delete</button>
+                                    <a class="btn btn-dark btn-sm" href="/daftar-soal/delete/<?= $soal->id_soal ?>" role="button"><i class="bi bi-trash3-fill"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
