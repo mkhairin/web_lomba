@@ -29,7 +29,7 @@ class Pengumpulan extends Migration
             ],
             'deadline' => [
                 'type'       => 'DATETIME',
-                'constraint' => '255'
+                'null' => true,
             ],
             'status' => [
                 'type'       => 'VARCHAR',
