@@ -14,7 +14,7 @@ class TimLolosController extends BaseController
         // Check if user is admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
         $timLolosModel = new \App\Models\TimLolosModel();
@@ -41,7 +41,7 @@ class TimLolosController extends BaseController
         // Check if user is admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
         $timLolosModel = new \App\Models\TimLolosModel();
@@ -86,7 +86,7 @@ class TimLolosController extends BaseController
         // Check if user is admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
         $timLolosModel = new \App\Models\TimLolosModel();
@@ -131,7 +131,7 @@ class TimLolosController extends BaseController
         // Check if user is admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
         $timLolosModel = new \App\Models\TimLolosModel();

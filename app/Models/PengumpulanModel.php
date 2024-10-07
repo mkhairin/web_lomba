@@ -11,6 +11,7 @@ class PengumpulanModel extends Model
     protected $allowedFields = [
         'id_lomba',
         'link_pengumpulan',
+        'deadline',
         'status'
     ];
 

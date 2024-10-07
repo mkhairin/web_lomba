@@ -151,6 +151,14 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="/daftar-admin" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i> <!-- Icon for Users -->
+                        <p>
+                            Admin
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

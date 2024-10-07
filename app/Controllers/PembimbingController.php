@@ -22,7 +22,7 @@ class PembimbingController extends BaseController
       // Check if user is admin
       $session = session();
       if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-          return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+          return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
       }
     }
 
@@ -32,7 +32,7 @@ class PembimbingController extends BaseController
         // Check if user is admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
         
         $data['dataPembimbing'] = $this->modelPembimbing->getdata();
@@ -52,7 +52,7 @@ class PembimbingController extends BaseController
         // Check if user is admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
 
@@ -99,7 +99,7 @@ class PembimbingController extends BaseController
         // Check if user is admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
         // Aturan validasi
@@ -142,7 +142,7 @@ class PembimbingController extends BaseController
         // Check if user is admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
 

@@ -84,6 +84,62 @@
             <!-- /.modal -->
         </form>
 
+        <?php foreach ($dataSoal as $soal) : ?>
+            <!-- Modal Update -->
+            <form action="/daftar-soal/update/<?= $soal->id_soal ?>" method="post">
+                <?php csrf_field() ?>
+                <div class="modal fade" id="modal-lg-update<?= $soal->id_soal ?>">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Update Daftar Soal</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <input type="hidden" name="id_soal" id="id_soal">
+                                        <!-- Kategori Lomba -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="id_lomba">Kategori</label>
+                                                <select class="form-control select" id="id_lomba" name="id_lomba"
+                                                    style="width: 100%;">
+                                                    <option value="Aktif" selected>Pilih Kategori</option>
+                                                    <?php foreach ($dataLomba as $lomba) : ?>
+                                                        <option value="<?= $lomba->id_lomba ?>"><?= $lomba->nama ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- Link Peraturan -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="link_soal">Link Soal</label>
+                                                <input type="text" class="form-control" id="link_soal"
+                                                    name="link_soal" value="<?= $soal->link_soal ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.row -->
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-dark">Save changes</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+            </form>
+        <?php endforeach; ?>
+
         <!-- Tombol tambah data -->
         <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal-lg">
             Tambah Data
@@ -116,8 +172,9 @@
                                 <td><?= $soal->nama ?></td>
                                 <td><a href="<?= $soal->link_soal ?>">Link Soal <?= $soal->nama ?></a></td>
                                 <td>
-                                    <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-pencil-square"></i>
-                                        Update</button>
+                                    <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
+                                        data-target="#modal-lg-update<?= $soal->id_soal ?>"><i
+                                            class="bi bi-pencil-square"></i></button>
                                     <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-trash3-fill"></i>
                                         Delete</button>
                                 </td>

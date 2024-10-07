@@ -51,7 +51,8 @@ class PesertaController extends BaseController
             'id_pembimbing' => 'required|integer',
             'id_sekolah' => 'required|integer',
             'id_tim_lomba' => 'required|integer',
-            'nama_peserta' => 'required|alpha_space'
+            'nama_peserta' => 'required|alpha_space',
+            'no_handphone' => 'required|integer',
         ]);
 
         // Cek validasi input
@@ -66,19 +67,21 @@ class PesertaController extends BaseController
         $id_sekolah = $this->request->getPost('id_sekolah', FILTER_SANITIZE_NUMBER_INT);
         $id_tim_lomba = $this->request->getPost('id_tim_lomba', FILTER_SANITIZE_NUMBER_INT);
         $nama_peserta = $this->request->getPost('nama_peserta', FILTER_SANITIZE_STRING);
+        $no_handphone = $this->request->getPost('no_handphone', FILTER_SANITIZE_STRING);
 
         // Jika validasi berhasil, lanjutkan ke insert data
-        $Model = new \App\Models\PesertaModel();
+        $pesertaModel = new \App\Models\PesertaModel();
         $data = [
             'id_lomba' => $id_lomba,
             'id_pembimbing' => $id_pembimbing,
             'id_sekolah' => $id_sekolah,
             'id_tim_lomba' => $id_tim_lomba,
-            'nama_peserta' => htmlspecialchars($nama_peserta, ENT_QUOTES, 'UTF-8') // XSS protection
+            'nama_peserta' => htmlspecialchars($nama_peserta, ENT_QUOTES, 'UTF-8'), // XSS protection
+            'no_handphone' => htmlspecialchars($no_handphone, ENT_QUOTES, 'UTF-8') // XSS protection
         ];
 
         // Insert data dengan prepared statements (CodeIgniter menggunakan ini secara default)
-        if ($Model->insert($data)) {
+        if ($pesertaModel->insert($data)) {
             session()->setFlashdata('success', 'Data Berhasil Ditambah!');
             return redirect()->to('/daftar-peserta');
         } else {
@@ -102,7 +105,8 @@ class PesertaController extends BaseController
             'id_pembimbing' => 'required|integer',
             'id_sekolah' => 'required|integer',
             'id_tim_lomba' => 'required|integer',
-            'nama_peserta' => 'required|alpha_space'
+            'nama_peserta' => 'required|alpha_space',
+            'no_handphone' => 'required|integer',
         ]);
 
         // Cek validasi input
@@ -117,19 +121,21 @@ class PesertaController extends BaseController
         $id_sekolah = $this->request->getPost('id_sekolah', FILTER_SANITIZE_NUMBER_INT);
         $id_tim_lomba = $this->request->getPost('id_tim_lomba', FILTER_SANITIZE_NUMBER_INT);
         $nama_peserta = $this->request->getPost('nama_peserta', FILTER_SANITIZE_STRING);
+        $no_handphone = $this->request->getPost('no_handphone', FILTER_SANITIZE_STRING);
 
         // Jika validasi berhasil, lanjutkan ke update data
-        $Model = new \App\Models\PesertaModel();
+        $pesertaModel = new \App\Models\PesertaModel();
         $data = [
             'id_lomba' => $id_lomba,
             'id_pembimbing' => $id_pembimbing,
             'id_sekolah' => $id_sekolah,
             'id_tim_lomba' => $id_tim_lomba,
-            'nama_peserta' => htmlspecialchars($nama_peserta, ENT_QUOTES, 'UTF-8') // XSS protection
+            'nama_peserta' => htmlspecialchars($nama_peserta, ENT_QUOTES, 'UTF-8'), // XSS protection
+            'no_handphone' => htmlspecialchars($no_handphone, ENT_QUOTES, 'UTF-8') // XSS protection
         ];
 
         // Update data dengan prepared statements
-        if ($Model->update($id, $data)) {
+        if ($pesertaModel->update($id, $data)) {
             session()->setFlashdata('success', 'Data Berhasil Diubah!');
             return redirect()->to('/daftar-peserta');
         } else {
@@ -148,16 +154,16 @@ class PesertaController extends BaseController
         }
 
         // Pastikan model diinstansiasi dengan benar
-        $Model = new \App\Models\PesertaModel();
+        $pesertaModel = new \App\Models\PesertaModel();
 
         // Sanitasi ID yang diterima untuk menghindari input berbahaya
         $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 
         // Cek apakah data peserta dengan ID tersebut ada
-        $dataPeserta = $Model->find($id);
+        $dataPeserta = $pesertaModel->find($id);
         if ($dataPeserta) {
             // Jika data ditemukan, hapus data dengan prepared statement
-            if ($Model->delete($id)) {
+            if ($pesertaModel->delete($id)) {
                 session()->setFlashdata('success', 'Data Berhasil Dihapus!');
             } else {
                 session()->setFlashdata('error', 'Data Gagal Dihapus!');

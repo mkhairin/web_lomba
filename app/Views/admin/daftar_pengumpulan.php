@@ -68,6 +68,14 @@
                                                 name="link_pengumpulan" placeholder="Masukkan link pengumpulan">
                                         </div>
                                     </div>
+                                    <!-- Deadline -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="deadline">Deadline</label>
+                                            <input type="datetime-local" class="form-control" id="deadline"
+                                                name="deadline" placeholder="Masukkan daedline">
+                                        </div>
+                                    </div>
                                     <!-- Status Pengumpulan -->
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -118,6 +126,8 @@
                             <th style="width: 10px">No</th>
                             <th>Kategori</th>
                             <th>Link Pengumpulan</th>
+                            <th>Deadline</th>
+                            <th>Status</th>
                             <th style="width: 200px">Aksi</th>
                         </tr>
                     </thead>
@@ -129,6 +139,8 @@
                                 <td><?= $i++ ?></td>
                                 <td><?= $pengumpulan->nama ?></td>
                                 <td><a href="<?= $pengumpulan->link_pengumpulan ?>">Link Soal <?= $pengumpulan->nama ?></a></td>
+                                <th>Deadline</th>
+                                <td><?= $pengumpulan->status ?></td>
                                 <td>
                                     <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-pencil-square"></i>
                                         Update</button>

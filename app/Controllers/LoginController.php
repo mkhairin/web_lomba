@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\UsersModel;
 use App\Models\LombaModel;
+use App\Models\AdminModel;
 
 class LoginController extends BaseController
 {
@@ -23,40 +24,36 @@ class LoginController extends BaseController
         // Mengambil data username dan password dari form
         $username = esc($this->request->getPost("username"));
         $password = esc($this->request->getPost("password"));
-
+    
         // Memanggil model Users
         $userModel = new UsersModel();
         $lombaModel = new LombaModel();
-
-        // Cek apakah username ada di database
+    
+        // Cek apakah username ada di database tabel user
         $user = $userModel->where('username', $username)->first();
-
+    
         // Verifikasi password
         if ($user && password_verify($password, $user['password'])) {
-
             // Ambil kategori lomba berdasarkan lomba_id di tabel user
             $lomba = $lombaModel->where('id_lomba', $user['id_lomba'])->first();
             $kategoriLomba = $lomba ? $lomba['nama'] : 'No category';
-
-            // Menyimpan data yang dibutuhkan di session tanpa menggunakan setUserSession
+    
+            // Menyimpan data yang dibutuhkan di session
             session()->set([
                 'id_user' => $user['id_user'],
                 'username' => $user['username'],
                 'role' => $user['role'], // Simpan role di session
-                'lomba' => $kategoriLomba, 
+                'lomba' => $kategoriLomba,
                 'logged_in' => true,
             ]);
-
-            // Redirect ke halaman berdasarkan role
-            if ($user['role'] === 'admin') {
-                return redirect()->to('/admin');
-            } elseif ($user['role'] === 'user') {
-                return redirect()->to('/user-dashboard');
-            }
+    
+            // Redirect ke halaman user dashboard
+            return redirect()->to('/user-dashboard');
         } else {
             // Jika autentikasi gagal, tampilkan pesan kesalahan
             session()->setFlashdata('error', 'Username or Password incorrect!');
             return redirect()->to('/login');
         }
     }
+    
 }

@@ -68,7 +68,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="no_ketua">No Ketua</label>
-                                            <input type="number" class="form-control" id="no_ketua" name="no_ketua"
+                                            <input type="text" class="form-control" id="no_ketua" name="no_ketua"
                                                 placeholder="Masukkan Nama Tim" required>
                                         </div>
                                     </div>
@@ -173,7 +173,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="no_ketua">No Ketua</label>
-                                                <input type="number" class="form-control" id="no_ketua" name="no_ketua"
+                                                <input type="text" class="form-control" id="no_ketua" name="no_ketua"
                                                     value="<?= $timLomba->no_ketua ?>" required>
                                             </div>
                                         </div>

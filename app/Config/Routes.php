@@ -10,6 +10,9 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/login', 'LoginController::login');
 $routes->post('/login/auth', 'LoginController::loginAuth');
 
+$routes->get('/admin_panel', 'AdminLoginController::loginAdmin');
+$routes->post('/admin_login/auth', 'AdminLoginController::loginAuth');
+
 // Halaman Lomba (Public Route)
 $routes->get('/landing-page', 'HomeLombaTRKJ::home');
 
@@ -65,6 +68,7 @@ $routes->post('/tim-lolos/update/(:num)', 'TimLolosController::update/$1');
 
 $routes->get('/daftar-soal', 'SoalController::index');
 $routes->post('/daftar-soal/insert', 'SoalController::insert');
+$routes->post('/daftar-soal/update/(:num)', 'SoalController::update/$1');
 
 $routes->get('/daftar-pengumpulan', 'PengumpulanController::index');
 $routes->post('/daftar-pengumpulan/insert', 'PengumpulanController::insert');
@@ -73,6 +77,12 @@ $routes->post('/daftar-pengumpulan/insert', 'PengumpulanController::insert');
 $routes->get('/user', 'UsersController::daftarUser');
 $routes->post('/user/insert', 'UsersController::insert');
 $routes->post('/user/update/(:num)', 'UsersController::update/$1');
+
+// Admin management
+$routes->get('/daftar-admin', 'UserAdminController::daftarAdmin');
+$routes->post('/admin/insert', 'UserAdminController::insert');
+$routes->post('/admin/update/(:num)', 'UserAdminController::update/$1');
+$routes->get('/admin/delete/(:num)', 'UserAdminController::delete/$1');
 
 // User Dashboard
 $routes->get('/user-dashboard', 'UserDashboardController::index');

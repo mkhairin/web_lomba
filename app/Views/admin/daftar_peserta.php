@@ -104,6 +104,14 @@
                                         </div>
                                     </div>
                                     <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="no_handphone">No Handphone</label>
+                                            <input type="text" class="form-control" id="no_handphone"
+                                                name="no_handphone" placeholder="Masukkan No Peserta" required>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
                                 </div>
                                 <!-- /.row -->
                             </div>
@@ -206,6 +214,14 @@
                                                     value="<?= $data->nama_peserta; ?>" required>
                                             </div>
                                         </div>
+                                        <!-- /.col -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="no_handphone">No Handphone</label>
+                                                <input type="text" class="form-control" id="no_handphone"
+                                                    name="no_handphone" placeholder="Masukkan No Peserta" value="<?= $data->no_handphone; ?>" required>
+                                            </div>
+                                        </div>
                                     </div>
                                     <!-- /.row -->
                                 </div>
@@ -246,7 +262,8 @@
                             <th>Pembimbing</th>
                             <th>Sekolah</th>
                             <th>Lomba</th>
-
+                            <th>Tim</th>
+                            <th>No Handphone</th>
                             <th style="width: 200px">Aksi</th>
                         </tr>
                     </thead>
@@ -259,6 +276,8 @@
                                 <td><?= $data->nama_pembimbing ?></td>
                                 <td><?= $data->nama_sekolah ?></td>
                                 <td><?= $data->nama ?></td>
+                                <td><?= $data->nama_tim ?></td>
+                                <td><?= $data->no_handphone ?></td>
                                 <td>
 
                                     <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"

@@ -18,7 +18,7 @@ class SoalController extends BaseController
         // Check if user is admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
     }
 
@@ -27,7 +27,7 @@ class SoalController extends BaseController
         // Check if user is admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
         $data['dataLomba'] = $this->modelLomba->getdata();
@@ -47,7 +47,7 @@ class SoalController extends BaseController
         // Check if user is admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
         // Aturan validasi
@@ -71,6 +71,47 @@ class SoalController extends BaseController
         try {
             // Asumsikan insertData mengembalikan ID baru atau false jika gagal
             if ($this->modelSoal->insert($data)) {
+                session()->setFlashdata('success', 'Data Berhasil Ditambah!');
+            } else {
+                session()->setFlashdata('error', 'Data Gagal Ditambah!');
+            }
+        } catch (\Exception $e) {
+            log_message('error', $e->getMessage());  // Logging error details
+            session()->setFlashdata('error', 'Terjadi kesalahan pada server!');
+        }
+
+        return redirect()->to('/daftar-soal'); // Redirect ke halaman daftar setelah insert
+    }
+
+    public function update($id)
+    {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
+        }
+
+        // Aturan validasi
+        $validationRules = [
+            'id_lomba' => 'required',
+            'link_soal' => 'required'
+        ];
+
+        // Cek validasi input
+        if (!$this->validate($validationRules)) {
+            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+        }
+
+        // Jika validasi berhasil, lanjutkan ke insert data
+        $data = [
+            'id_soal' => esc($this->request->getPost('id_soal')),
+            'id_lomba' => esc($this->request->getPost('id_lomba')),
+            'link_soal' => esc($this->request->getPost('link_soal')),
+        ];
+
+        try {
+            // Asumsikan insertData mengembalikan ID baru atau false jika gagal
+            if ($this->modelSoal->update($id, $data)) {
                 session()->setFlashdata('success', 'Data Berhasil Ditambah!');
             } else {
                 session()->setFlashdata('error', 'Data Gagal Ditambah!');

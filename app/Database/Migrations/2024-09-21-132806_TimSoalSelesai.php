@@ -12,7 +12,7 @@ class TimSoalSelesai extends Migration
         $this->db->query('SET FOREIGN_KEY_CHECKS=0;');
 
         $this->forge->addField([
-            'id_selesao' => [
+            'id_tim_selesai' => [
                 'type'           => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
@@ -48,8 +48,8 @@ class TimSoalSelesai extends Migration
             ],
         ]);
 
-        $this->forge->addKey('id_soal', true);
-        $this->forge->createTable('soal');
+        $this->forge->addKey('id_tim_selesai', true);
+        $this->forge->createTable('tim_selesai');
 
         // Aktifkan kembali foreign key checks
         $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
@@ -60,7 +60,7 @@ class TimSoalSelesai extends Migration
         // Nonaktifkan foreign key checks
         $this->db->query('SET FOREIGN_KEY_CHECKS=0;');
 
-        $this->forge->dropTable('soal');
+        $this->forge->dropTable('id_tim_selesai');
 
         // Aktifkan kembali foreign key checks
         $this->db->query('SET FOREIGN_KEY_CHECKS=1;');

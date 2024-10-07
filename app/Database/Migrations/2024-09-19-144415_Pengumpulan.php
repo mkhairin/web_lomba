@@ -24,13 +24,17 @@ class Pengumpulan extends Migration
                 'unsigned'   => true,
             ],
             'link_pengumpulan' => [
-            'type'       => 'VARCHAR',
+                'type'       => 'VARCHAR',
+                'constraint' => '255'
+            ],
+            'deadline' => [
+                'type'       => 'DATETIME',
                 'constraint' => '255'
             ],
             'status' => [
                 'type'       => 'VARCHAR',
-                    'constraint' => '20'
-                ],
+                'constraint' => '20'
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
@@ -45,17 +49,17 @@ class Pengumpulan extends Migration
         $this->forge->addForeignKey('id_lomba', 'lomba', 'id_lomba', 'CASCADE', 'CASCADE');
         $this->forge->createTable('pengumpulan');
 
-         // Aktifkan kembali foreign key checks
-         $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
+        // Aktifkan kembali foreign key checks
+        $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
     }
     public function down()
     {
-           // Nonaktifkan foreign key checks
-           $this->db->query('SET FOREIGN_KEY_CHECKS=0;');
+        // Nonaktifkan foreign key checks
+        $this->db->query('SET FOREIGN_KEY_CHECKS=0;');
 
-           $this->forge->dropTable('pengumpulan');
-   
-           // Aktifkan kembali foreign key checks
-           $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
+        $this->forge->dropTable('pengumpulan');
+
+        // Aktifkan kembali foreign key checks
+        $this->db->query('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
