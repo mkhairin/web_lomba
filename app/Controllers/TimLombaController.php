@@ -40,6 +40,7 @@ class TimLombaController extends BaseController
         $data['dataSekolah'] = $sekolahModel->getdata();
         $data['dataLomba'] = $lombaModel->getdata();
         $data['dataPembimbing'] = $pembimbingModel->getdata();
+        
         echo view('partial/header', $header);
         echo view('partial/top_menu');
         echo view('partial/side_menu');
