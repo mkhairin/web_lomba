@@ -156,7 +156,7 @@
               <div class="stats-item d-flex">
                 <i class="bi bi-emoji-smile flex-shrink-0"></i>
                 <div>
-                  <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+                  <h1 class="fw-bold">Juara 1</h1>
                   <p><strong>Happy Clients</strong> <span>consequuntur quae</span></p>
                 </div>
               </div>
@@ -166,7 +166,7 @@
               <div class="stats-item d-flex">
                 <i class="bi bi-journal-richtext flex-shrink-0"></i>
                 <div>
-                  <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+                  <h1 class="fw-bold">Juara 2</h1>
                   <p><strong>Projects</strong> <span>adipisci atque cum quia aut</span></p>
                 </div>
               </div>
@@ -176,7 +176,7 @@
               <div class="stats-item d-flex">
                 <i class="bi bi-headset flex-shrink-0"></i>
                 <div>
-                  <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
+                  <h1 class="fw-bold">Juara 3</h1>
                   <p><strong>Hours Of Support</strong> <span>aut commodi quaerat</span></p>
                 </div>
               </div>
@@ -220,10 +220,10 @@
               <i class="bi bi-activity"></i>
               <h4><a href="" class="stretched-link"><?= $lomba->nama ?></a></h4>
               <p><?= $lomba->deskripsi ?></p>
-              <div class="d-flex flex-column mt-3">
-                <a href="<?= $lomba->link_peraturan ?>" class="btn-main">Link Peraturan</a>
-                <a href="" class="btn-main">Link Pendaftaran</a>
-              </div>
+              <!-- <div class="d-flex flex-column mt-3">
+                <a href="#" class="btn-main">Link Peraturan</a>
+                <a href="#" class="btn-main">Link Pendaftaran</a>
+              </div> -->
             </div>
           </div><!-- End Service Item -->
         <?php endforeach; ?>
