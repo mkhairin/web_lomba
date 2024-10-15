@@ -275,8 +275,8 @@
                                     <td style="text-align: justify;">
                                         <?= $data->deskripsi ?>
                                     </td>
-                                    <td>1</td>
-                                    <td>1</td>
+                                    <td><?= $data->link_peraturan ?></td>
+                                    <td><?= $data->link_pendaftaran ?></td>
                                     <td><?= $data->tgl_dibuka ?></td>
                                     <td><?= $data->tgl_ditutup ?></td>
                                     <td><span class="badge rounded text-bg-primary bg-primary"

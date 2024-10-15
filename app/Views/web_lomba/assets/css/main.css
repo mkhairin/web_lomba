@@ -703,6 +703,19 @@ section,
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
 
+/* btn all */
+.btn-main {
+  font-family: var(--heading-font);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 36px;
+  border-radius: 50px;
+  transition: 0.3s;
+  border: 2px solid var(--accent-color);
+}
+
 @media (max-width: 640px) {
   .hero h1 {
     font-size: 28px;

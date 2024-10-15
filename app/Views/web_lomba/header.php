@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - Vesperr Bootstrap Template</title>
+  <title>Kaltech - 2024</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -23,7 +23,7 @@
   <link href="assets/vendors/aos/aos.css" rel="stylesheet">
   <link href="assets/vendors/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
