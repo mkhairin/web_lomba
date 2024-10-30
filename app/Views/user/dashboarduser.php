@@ -4,11 +4,23 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Form Submit Tugas</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <form>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Link Penugasan</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan link penugasan">
+            </div>
+          </div>
+          <!-- /.card-body -->
+
+          <div class="card-footer">
+            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -35,14 +47,9 @@
             <div class="justify-content-end d-flex">
               <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
                 <button
-                  class="btn btn-sm btn-light bg-white dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuDate2"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="true">
-                  <i class="mdi mdi-calendar"></i> Today 22 September
-                  2024
+                  class="btn btn-sm btn-light bg-white"
+                  type="button">
+                  <i class="mdi mdi-calendar"></i> <?= $tanggalLengkap; ?>
                 </button>
               </div>
             </div>

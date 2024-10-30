@@ -92,6 +92,42 @@ class UserDashboardController extends BaseController
             return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
         }
 
+        // get tgl saat ini
+        $tanggal = date('d');
+        $bulan = date('n');
+        $tahun = date('Y');
+        $hari = date('l');
+
+        // Array untuk nama bulan dalam bahasa Indonesia
+        $namaBulan = [
+            1 => 'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember'
+        ];
+
+        // Array untuk nama hari dalam bahasa Indonesia
+        $namaHari = [
+            'Sunday' => 'Minggu',
+            'Monday' => 'Senin',
+            'Tuesday' => 'Selasa',
+            'Wednesday' => 'Rabu',
+            'Thursday' => 'Kamis',
+            'Friday' => 'Jumat',
+            'Saturday' => 'Sabtu'
+        ];
+
+        // Format tanggal dalam format "Hari, dd Bulan yyyy"
+        $tanggalLengkap = $namaHari[$hari] . ', ' . $tanggal . ' ' . $namaBulan[$bulan] . ' ' . $tahun;
+
         $kategoriLomba = $session->get('lomba');
         $username = $session->get('username');
 
@@ -99,6 +135,7 @@ class UserDashboardController extends BaseController
         $data['dataUser'] = $this->userModel->getDataWhere($username);
         $data['dataKategori'] = $this->lombaModel->getDataWhere($kategoriLomba);
         $data['dataTimLomba'] = $this->timLombaModel->getDataWhere($kategoriLomba);
+        $data['tanggalLengkap'] = $tanggalLengkap;
 
         $header['title'] = 'Dashboard User';
 

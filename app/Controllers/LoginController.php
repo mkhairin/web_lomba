@@ -14,9 +14,9 @@ class LoginController extends BaseController
         $header['title'] = 'Login';
 
         // Memuat tampilan login
-        echo view('login/header', $header);
+        echo view('login/header_user', $header);
         echo view('login/login');
-        echo view('login/footer');
+        echo view('login/footer_user');
     }
 
     public function loginAuth()
