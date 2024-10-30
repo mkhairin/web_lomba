@@ -1,34 +1,46 @@
 <!-- Modal -->
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Form Submit Tugas</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="card-body">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Link Penugasan</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan link penugasan">
-            </div>
-          </div>
-          <!-- /.card-body -->
 
-          <div class="card-footer">
-            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+<?php foreach ($dataTimLomba as $data): ?>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Form Submit Tugas</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container mb-3">
+            <h4>Informasi</h4>
+            <ul>
+              <li>Tim : <?= $data->nama_tim ?></li>
+              <li>Ketua : <?= $data->ketua_tim ?></li>
+              <li>Kategori : <?= $data->nama ?></li>
+              <li>Sekolah : <?= $data->nama_sekolah ?></li>
+            </ul>
           </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+          <form>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Link Penugasan</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan link penugasan">
+              </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<?php endforeach; ?>
+
 <!-- partial -->
 <div class="main-panel">
   <div class="content-wrapper">
