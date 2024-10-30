@@ -5,10 +5,10 @@
               Copyright © 2024.
               <a href="#" target="_blank">HIMA TRKJ POLITALA</a> All rights reserved.
           </span>
-          <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+          <!-- <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
               Developed with dedication
               <i class="ti-info-alt text-danger ms-1"></i>
-          </span>
+          </span> -->
       </div>
   </footer>
   <!-- partial -->
@@ -107,6 +107,16 @@
   <script src="adminLTE/plugins/bs-stepper/js/bs-stepper.min.js"></script>
   <!-- dropzonejs -->
   <script src="adminLTE/plugins/dropzone/min/dropzone.min.js"></script>
+
+  <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+
+  <script>
+      $(document).ready(function() {
+          $('#myTable').DataTable();
+          $('#myTable2').DataTable();
+          $('#myTable3').DataTable();
+      });
+  </script>
 
   <script>
       $(function() {

@@ -48,7 +48,7 @@ class LoginController extends BaseController
             ]);
     
             // Redirect ke halaman user dashboard
-            return redirect()->to('/user-dashboard');
+            return redirect()->to('/user-dashboarduser');
         } else {
             // Jika autentikasi gagal, tampilkan pesan kesalahan
             session()->setFlashdata('error', 'Username or Password incorrect!');

@@ -167,7 +167,7 @@
                                         <!-- Link Peraturan -->
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="link_peraturan">Link</label>
+                                                <label for="link_peraturan">Link Peraturan</label>
                                                 <input type="text" class="form-control" id="link_peraturan"
                                                     name="link_peraturan" value="<?= $data->link_peraturan ?>"
                                                     placeholder="Masukkan link aturan" required>
@@ -176,7 +176,7 @@
                                         <!-- Link Pendaftaran -->
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="link_pendaftaran">Link</label>
+                                                <label for="link_pendaftaran">Link Pendaftaran</label>
                                                 <input type="text" class="form-control" id="link_pendaftaran"
                                                     name="link_pendaftaran" value="<?= $data->link_pendaftaran ?>"
                                                     placeholder="Masukkan link pendaftaran" required>
@@ -275,8 +275,8 @@
                                     <td style="text-align: justify;">
                                         <?= $data->deskripsi ?>
                                     </td>
-                                    <td><?= $data->link_peraturan ?></td>
-                                    <td><?= $data->link_pendaftaran ?></td>
+                                    <td><a href="<?= $data->link_peraturan ?>">Peraturan <?= $data->nama ?></a></td>
+                                    <td><a href="<?= $data->link_pendaftaran ?>">Pendaftaran <?= $data->nama ?></a></td>
                                     <td><?= $data->tgl_dibuka ?></td>
                                     <td><?= $data->tgl_ditutup ?></td>
                                     <td><span class="badge rounded text-bg-primary bg-primary"

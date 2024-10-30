@@ -97,6 +97,8 @@ class UserDashboardController extends BaseController
 
         $data['dataSoal'] = $this->soalModel->getDataWhere($kategoriLomba);
         $data['dataUser'] = $this->userModel->getDataWhere($username);
+        $data['dataKategori'] = $this->lombaModel->getDataWhere($kategoriLomba);
+        $data['dataTimLomba'] = $this->timLombaModel->getDataWhere($kategoriLomba);
 
         $header['title'] = 'Dashboard User';
 
@@ -119,14 +121,14 @@ class UserDashboardController extends BaseController
 
         $data['dataSoal'] = $this->soalModel->getDataWhere($kategoriLomba);
         $data['dataUser'] = $this->userModel->getDataWhere($username);
+        $data['dataTimLomba'] = $this->timLombaModel->getDataWhere($kategoriLomba);
 
         $header['title'] = 'Dashboard User';
-    
+
         echo view('user/partial/header');
         echo view('user/partial/top_menu');
         echo view('user/partial/side_menu');
         echo view('user/informasilainnya', $data);
         echo view('user/partial/footer');
-     
     }
 }

@@ -213,6 +213,7 @@
                             <th>Nama Pembimbing</th>
                             <th>Sekolah</th>
                             <th>Lomba</th>
+                            <th>No Handphone</th>
                             <th style="width: 200px">Aksi</th>
                         </tr>
                     </thead>
@@ -225,6 +226,7 @@
                                 <td style="text-align: justify;"><?= $data->nama_pembimbing ?>
                                 </td>
                                 <td><?= $data->nama ?></td>
+                                <td><?= $data->no_handphone ?></td>
                                 <td>
 
                                     <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"

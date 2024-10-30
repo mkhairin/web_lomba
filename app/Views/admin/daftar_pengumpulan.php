@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1> Daftar Link Pengumpulan</h1>
+                    <h1> Daftar Pengumpulan</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -138,14 +138,14 @@
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <td><?= $pengumpulan->nama ?></td>
-                                <td><a href="<?= $pengumpulan->link_pengumpulan ?>">Link Soal <?= $pengumpulan->nama ?></a></td>
-                                <th>Deadline</th>
+                                <td><a href="<?= $pengumpulan->link_pengumpulan ?>" target="_blank">Link Soal <?= $pengumpulan->nama ?></a></td>
+                                <td><?= $pengumpulan->deadline ?></td>
                                 <td><?= $pengumpulan->status ?></td>
                                 <td>
                                     <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-pencil-square"></i>
-                                        Update</button>
+                                    </button>
                                     <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-trash3-fill"></i>
-                                        Delete</button>
+                                    </button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

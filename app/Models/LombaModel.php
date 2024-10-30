@@ -50,4 +50,18 @@ class LombaModel extends Model
         $builder->where('id_lomba', $id);
         $builder->delete();
     }
+
+    public function getDataWhere($kategori = null)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('lomba');
+        
+        if ($kategori !== null) {
+            $builder->where('nama', $kategori);
+        }
+    
+        $query = $builder->get();
+        return $query->getResult();
+    }
+    
 }

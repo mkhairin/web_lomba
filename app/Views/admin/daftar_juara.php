@@ -127,7 +127,7 @@
             </form>
         <?php endforeach; ?>
 
-        <button type="button" class="btn btn-dark rounded-pill" data-toggle="modal" data-target="#modal-lg">
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal-lg">
             Tambah Data
         </button>
 
