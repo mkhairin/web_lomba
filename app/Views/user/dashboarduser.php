@@ -1,7 +1,7 @@
 <!-- Modal -->
 
 <?php foreach ($dataTimLomba as $data): ?>
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -9,20 +9,42 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <?php $validation = \Config\Services::validation(); ?>
+          <!-- Pesan sukses -->
+          <?php if (session()->getFlashdata('success')): ?>
+            <div class="alert alert-success">
+              <?= session()->getFlashdata('success'); ?>
+            </div>
+          <?php endif; ?>
+          <!-- Pesan error general -->
+          <?php if (session()->getFlashdata('error')): ?>
+            <div class="alert alert-danger">
+              <?= session()->getFlashdata('error'); ?>
+            </div>
+          <?php endif; ?>
+
           <div class="container mb-3">
             <h4>Informasi</h4>
             <ul>
               <li>Tim : <?= $data->nama_tim ?></li>
               <li>Ketua : <?= $data->ketua_tim ?></li>
               <li>Kategori : <?= $data->nama ?></li>
+              <li>Pembimbing : <?= $data->nama_pembimbing ?></li>
               <li>Sekolah : <?= $data->nama_sekolah ?></li>
             </ul>
           </div>
-          <form>
+          <form action="/user-dashboarduser/insert" method="post">
+            <?php csrf_field() ?>
             <div class="card-body">
               <div class="form-group">
+                <input type="hidden" name="id_submit_pengumpulan" value="">
+                <input type="hidden" name="tim" value="<?= $data->nama_tim ?>">
+                <input type="hidden" name="ketua" value="<?= $data->ketua_tim ?>">
+                <input type="hidden" name="lomba" value="<?= $data->nama ?>">
+                <input type="hidden" name="pembimbing" value="<?= $data->nama_pembimbing ?>">
+                <input type="hidden" name="sekolah" value="<?= $data->nama_sekolah ?>">
                 <label for="exampleInputEmail1">Link Penugasan</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan link penugasan">
+                <input type="text" class="form-control" id="exampleInputEmail1" name="link_tugas" placeholder="Masukkan link penugasan">
               </div>
             </div>
             <!-- /.card-body -->
