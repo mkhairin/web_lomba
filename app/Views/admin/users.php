@@ -13,6 +13,21 @@
 
     <!-- Main content -->
     <section class="content">
+        <?php $validation = \Config\Services::validation(); ?>
+
+        <!-- Pesan sukses -->
+        <?php if (session()->getFlashdata('success')): ?>
+            <div class="alert alert-success">
+                <?= session()->getFlashdata('success'); ?>
+            </div>
+        <?php endif; ?>
+
+        <!-- Pesan error general -->
+        <?php if (session()->getFlashdata('error')): ?>
+            <div class="alert alert-danger">
+                <?= session()->getFlashdata('error'); ?>
+            </div>
+        <?php endif; ?>
 
         <!-- Modal Add -->
         <form action="/user/insert" method="post">
@@ -95,6 +110,7 @@
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>Pilih Role</option>
                                                 <option value="admin">Admin</option>
+                                                <option value="juri">Juri</option>
                                                 <option value="user">User</option>
                                             </select>
                                         </div>

@@ -16,7 +16,7 @@ class UsersController extends BaseController
         // Check if user is admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
         $sekolahModel = new \App\Models\SekolahModel();
@@ -43,16 +43,13 @@ class UsersController extends BaseController
         // Check if user is admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
         $userModel = new \App\Models\UsersModel();
         $validationRules = [
             'username' => 'required',
             'password' => 'required',
-            'id_sekolah' => 'required',
-            'id_tim_lomba' => 'required',
-            'id_lomba' => 'required',
         ];
 
         if (!$this->validate($validationRules)) {
@@ -89,16 +86,13 @@ class UsersController extends BaseController
         // Check if user is admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
         $userModel = new \App\Models\UsersModel();
         $validationRules = [
             'username' => 'required',
             'password' => 'required',
-            'id_sekolah' => 'required',
-            'id_tim_lomba' => 'required',
-            'id_lomba' => 'required',
         ];
 
         if (!$this->validate($validationRules)) {

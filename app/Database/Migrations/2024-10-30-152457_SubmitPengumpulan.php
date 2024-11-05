@@ -42,15 +42,29 @@ class SubmitPengumpulan extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255'
             ],
+            'status_pengumpulan' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255'
+            ],
+            'status_penilaian' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255'
+            ],
+            'tgl' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255'
+            ],
+            'jam' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255'
+            ],
             'created_at' => [
-                'type'       => 'INT',
-                'constraint' => 5,
-                'unsigned'   => true,
+                'type' => 'DATETIME',
+                'null' => true,
             ],
             'updated_at' => [
-                'type'       => 'INT',
-                'constraint' => 5,
-                'unsigned'   => true,
+                'type' => 'DATETIME',
+                'null' => true,
             ],
         ]);
 

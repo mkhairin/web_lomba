@@ -3,59 +3,59 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\AdminModel;
+use App\Models\JuriModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 use Exception;
 
-class UserAdminController extends BaseController
+class UserJuriController extends BaseController
 {
-    protected $adminModel;
+    protected $juriModel;
 
     public function __construct()
     {
-        // Inisialisasi AdminModel
-        $this->adminModel = new AdminModel();
+        // Inisialisasi JuriModel
+        $this->juriModel = new JuriModel();
     }
 
-    // Method untuk mengecek apakah user adalah admin
+    // Method untuk mengecek apakah user adalah Admin
     private function isAdmin()
     {
         $session = session();
         return $session->get('logged_in') && $session->get('role') === 'admin';
     }
 
-    // Method untuk menampilkan daftar admin
-    public function daftarAdmin()
+    // Method untuk menampilkan daftar juri
+    public function daftarJuri()
     {
-        // Pengecekan apakah user adalah admin
+        // Pengecekan apakah user adalah juri
         if (!$this->isAdmin()) {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/login')->with('error', 'You must be a admin to access this page.');
         }
 
-        $header['title'] = 'Daftar Admin';
+        $header['title'] = 'Daftar Juri';
 
-        // Mengambil data admin dari model
-        $data['dataAdmin'] = $this->adminModel->getdata();
+        // Mengambil data juri dari model
+        $data['dataJuri'] = $this->juriModel->getData();
 
         // Tampilkan view
         echo view('partial/header', $header);
         echo view('partial/top_menu');
         echo view('partial/side_menu');
-        echo view('admin/user_admin', $data);
+        echo view('admin/user_juri', $data);
         echo view('partial/footer');
     }
 
-    // Method untuk memasukkan data admin baru
+    // Method untuk memasukkan data juri baru
     public function insert(): RedirectResponse
     {
-        // Pengecekan apakah user adalah admin
+        // Pengecekan apakah user adalah juri
         if (!$this->isAdmin()) {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/login')->with('error', 'You must be a admin to access this page.');
         }
 
-        // Inisialisasi model Admin
-        $adminModel = new \App\Models\AdminModel();
+        // Inisialisasi model Juri
+        $juriModel = new \App\Models\JuriModel();
 
         // Validasi input
         $validationRules = [
@@ -79,8 +79,8 @@ class UserAdminController extends BaseController
                 'role' => esc($this->request->getPost('role'))
             ];
 
-            // Insert data ke tabel Users
-            if ($adminModel->insert($data)) {
+            // Insert data ke tabel Juri
+            if ($juriModel->insert($data)) {
                 session()->setFlashdata('success', 'Data Berhasil Ditambah!');
             } else {
                 throw new Exception('Data gagal ditambah.');
@@ -90,19 +90,18 @@ class UserAdminController extends BaseController
             return redirect()->back()->withInput();
         }
 
-        return redirect()->to('/daftar-admin');
+        return redirect()->to('/daftar-juri');
     }
 
     public function update($id): RedirectResponse
     {
-        // Check if user is admin
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
+        // Check if user is juri
+        if (!$this->isAdmin()) {
+            return redirect()->to('/login')->with('error', 'You must be a admin to access this page.');
         }
 
-        // Inisialisasi model Admin
-        $adminModel = new \App\Models\AdminModel();
+        // Inisialisasi model Juri
+        $juriModel = new \App\Models\JuriModel();
 
         // Validasi input
         $validationRules = [
@@ -123,32 +122,31 @@ class UserAdminController extends BaseController
                 'role' => esc($this->request->getPost('role'))
             ];
 
-            if ($adminModel->update($id, $data)) {
-                session()->setFlashdata('success', 'Data Berhasil Ditambah!');
+            if ($juriModel->update($id, $data)) {
+                session()->setFlashdata('success', 'Data Berhasil Diupdate!');
             } else {
-                throw new Exception('Data gagal ditambah.');
+                throw new Exception('Data gagal diupdate.');
             }
         } catch (Exception $e) {
             session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
             return redirect()->back()->withInput();
         }
 
-        return redirect()->to('/daftar-admin');
+        return redirect()->to('/daftar-juri');
     }
 
     public function delete($id): ResponseInterface
     {
-        // Check if user is admin
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
+        // Check if user is juri
+        if (!$this->isAdmin()) {
+            return redirect()->to('/login')->with('error', 'You must be a admin to access this page.');
         }
 
-        // Inisialisasi model Admin
-        $adminModel = new \App\Models\AdminModel();
+        // Inisialisasi model Juri
+        $juriModel = new \App\Models\JuriModel();
 
         try {
-            if ($adminModel->delete($id)) {
+            if ($juriModel->delete($id)) {
                 session()->setFlashdata('success', 'Data Berhasil Dihapus!');
             } else {
                 throw new Exception('Gagal menghapus data.');
@@ -157,6 +155,6 @@ class UserAdminController extends BaseController
             session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
 
-        return redirect()->to('/daftar-admin');
+        return redirect()->to('/daftar-juri');
     }
 }

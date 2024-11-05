@@ -21,6 +21,7 @@ class SubmitTugasController extends BaseController
         }
     }
 
+
     public function insert()
     {
         // Check if user is admin
@@ -38,6 +39,10 @@ class SubmitTugasController extends BaseController
             'pembimbing'            => 'required',
             'sekolah'               => 'required',
             'link_tugas'            => 'required',
+            'status_pengumpulan'            => 'required',
+            'status_penilaian'            => 'required',
+            'tgl'            => 'required',
+            'jam'            => 'required',
         ]);
 
         // Run validation
@@ -45,6 +50,7 @@ class SubmitTugasController extends BaseController
             // Jika validasi gagal, redirect dengan pesan error
             return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
+
 
         // Jika validasi berhasil, lanjutkan ke insert data
         $data = [
@@ -55,6 +61,10 @@ class SubmitTugasController extends BaseController
             'pembimbing'            => esc($this->request->getPost('pembimbing')),
             'sekolah'               => esc($this->request->getPost('sekolah')),
             'link_tugas'            => esc($this->request->getPost('link_tugas')),
+            'status_pengumpulan'            => esc($this->request->getPost('status_pengumpulan')),
+            'status_penilaian'            => esc($this->request->getPost('status_penilaian')),
+            'tgl'            => esc($this->request->getPost('tgl')),
+            'jam'            => esc($this->request->getPost('jam')),
         ];
 
         try {

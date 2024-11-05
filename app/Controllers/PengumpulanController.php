@@ -56,7 +56,7 @@ class PengumpulanController extends BaseController
             'id_lomba' => 'required',
             'link_pengumpulan' => 'required',
             'deadline' => 'required',
-            'status' => 'required'
+            'status' => 'required',
         ];
 
         // Cek validasi input

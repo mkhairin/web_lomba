@@ -13,6 +13,9 @@ $routes->post('/login/auth', 'LoginController::loginAuth');
 $routes->get('/admin_panel', 'AdminLoginController::loginAdmin');
 $routes->post('/admin_login/auth', 'AdminLoginController::loginAuth');
 
+$routes->get('/juri_panel', 'JuriLoginController::loginJuri');
+$routes->post('/juri_login/auth', 'JuriLoginController::loginAuth');
+
 // Halaman Lomba (Public Route)
 $routes->get('/landing-page', 'HomeLombaTRKJ::home');
 
@@ -89,8 +92,21 @@ $routes->post('/admin/insert', 'UserAdminController::insert');
 $routes->post('/admin/update/(:num)', 'UserAdminController::update/$1');
 $routes->get('/admin/delete/(:num)', 'UserAdminController::delete/$1');
 
+// Admin management
+$routes->get('/daftar-juri', 'UserJuriController::daftarJuri');
+$routes->post('/juri/insert', 'UserJuriController::insert');
+$routes->post('/juri/update/(:num)', 'UserJuriController::update/$1');
+$routes->get('/juri/delete/(:num)', 'UserJuriController::delete/$1');
+
 // User Dashboard
-$routes->get('/user-dashboard', 'UserDashboardController::index');
-$routes->get('/user-dashboard-lomba', 'UserDashboardController::dashboardLomba');
-$routes->get('/user-dashboarduser', 'UserDashboardController::dashboarduser');
+// $routes->get('/user-dashboard', 'UserDashboardController::index');
+// $routes->get('/user-dashboard-lomba', 'UserDashboardController::dashboardLomba');
+$routes->get('/user-dashboard', 'UserDashboardController::dashboarduser');
 $routes->get('/informasi-lainnya', 'UserDashboardController::informasiView');
+
+
+// Juri Dashboard
+$routes->get('/juri-dashboard', 'JuriController::dashboardJuri');
+$routes->post('/juri-dashboard/update/(:num)', 'JuriController::update/$1');
+
+$routes->get('/juri-dashboard/daftar-dinilai', 'JuriController::daftarDinilai');

@@ -31,6 +31,8 @@
               <li>Kategori : <?= $data->nama ?></li>
               <li>Pembimbing : <?= $data->nama_pembimbing ?></li>
               <li>Sekolah : <?= $data->nama_sekolah ?></li>
+              <li>Jam : <?= $jamSekarang ?></li>
+              <li>Tgl : <?= $tanggalLengkap ?></li>
             </ul>
           </div>
           <form action="/user-dashboarduser/insert" method="post">
@@ -43,6 +45,10 @@
                 <input type="hidden" name="lomba" value="<?= $data->nama ?>">
                 <input type="hidden" name="pembimbing" value="<?= $data->nama_pembimbing ?>">
                 <input type="hidden" name="sekolah" value="<?= $data->nama_sekolah ?>">
+                <input type="hidden" name="status_pengumpulan" value="Telah Submit">
+                <input type="hidden" name="status_penilaian" value="Belum Dinilai">
+                <input type="hidden" name="tgl" value="<?= $tanggalLengkap ?>">
+                <input type="hidden" name="jam" value="<?= $jamSekarang ?>">
                 <label for="exampleInputEmail1">Link Penugasan</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" name="link_tugas" placeholder="Masukkan link penugasan">
               </div>
@@ -219,29 +225,29 @@
             <div class="list-wrapper pt-2">
               <ul
                 class="d-flex flex-column todo-list todo-list-custom col-12">
-                <?php for ($i = 1; $i < 5; $i++) : ?>
+                <?php foreach ($dataSubmitTugas as $data) : ?>
                   <li>
                     <div class="form-check form-check-flat">
                       <div class="col-sm d-flex mb-2">
                         <div class="row">
                           <small class="text-muted"><i class="fa-solid fa-school text-primary"></i> Nama Tim</small>
                           <h4 class="font-weight-medium">
-                            Paradise
+                            <?= $data->tim?>
                           </h4>
                         </div>
                         <div class="row">
                           <small class="text-muted"><i class="fa-regular fa-clock text-primary"></i> Jam</small>
-                          <h4 class="font-weight-medium"> 12:00</h4>
+                          <h4 class="font-weight-medium"><?= $data->jam ?></h4>
                         </div>
                       </div>
                       <div class="col-sm">
                         <button type="button" class="btn btn-sm btn-primary btn-icon-text">
-                          Menyelesaikan Tugas
+                        <?= $data->status_pengumpulan ?>
                         </button>
                       </div>
                     </div>
                   </li>
-                <?php endfor; ?>
+                <?php endforeach; ?>
               </ul>
             </div>
           </div>

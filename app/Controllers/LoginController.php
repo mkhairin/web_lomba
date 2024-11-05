@@ -24,20 +24,20 @@ class LoginController extends BaseController
         // Mengambil data username dan password dari form
         $username = esc($this->request->getPost("username"));
         $password = esc($this->request->getPost("password"));
-    
+
         // Memanggil model Users
         $userModel = new UsersModel();
         $lombaModel = new LombaModel();
-    
+
         // Cek apakah username ada di database tabel user
         $user = $userModel->where('username', $username)->first();
-    
+
         // Verifikasi password
         if ($user && password_verify($password, $user['password'])) {
             // Ambil kategori lomba berdasarkan lomba_id di tabel user
             $lomba = $lombaModel->where('id_lomba', $user['id_lomba'])->first();
             $kategoriLomba = $lomba ? $lomba['nama'] : 'No category';
-    
+
             // Menyimpan data yang dibutuhkan di session
             session()->set([
                 'id_user' => $user['id_user'],
@@ -46,14 +46,17 @@ class LoginController extends BaseController
                 'lomba' => $kategoriLomba,
                 'logged_in' => true,
             ]);
-    
-            // Redirect ke halaman user dashboard
-            return redirect()->to('/user-dashboarduser');
+
+            // Redirect berdasarkan role
+            if ($user['role'] === 'juri') {
+                return redirect()->to('/juri-dashboard');
+            } elseif ($user['role'] === 'user') {
+                return redirect()->to('/user-dashboard');
+            }
         } else {
             // Jika autentikasi gagal, tampilkan pesan kesalahan
             session()->setFlashdata('error', 'Username or Password incorrect!');
             return redirect()->to('/login');
         }
     }
-    
 }
