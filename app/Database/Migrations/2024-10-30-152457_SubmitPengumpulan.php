@@ -50,6 +50,14 @@ class SubmitPengumpulan extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255'
             ],
+            'skor_nilai' => [
+                'type'       => 'INT',
+                'constraint' => 5,
+                'null' => true,
+            ],
+            'feedback' => [
+                'type'       => 'TEXT',
+            ],
             'tgl' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255'

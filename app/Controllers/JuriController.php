@@ -5,10 +5,15 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\I18n\Time;
+use DateTime;
+use DateTimeZone;
 
 class JuriController extends BaseController
 {
     protected $submitTugasModel;
+    protected $tanggalLengkap;
+    protected $jamSekarang;
 
     public function __construct()
     {
@@ -20,6 +25,44 @@ class JuriController extends BaseController
         if (!$session->get('logged_in') || $session->get('role') !== 'juri') {
             return redirect()->to('/login')->with('error', 'You must be an juri to access this page.');
         }
+
+        // Get the current date and time in WITA
+        $date = new DateTime('now', new DateTimeZone('Asia/Makassar')); // WITA timezone (UTC+8)
+        $tanggal = $date->format('d');
+        $bulan = $date->format('n');
+        $tahun = $date->format('Y');
+        $hari = $date->format('l');
+        $this->jamSekarang = $date->format('H:i:s') . ' WITA';
+
+        // Array for month names in Indonesian
+        $namaBulan = [
+            1 => 'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember'
+        ];
+
+        // Array for day names in Indonesian
+        $namaHari = [
+            'Sunday' => 'Minggu',
+            'Monday' => 'Senin',
+            'Tuesday' => 'Selasa',
+            'Wednesday' => 'Rabu',
+            'Thursday' => 'Kamis',
+            'Friday' => 'Jumat',
+            'Saturday' => 'Sabtu'
+        ];
+
+        // Format date in "Hari, dd Bulan yyyy, HH:mm:ss" format
+        $this->tanggalLengkap = $namaHari[$hari] . ', ' . $tanggal . ' ' . $namaBulan[$bulan] . ' ' . $tahun;
     }
 
     public function dashboardJuri()
@@ -32,6 +75,8 @@ class JuriController extends BaseController
         $kategoriLomba = $session->get('lomba');
         $data['dataUsername'] = $session->get('username');
         $data['dataSubmitTugas'] = $this->submitTugasModel->getDataWhere($kategoriLomba);
+        $data['tanggalLengkap'] = $this->tanggalLengkap;
+        $data['jamSekarang'] = $this->jamSekarang;
 
         $header['title'] = 'Dashboard Juri';
         echo view('partial/header', $header);
@@ -51,6 +96,8 @@ class JuriController extends BaseController
         $kategoriLomba = $session->get('lomba');
         $data['dataUsername'] = $session->get('username');
         $data['dataSubmitTugas'] = $this->submitTugasModel->getDataAfterWhere($kategoriLomba);
+        $data['tanggalLengkap'] = $this->tanggalLengkap;
+        $data['jamSekarang'] = $this->jamSekarang;
 
         $header['title'] = 'Dashboard Juri';
         echo view('partial/header', $header);
@@ -68,6 +115,8 @@ class JuriController extends BaseController
             // Mengamankan data input menggunakan esc() dan memvalidasi input
             $data = [
                 'status_penilaian' => esc($this->request->getPost('status_penilaian')),
+                'skor_nilai' => esc($this->request->getPost('skor_nilai')),
+                'feedback' => esc($this->request->getPost('feedback'))
             ];
 
             // Cek apakah data berhasil diupdate

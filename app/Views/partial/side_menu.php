@@ -110,7 +110,7 @@
                     <a href="/tim-lolos" class="nav-link">
                         <i class="nav-icon fas fa-check-circle"></i> <!-- Icon for Qualified Teams -->
                         <p>
-                            Team Lolos Seleksi
+                            Tim Lolos Seleksi
                         </p>
                     </a>
                 </li>
@@ -126,7 +126,7 @@
 
                 <li class="nav-item">
                     <a href="/daftar-soal" class="nav-link">
-                        <i class="nav-icon fas fa-check-circle"></i> <!-- Icon for Qualified Teams -->
+                        <i class="fa-solid fa-list-check px-2"></i> <!-- Icon for Qualified Teams -->
                         <p>
                             Daftar Soal
                         </p>

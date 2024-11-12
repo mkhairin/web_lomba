@@ -47,6 +47,8 @@
                 <input type="hidden" name="sekolah" value="<?= $data->nama_sekolah ?>">
                 <input type="hidden" name="status_pengumpulan" value="Telah Submit">
                 <input type="hidden" name="status_penilaian" value="Belum Dinilai">
+                <input type="hidden" name="skor_nilai" value="0">
+                <input type="hidden" name="feedback" value="">
                 <input type="hidden" name="tgl" value="<?= $tanggalLengkap ?>">
                 <input type="hidden" name="jam" value="<?= $jamSekarang ?>">
                 <label for="exampleInputEmail1">Link Penugasan</label>
@@ -232,7 +234,7 @@
                         <div class="row">
                           <small class="text-muted"><i class="fa-solid fa-school text-primary"></i> Nama Tim</small>
                           <h4 class="font-weight-medium">
-                            <?= $data->tim?>
+                            <?= $data->tim ?>
                           </h4>
                         </div>
                         <div class="row">
@@ -242,7 +244,7 @@
                       </div>
                       <div class="col-sm">
                         <button type="button" class="btn btn-sm btn-primary btn-icon-text">
-                        <?= $data->status_pengumpulan ?>
+                          <?= $data->status_pengumpulan ?>
                         </button>
                       </div>
                     </div>

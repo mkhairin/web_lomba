@@ -8,7 +8,14 @@
                     <h1>Daftar Penilaian</h1>
                 </div>
                 <div class="col-sm-6 d-flex justify-content-end mt-3">
-                    <h6 class="mx-2">Jam</h6>
+                    <ul>
+                        <li>
+                            <h5 class="mx-2"><?= $tanggalLengkap ?></h5>
+                        </li>
+                        <li>
+                            <p>Jam : <?= $jamSekarang ?></p>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -47,25 +54,78 @@
                             </div>
                             <div class="modal-body">
                                 <div class="card-body">
+                                    <!-- Row for two-column layout -->
+                                    <div class="row">
+                                        <!-- Nama Tim -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="nama_tim">Nama Tim</label>
+                                                <input type="text" class="form-control" id="nama_tim" name="nama_tim" value="<?= $data->tim ?? '' ?>" disabled>
+                                            </div>
+                                        </div>
+
+                                        <!-- Divisi Lomba -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="divisi_lomba">Divisi Lomba</label>
+                                                <input type="text" class="form-control" id="divisi_lomba" name="divisi_lomba" value="<?= $data->lomba ?? '' ?>" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Row for Pembimbing and Sekolah -->
+                                    <div class="row">
+                                        <!-- Pembimbing -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="pembimbing">Pembimbing</label>
+                                                <input type="text" class="form-control" id="pembimbing" name="pembimbing" value="<?= $data->pembimbing ?? '' ?>" disabled>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sekolah -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="sekolah">Sekolah</label>
+                                                <input type="text" class="form-control" id="sekolah" name="sekolah" value="<?= $data->sekolah ?? '' ?>" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Status Penilaian -->
                                     <div class="form-group">
                                         <label for="status_penilaian">Status Penilaian</label>
                                         <select class="form-control" id="status_penilaian" name="status_penilaian" required>
-                                            <option value="" selected><?= $data->status_penilaian?></option>
+                                            <option value="" selected><?= $data->status_penilaian ?></option>
                                             <option value="Belum Dinilai" <?= ($data->status_penilaian == 'Belum Dinilai') ? 'selected' : '' ?>>Belum Dinilai</option>
                                             <option value="Sudah Dinilai" <?= ($data->status_penilaian == 'Sudah Dinilai') ? 'selected' : '' ?>>Sudah Dinilai</option>
                                         </select>
+                                    </div>
+
+                                    <!-- Field Skor -->
+                                    <div class="form-group">
+                                        <label for="skor_nilai">Skor</label>
+                                        <input type="number" class="form-control" id="skor_nilai" name="skor_nilai" value="<?= $data->skor ?? '' ?>" required min="0" max="100">
+                                    </div>
+
+                                    <!-- Field Feedback -->
+                                    <div class="form-group">
+                                        <label for="feedback">Feedback</label>
+                                        <textarea class="form-control" id="feedback" name="feedback" rows="4" required><?= $data->feedback ?? '' ?></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                <button type="submit" class="btn btn-dark">Save changes</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </form>
         <?php endforeach; ?>
+
+
 
         <!-- Submissions Table -->
         <div class="card shadow-none border-0 mb-5">
