@@ -8,7 +8,14 @@
                     <h1>Daftar Penilaian</h1>
                 </div>
                 <div class="col-sm-6 d-flex justify-content-end mt-3">
-                    <h6 class="mx-2">Jam</h6>
+                    <ul>
+                        <li>
+                            <h5 class="mx-2"><?= $tanggalLengkap ?></h5>
+                        </li>
+                        <li>
+                            <p>Jam : <?= $jamSekarang ?></p>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -50,7 +57,7 @@
                                     <div class="form-group">
                                         <label for="status_penilaian">Status Penilaian</label>
                                         <select class="form-control" id="status_penilaian" name="status_penilaian" required>
-                                            <option value="" selected><?= $data->status_penilaian?></option>
+                                            <option value="" selected><?= $data->status_penilaian ?></option>
                                             <option value="Belum Dinilai" <?= ($data->status_penilaian == 'Belum Dinilai') ? 'selected' : '' ?>>Belum Dinilai</option>
                                             <option value="Sudah Dinilai" <?= ($data->status_penilaian == 'Sudah Dinilai') ? 'selected' : '' ?>>Sudah Dinilai</option>
                                         </select>

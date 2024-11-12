@@ -17,6 +17,8 @@ class SubmitTugasModel extends Model
         'link_tugas',
         'status_pengumpulan',
         'status_penilaian',
+        'skor_nilai',
+        'feedback',
         'tgl',
         'jam'
     ];

@@ -39,16 +39,6 @@
                     </a>
                 </li>
 
-
-                <li class="nav-item">
-                    <a href="/daftar-rules" class="nav-link">
-                        <i class="nav-icon fas fa-gavel"></i> <!-- Aturan/Laws -->
-                        <p>
-                            Daftar Rules
-                        </p>
-                    </a>
-                </li>
-
                 <li class="nav-item">
                     <a href="/daftar-sponsor" class="nav-link">
                         <i class="nav-icon fas fa-handshake"></i>
@@ -156,6 +146,15 @@
                         <i class="nav-icon fas fa-user"></i> <!-- Icon for Users -->
                         <p>
                             Admin
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/admin/logout" class="nav-link">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <p>
+                            Logout
                         </p>
                     </a>
                 </li>

@@ -9,9 +9,12 @@ use CodeIgniter\Router\RouteCollection;
 // Rute untuk halaman login dan otentikasi
 $routes->get('/login', 'LoginController::login');
 $routes->post('/login/auth', 'LoginController::loginAuth');
+$routes->get('/logout', 'LoginController::logout');
+
 
 $routes->get('/admin_panel', 'AdminLoginController::loginAdmin');
 $routes->post('/admin_login/auth', 'AdminLoginController::loginAuth');
+$routes->get('/admin/logout', 'AdminLoginController::logout');
 
 $routes->get('/juri_panel', 'JuriLoginController::loginJuri');
 $routes->post('/juri_login/auth', 'JuriLoginController::loginAuth');
@@ -110,3 +113,4 @@ $routes->get('/juri-dashboard', 'JuriController::dashboardJuri');
 $routes->post('/juri-dashboard/update/(:num)', 'JuriController::update/$1');
 
 $routes->get('/juri-dashboard/daftar-dinilai', 'JuriController::daftarDinilai');
+$routes->get('/juri-dashboard/tim-lolos', 'JuriController::dashboardTimLolos');

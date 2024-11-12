@@ -52,10 +52,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="/juri-dashboard/tim-lolos" class="nav-link">
                         <i class="fa-solid fa-bolt"></i>
                         <p>
                             Tim Lolos
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <p>
+                            Logout
                         </p>
                     </a>
                 </li>
