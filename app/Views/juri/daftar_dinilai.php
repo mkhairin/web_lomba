@@ -106,8 +106,25 @@
                                 <td><?= $i++ ?></td>
                                 <td><?= esc($data->tim) ?></td>
                                 <td><a href="<?= esc($data->link_tugas) ?>" target="_blank">Link Tugas</a></td>
-                                <td><?= esc($data->status_penilaian) ?></td>
-                                <td><?= esc($data->skor_nilai) ?></td>
+                                <td>
+                                    <?php if ($data->status_penilaian == 'Sudah Dinilai'): ?>
+                                        <span class="badge badge-success p-2">Sudah Dinilai</span>
+                                    <?php else: ?>
+                                        <span class="badge badge-danger p-2">Belum Dinilai</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php if ($data->skor_nilai >= 90 && $data->skor_nilai <= 100): ?>
+                                        <span class="badge badge-primary p-2"><?= esc($data->skor_nilai) ?></span>
+                                    <?php elseif ($data->skor_nilai >= 60 && $data->skor_nilai <= 80): ?>
+                                        <span class="badge badge-success p-2"><?= esc($data->skor_nilai) ?></span>
+                                    <?php elseif ($data->skor_nilai >= 0 && $data->skor_nilai <= 50): ?>
+                                        <span class="badge badge-danger p-2"><?= esc($data->skor_nilai) ?></span>
+                                    <?php else: ?>
+                                        <span class="badge badge-secondary p-2"><?= esc($data->skor_nilai) ?></span>
+                                    <?php endif; ?>
+                                </td>
+
                                 <td><?= esc($data->tgl) ?></td>
                                 <td><?= esc($data->jam) ?></td>
                                 <td>
