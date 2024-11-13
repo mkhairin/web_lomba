@@ -74,6 +74,12 @@
             </form>
         <?php endforeach; ?>
 
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal-lg">
+            Tambah Data
+        </button>
+
+        <br> <br>
+
         <!-- Submissions Table -->
         <div class="card shadow-none border-0 mb-5">
             <div class="card-header">
@@ -86,8 +92,8 @@
                             <th>#</th>
                             <th>Tim</th>
                             <th>Link Tugas</th>
-                            <th>Status Pengumpulan</th>
                             <th>Status Penilaian</th>
+                            <th>Skor Nilai</th>
                             <th>Tgl</th>
                             <th>Jam</th>
                             <th>Aksi</th>
@@ -99,9 +105,9 @@
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <td><?= esc($data->tim) ?></td>
-                                <td><a href="<?= esc($data->link_tugas) ?>" target="_blank"><?= esc($data->link_tugas) ?></a></td>
-                                <td><?= esc($data->status_pengumpulan) ?></td>
+                                <td><a href="<?= esc($data->link_tugas) ?>" target="_blank">Link Tugas</a></td>
                                 <td><?= esc($data->status_penilaian) ?></td>
+                                <td><?= esc($data->skor_nilai) ?></td>
                                 <td><?= esc($data->tgl) ?></td>
                                 <td><?= esc($data->jam) ?></td>
                                 <td>

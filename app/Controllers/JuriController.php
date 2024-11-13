@@ -117,7 +117,7 @@ class JuriController extends BaseController
 
         $kategoriLomba = $session->get('lomba');
         $data['dataUsername'] = $session->get('username');
-        $data['dataSubmitTugas'] = $this->submitTugasModel->getDataWhere($kategoriLomba);
+        $data['dataSubmitTugas'] = $this->submitTugasModel->getDataAfterWhere($kategoriLomba);
         $data['tanggalLengkap'] = $this->tanggalLengkap;
         $data['jamSekarang'] = $this->jamSekarang;
 

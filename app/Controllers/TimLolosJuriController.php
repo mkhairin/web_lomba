@@ -44,13 +44,14 @@ class TimLolosJuriController extends BaseController
             return redirect()->to('/login')->with('error', 'You must be an juri to access this page.');
         }
 
-        $timLolosModel = new \App\Models\TimLolosModel();
+        $timLolosJuriModel = new \App\Models\TimLolosJuriModel();
         $validationRules = [
-            'id_tim_lomba' => 'required',
-            'id_lomba' => 'required',
-            'id_sekolah' => 'required',
-            'id_pembimbing' => 'required',
-            'nilai' => 'required',
+            'tim' => 'required',
+            'ketua' => 'required',
+            'lomba' => 'required',
+            'pembimbing' => 'required',
+            'sekolah' => 'required',
+            'skor_nilai' => 'required',
             'status' => 'required'
         ];
 
@@ -60,25 +61,26 @@ class TimLolosJuriController extends BaseController
 
         try {
             $data = [
-                'id_tim_lomba' => esc($this->request->getPost('id_tim_lomba')),
-                'id_lomba' => esc($this->request->getPost('id_lomba')),
-                'id_sekolah' => esc($this->request->getPost('id_sekolah')),
-                'id_pembimbing' => esc($this->request->getPost('id_pembimbing')),
-                'nilai' => esc($this->request->getPost('nilai')),
+                'tim' => esc($this->request->getPost('tim')),
+                'ketua' => esc($this->request->getPost('ketua')),
+                'lomba' => esc($this->request->getPost('lomba')),
+                'pembimbing' => esc($this->request->getPost('pembimbing')),
+                'sekolah' => esc($this->request->getPost('sekolah')),
+                'skor_nilai' => esc($this->request->getPost('skor_nilai')),
                 'status' => esc($this->request->getPost('status'))
             ];
 
-            if ($timLolosModel->insert($data)) {
-                session()->setFlashdata('success', 'Data Berhasil Ditambah!');
+            if ($timLolosJuriModel->insert($data)) {
+                session()->setFlashdata('success', 'Data berhasil diubah!');
             } else {
-                throw new Exception('Data gagal ditambah.');
+                throw new Exception('Data gagal diubah.');
             }
         } catch (Exception $e) {
             session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
             return redirect()->back()->withInput();
         }
 
-        return redirect()->to('/tim-lolos');
+        return redirect()->to('/juri-dashboard/tim-lolos');
     }
 
     public function update($id): RedirectResponse
@@ -142,7 +144,6 @@ class TimLolosJuriController extends BaseController
             } else {
                 throw new Exception('Gagal menghapus data.');
             }
-
         } catch (Exception $e) {
             session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
