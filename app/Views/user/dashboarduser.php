@@ -9,20 +9,6 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <?php $validation = \Config\Services::validation(); ?>
-          <!-- Pesan sukses -->
-          <?php if (session()->getFlashdata('success')): ?>
-            <div class="alert alert-success">
-              <?= session()->getFlashdata('success'); ?>
-            </div>
-          <?php endif; ?>
-          <!-- Pesan error general -->
-          <?php if (session()->getFlashdata('error')): ?>
-            <div class="alert alert-danger">
-              <?= session()->getFlashdata('error'); ?>
-            </div>
-          <?php endif; ?>
-
           <div class="container mb-3">
             <h4>Informasi</h4>
             <ul>
@@ -57,19 +43,69 @@
             </div>
             <!-- /.card-body -->
 
-            <div class="card-footer">
+            <!-- <div class="card-footer">
               <button type="submit" class="btn btn-sm btn-primary">Submit</button>
-            </div>
-          </form>
+            </div> -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+
+          <button type="submit" class="btn btn-primary">Submit Tugas</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<?php endforeach; ?>
+
+<?php foreach ($dataTimLolos as $nilai): ?>
+  <div class="modal fade" id="modalNilai" tabindex="-1" aria-labelledby="modalNilaiLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Nilai Tugas</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container mb-3">
+            <h4>Informasi</h4>
+            <ul>
+              <li>Tim : <?= $nilai->tim ?></li>
+              <li>Ketua : <?= $nilai->ketua ?></li>
+              <li>Kategori : <?= $nilai->lomba ?></li>
+              <li>Pembimbing : <?= $nilai->pembimbing ?></li>
+              <li>Sekolah : <?= $nilai->sekolah ?></li>
+              <li>Sekolah : <?= $nilai->skor_nilai ?></li>
+              <li>Sekolah : <?= $nilai->status ?></li>
+            </ul>
+          </div>
+          <!-- /.card-body -->
+
+          <!-- <div class="card-footer">
+              <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+            </div> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
   </div>
 <?php endforeach; ?>
+
+<?php $validation = \Config\Services::validation(); ?>
+<!-- Pesan sukses -->
+<?php if (session()->getFlashdata('success')): ?>
+  <div class="alert alert-success">
+    <?= session()->getFlashdata('success'); ?>
+  </div>
+<?php endif; ?>
+<!-- Pesan error general -->
+<?php if (session()->getFlashdata('error')): ?>
+  <div class="alert alert-danger">
+    <?= session()->getFlashdata('error'); ?>
+  </div>
+<?php endif; ?>
 
 <!-- partial -->
 <div class="main-panel">
@@ -133,9 +169,31 @@
                   </h5>
                 </div>
               </div>
+              <br>
+              <?php if (!empty($dataTimDinilai)) : ?>
+                <?php foreach ($dataTimDinilai as $dataNilai) : ?>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-icon-text"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalNilai" <?php echo ($dataNilai->status_penilaian === 'Sudah Dinilai') ? '' : 'disabled'; ?>>
+                    <i class="fa-solid fa-calendar-days"></i> Form Penilaian
+                  </button>
+                <?php endforeach; ?>
+              <?php else : ?>
+                <!-- <button
+                  type="button"
+                  class="btn btn-primary btn-icon-text"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalNilai">
+                  <i class="fa-solid fa-calendar-days"></i> Form Penilaian
+                </button> -->
+              <?php endif; ?>
             </div>
           </div>
         <?php endforeach; ?>
+
+
         </div>
         <div class="col-md-6 grid-margin stretch-card">
           <div class="card tale-bg">
@@ -208,9 +266,28 @@
                     <i class="ti-download btn-icon-prepend"></i>Unduh Tugas
                   </a>
                 <?php endforeach; ?>
-                <button type="button" class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  <i class="ti-file btn-icon-prepend"></i> Submit Tugas
-                </button>
+                <?php if (!empty($daftarTimSelesai)) : ?>
+                  <?php foreach ($daftarTimSelesai as $dataTugas) : ?>
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-icon-text"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      <?php echo ($dataTugas->status_pengumpulan === 'Telah Submit') ? 'disabled' : ''; ?>>
+                      <i class="ti-file btn-icon-prepend"></i> Submit Tugas
+                    </button>
+                  <?php endforeach; ?>
+                <?php else : ?>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-icon-text"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+                    <i class="ti-file btn-icon-prepend"></i> Submit Tugas
+                  </button>
+                <?php endif; ?>
+
+
               </div>
             </div>
 
@@ -227,7 +304,7 @@
             <div class="list-wrapper pt-2">
               <ul
                 class="d-flex flex-column todo-list todo-list-custom col-12">
-                <?php foreach ($dataSubmitTugas as $data) : ?>
+                <?php foreach ($daftarTimSelesai as $data) : ?>
                   <li>
                     <div class="form-check form-check-flat">
                       <div class="col-sm d-flex mb-2">

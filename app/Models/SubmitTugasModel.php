@@ -28,6 +28,16 @@ class SubmitTugasModel extends Model
     protected $updatedField  = 'updated_at';
 
 
+    public function getData($params)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('submit_pengumpulan');
+        $builder->select();
+        $builder->where('lomba', $params);
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
     public function getDataWhere($params)
     {
         $db = \Config\Database::connect();

@@ -14,5 +14,12 @@
                  <span class="menu-title">Informasi Lainnya</span>
              </a>
          </li>
+
+         <li class="nav-item">
+             <a class="nav-link" href="/logout">
+                 <i class="icon-paper menu-icon"></i>
+                 <span class="menu-title">Logout</span>
+             </a>
+         </li>
      </ul>
  </nav>

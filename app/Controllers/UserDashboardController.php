@@ -18,6 +18,7 @@ class UserDashboardController extends BaseController
     protected $soalModel;
     protected $userModel;
     protected $submitTugasModel;
+    protected $timLolosJuri;
 
     public function __construct()
     {
@@ -31,6 +32,7 @@ class UserDashboardController extends BaseController
         $this->soalModel = new \App\Models\SoalModel();
         $this->userModel = new \App\Models\UsersModel();
         $this->submitTugasModel = new \App\Models\SubmitTugasModel();
+        $this->timLolosJuri = new \App\Models\TimLolosJuriModel();
     }
 
     // public function index()
@@ -136,13 +138,16 @@ class UserDashboardController extends BaseController
 
         $kategoriLomba = $session->get('lomba');
         $username = $session->get('username');
-  
+
 
         $data['dataSoal'] = $this->soalModel->getDataWhere($kategoriLomba);
         $data['dataUser'] = $this->userModel->getDataWhere($username);
         $data['dataKategori'] = $this->lombaModel->getDataWhere($kategoriLomba);
         $data['dataTimLomba'] = $this->timLombaModel->getDataWhere($kategoriLomba);
         $data['dataSubmitTugas'] = $this->submitTugasModel->getDataWhere($kategoriLomba);
+        $data['daftarTimSelesai'] = $this->submitTugasModel->getData($kategoriLomba);
+        $data['dataTimDinilai'] = $this->submitTugasModel->getDataAfterWhere($kategoriLomba);
+        $data['dataTimLolos'] = $this->timLolosJuri->getDataWhere($kategoriLomba);
         $data['tanggalLengkap'] = $tanggalLengkap;
         $data['jamSekarang'] = $jam . ' WITA';
         $header['title'] = 'Dashboard User';

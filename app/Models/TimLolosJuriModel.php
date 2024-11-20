@@ -23,6 +23,13 @@ class TimLolosJuriModel extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
 
-
-
+    public function getDataWhere($params)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('tim_lolos_new');
+        $builder->select();
+        $builder->where('lomba', $params);
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }
