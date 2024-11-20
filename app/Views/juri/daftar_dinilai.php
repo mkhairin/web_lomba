@@ -124,7 +124,6 @@
                                         <span class="badge badge-secondary p-2"><?= esc($data->skor_nilai) ?></span>
                                     <?php endif; ?>
                                 </td>
-
                                 <td><?= esc($data->tgl) ?></td>
                                 <td><?= esc($data->jam) ?></td>
                                 <td>

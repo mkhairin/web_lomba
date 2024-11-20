@@ -22,6 +22,7 @@ class TimLolosJuriController extends BaseController
         $sekolahModel = new \App\Models\SekolahModel();
         $lombaModel = new \App\Models\LombaModel();
         $pembimbingModel = new \App\Models\PembimbingModel();
+        $timLolosNew = new \App\Models\TimLolosJuriModel();
 
         $header['title'] = 'Daftar Tim Lolos';
         $data['dataTimLolos'] = $timLolosModel->getdata();

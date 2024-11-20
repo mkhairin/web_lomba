@@ -545,7 +545,8 @@
 
     </div>
 
-  </section><!-- /Testimonials Section -->
+  </section>
+  <!-- /Testimonials Section -->
 
   <!-- Portfolio Section -->
   <section id="portfolio" class="portfolio section">
