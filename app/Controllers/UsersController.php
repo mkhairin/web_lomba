@@ -31,11 +31,11 @@ class UsersController extends BaseController
         $data['dataUsers'] = $userModel->getdata();
 
         $header['title'] = 'Daftar User';
-        echo view('partial/header', $header);
-        echo view('partial/top_menu');
-        echo view('partial/side_menu');
+        echo view('azia/header', $header);
+        echo view('azia/top_menu');
+        echo view('azia/side_menu');
         echo view('admin/users', $data);
-        echo view('partial/footer');
+        echo view('azia/footer');
     }
 
     public function insert(): RedirectResponse

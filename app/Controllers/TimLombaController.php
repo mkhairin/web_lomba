@@ -41,11 +41,11 @@ class TimLombaController extends BaseController
         $data['dataLomba'] = $lombaModel->getdata();
         $data['dataPembimbing'] = $pembimbingModel->getdata();
         
-        echo view('partial/header', $header);
-        echo view('partial/top_menu');
-        echo view('partial/side_menu');
+        echo view('azia/header', $header);
+        echo view('azia/top_menu');
+        echo view('azia/side_menu');
         echo view('admin/daftar_timlomba', $data);
-        echo view('partial/footer');
+        echo view('azia/footer');
     }
 
     public function insert(): RedirectResponse

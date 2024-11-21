@@ -18,16 +18,31 @@ class TimLolosController extends BaseController
         }
 
         $timLolosModel = new \App\Models\TimLolosJuriModel();
-     
+
         $data['dataTimLolos'] = $timLolosModel->get();
 
         $header['title'] = 'Daftar Tim Lolos';
-       
-        echo view('partial/header', $header);
-        echo view('partial/top_menu');
-        echo view('partial/side_menu');
+
+        echo view('azia/header', $header);
+        echo view('azia/top_menu');
+        echo view('azia/side_menu');
         echo view('admin/daftar_timlolos', $data);
-        echo view('partial/footer');
+        echo view('azia/footer');
+    }
+
+    public function azia()
+    {
+        $timLolosModel = new \App\Models\TimLolosJuriModel();
+
+        $data['dataTimLolos'] = $timLolosModel->get();
+
+        $header['title'] = 'Daftar Tim Lolos';
+
+        echo view('azia/header');
+        echo view('azia/top_menu');
+        echo view('azia/side_menu');
+        echo view('admin/daftar_timlolos1', $data);
+        echo view('azia/footer');
     }
 
     public function insert(): RedirectResponse
@@ -136,7 +151,6 @@ class TimLolosController extends BaseController
             } else {
                 throw new Exception('Gagal menghapus data.');
             }
-
         } catch (Exception $e) {
             session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }

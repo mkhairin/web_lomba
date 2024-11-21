@@ -39,11 +39,11 @@ class UserJuriController extends BaseController
         $data['dataJuri'] = $this->juriModel->getData();
 
         // Tampilkan view
-        echo view('partial/header', $header);
-        echo view('partial/top_menu');
-        echo view('partial/side_menu');
+        echo view('azia/header', $header);
+        echo view('azia/top_menu');
+        echo view('azia/side_menu');
         echo view('admin/user_juri', $data);
-        echo view('partial/footer');
+        echo view('azia/footer');
     }
 
     // Method untuk memasukkan data juri baru

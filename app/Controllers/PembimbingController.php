@@ -39,11 +39,11 @@ class PembimbingController extends BaseController
         $data['dataSekolah'] = $this->modelSekolah->getdata();
         $data['dataLomba'] = $this->modelLomba->getdata();
         $header['title'] = 'Daftar Pembimbing';
-        echo view('partial/header', $header);
-        echo view('partial/top_menu');
-        echo view('partial/side_menu');
+        echo view('azia/header', $header);
+        echo view('azia/top_menu');
+        echo view('azia/side_menu');
         echo view('admin/daftar_pembimbing', $data);
-        echo view('partial/footer');
+        echo view('azia/footer');
     }
 
     // Method insert pembimbing

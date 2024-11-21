@@ -38,11 +38,11 @@ class SoalController extends BaseController
 
         $header['title'] = 'Daftar Soal';
 
-        echo view('partial/header', $header);
-        echo view('partial/top_menu');
-        echo view('partial/side_menu');
+        echo view('azia/header', $header);
+        echo view('azia/top_menu');
+        echo view('azia/side_menu');
         echo view('admin/daftar_soal', $data);
-        echo view('partial/footer');
+        echo view('azia/footer');
     }
 
     public function insert()

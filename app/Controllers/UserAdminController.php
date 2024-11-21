@@ -39,11 +39,11 @@ class UserAdminController extends BaseController
         $data['dataAdmin'] = $this->adminModel->getdata();
 
         // Tampilkan view
-        echo view('partial/header', $header);
-        echo view('partial/top_menu');
-        echo view('partial/side_menu');
+        echo view('azia/header', $header);
+        echo view('azia/top_menu');
+        echo view('azia/side_menu');
         echo view('admin/user_admin', $data);
-        echo view('partial/footer');
+        echo view('azia/footer');
     }
 
     // Method untuk memasukkan data admin baru

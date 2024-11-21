@@ -31,11 +31,11 @@ class SekolahController extends BaseController
 
         $header['title'] = 'Daftar Sekolah';
         $data['dataSekolah'] = $this->sekolahModel->getdata();
-        echo view('partial/header', $header);
-        echo view('partial/top_menu');
-        echo view('partial/side_menu');
+        echo view('azia/header', $header);
+        echo view('azia/top_menu');
+        echo view('azia/side_menu');
         echo view('admin/daftar_sekolah', $data);
-        echo view('partial/footer');
+        echo view('azia/footer');
 
         return $this->response;
     }
@@ -54,18 +54,18 @@ class SekolahController extends BaseController
             'nama_sekolah' => 'required',
             'alamat' => 'required'
         ]);
-    
+
         // Cek validasi input
         if (!$this->validate($validation->getRules())) {
             return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         }
-    
+
         // Jika validasi berhasil, lanjutkan ke insert data
         $data = [
             'nama_sekolah' => esc($this->request->getPost("nama_sekolah")),
             'alamat' => esc($this->request->getPost("alamat")),
         ];
-    
+
         try {
             // Asumsikan insertData mengembalikan ID baru atau false jika gagal
             if ($this->sekolahModel->insert($data)) {
@@ -77,7 +77,7 @@ class SekolahController extends BaseController
             log_message('error', $e->getMessage());  // Logging error details
             session()->setFlashdata('error', 'Terjadi kesalahan pada server!');
         }
-    
+
         return redirect()->to('/daftar-sekolah'); // Redirect ke halaman daftar setelah insert
     }
 

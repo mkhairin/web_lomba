@@ -42,10 +42,6 @@
               </div>
             </div>
             <!-- /.card-body -->
-
-            <!-- <div class="card-footer">
-              <button type="submit" class="btn btn-sm btn-primary">Submit</button>
-            </div> -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -76,7 +72,7 @@
               <li>Pembimbing : <?= $nilai->pembimbing ?></li>
               <li>Sekolah : <?= $nilai->sekolah ?></li>
               <li>Sekolah : <?= $nilai->skor_nilai ?></li>
-              <li>Sekolah : <?= $nilai->status ?></li>
+              <li>Status : <?= $nilai->status ?></li>
             </ul>
           </div>
           <!-- /.card-body -->
@@ -111,6 +107,7 @@
         <?= session()->getFlashdata('error'); ?>
       </div>
     <?php endif; ?>
+
     <div class="row">
       <div class="col-md-12 grid-margin">
         <div class="row">
@@ -301,7 +298,7 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title mb-2">Daftar Tim</h4>
-            <p class="font-weight-500">Kami harap to do list simple ini dapat sedikit membantu dalam mengatur kegiatan dan tugas team anda</p>
+            <p class="font-weight-500">Kamu bisa melihat daftar Tim yang sudah menyelesaikan/submit tugas di form ini:)</p>
             <div class="list-wrapper pt-2">
               <ul
                 class="d-flex flex-column todo-list todo-list-custom col-12">

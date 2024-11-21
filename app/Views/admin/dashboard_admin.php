@@ -1,366 +1,499 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
+<div class="az-header">
+      <div class="container">
+        <div class="az-header-left">
+          <a href="index.html" class="az-logo"><span></span> azia</a>
+          <a href="" id="azMenuShow" class="az-header-menu-icon d-lg-none"><span></span></a>
+        </div><!-- az-header-left -->
+        <div class="az-header-menu">
+          <div class="az-header-menu-header">
+            <a href="index.html" class="az-logo"><span></span> azia</a>
+            <a href="" class="close">&times;</a>
+          </div><!-- az-header-menu-header -->
+          <ul class="nav">
+            <li class="nav-item active show">
+              <a href="index.html" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link with-sub"><i class="typcn typcn-document"></i> Pages</a>
+              <nav class="az-menu-sub">
+                <a href="page-signin.html" class="nav-link">Sign In</a>
+                <a href="page-signup.html" class="nav-link">Sign Up</a>
+              </nav>
+            </li>
+            <li class="nav-item">
+              <a href="chart-chartjs.html" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i> Charts</a>
+            </li>
+            <li class="nav-item">
+              <a href="form-elements.html" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i> Forms</a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link with-sub"><i class="typcn typcn-book"></i> Components</a>
+              <div class="az-menu-sub">
+                <div class="container">
+                  <div>
+                    <nav class="nav">
+                      <a href="elem-buttons.html" class="nav-link">Buttons</a>
+                      <a href="elem-dropdown.html" class="nav-link">Dropdown</a>
+                      <a href="elem-icons.html" class="nav-link">Icons</a>
+                      <a href="table-basic.html" class="nav-link">Table</a>
+                    </nav>
+                  </div>
+                </div><!-- container -->
+              </div>
+            </li>
+          </ul>
+        </div><!-- az-header-menu -->
+        <div class="az-header-right">
+          <a href="https://www.bootstrapdash.com/demo/azia-free/docs/documentation.html" target="_blank" class="az-header-search-link"><i class="far fa-file-alt"></i></a>
+          <a href="" class="az-header-search-link"><i class="fas fa-search"></i></a>
+          <div class="az-header-message">
+            <a href="#"><i class="typcn typcn-messages"></i></a>
+          </div><!-- az-header-message -->
+          <div class="dropdown az-header-notification">
+            <a href="" class="new"><i class="typcn typcn-bell"></i></a>
+            <div class="dropdown-menu">
+              <div class="az-dropdown-header mg-b-20 d-sm-none">
+                <a href="" class="az-header-arrow"><i class="icon ion-md-arrow-back"></i></a>
+              </div>
+              <h6 class="az-notification-title">Notifications</h6>
+              <p class="az-notification-text">You have 2 unread notification</p>
+              <div class="az-notification-list">
+                <div class="media new">
+                  <div class="az-img-user"><img src="../img/faces/face2.jpg" alt=""></div>
+                  <div class="media-body">
+                    <p>Congratulate <strong>Socrates Itumay</strong> for work anniversaries</p>
+                    <span>Mar 15 12:32pm</span>
+                  </div><!-- media-body -->
+                </div><!-- media -->
+                <div class="media new">
+                  <div class="az-img-user online"><img src="../img/faces/face3.jpg" alt=""></div>
+                  <div class="media-body">
+                    <p><strong>Joyce Chua</strong> just created a new blog post</p>
+                    <span>Mar 13 04:16am</span>
+                  </div><!-- media-body -->
+                </div><!-- media -->
+                <div class="media">
+                  <div class="az-img-user"><img src="../img/faces/face4.jpg" alt=""></div> 
+                  <div class="media-body">
+                    <p><strong>Althea Cabardo</strong> just created a new blog post</p>
+                    <span>Mar 13 02:56am</span>
+                  </div><!-- media-body -->
+                </div><!-- media -->
+                <div class="media">
+                  <div class="az-img-user"><img src="../img/faces/face5.jpg" alt=""></div>
+                  <div class="media-body">
+                    <p><strong>Adrian Monino</strong> added new comment on your photo</p>
+                    <span>Mar 12 10:40pm</span>
+                  </div><!-- media-body -->
+                </div><!-- media -->
+              </div><!-- az-notification-list -->
+              <div class="dropdown-footer"><a href="">View All Notifications</a></div>
+            </div><!-- dropdown-menu -->
+          </div><!-- az-header-notification -->
+          <div class="dropdown az-profile-menu">
+            <a href="" class="az-img-user"><img src="../img/faces/face1.jpg" alt=""></a>
+            <div class="dropdown-menu">
+              <div class="az-dropdown-header d-sm-none">
+                <a href="" class="az-header-arrow"><i class="icon ion-md-arrow-back"></i></a>
+              </div>
+              <div class="az-header-profile">
+                <div class="az-img-user">
+                  <img src="../img/faces/face1.jpg" alt="">
+                </div><!-- az-img-user -->
+                <h6>Aziana Pechon</h6>
+                <span>Premium Member</span>
+              </div><!-- az-header-profile -->
+
+              <a href="" class="dropdown-item"><i class="typcn typcn-user-outline"></i> My Profile</a>
+              <a href="" class="dropdown-item"><i class="typcn typcn-edit"></i> Edit Profile</a>
+              <a href="" class="dropdown-item"><i class="typcn typcn-time"></i> Activity Logs</a>
+              <a href="" class="dropdown-item"><i class="typcn typcn-cog-outline"></i> Account Settings</a>
+              <a href="page-signin.html" class="dropdown-item"><i class="typcn typcn-power-outline"></i> Sign Out</a>
+            </div><!-- dropdown-menu -->
+          </div>
+        </div><!-- az-header-right -->
+      </div><!-- container -->
+    </div><!-- az-header -->
+
+    <div class="az-content az-content-dashboard">
+      <div class="container">
+        <div class="az-content-body">
+          <div class="az-dashboard-one-title">
+            <div>
+              <h2 class="az-dashboard-title">Hi, welcome back!</h2>
+              <p class="az-dashboard-text">Your web analytics dashboard template.</p>
+            </div>
+            <div class="az-content-header-right">
+              <div class="media">
+                <div class="media-body">
+                  <label>Start Date</label>
+                  <h6>Oct 10, 2018</h6>
+                </div><!-- media-body -->
+              </div><!-- media -->
+              <div class="media">
+                <div class="media-body">
+                  <label>End Date</label>
+                  <h6>Oct 23, 2018</h6>
+                </div><!-- media-body -->
+              </div><!-- media -->
+              <div class="media">
+                <div class="media-body">
+                  <label>Event Category</label>
+                  <h6>All Categories</h6>
+                </div><!-- media-body -->
+              </div><!-- media -->
+              <a href="" class="btn btn-purple">Export</a>
+            </div>
+          </div><!-- az-dashboard-one-title -->
+
+          <div class="az-dashboard-nav"> 
+            <nav class="nav">
+              <a class="nav-link active" data-toggle="tab" href="#">Overview</a>
+              <a class="nav-link" data-toggle="tab" href="#">Audiences</a>
+              <a class="nav-link" data-toggle="tab" href="#">Demographics</a>
+              <a class="nav-link" data-toggle="tab" href="#">More</a>
+            </nav>
+
+            <nav class="nav">
+              <a class="nav-link" href="#"><i class="far fa-save"></i> Save Report</a>
+              <a class="nav-link" href="#"><i class="far fa-file-pdf"></i> Export to PDF</a>
+              <a class="nav-link" href="#"><i class="far fa-envelope"></i>Send to Email</a>
+              <a class="nav-link" href="#"><i class="fas fa-ellipsis-h"></i></a>
+            </nav>
+          </div>
+
+          <div class="row row-sm mg-b-20">
+            <div class="col-lg-7 ht-lg-100p">
+              <div class="card card-dashboard-one">
+                <div class="card-header">
+                  <div>
+                    <h6 class="card-title">Website Audience Metrics</h6>
+                    <p class="card-text">Audience to which the users belonged while on the current date range.</p>
+                  </div>
+                  <div class="btn-group">
+                    <button class="btn active">Day</button>
+                    <button class="btn">Week</button>
+                    <button class="btn">Month</button>
+                  </div>
+                </div><!-- card-header -->
+                <div class="card-body">
+                  <div class="card-body-top">
+                    <div>
+                      <label class="mg-b-0">Users</label>
+                      <h2>13,956</h2>
+                    </div>
+                    <div>
+                      <label class="mg-b-0">Bounce Rate</label>
+                      <h2>33.50%</h2>
+                    </div>
+                    <div>
+                      <label class="mg-b-0">Page Views</label>
+                      <h2>83,123</h2>
+                    </div>
+                    <div>
+                      <label class="mg-b-0">Sessions</label>
+                      <h2>16,869</h2>
+                    </div>
+                  </div><!-- card-body-top -->
+                  <div class="flot-chart-wrapper">
+                    <div id="flotChart" class="flot-chart"></div>
+                  </div><!-- flot-chart-wrapper -->
+                </div><!-- card-body -->
+              </div><!-- card -->
+            </div><!-- col -->
+            <div class="col-lg-5 mg-t-20 mg-lg-t-0">
+              <div class="row row-sm">
                 <div class="col-sm-6">
-                    <h1>Dashboard Admin</h1>
+                  <div class="card card-dashboard-two">
+                    <div class="card-header">
+                      <h6>33.50% <i class="icon ion-md-trending-up tx-success"></i> <small>18.02%</small></h6>
+                      <p>Bounce Rate</p>
+                    </div><!-- card-header -->
+                    <div class="card-body">
+                      <div class="chart-wrapper">
+                        <div id="flotChart1" class="flot-chart"></div>
+                      </div><!-- chart-wrapper -->
+                    </div><!-- card-body -->
+                  </div><!-- card -->
+                </div><!-- col -->
+                <div class="col-sm-6 mg-t-20 mg-sm-t-0">
+                  <div class="card card-dashboard-two">
+                    <div class="card-header">
+                      <h6>86k <i class="icon ion-md-trending-down tx-danger"></i> <small>0.86%</small></h6>
+                      <p>Total Users</p>
+                    </div><!-- card-header -->
+                    <div class="card-body">
+                      <div class="chart-wrapper">
+                        <div id="flotChart2" class="flot-chart"></div>
+                      </div><!-- chart-wrapper -->
+                    </div><!-- card-body -->
+                  </div><!-- card -->
+                </div><!-- col -->
+                <div class="col-sm-12 mg-t-20">
+                  <div class="card card-dashboard-three">
+                    <div class="card-header">
+                      <p>All Sessions</p>
+                      <h6>16,869 <small class="tx-success"><i class="icon ion-md-arrow-up"></i> 2.87%</small></h6>
+                      <small>The total number of sessions within the date range. It is the period time a user is actively engaged with your website, page or app, etc.</small>
+                    </div><!-- card-header -->
+                    <div class="card-body">
+                      <div class="chart"><canvas id="chartBar5"></canvas></div>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-sm-6 d-flex mt-3">
-                    <h6 class="mx-2">Jam</h6>
-                    <small><?= $jam ?></small>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
+              </div><!-- row -->
+            </div><!--col -->
+          </div><!-- row -->
 
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <!-- Small boxes (Stat box) -->
-            <div class="row">
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-dark">
-                        <div class="inner">
-                            <h3><?= $dataTimLomba ?></h3>
-
-                            <p>Data Tim</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa-solid fa-user-group py-3" style="font-size: 3rem;"></i>
-                        </div>
-                        <a href="/tim-lomba" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <div class="row row-sm mg-b-20">
+            <div class="col-lg-4">
+              <div class="card card-dashboard-pageviews">
+                <div class="card-header">
+                  <h6 class="card-title">Page Views by Page Title</h6>
+                  <p class="card-text">This report is based on 100% of sessions.</p>
+                </div><!-- card-header -->
+                <div class="card-body">
+                  <div class="az-list-item">
+                    <div>
+                      <h6>Admin Home</h6>
+                      <span>/demo/admin/index.html</span>
                     </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-dark">
-                        <div class="inner">
-                            <h3><?= $dataSekolah ?></h3>
-
-                            <p>Data Sekolah</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa-solid fa-school py-3" style="font-size: 3rem;"></i>
-                        </div>
-                        <a href="/daftar-sekolah" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <div>
+                      <h6 class="tx-primary">7,755</h6>
+                      <span>31.74% (-100.00%)</span>
                     </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-dark">
-                        <div class="inner">
-                            <h3><?= $dataPeserta ?></h3>
-
-                            <p>Data Peserta</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-person-add"></i>
-                        </div>
-                        <a href="/daftar-peserta" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  </div><!-- list-group-item -->
+                  <div class="az-list-item">
+                    <div>
+                      <h6>Form Elements</h6>
+                      <span>/demo/admin/forms.html</span>
                     </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-dark">
-                        <div class="inner">
-                            <h3><?= $dataPembimbing ?></h3>
-
-                            <p>Data Pembimbing</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
-                        </div>
-                        <a href="/daftar-pembimbing" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <div>
+                      <h6 class="tx-primary">5,215</h6>
+                      <span>28.53% (-100.00%)</span>
                     </div>
-                </div>
-                <!-- ./col -->
-            </div>
-            <!-- /.row -->
-            <!-- Main row -->
-            <div class="row">
-                <!-- Left col -->
-                <section class="col-lg-7 connectedSortable">
-
-                    <!-- Default box -->
-                    <div class="card">
-                        <div class="card-header bg-secondary-subtle">
-                            <h3 class="card-title">Tabel Peserta Lomba</h3>
-
-                            <div class="card-tools">
-                                <ul class="pagination pagination-sm float-right">
-                                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body p-0">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 10px">#</th>
-                                        <th>Task</th>
-                                        <th>Progress</th>
-                                        <th style="width: 40px">Label</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1.</td>
-                                        <td>Update software</td>
-                                        <td>
-                                            <div class="progress progress-xs">
-                                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-danger">55%</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2.</td>
-                                        <td>Clean database</td>
-                                        <td>
-                                            <div class="progress progress-xs">
-                                                <div class="progress-bar bg-warning" style="width: 70%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-warning">70%</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3.</td>
-                                        <td>Cron job running</td>
-                                        <td>
-                                            <div class="progress progress-xs progress-striped active">
-                                                <div class="progress-bar bg-primary" style="width: 30%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-primary">30%</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4.</td>
-                                        <td>Fix and squish bugs</td>
-                                        <td>
-                                            <div class="progress progress-xs progress-striped active">
-                                                <div class="progress-bar bg-success" style="width: 90%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-success">90%</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
+                  </div><!-- list-group-item -->
+                  <div class="az-list-item">
+                    <div>
+                      <h6>Utilities</h6>
+                      <span>/demo/admin/util.html</span>
                     </div>
-                    <!-- /.card -->
-
-                    <!-- Default box -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Tabel Tim</h3>
-
-                            <div class="card-tools">
-                                <ul class="pagination pagination-sm float-right">
-                                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body p-0">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 10px">#</th>
-                                        <th>Task</th>
-                                        <th>Progress</th>
-                                        <th style="width: 40px">Label</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1.</td>
-                                        <td>Update software</td>
-                                        <td>
-                                            <div class="progress progress-xs">
-                                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-danger">55%</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2.</td>
-                                        <td>Clean database</td>
-                                        <td>
-                                            <div class="progress progress-xs">
-                                                <div class="progress-bar bg-warning" style="width: 70%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-warning">70%</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3.</td>
-                                        <td>Cron job running</td>
-                                        <td>
-                                            <div class="progress progress-xs progress-striped active">
-                                                <div class="progress-bar bg-primary" style="width: 30%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-primary">30%</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4.</td>
-                                        <td>Fix and squish bugs</td>
-                                        <td>
-                                            <div class="progress progress-xs progress-striped active">
-                                                <div class="progress-bar bg-success" style="width: 90%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-success">90%</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
+                    <div>
+                      <h6 class="tx-primary">4,848</h6>
+                      <span>25.35% (-100.00%)</span>
                     </div>
-                    <!-- /.card -->
-
-
-                </section>
-                <!-- /.Left col -->
-                <!-- right col (We are only adding the ID to make the widgets sortable)-->
-                <section class="col-lg-5 connectedSortable">
-
-                    <!-- DONUT CHART -->
-                    <div class="card bg-secondary-subtle">
-                        <div class="card-header">
-                            <h3 class="card-title">Total Peserta/Tim</h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="donutChart"
-                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                        </div>
-                        <!-- /.card-body -->
+                  </div><!-- list-group-item -->
+                  <div class="az-list-item">
+                    <div>
+                      <h6>Form Validation</h6>
+                      <span>/demo/admin/validation.html</span>
                     </div>
-                    <!-- /.card -->
-
-                    <!-- solid sales graph -->
-                    <div class="card bg-gradient-info">
-                        <div class="card-header border-0">
-                            <h3 class="card-title">
-                                <i class="fas fa-th mr-1"></i>
-                                Sales Graph
-                            </h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn bg-info btn-sm" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn bg-info btn-sm" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <canvas class="chart" id="line-chart"
-                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer bg-transparent">
-                            <div class="row">
-                                <div class="col-4 text-center">
-                                    <input type="text" class="knob" data-readonly="true" value="20" data-width="60"
-                                        data-height="60" data-fgColor="#39CCCC">
-
-                                    <div class="text-white">Mail-Orders</div>
-                                </div>
-                                <!-- ./col -->
-                                <div class="col-4 text-center">
-                                    <input type="text" class="knob" data-readonly="true" value="50" data-width="60"
-                                        data-height="60" data-fgColor="#39CCCC">
-
-                                    <div class="text-white">Online</div>
-                                </div>
-                                <!-- ./col -->
-                                <div class="col-4 text-center">
-                                    <input type="text" class="knob" data-readonly="true" value="30" data-width="60"
-                                        data-height="60" data-fgColor="#39CCCC">
-
-                                    <div class="text-white">In-Store</div>
-                                </div>
-                                <!-- ./col -->
-                            </div>
-                            <!-- /.row -->
-                        </div>
-                        <!-- /.card-footer -->
+                    <div>
+                      <h6 class="tx-primary">3,275</h6>
+                      <span>23.17% (-100.00%)</span>
                     </div>
-                    <!-- /.card -->
-
-                    <!-- Calendar -->
-                    <div class="card bg-gradient-success">
-                        <div class="card-header border-0">
-
-                            <h3 class="card-title">
-                                <i class="far fa-calendar-alt"></i>
-                                Calendar
-                            </h3>
-                            <!-- tools card -->
-                            <div class="card-tools">
-                                <!-- button with a dropdown -->
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-success btn-sm dropdown-toggle"
-                                        data-toggle="dropdown" data-offset="-52">
-                                        <i class="fas fa-bars"></i>
-                                    </button>
-                                    <div class="dropdown-menu" role="menu">
-                                        <a href="#" class="dropdown-item">Add new event</a>
-                                        <a href="#" class="dropdown-item">Clear events</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href="#" class="dropdown-item">View calendar</a>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                            <!-- /. tools -->
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body pt-0">
-                            <!--The calendar -->
-                            <div id="calendar" style="width: 100%"></div>
-                        </div>
-                        <!-- /.card-body -->
+                  </div><!-- list-group-item -->
+                  <div class="az-list-item">
+                    <div>
+                      <h6>Modals</h6>
+                      <span>/demo/admin/modals.html</span>
                     </div>
-                    <!-- /.card -->
-                </section>
-                <!-- right col -->
-            </div>
-            <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content --
-</div>
-<!-- /.content-wrapper -->
+                    <div>
+                      <h6 class="tx-primary">3,003</h6>
+                      <span>22.21% (-100.00%)</span>
+                    </div>
+                  </div><!-- list-group-item -->
+                </div><!-- card-body -->
+              </div><!-- card -->
+
+            </div><!-- col -->
+            <div class="col-lg-8 mg-t-20 mg-lg-t-0">
+              <div class="card card-dashboard-four">
+                <div class="card-header">
+                  <h6 class="card-title">Sessions by Channel</h6>
+                </div><!-- card-header -->
+                <div class="card-body row">
+                  <div class="col-md-6 d-flex align-items-center">
+                    <div class="chart"><canvas id="chartDonut"></canvas></div>
+                  </div><!-- col -->
+                  <div class="col-md-6 col-lg-5 mg-lg-l-auto mg-t-20 mg-md-t-0">
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Organic Search</span>
+                        <span>1,320 <span>(25%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-purple wd-25p" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Email</span>
+                        <span>987 <span>(20%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-primary wd-20p" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Referral</span>
+                        <span>2,010 <span>(30%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-info wd-30p" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Social</span>
+                        <span>654 <span>(15%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-teal wd-15p" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Other</span>
+                        <span>400 <span>(10%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-gray-500 wd-10p" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                  </div><!-- col -->
+                </div><!-- card-body -->
+              </div><!-- card-dashboard-four -->
+            </div><!-- col -->
+          </div><!-- row -->
+
+          <div class="row row-sm mg-b-20 mg-lg-b-0">
+            <div class="col-lg-5 col-xl-4">
+              <div class="row row-sm">
+                <div class="col-md-6 col-lg-12 mg-b-20 mg-md-b-0 mg-lg-b-20">
+                  <div class="card card-dashboard-five">
+                    <div class="card-header">
+                      <h6 class="card-title">Acquisition</h6>
+                      <span class="card-text">Tells you where your visitors originated from, such as search engines, social networks or website referrals.</span>
+                    </div><!-- card-header -->
+                    <div class="card-body row row-sm">
+                      <div class="col-6 d-sm-flex align-items-center">
+                        <div class="card-chart bg-primary">
+                          <span class="peity-bar" data-peity='{"fill": ["#fff"], "width": 20, "height": 20 }'>6,4,7,5,7</span>
+                        </div>
+                        <div>
+                          <label>Bounce Rate</label>
+                          <h4>33.50%</h4>
+                        </div>
+                      </div><!-- col -->
+                      <div class="col-6 d-sm-flex align-items-center">
+                        <div class="card-chart bg-purple">
+                          <span class="peity-bar" data-peity='{"fill": ["#fff"], "width": 21, "height": 20 }'>7,4,5,7,2</span>
+                        </div>
+                        <div>
+                          <label>Sessions</label>
+                          <h4>9,065</h4>
+                        </div>
+                      </div><!-- col -->
+                    </div><!-- card-body -->
+                  </div><!-- card-dashboard-five -->
+                </div><!-- col -->
+                <div class="col-md-6 col-lg-12">
+                  <div class="card card-dashboard-five">
+                    <div class="card-header">
+                      <h6 class="card-title">Sessions</h6>
+                      <span class="card-text"> A session is the period time a user is actively engaged with your website, app, etc.</span>
+                    </div><!-- card-header -->
+                    <div class="card-body row row-sm">
+                      <div class="col-6 d-sm-flex align-items-center">
+                        <div class="mg-b-10 mg-sm-b-0 mg-sm-r-10">
+                          <span class="peity-donut" data-peity='{ "fill": ["#007bff", "#cad0e8"],  "innerRadius": 14, "radius": 20 }'>4/7</span>
+                        </div>
+                        <div>
+                          <label>% New Sessions</label>
+                          <h4>26.80%</h4>
+                        </div>
+                      </div><!-- col -->
+                      <div class="col-6 d-sm-flex align-items-center">
+                        <div class="mg-b-10 mg-sm-b-0 mg-sm-r-10">
+                          <span class="peity-donut" data-peity='{ "fill": ["#00cccc", "#cad0e8"],  "innerRadius": 14, "radius": 20 }'>2/7</span>
+                        </div>
+                        <div>
+                          <label>Pages/Session</label>
+                          <h4>1,005</h4>
+                        </div>
+                      </div><!-- col -->
+                    </div><!-- card-body -->
+                  </div><!-- card-dashboard-five -->
+                </div><!-- col -->
+              </div><!-- row -->
+            </div><!-- col-lg-3 -->
+            <div class="col-lg-7 col-xl-8 mg-t-20 mg-lg-t-0">
+              <div class="card card-table-one">
+                <h6 class="card-title">What pages do your users visit</h6>
+                <p class="az-content-text mg-b-20">Part of this date range occurs before the new users metric had been calculated, so the old users metric is displayed.</p>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th class="wd-5p">&nbsp;</th>
+                        <th class="wd-45p">Country</th>
+                        <th>Entrances</th>
+                        <th>Bounce Rate</th>
+                        <th>Exits</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><i class="flag-icon flag-icon-us flag-icon-squared"></i></td>
+                        <td><strong>United States</strong></td>
+                        <td><strong>134</strong> (1.51%)</td>
+                        <td>33.58%</td>
+                        <td>15.47%</td>
+                      </tr>
+                      <tr>
+                        <td><i class="flag-icon flag-icon-gb flag-icon-squared"></i></td>
+                        <td><strong>United Kingdom</strong></td>
+                        <td><strong>290</strong> (3.30%)</td>
+                        <td>9.22%</td>
+                        <td>7.99%</td>
+                      </tr>
+                      <tr>
+                        <td><i class="flag-icon flag-icon-in flag-icon-squared"></i></td>
+                        <td><strong>India</strong></td>
+                        <td><strong>250</strong> (3.00%)</td>
+                        <td>20.75%</td>
+                        <td>2.40%</td>
+                      </tr>
+                      <tr>
+                        <td><i class="flag-icon flag-icon-ca flag-icon-squared"></i></td>
+                        <td><strong>Canada</strong></td>
+                        <td><strong>216</strong> (2.79%)</td>
+                        <td>32.07%</td>
+                        <td>15.09%</td>
+                      </tr>
+                      <tr>
+                        <td><i class="flag-icon flag-icon-fr flag-icon-squared"></i></td>
+                        <td><strong>France</strong></td>
+                        <td><strong>216</strong> (2.79%)</td>
+                        <td>32.07%</td>
+                        <td>15.09%</td>
+                      </tr>
+                      <tr>
+                        <td><i class="flag-icon flag-icon-ph flag-icon-squared"></i></td>
+                        <td><strong>Philippines</strong></td>
+                        <td><strong>197</strong> (2.12%)</td>
+                        <td>32.07%</td>
+                        <td>15.09%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div><!-- table-responsive -->
+              </div><!-- card -->
+            </div><!-- col-lg -->
+
+          </div><!-- row -->
+        </div><!-- az-content-body -->
+      </div>
+    </div><!-- az-content -->

@@ -46,8 +46,8 @@ class DashboardController extends BaseController
         $data['jam'] = $waktuSekarang;
         
         echo view('partial/header', $header);
-        echo view('partial/top_menu');
-        echo view('partial/side_menu');
+        // echo view('partial/top_menu');
+        // echo view('partial/side_menu');
         echo view('admin/dashboard_admin', $data);
         echo view('partial/footer');
     }
