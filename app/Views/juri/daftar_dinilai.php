@@ -41,7 +41,7 @@
 
         <!-- Modal Update for each submission -->
         <?php foreach ($dataSubmitTugas as $data) : ?>
-            <form action="/juri-dashboard/update/<?= $data->id_submit_pengumpulan ?>" method="post">
+            <form action="/juri-dashboard/tim-lolos/insert" method="post">
                 <?= csrf_field() ?>
                 <div class="modal fade" id="modal-lg-update<?= $data->id_submit_pengumpulan ?>" tabindex="-1" aria-labelledby="modal-lg-update-label<?= $data->id_submit_pengumpulan ?>" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
@@ -52,14 +52,20 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
+                            <input type="hidden" name="tim" value="<?= $data->tim ?>">
+                            <input type="hidden" name="ketua" value="<?= $data->ketua ?>">
+                            <input type="hidden" name="lomba" value="<?= $data->lomba ?>">
+                            <input type="hidden" name="pembimbing" value="<?= $data->pembimbing ?>">
+                            <input type="hidden" name="sekolah" value="<?= $data->sekolah ?>">
+                            <input type="hidden" name="skor_nilai" value="<?= $data->skor_nilai ?>">
                             <div class="modal-body">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="status_penilaian">Status Penilaian</label>
-                                        <select class="form-control" id="status_penilaian" name="status_penilaian" required>
-                                            <option value="" selected><?= $data->status_penilaian ?></option>
-                                            <option value="Belum Dinilai" <?= ($data->status_penilaian == 'Belum Dinilai') ? 'selected' : '' ?>>Belum Dinilai</option>
-                                            <option value="Sudah Dinilai" <?= ($data->status_penilaian == 'Sudah Dinilai') ? 'selected' : '' ?>>Sudah Dinilai</option>
+                                        <label for="status">Status Penilaian</label>
+                                        <select class="form-control" id="status" name="status" required>
+                                            <option selected>Pilih Status</option>
+                                            <option value="Belum Lolos">Belum Lolos</option>
+                                            <option value="Lolos">Lolos</option>
                                         </select>
                                     </div>
                                 </div>

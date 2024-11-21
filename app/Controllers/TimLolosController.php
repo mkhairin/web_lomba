@@ -22,6 +22,7 @@ class TimLolosController extends BaseController
         $sekolahModel = new \App\Models\SekolahModel();
         $lombaModel = new \App\Models\LombaModel();
         $pembimbingModel = new \App\Models\PembimbingModel();
+        
 
         $header['title'] = 'Daftar Tim Lolos';
         $data['dataTimLolos'] = $timLolosModel->getdata();

@@ -29,56 +29,6 @@
             </div>
         <?php endif; ?>
 
-
-        <!-- Modal Update for each submission -->
-        <?php foreach ($dataSubmitTugas as $data) : ?>
-            <form action="/juri-dashboard/tim-lolos/insert" method="post">
-                <?= csrf_field() ?>
-                <div class="modal fade" id="modal-lg-update<?= $data->id_submit_pengumpulan ?>" tabindex="-1" aria-labelledby="modal-lg-update-label<?= $data->id_submit_pengumpulan ?>" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Form Penilaian</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="card-body">
-                                    <input type="hidden" name="tim" value="<?= $data->tim?>">
-                                    <input type="hidden" name="ketua" value="<?= $data->ketua?>">
-                                    <input type="hidden" name="lomba" value="<?= $data->lomba?>">
-                                    <input type="hidden" name="pembimbing" value="<?= $data->pembimbing?>">
-                                    <input type="hidden" name="sekolah" value="<?= $data->sekolah?>">
-                                    <input type="hidden" name="skor_nilai" value="<?= $data->skor_nilai?>">
-                                    <div class="form-group">
-                                        <label for="status">Status Penilaian</label>
-                                        <select class="form-control" id="status" name="status" required>
-                                            <option selected>Status Kelolosan</option>
-                                            <option value="Belum Lolos">Belum Lolos</option>
-                                            <option value="Lolos">Lolos</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-dark">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        <?php endforeach; ?>
-
-
-        <?php foreach ($dataSubmitTugas as $data) : ?>
-            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal-lg-update<?= $data->id_submit_pengumpulan ?>">
-                Tambah Data
-            </button>
-        <?php endforeach; ?>
-        <br> <br>
-
         <!-- Default box -->
         <div class="card shadow-none border border-0">
             <div class="card-header">
@@ -91,27 +41,29 @@
                         <tr>
                             <th style="width: 10px">No</th>
                             <th>Tim</th>
+                            <th>Ketua</th>
                             <th>Kategori</th>
-                            <th>Sekolah</th>
                             <th>Pembimbing</th>
-                            <th>Nilai</th>
+                            <th>Sekolah</th>
+                            <th>Nilai Skor</th>
                             <th>Status</th>
                             <th style="width: 200px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i = 1 ?>
-                        <?php foreach ($dataSubmitTugas as $data) : ?>
+                        <?php foreach ($dataTimLolosNew as $data) : ?>
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <td><?= esc($data->tim) ?></td>
+                                <td><?= esc($data->ketua) ?></td>
                                 <td><?= esc($data->lomba) ?></td>
-                                <td><?= esc($data->sekolah) ?></td>
                                 <td><?= esc($data->pembimbing) ?></td>
-                                <td><?= esc($data->tgl) ?></td>
-                                <td><?= esc($data->jam) ?></td>
+                                <td><?= esc($data->sekolah) ?></td>
+                                <td><?= esc($data->skor_nilai) ?></td>
+                                <td><?= esc($data->status) ?></td>
                                 <td>
-                                    <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#modal-lg-update<?= $data->id_submit_pengumpulan ?>">
+                                    <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#modal-lg-update<?= $data->id_tim_lolos ?>">
                                         <i class="bi bi-pencil-square"></i>
                                     </button>
                                 </td>

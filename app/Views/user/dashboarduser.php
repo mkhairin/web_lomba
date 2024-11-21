@@ -93,23 +93,24 @@
   </div>
 <?php endforeach; ?>
 
-<?php $validation = \Config\Services::validation(); ?>
-<!-- Pesan sukses -->
-<?php if (session()->getFlashdata('success')): ?>
-  <div class="alert alert-success">
-    <?= session()->getFlashdata('success'); ?>
-  </div>
-<?php endif; ?>
-<!-- Pesan error general -->
-<?php if (session()->getFlashdata('error')): ?>
-  <div class="alert alert-danger">
-    <?= session()->getFlashdata('error'); ?>
-  </div>
-<?php endif; ?>
+
 
 <!-- partial -->
 <div class="main-panel">
   <div class="content-wrapper">
+    <?php $validation = \Config\Services::validation(); ?>
+    <!-- Pesan sukses -->
+    <?php if (session()->getFlashdata('success')): ?>
+      <div class="alert alert-success">
+        <?= session()->getFlashdata('success'); ?>
+      </div>
+    <?php endif; ?>
+    <!-- Pesan error general -->
+    <?php if (session()->getFlashdata('error')): ?>
+      <div class="alert alert-danger">
+        <?= session()->getFlashdata('error'); ?>
+      </div>
+    <?php endif; ?>
     <div class="row">
       <div class="col-md-12 grid-margin">
         <div class="row">

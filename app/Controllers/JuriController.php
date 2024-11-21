@@ -12,6 +12,7 @@ use DateTimeZone;
 class JuriController extends BaseController
 {
     protected $submitTugasModel;
+    protected $timLolosNew;
     protected $tanggalLengkap;
     protected $jamSekarang;
 
@@ -19,6 +20,7 @@ class JuriController extends BaseController
     {
         // Inisialisasi model
         $this->submitTugasModel = new \App\Models\SubmitTugasModel();
+        $this->timLolosNew = new \App\Models\TimLolosJuriModel();
 
         // Check if user is admin
         $session = session();
@@ -122,7 +124,7 @@ class JuriController extends BaseController
         $data['jamSekarang'] = $this->jamSekarang;
         $data['dataTimLomba'] = $timLombaModel->getdata();
 
-        
+
 
         $header['title'] = 'Dashboard Juri';
         echo view('juri/header', $header);
@@ -142,6 +144,7 @@ class JuriController extends BaseController
         $kategoriLomba = $session->get('lomba');
         $data['dataUsername'] = $session->get('username');
         $data['dataSubmitTugas'] = $this->submitTugasModel->getDataAfterWhere($kategoriLomba);
+        $data['dataTimLolosNew'] = $this->timLolosNew->getDataWhere($kategoriLomba);
         $data['tanggalLengkap'] = $this->tanggalLengkap;
         $data['jamSekarang'] = $this->jamSekarang;
 
