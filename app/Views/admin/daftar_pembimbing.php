@@ -189,7 +189,7 @@ $segments = $uri->getSegments();
 
 
     <div class="container">
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal-lg">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
             Tambah Data
         </button>
     </div>
@@ -220,13 +220,11 @@ $segments = $uri->getSegments();
                         <td><?= $data->no_handphone ?></td>
                         <td>
 
-                            <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
-                                data-target="#modal-lg-update<?= $data->id_pembimbing ?>"><i
-                                    class="bi bi-pencil-square"></i></button>
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                data-target="#modal-lg-update<?= $data->id_pembimbing ?>">Update</button>
                             <a class="btn btn-outline-primary btn-sm"
                                 href="/daftar-pembimbing/delete/<?= $data->id_pembimbing ?>"
-                                role="button"><i
-                                    class="bi bi-trash3-fill"></i></a>
+                                role="button">Delete</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
