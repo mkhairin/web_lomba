@@ -1,63 +1,38 @@
-<div class="login-box">
-    <div class="login-logo">
-        <a href="../../index2.html"><b>Admin</b> Kaltech</a>
-    </div>
+<div class="az-signin-wrapper">
+    <div class="az-card-signin">
+        <h1 class="az-logo text-primary">kaltech</h1>
+        <div class="az-signin-header">
+            <h2 class="text-primary">Selamat Datang Admin</h2>
+            <h4>Please sign in to continue</h4>
+            <p>Jika kamu <b class="text-primary">Admin</b> silahkan Login jika tidak jangan masuk!!!</p>
 
-    <?php $validation = \Config\Services::validation(); ?>
+            <?php $validation = \Config\Services::validation(); ?>
 
-    <!-- Pesan sukses -->
-    <?php if (session()->getFlashdata('success')): ?>
-        <div class="alert alert-success">
-            <?= session()->getFlashdata('success'); ?>
-        </div>
-    <?php endif; ?>
+            <!-- Pesan sukses -->
+            <?php if (session()->getFlashdata('success')): ?>
+                <div class="alert alert-success">
+                    <?= session()->getFlashdata('success'); ?>
+                </div>
+            <?php endif; ?>
 
-    <!-- Pesan error general -->
-    <?php if (session()->getFlashdata('error')): ?>
-        <div class="alert alert-danger">
-            <?= session()->getFlashdata('error'); ?>
-        </div>
-    <?php endif; ?>
-
-    <!-- /.login-logo -->
-    <div class="card shadow-none">
-        <div class="card-body login-card-body  rounded">
-            <p class="login-box-msg">Jika anda admin silahkan login dengan username dan password yang benar</p>
+            <!-- Pesan error general -->
+            <?php if (session()->getFlashdata('error')): ?>
+                <div class="alert alert-danger">
+                    <?= session()->getFlashdata('error'); ?>
+                </div>
+            <?php endif; ?>
 
             <form action="/admin_login/auth" method="post">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Username">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- /.col -->
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-dark btn-block">Login</button>
-                    </div>
-                    <!-- /.col -->
-                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Masukkan username">
+                </div><!-- form-group -->
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan password">
+                </div><!-- form-group -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">Sign In</button>
             </form>
-            <!-- 
-              <p class="mb-1 mt-5">
-                  <a href="forgot-password.html">I forgot my password</a>
-              </p>
-              <p class="mb-0">
-                  <a href="register.html" class="text-center">Register a new membership</a>
-              </p> -->
-        </div>
-        <!-- /.login-card-body -->
-    </div>
-</div>
-<!-- /.login-box -->
+        </div><!-- az-signin-header -->
+    </div><!-- az-card-signin -->
+</div><!-- az-signin-wrapper -->

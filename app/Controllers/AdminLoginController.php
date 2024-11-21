@@ -46,7 +46,7 @@ class AdminLoginController extends BaseController
         } else {
             // Jika autentikasi gagal, tampilkan pesan kesalahan
             session()->setFlashdata('error', 'Username or Password incorrect!');
-            return redirect()->to('/login');
+            return redirect()->to('/admin_panel');
         }
     }
 
