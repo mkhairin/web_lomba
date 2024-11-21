@@ -166,10 +166,8 @@
         <span>Tables</span>
         <span>Basic Tables</span>
     </div>
-    <h2 class="az-content-title">Basic Tables</h2>
+    <h2 class="az-content-title">Daftar Pembimbing</h2>
 
-    <div class="az-content-label mg-b-5">Striped Rows</div>
-    <p class="mg-b-20">Data tim yang lolos ke tahap berikutnya.</p>
 
     <div class="container">
         <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal-lg">

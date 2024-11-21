@@ -35,11 +35,11 @@ class LombaController extends BaseController
             $header['title'] = 'Daftar Lomba';
 
             // Load views
-            echo view('partial/header', $header);
-            echo view('partial/top_menu');
-            echo view('partial/side_menu');
+            echo view('azia/header', $header);
+            echo view('azia/top_menu');
+            echo view('azia/side_menu');
             echo view('admin/daftar_lomba', $data);
-            echo view('partial/footer');
+            echo view('azia/footer');
         } catch (Exception $e) {
             // Set error jika terjadi masalah
             session()->setFlashdata('error', 'Gagal memuat data lomba: ' . $e->getMessage());

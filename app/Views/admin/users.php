@@ -1,34 +1,3 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper py-3">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Daftar User</h1>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-        <?php $validation = \Config\Services::validation(); ?>
-
-        <!-- Pesan sukses -->
-        <?php if (session()->getFlashdata('success')): ?>
-            <div class="alert alert-success">
-                <?= session()->getFlashdata('success'); ?>
-            </div>
-        <?php endif; ?>
-
-        <!-- Pesan error general -->
-        <?php if (session()->getFlashdata('error')): ?>
-            <div class="alert alert-danger">
-                <?= session()->getFlashdata('error'); ?>
-            </div>
-        <?php endif; ?>
-
         <!-- Modal Add -->
         <form action="/user/insert" method="post">
             <?php csrf_field() ?>
@@ -245,65 +214,66 @@
             </form>
         <?php endforeach; ?>
 
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal-lg">
-            Tambah Data
-        </button>
-
-        <br> <br>
-
-        <!-- Default box -->
-        <div class="card shadow-none border border-0">
-            <div class="card-header">
-                <h3 class="card-title">Daftar User</h3>
+        <div class="az-content-body pd-lg-l-40 d-flex flex-column">
+            <div class="az-content-breadcrumb">
+                <span>Components</span>
+                <span>Tables</span>
+                <span>Basic Tables</span>
             </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                <div class="table-responsive"> <!-- Add this wrapper -->
-                    <table id="example1" class="table table-striped">
-                        <thead>
+            <h2 class="az-content-title">Basic Tables</h2>
+
+            <div class="az-content-label mg-b-5">Striped Rows</div>
+            <p class="mg-b-20">Data tim yang lolos ke tahap berikutnya.</p>
+
+            <div class="container">
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal-lg">
+                    Tambah Data
+                </button>
+            </div>
+
+            <br>
+
+            <div class="table-responsive">
+                <table id="myTable" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 10px">#</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Sekolah</th>
+                            <th>Tim</th>
+                            <th>Kategori Lomba</th>
+                            <th>Roles</th>
+                            <th style="width: 200px">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1 ?>
+                        <?php foreach ($dataUsers as $user) : ?>
                             <tr>
-                                <th style="width: 10px">#</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                                <th>Sekolah</th>
-                                <th>Tim</th>
-                                <th>Kategori Lomba</th>
-                                <th>Roles</th>
-                                <th style="width: 200px">Aksi</th>
+                                <td><?= $i++ ?></td>
+                                <td><?= $user->username ?></td>
+                                <td style="text-align: justify;">
+                                    <?= substr($user->password, 0, 10) . '...' ?>
+                                </td>
+                                <td><?= $user->nama_sekolah ?></td>
+                                <td><?= $user->nama_tim ?></td>
+                                <td><?= $user->nama ?></td>
+                                <td><?= $user->role ?></td>
+                                <td>
+                                    <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
+                                        data-target="#modal-lg-update<?= $user->id_user ?>"><i
+                                            class="bi bi-pencil-square"></i></button>
+                                    <a class="btn btn-dark btn-sm" href="/user/delete/<?= $user->id_user ?>"
+                                        role="button"><i
+                                            class="bi bi-trash3-fill"></i></a>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <?php $i = 1 ?>
-                            <?php foreach ($dataUsers as $user) : ?>
-                                <tr>
-                                    <td><?= $i++ ?></td>
-                                    <td><?= $user->username ?></td>
-                                    <td style="text-align: justify;">
-                                        <?= substr($user->password, 0, 10) . '...' ?>
-                                    </td>
-                                    <td><?= $user->nama_sekolah ?></td>
-                                    <td><?= $user->nama_tim ?></td>
-                                    <td><?= $user->nama ?></td>
-                                    <td><?= $user->role ?></td>
-                                    <td>
-                                        <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
-                                            data-target="#modal-lg-update<?= $user->id_user ?>"><i
-                                                class="bi bi-pencil-square"></i></button>
-                                        <a class="btn btn-dark btn-sm" href="/user/delete/<?= $user->id_user ?>"
-                                            role="button"><i
-                                                class="bi bi-trash3-fill"></i></a>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div> <!-- End of table-responsive wrapper -->
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
-            <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
 
-    </section>
-    <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+            <hr class="mg-y-30">
+
+            <div class="ht-40"></div>
