@@ -164,12 +164,10 @@
                                     </td>
                                     <td><?= $juri->role ?></td>
                                     <td>
-                                        <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
-                                            data-target="#modal-lg-update<?= $juri->id_juri ?>"><i
-                                                class="bi bi-pencil-square"></i></button>
-                                        <a class="btn btn-dark btn-sm" href="/juri/delete/<?= $juri->id_juri ?>"
-                                            role="button"><i
-                                                class="bi bi-trash3-fill"></i></a>
+                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                            data-target="#modal-lg-update<?= $juri->id_juri ?>">Update</button>
+                                        <a class="btn btn-outline-primary btn-sm" href="/juri/delete/<?= $juri->id_juri ?>"
+                                            role="button">Delete</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

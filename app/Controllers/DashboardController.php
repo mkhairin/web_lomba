@@ -32,7 +32,7 @@ class DashboardController extends BaseController
         // Check if user is admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
         $waktuSekarang = Time::now('Asia/Jakarta', 'id_ID');
@@ -44,11 +44,11 @@ class DashboardController extends BaseController
         $data['dataPeserta'] = count($this->pesertaModel->getdata());
         $data['dataPembimbing'] = count($this->pembimbingModel->getdata());
         $data['jam'] = $waktuSekarang;
-        
-        echo view('partial/header', $header);
-        // echo view('partial/top_menu');
-        // echo view('partial/side_menu');
+
+        echo view('azia/header', $header);
+        echo view('azia/top_menu');
+        // echo view('azia/side_menu');
         echo view('admin/dashboard_admin', $data);
-        echo view('partial/footer');
+        echo view('azia/footer');
     }
 }

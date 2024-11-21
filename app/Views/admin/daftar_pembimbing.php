@@ -65,8 +65,8 @@
                     <!-- /.card-body -->
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-dark">Save changes</button>
+                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -147,8 +147,8 @@
                         <!-- /.card-body -->
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-dark">Save changes</button>
+                        <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -159,12 +159,31 @@
     </form>
 <?php endforeach; ?>
 
+<?php
+$uri = service('uri');
+$segments = $uri->getSegments();
+?>
+
 
 <div class="az-content-body pd-lg-l-40 d-flex flex-column">
     <div class="az-content-breadcrumb">
-        <span>Components</span>
-        <span>Tables</span>
-        <span>Basic Tables</span>
+        <span><a href="<?= base_url('/') ?>">Home</a></span>
+        <?php if (!empty($segments)): ?>
+            <?php foreach ($segments as $index => $segment): ?>
+                <?php
+                // Ubah segmen URL menjadi label yang lebih deskriptif
+                $label = ucfirst(str_replace('-', ' ', $segment));
+                $url = base_url(implode('/', array_slice($segments, 0, $index + 1)));
+                ?>
+                <span>
+                    <?php if ($index + 1 < count($segments)): ?>
+                        <a href="<?= $url ?>"><?= $label ?></a>
+                    <?php else: ?>
+                        <?= $label ?>
+                    <?php endif; ?>
+                </span>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
     <h2 class="az-content-title">Daftar Pembimbing</h2>
 
@@ -204,7 +223,7 @@
                             <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
                                 data-target="#modal-lg-update<?= $data->id_pembimbing ?>"><i
                                     class="bi bi-pencil-square"></i></button>
-                            <a class="btn btn-dark btn-sm"
+                            <a class="btn btn-outline-primary btn-sm"
                                 href="/daftar-pembimbing/delete/<?= $data->id_pembimbing ?>"
                                 role="button"><i
                                     class="bi bi-trash3-fill"></i></a>
