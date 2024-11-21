@@ -136,7 +136,7 @@
                 <table id="example1" class="table table-striped">
                     <thead>
                         <tr>
-                            <th style="width: 10px">No</th>
+                            <th style="width: 10px">#</th>
                             <th>Nama Sponsor</th>
                             <th>Logo Sponsor</th>
                             <th style="width: 200px">Aksi</th>
@@ -149,11 +149,11 @@
                                 <td><?= $i++ ?></td>
                                 <td><?= $data->nama_sponsor ?></td>
                                 <td><img src="/img/sponsor/<?= $data->logo ?>" class="img-thumbnail" alt="Logo Sponsor"
-                                        width="100px"></td>
+                                        width="80"></td>
                                 <td>
-                                    <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                         data-target="#modal-lg-update<?= $data->id_sponsor ?>">Update</button>
-                                    <a class="btn btn-dark btn-sm" href="/daftar-sponsor/delete/<?= $data->id_sponsor ?>"
+                                    <a class="btn btn-outline-primary btn-sm" href="/daftar-sponsor/delete/<?= $data->id_sponsor ?>"
                                         role="button">Delete</a>
                                 </td>
                             </tr>
