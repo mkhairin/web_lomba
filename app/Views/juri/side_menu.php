@@ -43,10 +43,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/juri-dashboard" class="nav-link">
+                    <a href="/juri-dashboard/tim-lomba" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
-                            Tim Lomba
+                            Daftar Tim
                         </p>
                     </a>
                 </li>
@@ -54,7 +54,7 @@
                     <a href="/juri-dashboard/daftar-dinilai" class="nav-link">
                         <i class="fa-solid fa-star"></i>
                         <p>
-                            Telah Dinilai
+                            Daftar Tim Nilai
                         </p>
                     </a>
                 </li>
@@ -62,7 +62,7 @@
                     <a href="/juri-dashboard/tim-lolos" class="nav-link">
                         <i class="fa-solid fa-bolt"></i>
                         <p>
-                            Tim Lolos
+                            Daftar Tim Lolos
                         </p>
                     </a>
                 </li>

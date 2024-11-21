@@ -79,11 +79,11 @@ class JuriController extends BaseController
         $data['jamSekarang'] = $this->jamSekarang;
 
         $header['title'] = 'Dashboard Juri';
-        echo view('partial/header', $header);
-        echo view('partial/top_menu');
+        echo view('juri/header', $header);
+        echo view('juri/top_menu');
         echo view('juri/side_menu', $data);
         echo view('juri/juri_dashboard', $data);
-        echo view('partial/footer');
+        echo view('juri/footer');
     }
 
     public function daftarDinilai()
@@ -100,13 +100,37 @@ class JuriController extends BaseController
         $data['jamSekarang'] = $this->jamSekarang;
 
         $header['title'] = 'Dashboard Juri';
-        echo view('partial/header', $header);
-        echo view('partial/top_menu');
+        echo view('juri/header', $header);
+        echo view('juri/top_menu');
         echo view('juri/side_menu', $data);
         echo view('juri/daftar_dinilai', $data);
-        echo view('partial/footer');
+        echo view('juri/footer');
     }
 
+    public function daftarTimLomba()
+    {
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'juri') {
+            return redirect()->to('/login')->with('error', 'You must be an juri to access this page.');
+        }
+
+        $timLombaModel = new \App\Models\TimLombaModel();
+        $kategoriLomba = $session->get('lomba');
+        $data['dataUsername'] = $session->get('username');
+        $data['dataSubmitTugas'] = $this->submitTugasModel->getDataAfterWhere($kategoriLomba);
+        $data['tanggalLengkap'] = $this->tanggalLengkap;
+        $data['jamSekarang'] = $this->jamSekarang;
+        $data['dataTimLomba'] = $timLombaModel->getdata();
+
+        
+
+        $header['title'] = 'Dashboard Juri';
+        echo view('juri/header', $header);
+        echo view('juri/top_menu');
+        echo view('juri/side_menu', $data);
+        echo view('juri/tim_lomba', $data);
+        echo view('juri/footer');
+    }
 
     public function dashboardTimLolos()
     {
@@ -122,11 +146,11 @@ class JuriController extends BaseController
         $data['jamSekarang'] = $this->jamSekarang;
 
         $header['title'] = 'Dashboard Juri';
-        echo view('partial/header', $header);
-        echo view('partial/top_menu');
+        echo view('juri/header', $header);
+        echo view('juri/top_menu');
         echo view('juri/side_menu', $data);
         echo view('juri/tim_lolos', $data);
-        echo view('partial/footer');
+        echo view('juri/footer');
     }
 
 

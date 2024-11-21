@@ -74,12 +74,6 @@
             </form>
         <?php endforeach; ?>
 
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal-lg">
-            Tambah Data
-        </button>
-
-        <br> <br>
-
         <!-- Submissions Table -->
         <div class="card shadow-none border-0 mb-5">
             <div class="card-header">

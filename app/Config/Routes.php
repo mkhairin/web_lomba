@@ -113,5 +113,6 @@ $routes->get('/juri-dashboard', 'JuriController::dashboardJuri');
 $routes->post('/juri-dashboard/update/(:num)', 'JuriController::update/$1');
 
 $routes->get('/juri-dashboard/daftar-dinilai', 'JuriController::daftarDinilai');
+$routes->get('/juri-dashboard/tim-lomba', 'JuriController::daftarTimLomba');
 $routes->get('/juri-dashboard/tim-lolos', 'JuriController::dashboardTimLolos');
 $routes->post('/juri-dashboard/tim-lolos/insert', 'TimLolosJuriController::insert');
