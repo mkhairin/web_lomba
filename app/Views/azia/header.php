@@ -51,7 +51,7 @@
   <link href="asset_azia/lib/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
 
   <!-- azia CSS -->
-  <link rel="stylesheet" href="assets1/css/azia.css">
+  <link rel="stylesheet" href="asset_azia/css/azia.css">
 
   <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
 
