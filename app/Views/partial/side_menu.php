@@ -124,22 +124,37 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="/user" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i> <!-- Icon for Users -->
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
                         <p>
-                            Users
+                            User Role
+                            <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/user" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Peserta/Juri
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/daftar-admin" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Admin
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a href="/daftar-admin" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i> <!-- Icon for Users -->
-                        <p>
-                            Admin
-                        </p>
-                    </a>
-                </li>
+
+
+
 
                 <li class="nav-item">
                     <a href="/admin/logout" class="nav-link">
