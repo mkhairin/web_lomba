@@ -78,8 +78,8 @@ $routes->post('/daftar-soal/insert', 'SoalController::insert');
 $routes->post('/daftar-soal/update/(:num)', 'SoalController::update/$1');
 $routes->get('/daftar-soal/delete/(:num)', 'SoalController::delete/$1');
 
-$routes->get('/daftar-pengumpulan', 'PengumpulanController::index');
-$routes->post('/daftar-pengumpulan/insert', 'PengumpulanController::insert');
+// $routes->get('/daftar-pengumpulan', 'PengumpulanController::index');
+// $routes->post('/daftar-pengumpulan/insert', 'PengumpulanController::insert');
 
 // Submit Pengumpulan
 $routes->post('/user-dashboarduser/insert', 'SubmitTugasController::insert');

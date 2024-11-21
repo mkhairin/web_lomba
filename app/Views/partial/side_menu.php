@@ -82,7 +82,7 @@
                     <a href="/tim-lomba" class="nav-link">
                         <i class="nav-icon fas fa-users-cog"></i> <!-- Icon for Teams -->
                         <p>
-                            Daftar Team
+                            Daftar Tim
                         </p>
                     </a>
                 </li>
@@ -101,15 +101,6 @@
                         <i class="nav-icon fas fa-check-circle"></i> <!-- Icon for Qualified Teams -->
                         <p>
                             Tim Lolos Seleksi
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="/daftar-pengumpulan" class="nav-link">
-                        <i class="nav-icon fas fa-check-circle"></i> <!-- Icon for Qualified Teams -->
-                        <p>
-                            Daftar Pengumpulan
                         </p>
                     </a>
                 </li>

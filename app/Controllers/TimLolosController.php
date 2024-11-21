@@ -17,19 +17,12 @@ class TimLolosController extends BaseController
             return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
-        $timLolosModel = new \App\Models\TimLolosModel();
-        $timLombaModel = new \App\Models\TimLombaModel();
-        $sekolahModel = new \App\Models\SekolahModel();
-        $lombaModel = new \App\Models\LombaModel();
-        $pembimbingModel = new \App\Models\PembimbingModel();
-        
+        $timLolosModel = new \App\Models\TimLolosJuriModel();
+     
+        $data['dataTimLolos'] = $timLolosModel->get();
 
         $header['title'] = 'Daftar Tim Lolos';
-        $data['dataTimLolos'] = $timLolosModel->getdata();
-        $data['dataTimLomba'] = $timLombaModel->getdata();
-        $data['dataSekolah'] = $sekolahModel->getdata();
-        $data['dataLomba'] = $lombaModel->getdata();
-        $data['dataPembimbing'] = $pembimbingModel->getdata();
+       
         echo view('partial/header', $header);
         echo view('partial/top_menu');
         echo view('partial/side_menu');

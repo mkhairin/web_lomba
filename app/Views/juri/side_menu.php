@@ -60,7 +60,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="/juri-dashboard/tim-lolos" class="nav-link">
-                        <i class="fa-solid fa-bolt"></i>
+                        <i class="nav-icon fas fa-check-circle"></i>
                         <p>
                             Daftar Tim Lolos
                         </p>
