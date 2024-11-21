@@ -6,18 +6,18 @@
 </div><!-- az-footer -->
 
 
-<script src="assets1/lib/jquery/jquery.min.js"></script>
-<script src="assets1/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets1/lib/ionicons/ionicons.js"></script>
-<script src="assets1/lib/jquery.flot/jquery.flot.js"></script>
-<script src="assets1/lib/jquery.flot/jquery.flot.resize.js"></script>
-<script src="assets1/lib/chart.js/Chart.bundle.min.js"></script>
-<script src="assets1/lib/peity/jquery.peity.min.js"></script>
+<script src="asset_azia/lib/jquery/jquery.min.js"></script>
+<script src="asset_azia/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="asset_azia/lib/ionicons/ionicons.js"></script>
+<script src="asset_azia/lib/jquery.flot/jquery.flot.js"></script>
+<script src="asset_azia/lib/jquery.flot/jquery.flot.resize.js"></script>
+<script src="asset_azia/lib/chart.js/Chart.bundle.min.js"></script>
+<script src="asset_azia/lib/peity/jquery.peity.min.js"></script>
 
-<script src="assets1/js/azia.js"></script>
-<script src="assets1/js/chart.flot.sampledata.js"></script>
-<script src="assets1/js/dashboard.sampledata.js"></script>
-<script src="assets1/js/jquery.cookie.js" type="text/javascript"></script>
+<script src="asset_azia/js/azia.js"></script>
+<script src="asset_azia/js/chart.flot.sampledata.js"></script>
+<script src="asset_azia/js/dashboard.sampledata.js"></script>
+<script src="asset_azia/js/jquery.cookie.js" type="text/javascript"></script>
 
 
 <script>

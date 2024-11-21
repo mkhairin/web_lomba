@@ -45,10 +45,10 @@
   <title>Azia Responsive Bootstrap 4 Dashboard Template</title>
 
   <!-- vendor css -->
-  <link href="assets1/lib/fontawesome-free/css/all.min.css" rel="stylesheet">
-  <link href="assets1/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="assets1/lib/typicons.font/typicons.css" rel="stylesheet">
-  <link href="assets1/lib/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+  <link href="asset_azia/lib/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="asset_azia/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="asset_azia/lib/typicons.font/typicons.css" rel="stylesheet">
+  <link href="asset_azia/lib/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
 
   <!-- azia CSS -->
   <link rel="stylesheet" href="assets1/css/azia.css">
