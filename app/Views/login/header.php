@@ -42,7 +42,7 @@
     <meta name="description" content="Responsive Bootstrap 4 Dashboard Template">
     <meta name="author" content="BootstrapDash">
 
-    <title>Azia Responsive Bootstrap 4 Dashboard Template</title>
+    <title><?= $title ?></title>
 
     <!-- vendor css -->
     <link href="asset_azia/lib/fontawesome-free/css/all.min.css" rel="stylesheet">

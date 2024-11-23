@@ -1,83 +1,22 @@
-<!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-light-primary">
-    <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-        <span class="brand-text font-weight-light">Dashboard </span>
-    </a>
+<div class="az-content pd-y-20 pd-lg-y-30 pd-xl-y-40">
+    <div class="container">
+        <div class="az-content-left az-content-left-components">
+            <div class="component-item">
+                <label>Dashboard</label>
+                <nav class="nav flex-column">
+                    <a href="/juri-dashboard" class="nav-link <?= (current_url() == base_url('/juri-dashboard')) ? 'active text-primary' : '' ?>">Dashboard</a>
+                </nav>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar user (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="info">
-                <a href="#" class="d-block">
-                    <i class="fa-solid fa-circle-user"></i>
-                    <?= $dataUsername ?>
-                </a>
-            </div>
-        </div>
+                <label>Tables</label>
+                <nav class="nav flex-column">
+                    <a href="/juri-dashboard/tim-lomba" class="nav-link <?= (current_url() == base_url('/daftar-sponsor')) ? 'active text-primary' : '' ?>">Daftar Tim Lomba</a>
+                    <a href="/juri-dashboard/daftar-dinilai" class="nav-link <?= (current_url() == base_url('/daftar-sekolah')) ? 'active text-primary' : '' ?>">Daftar Penilaian Tim</a>
+                    <a href="/juri-dashboard/tim-lolos" class="nav-link <?= (current_url() == base_url('/daftar-pembimbing')) ? 'active text-primary' : '' ?>">Daftar Tim Lolos</a>
+                </nav>
 
-        <!-- SidebarSearch Form -->
-        <div class="form-inline ">
-            <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar border border-0" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-dark">
-                        <i class="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                <li class="nav-item">
-                    <a href="/juri-dashboard" class="nav-link">
-                        <i class="nav-icon fas fa-home"></i>
-                        <p>
-                            Dashboard
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/juri-dashboard/tim-lomba" class="nav-link">
-                        <i class="nav-icon fas fa-home"></i>
-                        <p>
-                            Daftar Tim
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/juri-dashboard/daftar-dinilai" class="nav-link">
-                        <i class="fa-solid fa-star"></i>
-                        <p>
-                            Daftar Tim Nilai
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/juri-dashboard/tim-lolos" class="nav-link">
-                        <i class="nav-icon fas fa-check-circle"></i>
-                        <p>
-                            Daftar Tim Lolos
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/logout" class="nav-link">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        <p>
-                            Logout
-                        </p>
-                    </a>
-                </li>
-
-            </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-</aside>
+                <label>Logout</label>
+                <nav class="nav flex-column">
+                    <a href="/logout" class="nav-link <?= (current_url() == base_url('/logout')) ? 'active text-primary' : '' ?>">Logout</a>
+                </nav>
+            </div><!-- component-item -->
+        </div><!-- az-content-left -->

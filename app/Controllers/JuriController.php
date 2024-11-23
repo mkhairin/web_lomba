@@ -83,7 +83,7 @@ class JuriController extends BaseController
         $header['title'] = 'Dashboard Juri';
         echo view('juri/header', $header);
         echo view('juri/top_menu');
-        echo view('juri/side_menu', $data);
+        echo view('juri/side_menu');
         echo view('juri/juri_dashboard', $data);
         echo view('juri/footer');
     }
@@ -104,7 +104,7 @@ class JuriController extends BaseController
         $header['title'] = 'Dashboard Juri';
         echo view('juri/header', $header);
         echo view('juri/top_menu');
-        echo view('juri/side_menu', $data);
+        echo view('juri/side_menu');
         echo view('juri/daftar_dinilai', $data);
         echo view('juri/footer');
     }
@@ -129,7 +129,7 @@ class JuriController extends BaseController
         $header['title'] = 'Dashboard Juri';
         echo view('juri/header', $header);
         echo view('juri/top_menu');
-        echo view('juri/side_menu', $data);
+        echo view('juri/side_menu');
         echo view('juri/tim_lomba', $data);
         echo view('juri/footer');
     }
@@ -151,7 +151,7 @@ class JuriController extends BaseController
         $header['title'] = 'Dashboard Juri';
         echo view('juri/header', $header);
         echo view('juri/top_menu');
-        echo view('juri/side_menu', $data);
+        echo view('juri/side_menu');
         echo view('juri/tim_lolos', $data);
         echo view('juri/footer');
     }

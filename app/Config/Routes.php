@@ -20,7 +20,7 @@ $routes->get('/juri_panel', 'JuriLoginController::loginJuri');
 $routes->post('/juri_login/auth', 'JuriLoginController::loginAuth');
 
 // Halaman Lomba (Public Route)
-$routes->get('/landing-page', 'HomeLombaTRKJ::home');
+$routes->get('/', 'HomeLombaTRKJ::home');
 
 // Admin dashboard
 $routes->get('/admin', 'DashboardController::index');

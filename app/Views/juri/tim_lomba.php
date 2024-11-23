@@ -1,63 +1,65 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper py-3">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Daftar Tim Lomba</h1>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
+<div class="az-content-body pd-lg-l-40 d-flex flex-column">
+    <div class="az-content-breadcrumb">
+        <span><a href="<?= base_url('/') ?>">Home</a></span>
+        <?php if (!empty($segments)): ?>
+            <?php foreach ($segments as $index => $segment): ?>
+                <?php
+                // Ubah segmen URL menjadi label yang lebih deskriptif
+                $label = ucfirst(str_replace('-', ' ', $segment));
+                $url = base_url(implode('/', array_slice($segments, 0, $index + 1)));
+                ?>
+                <span>
+                    <?php if ($index + 1 < count($segments)): ?>
+                        <a href="<?= $url ?>"><?= $label ?></a>
+                    <?php else: ?>
+                        <?= $label ?>
+                    <?php endif; ?>
+                </span>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+    <h2 class="az-content-title">Daftar Tim Lomba</h2>
 
-    <!-- Main content -->
-    <section class="content">
-        <!-- Default box -->
-        <div class="card shadow-none border border-0">
-            <div class="card-header">
-                <h3 class="card-title">Daftar Tim Lomba</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                <table id="example1" class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th style="width: 10px">#</th>
-                            <th>Nama Tim</th>
-                            <th>Sekolah</th>
-                            <th>Kategori</th>
-                            <th>Pembimbing</th>
-                            <th>Ketua</th>
-                            <th>Anggota</th>
-                            <th>No Ketua</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $i = 1 ?>
-                        <?php foreach ($dataTimLomba as $timLomba) : ?>
-                            <tr>
-                                <td><?= $i++ ?></td>
-                                <td><?= $timLomba->nama_tim ?></td>
-                                <td><?= $timLomba->nama_sekolah ?></td>
-                                <td style="text-align: justify;">
-                                    <?= $timLomba->nama ?>
-                                </td>
-                                <td><?= $timLomba->nama_pembimbing ?></td>
-                                <td><?= $timLomba->ketua_tim ?></td>
-                                <td><?= $timLomba->anggota ?></td>
-                                <td><?= $timLomba->no_ketua ?></td>
-                                <td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-            <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
+    <div class="az-content-label mg-b-5">Tabel Daftar Tim</div>
+    <p class="mg-b-20">Data Tim yang mengikuti lomba.</p>
 
-    </section>
-    <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+    <br>
+
+    <div class="table-responsive">
+        <table id="example1" class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Nama Tim</th>
+                    <th>Sekolah</th>
+                    <th>Kategori</th>
+                    <th>Pembimbing</th>
+                    <th>Ketua</th>
+                    <th>Anggota</th>
+                    <th>No Ketua</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $i = 1 ?>
+                <?php foreach ($dataTimLomba as $timLomba) : ?>
+                    <tr>
+                        <td><?= $i++ ?></td>
+                        <td><?= $timLomba->nama_tim ?></td>
+                        <td><?= $timLomba->nama_sekolah ?></td>
+                        <td style="text-align: justify;">
+                            <?= $timLomba->nama ?>
+                        </td>
+                        <td><?= $timLomba->nama_pembimbing ?></td>
+                        <td><?= $timLomba->ketua_tim ?></td>
+                        <td><?= $timLomba->anggota ?></td>
+                        <td><?= $timLomba->no_ketua ?></td>
+                        <td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+
+    <hr class="mg-y-30">
+
+    <div class="ht-40"></div>

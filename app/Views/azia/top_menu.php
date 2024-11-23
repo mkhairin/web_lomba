@@ -11,19 +11,19 @@
       </div><!-- az-header-menu-header -->
       <ul class="nav">
         <li class="nav-item active show">
-          <a href="/admin" class="nav-link"> Dashboard</a>
+          <a href="/admin" class="nav-link <?= (current_url() == base_url('/admin')) ? 'active text-primary' : '' ?>"> Dashboard</a>
         </li>
         <li class="nav-item">
           <a href="" class="nav-link with-sub"> Tabel</a>
           <nav class="az-menu-sub">
-            <a href="/daftar-sponsor" class="nav-link">Daftar Sponsor</a>
-            <a href="/daftar-sekolah" class="nav-link">Daftar Sekolah</a>
-            <a href="/daftar-pembimbing" class="nav-link">Daftar Pembimbing</a>
-            <a href="/daftar-peserta" class="nav-link">Daftar Peserta</a>
-            <a href="/tim-lomba" class="nav-link">Daftar Tim Lomba</a>
-            <a href="/tim-lolos" class="nav-link">Daftar Tim Lolos</a>
-            <a href="/daftar-soal" class="nav-link">Daftar Soal Lomba</a>
-            <a href="/daftar-juara" class="nav-link">Daftar Juara</a>
+            <a href="/daftar-sponsor" class="nav-link <?= (current_url() == base_url('/daftar-sponsor')) ? 'active text-primary' : '' ?>">Daftar Sponsor</a>
+            <a href="/daftar-sekolah" class="nav-link <?= (current_url() == base_url('/daftar-sekolah')) ? 'active text-primary' : '' ?>">Daftar Sekolah</a>
+            <a href="/daftar-pembimbing" class="nav-link <?= (current_url() == base_url('/daftar-pembimbing')) ? 'active text-primary' : '' ?>">Daftar Pembimbing</a>
+            <a href="/daftar-peserta" class="nav-link <?= (current_url() == base_url('/daftar-peserta')) ? 'active text-primary' : '' ?>">Daftar Peserta</a>
+            <a href="/tim-lomba" class="nav-link <?= (current_url() == base_url('/tim-lomba')) ? 'active text-primary' : '' ?>">Daftar Tim Lomba</a>
+            <a href="/tim-lolos" class="nav-link <?= (current_url() == base_url('/tim-lolos')) ? 'active text-primary' : '' ?>">Daftar Tim Lolos</a>
+            <a href="/daftar-soal" class="nav-link <?= (current_url() == base_url('/daftar-soal')) ? 'active text-primary' : '' ?>">Daftar Soal Lomba</a>
+            <a href="/daftar-juara" class="nav-link <?= (current_url() == base_url('/daftar-juara')) ? 'active text-primary' : '' ?>">Daftar Juara</a>
           </nav>
         </li>
         <li class="nav-item">
@@ -33,7 +33,7 @@
           <a href="form-elements.html" class="nav-link"> Forms</a>
         </li>
         <li class="nav-item">
-          <a href="/admin/logout" class="nav-link"> Logout</a>
+          <a href="/admin/logout" class="nav-link <?= (current_url() == base_url('/admin/logout')) ? 'active text-primary' : '' ?>"> Logout</a>
         </li>
       </ul>
     </div><!-- az-header-menu -->

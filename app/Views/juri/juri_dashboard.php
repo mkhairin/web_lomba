@@ -1,44 +1,3 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper py-3">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Daftar Penilaian</h1>
-                </div>
-                <div class="col-sm-6 d-flex justify-content-end mt-3">
-                    <ul>
-                        <li>
-                            <h5 class="mx-2"><?= $tanggalLengkap ?></h5>
-                        </li>
-                        <li>
-                            <p>Jam : <?= $jamSekarang ?></p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-        <?php $validation = \Config\Services::validation(); ?>
-
-        <!-- Success Message -->
-        <?php if (session()->getFlashdata('success')): ?>
-            <div class="alert alert-success">
-                <?= session()->getFlashdata('success'); ?>
-            </div>
-        <?php endif; ?>
-
-        <!-- Error Message -->
-        <?php if (session()->getFlashdata('error')): ?>
-            <div class="alert alert-danger">
-                <?= session()->getFlashdata('error'); ?>
-            </div>
-        <?php endif; ?>
-
         <!-- Modal Update for each submission -->
         <?php foreach ($dataSubmitTugas as $data) : ?>
             <form action="/juri-dashboard/update/<?= $data->id_submit_pengumpulan ?>" method="post">
@@ -125,14 +84,40 @@
             </form>
         <?php endforeach; ?>
 
-
-
-        <!-- Submissions Table -->
-        <div class="card shadow-none border-0 mb-5">
-            <div class="card-header">
-                <h3 class="card-title">Daftar Submit</h3>
+        <div class="az-content-body pd-lg-l-40 d-flex flex-column">
+            <div class="az-content-breadcrumb">
+                <span><a href="<?= base_url('/') ?>">Home</a></span>
+                <?php if (!empty($segments)): ?>
+                    <?php foreach ($segments as $index => $segment): ?>
+                        <?php
+                        // Ubah segmen URL menjadi label yang lebih deskriptif
+                        $label = ucfirst(str_replace('-', ' ', $segment));
+                        $url = base_url(implode('/', array_slice($segments, 0, $index + 1)));
+                        ?>
+                        <span>
+                            <?php if ($index + 1 < count($segments)): ?>
+                                <a href="<?= $url ?>"><?= $label ?></a>
+                            <?php else: ?>
+                                <?= $label ?>
+                            <?php endif; ?>
+                        </span>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
-            <div class="card-body">
+            <h2 class="az-content-title">Daftar Kategori Lomba</h2>
+
+            <div class="az-content-label mg-b-5">Striped Rows</div>
+            <p class="mg-b-20">Data tim yang lolos ke tahap berikutnya.</p>
+
+            <div class="container">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
+                    Tambah Data
+                </button>
+            </div>
+
+            <br>
+
+            <div class="table-responsive">
                 <table id="example1" class="table table-striped">
                     <thead>
                         <tr>
@@ -167,6 +152,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-    </section>
-</div>
+
+            <hr class="mg-y-30">
+
+            <div class="ht-40"></div>
