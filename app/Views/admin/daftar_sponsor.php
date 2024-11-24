@@ -101,8 +101,24 @@
         $segments = $uri->getSegments();
         ?>
 
-
         <div class="az-content-body pd-lg-l-40 d-flex flex-column">
+
+            <?php $validation = \Config\Services::validation(); ?>
+
+            <!-- Pesan sukses -->
+            <?php if (session()->getFlashdata('success')): ?>
+                <div class="alert alert-success">
+                    <?= session()->getFlashdata('success'); ?>
+                </div>
+            <?php endif; ?>
+
+            <!-- Pesan error general -->
+            <?php if (session()->getFlashdata('error')): ?>
+                <div class="alert alert-danger">
+                    <?= session()->getFlashdata('error'); ?>
+                </div>
+            <?php endif; ?>
+
             <div class="az-content-breadcrumb">
                 <span><a href="<?= base_url('/') ?>">Home</a></span>
                 <?php if (!empty($segments)): ?>
@@ -122,7 +138,10 @@
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
-            <h2 class="az-content-title">Basic Tables</h2>
+
+            <h2 class="az-content-title">Daftar Sponsor Kaltech</h2>
+            <div class="az-content-label mg-b-5">Tabel Sponsor Lomba</div>
+            <p class="mg-b-20">Data sponsor yang mendanai pada acara Kaltech.</p>
 
             <div class="container">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">

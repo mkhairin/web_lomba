@@ -120,6 +120,23 @@
 
 
   <div class="az-content-body pd-lg-l-40 d-flex flex-column">
+
+      <?php $validation = \Config\Services::validation(); ?>
+
+      <!-- Pesan sukses -->
+      <?php if (session()->getFlashdata('success')): ?>
+          <div class="alert alert-success">
+              <?= session()->getFlashdata('success'); ?>
+          </div>
+      <?php endif; ?>
+
+      <!-- Pesan error general -->
+      <?php if (session()->getFlashdata('error')): ?>
+          <div class="alert alert-danger">
+              <?= session()->getFlashdata('error'); ?>
+          </div>
+      <?php endif; ?>
+
       <div class="az-content-breadcrumb">
           <span><a href="<?= base_url('/') ?>">Home</a></span>
           <?php if (!empty($segments)): ?>

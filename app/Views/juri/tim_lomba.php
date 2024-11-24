@@ -1,3 +1,8 @@
+<?php
+$uri = service('uri');
+$segments = $uri->getSegments();
+?>
+
 <div class="az-content-body pd-lg-l-40 d-flex flex-column">
     <div class="az-content-breadcrumb">
         <span><a href="<?= base_url('/') ?>">Home</a></span>

@@ -15,14 +15,16 @@ class JuriController extends BaseController
     protected $timLolosNew;
     protected $tanggalLengkap;
     protected $jamSekarang;
+    protected $lombaModel;
 
     public function __construct()
     {
         // Inisialisasi model
         $this->submitTugasModel = new \App\Models\SubmitTugasModel();
         $this->timLolosNew = new \App\Models\TimLolosJuriModel();
+        $this->lombaModel = new \App\Models\LombaModel();
 
-        // Check if user is admin
+        // Check if user is juri
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'juri') {
             return redirect()->to('/login')->with('error', 'You must be an juri to access this page.');
@@ -122,8 +124,7 @@ class JuriController extends BaseController
         $data['dataSubmitTugas'] = $this->submitTugasModel->getDataAfterWhere($kategoriLomba);
         $data['tanggalLengkap'] = $this->tanggalLengkap;
         $data['jamSekarang'] = $this->jamSekarang;
-        $data['dataTimLomba'] = $timLombaModel->getdata();
-
+        $data['dataTimLomba'] = $timLombaModel->getDataWhere($kategoriLomba);
 
 
         $header['title'] = 'Dashboard Juri';
@@ -153,6 +154,23 @@ class JuriController extends BaseController
         echo view('juri/top_menu');
         echo view('juri/side_menu');
         echo view('juri/tim_lolos', $data);
+        echo view('juri/footer');
+    }
+
+    public function daftarDeadline()
+    {
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'juri') {
+            return redirect()->to('/login')->with('error', 'You must be an juri to access this page.');
+        }
+
+        $data['dataLomba'] = $this->lombaModel->getdata();
+
+        $header['title'] = 'Dashboard Juri';
+        echo view('juri/header', $header);
+        echo view('juri/top_menu');
+        echo view('juri/side_menu');
+        echo view('juri/daftar_deadline', $data);
         echo view('juri/footer');
     }
 

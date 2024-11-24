@@ -205,35 +205,51 @@
   <?php endforeach; ?>
 
   <?php
-$uri = service('uri');
-$segments = $uri->getSegments();
-?>
+    $uri = service('uri');
+    $segments = $uri->getSegments();
+    ?>
 
 
   <div class="az-content-body pd-lg-l-40 d-flex flex-column">
-  <div class="az-content-breadcrumb">
-        <span><a href="<?= base_url('/') ?>">Home</a></span>
-        <?php if (!empty($segments)): ?>
-            <?php foreach ($segments as $index => $segment): ?>
-                <?php
-                // Ubah segmen URL menjadi label yang lebih deskriptif
-                $label = ucfirst(str_replace('-', ' ', $segment));
-                $url = base_url(implode('/', array_slice($segments, 0, $index + 1)));
-                ?>
-                <span>
-                    <?php if ($index + 1 < count($segments)): ?>
-                        <a href="<?= $url ?>"><?= $label ?></a>
-                    <?php else: ?>
-                        <?= $label ?>
-                    <?php endif; ?>
-                </span>
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </div>
-      <h2 class="az-content-title">Daftar Kategori Lomba</h2>
 
-      <div class="az-content-label mg-b-5">Striped Rows</div>
-      <p class="mg-b-20">Data tim yang lolos ke tahap berikutnya.</p>
+      <?php $validation = \Config\Services::validation(); ?>
+
+      <!-- Pesan sukses -->
+      <?php if (session()->getFlashdata('success')): ?>
+          <div class="alert alert-success">
+              <?= session()->getFlashdata('success'); ?>
+          </div>
+      <?php endif; ?>
+
+      <!-- Pesan error general -->
+      <?php if (session()->getFlashdata('error')): ?>
+          <div class="alert alert-danger">
+              <?= session()->getFlashdata('error'); ?>
+          </div>
+      <?php endif; ?>
+
+      <div class="az-content-breadcrumb">
+          <span><a href="<?= base_url('/') ?>">Home</a></span>
+          <?php if (!empty($segments)): ?>
+              <?php foreach ($segments as $index => $segment): ?>
+                  <?php
+                    // Ubah segmen URL menjadi label yang lebih deskriptif
+                    $label = ucfirst(str_replace('-', ' ', $segment));
+                    $url = base_url(implode('/', array_slice($segments, 0, $index + 1)));
+                    ?>
+                  <span>
+                      <?php if ($index + 1 < count($segments)): ?>
+                          <a href="<?= $url ?>"><?= $label ?></a>
+                      <?php else: ?>
+                          <?= $label ?>
+                      <?php endif; ?>
+                  </span>
+              <?php endforeach; ?>
+          <?php endif; ?>
+      </div>
+      <h2 class="az-content-title">Daftar Kategori Lomba</h2>
+      <div class="az-content-label mg-b-5">Tabel Kategori Lomba</div>
+      <p class="mg-b-20">Data kategori lomba Kaltech.</p>
 
       <div class="container">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">

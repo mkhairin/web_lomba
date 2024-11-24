@@ -80,6 +80,9 @@ $routes->post('/daftar-soal/insert', 'SoalController::insert');
 $routes->post('/daftar-soal/update/(:num)', 'SoalController::update/$1');
 $routes->get('/daftar-soal/delete/(:num)', 'SoalController::delete/$1');
 
+$routes->get('/daftar-pertanyaan', 'FaQController::daftarQuestion');
+$routes->post('/daftar-pertanyaan/insert', 'FaQController::insert');
+
 // $routes->get('/daftar-pengumpulan', 'PengumpulanController::index');
 // $routes->post('/daftar-pengumpulan/insert', 'PengumpulanController::insert');
 
@@ -116,5 +119,11 @@ $routes->post('/juri-dashboard/update/(:num)', 'JuriController::update/$1');
 
 $routes->get('/juri-dashboard/daftar-dinilai', 'JuriController::daftarDinilai');
 $routes->get('/juri-dashboard/tim-lomba', 'JuriController::daftarTimLomba');
+
+// Tim Lolos Juri
 $routes->get('/juri-dashboard/tim-lolos', 'JuriController::dashboardTimLolos');
 $routes->post('/juri-dashboard/tim-lolos/insert', 'TimLolosJuriController::insert');
+
+// Daftar Deadline Soal
+$routes->get('/juri-dashboard/daftar-deadline', 'JuriController::daftarDeadline');
+$routes->post('/juri-dashboard/daftar-deadline/insert', 'DeadlineController::insert');

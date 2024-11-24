@@ -18,6 +18,7 @@
                     <a href="/tim-lolos" class="nav-link <?= (current_url() == base_url('/tim-lolos')) ? 'active text-primary' : '' ?>">Daftar Tim Lolos</a>
                     <a href="/daftar-soal" class="nav-link <?= (current_url() == base_url('/daftar-soal')) ? 'active text-primary' : '' ?>">Daftar Soal</a>
                     <a href="/daftar-juara" class="nav-link <?= (current_url() == base_url('/daftar-juara')) ? 'active text-primary' : '' ?>">Daftar Juara</a>
+                    <a href="/daftar-pertanyaan" class="nav-link <?= (current_url() == base_url('/daftar-pertanyaan')) ? 'active text-primary' : '' ?>">Daftar Pertanyaan</a>
                 </nav>
 
                 <label>User Role</label>

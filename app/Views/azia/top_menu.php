@@ -27,7 +27,12 @@
           </nav>
         </li>
         <li class="nav-item">
-          <a href="chart-chartjs.html" class="nav-link"> About Us</a>
+          <a href="" class="nav-link with-sub"> User Role</a>
+          <nav class="az-menu-sub">
+            <a href="/user" class="nav-link <?= (current_url() == base_url('/user')) ? 'active text-primary' : '' ?>">Daftar User</a>
+            <a href="/daftar-admin" class="nav-link <?= (current_url() == base_url('/daftar-admin')) ? 'active text-primary' : '' ?>">Daftar Admin</a>
+
+          </nav>
         </li>
         <li class="nav-item">
           <a href="form-elements.html" class="nav-link"> Forms</a>

@@ -16,6 +16,7 @@
                 <li class="nav-item">
                     <a href="" class="nav-link with-sub"> Tabel</a>
                     <nav class="az-menu-sub">
+                    <a href="/juri-dashboard/daftar-deadline" class="nav-link <?= (current_url() == base_url('/juri-dashboard/daftar-deadline')) ? 'active text-primary' : '' ?>">Deadline Tugas</a>
                         <a href="/juri-dashboard/tim-lomba" class="nav-link <?= (current_url() == base_url('/daftar-sponsor')) ? 'active text-primary' : '' ?>">Daftar Tim Lomba</a>
                         <a href="/juri-dashboard/daftar-dinilai" class="nav-link <?= (current_url() == base_url('/daftar-sekolah')) ? 'active text-primary' : '' ?>">Daftar Penilaian Tim</a>
                         <a href="/juri-dashboard/tim-lolos" class="nav-link <?= (current_url() == base_url('/daftar-pembimbing')) ? 'active text-primary' : '' ?>">Daftar Tim Lolos</a>
