@@ -100,12 +100,12 @@ class MailController extends BaseController
             'tgl' => 'required',
             'jam' => 'required',
         ]);
-
+    
         // Cek apakah validasi gagal
         if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->back()->with('errors', $validation->getErrors());
+            return $this->response->setJSON(['success' => false, 'error' => $validation->getErrors()]);
         }
-
+    
         // Ambil data dari form
         $name = $this->request->getPost('name');
         $email = $this->request->getPost('email');
@@ -113,19 +113,18 @@ class MailController extends BaseController
         $message = $this->request->getPost('message');
         $tgl = $this->request->getPost('tgl');
         $jam = $this->request->getPost('jam');
-
+    
         // Set layanan email
         $emailService = \Config\Services::email();
         $emailService->setTo('mkhairin04@gmail.com');
         $emailService->setFrom($email, $name);
         $emailService->setSubject($subject);
         $emailService->setMessage($message);
-
+    
         // Kirim email
         if ($emailService->send()) {
             // Simpan data email ke database
-            $emailModel = new \App\Models\MailModel();
-            $emailModel->insert([
+            $this->emailModel->insert([
                 'name' => $name,
                 'email' => $email,
                 'subject' => $subject,
@@ -134,22 +133,18 @@ class MailController extends BaseController
                 'tgl' => $tgl,
                 'jam' => $jam
             ]);
-
-            // Set flashdata untuk sukses
-            session()->setFlashdata('message', 'Email berhasil dikirim!');
-            session()->setFlashdata('type', 'success');
-            return redirect()->back();
+    
+            return $this->response->setJSON(['success' => true, 'message' => 'Email berhasil dikirim!']);
         } else {
             // Jika gagal kirim email, tampilkan error
             $error = $emailService->printDebugger(['headers', 'body']);
             log_message('error', 'Email gagal dikirim. Error: ' . $error);
-
-            // Set flashdata untuk error
-            session()->setFlashdata('message', 'Gagal mengirim email. Silakan coba lagi.');
-            session()->setFlashdata('type', 'error');
-            return redirect()->back();
+    
+            return $this->response->setJSON(['success' => false, 'error' => 'Gagal mengirim email. Silakan coba lagi.']);
         }
     }
+    
+
 
     public function delete($id)
     {

@@ -364,7 +364,6 @@
             <?= csrf_field(); ?>
             <div class="row gy-4">
 
-
               <!-- Display Flashdata Notification -->
               <?php if (session()->getFlashdata('message')) : ?>
                 <script>
@@ -373,7 +372,7 @@
                     title: '<?= session()->getFlashdata('message'); ?>',
                     showConfirmButton: true
                   }).then(function() {
-                    // Set a timeout to refresh the page after 5 seconds
+                    // Reload the page after 5 seconds
                     setTimeout(function() {
                       location.reload(); // Reload the page after 5 seconds
                     }, 5000);
@@ -417,16 +416,21 @@
                 <?php endif; ?>
               </div>
 
+              <input type="hidden" name="tgl" id="tgl" value="<?= $tanggalLengkap ?>">
+
+              <input type="hidden" name="jam" id="jam" value="<?= $jamSekarang ?>">
+
               <!-- Submit Button -->
               <div class="col-md-12 text-center">
-                <div class="loading">Loading...</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+                <div class="loading" style="display:none;">Loading...</div>
+                <div class="error-message" style="display:none;"></div>
+                <div class="sent-message" style="display:none;">Your message has been sent. Thank you!</div>
                 <button type="submit">Send Message</button>
               </div>
 
             </div>
           </form>
+
         </div><!-- End Contact Form -->
 
 

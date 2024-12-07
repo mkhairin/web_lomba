@@ -43,6 +43,45 @@
 <!-- SweetAlert2 JS -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.7/dist/sweetalert2.min.js"></script>
 
+<script>
+  // JavaScript to handle loading and success messages
+  const form = document.querySelector('.php-email-form');
+  const loading = form.querySelector('.loading');
+  const successMessage = form.querySelector('.sent-message');
+  const errorMessage = form.querySelector('.error-message');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    loading.style.display = 'block'; // Show loading
+    successMessage.style.display = 'none'; // Hide success message
+    errorMessage.style.display = 'none'; // Hide error message
+
+    // Use AJAX to submit the form data
+    const formData = new FormData(form);
+
+    fetch('/contact/send', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        loading.style.display = 'none'; // Hide loading
+        if (data.success) {
+          successMessage.style.display = 'block'; // Show success message
+        } else {
+          errorMessage.textContent = data.error || 'Something went wrong. Please try again.';
+          errorMessage.style.display = 'block'; // Show error message
+        }
+      })
+      .catch(error => {
+        loading.style.display = 'none'; // Hide loading
+        errorMessage.textContent = 'An error occurred: ' + error;
+        errorMessage.style.display = 'block'; // Show error message
+      });
+  });
+</script>
+
 </body>
 
 </html>
