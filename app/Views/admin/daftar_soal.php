@@ -73,11 +73,13 @@
                                       <div class="col-md-6">
                                           <div class="form-group">
                                               <label for="id_lomba">Kategori</label>
-                                              <select class="form-control select" id="id_lomba" name="id_lomba"
-                                                  style="width: 100%;">
-                                                  <option value="Aktif" selected>Pilih Kategori</option>
+                                              <select class="form-control select" id="id_lomba" name="id_lomba" style="width: 100%;">
+                                                  <option value="">Pilih Kategori</option>
                                                   <?php foreach ($dataLomba as $lomba) : ?>
-                                                      <option value="<?= $lomba->id_lomba ?>"><?= $lomba->nama ?></option>
+                                                      <option value="<?= $lomba->id_lomba ?>"
+                                                          <?= $lomba->id_lomba == $soal->id_lomba ? 'selected' : '' ?>>
+                                                          <?= $lomba->nama ?>
+                                                      </option>
                                                   <?php endforeach; ?>
                                               </select>
                                           </div>
@@ -86,8 +88,7 @@
                                       <div class="col-md-6">
                                           <div class="form-group">
                                               <label for="link_soal">Link Soal</label>
-                                              <input type="text" class="form-control" id="link_soal"
-                                                  name="link_soal" value="<?= $soal->link_soal ?>">
+                                              <input type="text" class="form-control" id="link_soal" name="link_soal" value="<?= $soal->link_soal ?>">
                                           </div>
                                       </div>
                                   </div>
@@ -107,6 +108,7 @@
               <!-- /.modal -->
           </form>
       <?php endforeach; ?>
+
 
       <!-- Modal Delete -->
       <?php foreach ($dataSoal as $data) : ?>

@@ -16,14 +16,12 @@ class SoalController extends BaseController
 
     public function __construct()
     {
-        // untuk dashboard admin
+        // Initialize models
         $this->submitTugasModel = new SubmitTugasModel();
-
-        // Inisialisasi model
         $this->modelLomba = new \App\Models\LombaModel();
-        $this->modelSoal = new \App\Models\SoalModel();
+        $this->modelSoal = new SoalModel();
 
-        // Check if user is admin
+        // Check if user is logged in and is an admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
             return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
@@ -38,14 +36,14 @@ class SoalController extends BaseController
             return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
+        // Get data
         $data['dataLomba'] = $this->modelLomba->getdata();
         $data['dataSoal'] = $this->modelSoal->getdata();
-
         $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
         $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
 
+        // Set header and render view
         $header['title'] = 'Daftar Soal';
-
         echo view('azia/header', $header);
         echo view('azia/top_menu');
         echo view('azia/side_menu');
@@ -61,37 +59,36 @@ class SoalController extends BaseController
             return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
-        // Aturan validasi
+        // Validation rules
         $validationRules = [
             'id_lomba' => 'required',
             'link_soal' => 'required'
         ];
 
-        // Cek validasi input
+        // Validate input
         if (!$this->validate($validationRules)) {
             return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         }
 
-        // Jika validasi berhasil, lanjutkan ke insert data
+        // Insert data
         $data = [
             'id_soal' => esc($this->request->getPost('id_soal')),
             'id_lomba' => esc($this->request->getPost('id_lomba')),
-            'link_soal' => esc($this->request->getPost('link_soal')),
+            'link_soal' => esc($this->request->getPost('link_soal'))
         ];
 
         try {
-            // Asumsikan insertData mengembalikan ID baru atau false jika gagal
             if ($this->modelSoal->insert($data)) {
                 session()->setFlashdata('success', 'Data Berhasil Ditambah!');
             } else {
                 session()->setFlashdata('error', 'Data Gagal Ditambah!');
             }
-        } catch (\Exception $e) {
-            log_message('error', $e->getMessage());  // Logging error details
+        } catch (Exception $e) {
+            log_message('error', $e->getMessage());  // Log error details
             session()->setFlashdata('error', 'Terjadi kesalahan pada server!');
         }
 
-        return redirect()->to('/daftar-soal'); // Redirect ke halaman daftar setelah insert
+        return redirect()->to('/daftar-soal');
     }
 
     public function update($id)
@@ -102,37 +99,36 @@ class SoalController extends BaseController
             return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
-        // Aturan validasi
+        // Validation rules
         $validationRules = [
             'id_lomba' => 'required',
             'link_soal' => 'required'
         ];
 
-        // Cek validasi input
+        // Validate input
         if (!$this->validate($validationRules)) {
             return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         }
 
-        // Jika validasi berhasil, lanjutkan ke insert data
+        // Prepare data for update
         $data = [
             'id_soal' => esc($this->request->getPost('id_soal')),
             'id_lomba' => esc($this->request->getPost('id_lomba')),
-            'link_soal' => esc($this->request->getPost('link_soal')),
+            'link_soal' => esc($this->request->getPost('link_soal'))
         ];
 
         try {
-            // Asumsikan insertData mengembalikan ID baru atau false jika gagal
             if ($this->modelSoal->update($id, $data)) {
-                session()->setFlashdata('success', 'Data Berhasil Ditambah!');
+                session()->setFlashdata('success', 'Data Berhasil Diubah!');
             } else {
-                session()->setFlashdata('error', 'Data Gagal Ditambah!');
+                session()->setFlashdata('error', 'Data Gagal Diubah!');
             }
-        } catch (\Exception $e) {
-            log_message('error', $e->getMessage());  // Logging error details
+        } catch (Exception $e) {
+            log_message('error', $e->getMessage());  // Log error details
             session()->setFlashdata('error', 'Terjadi kesalahan pada server!');
         }
 
-        return redirect()->to('/daftar-soal'); // Redirect ke halaman daftar setelah insert
+        return redirect()->to('/daftar-soal');
     }
 
     public function delete($id): RedirectResponse
@@ -147,9 +143,10 @@ class SoalController extends BaseController
             if ($this->modelSoal->delete($id)) {
                 session()->setFlashdata('success', 'Data Berhasil Dihapus!');
             } else {
-                throw new Exception('Gagal menghapus data.');
+                session()->setFlashdata('error', 'Data Gagal Dihapus!');
             }
         } catch (Exception $e) {
+            log_message('error', $e->getMessage());  // Log error details
             session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
 
