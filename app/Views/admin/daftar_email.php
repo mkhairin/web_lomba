@@ -132,7 +132,7 @@ $segments = $uri->getSegments();
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
-    
+
     <h2 class="az-content-title">Daftar Email Masuk</h2>
 
     <div class="az-content-label mg-b-5">Informasi Email</div>
@@ -149,8 +149,9 @@ $segments = $uri->getSegments();
                     <th>Nama</th>
                     <th>Email</th>
                     <th>Subjek</th>
-                    <th>Message</th>
                     <th>Status</th>
+                    <th>Tgl</th>
+                    <th>Jam</th>
                     <th style="width: 200px">Aksi</th>
                 </tr>
             </thead>
@@ -162,8 +163,9 @@ $segments = $uri->getSegments();
                         <td><?= $data->name ?></td>
                         <td><?= $data->email ?></td>
                         <td><?= $data->subject ?></td>
-                        <td><?= $data->message ?></td>
                         <td><?= $data->status ?></td>
+                        <td><?= $data->tgl ?></td>
+                        <td><?= $data->jam ?></td>
                         <td>
                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                 data-target="#modal-lg-update<?= $data->id_emails ?>">View</button>
