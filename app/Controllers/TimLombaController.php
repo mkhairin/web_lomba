@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\TimLombaModel;
+use App\Models\SubmitTugasModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 use Exception;
@@ -11,9 +12,13 @@ use Exception;
 class TimLombaController extends BaseController
 {
     protected $timLombaModel, $sekolahModel, $lombaModel, $pembimbingModel;
+    protected $submitTugasModel;
 
     public function __construct()
     {
+        // untuk dashboard admin
+        $this->submitTugasModel = new SubmitTugasModel();
+
         $timLombaModel = new TimLombaModel();
         // Check if user is admin
         $session = session();
@@ -36,11 +41,16 @@ class TimLombaController extends BaseController
         $pembimbingModel = new \App\Models\PembimbingModel();
 
         $header['title'] = 'Daftar Tim Lomba';
+
         $data['dataTimLomba'] = $timLombaModel->getdata();
         $data['dataSekolah'] = $sekolahModel->getdata();
         $data['dataLomba'] = $lombaModel->getdata();
         $data['dataPembimbing'] = $pembimbingModel->getdata();
-        
+
+
+        $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
+        $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
+
         echo view('azia/header', $header);
         echo view('azia/top_menu');
         echo view('azia/side_menu');

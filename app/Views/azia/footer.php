@@ -19,8 +19,11 @@
 <script src="asset_azia/js/dashboard.sampledata.js"></script>
 <script src="asset_azia/js/jquery.cookie.js" type="text/javascript"></script>
 
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 
 <script>
+  new DataTable('#example');
+
   $(function() {
     'use strict'
 
@@ -66,11 +69,10 @@
         min: 0,
         max: 100,
         ticks: [
-          [0, ''],
-          [20, '20K'],
-          [40, '40K'],
-          [60, '60K'],
-          [80, '80K']
+          [<?= $dataSubmit ?>, <?= $dataSubmit ?>],
+          [<?= $dataSubmit ?>, <?= $dataSubmit ?>],
+          [<?= $dataSubmit ?>, <?= $dataSubmit ?>],
+          [<?= $dataSubmit ?>, <?= $dataSubmit ?>],
         ],
         tickColor: '#eee'
       },
@@ -78,16 +80,16 @@
         show: true,
         color: '#fff',
         ticks: [
-          [25, 'OCT 21'],
-          [75, 'OCT 22'],
-          [100, 'OCT 23'],
-          [125, 'OCT 24']
+          [<?= $dataIsNotSubmit ?>, <?= $dataIsNotSubmit ?>],
+          [<?= $dataIsNotSubmit ?>, <?= $dataIsNotSubmit ?>],
+          [<?= $dataIsNotSubmit ?>, <?= $dataIsNotSubmit ?>],
+          [<?= $dataIsNotSubmit ?>, <?= $dataIsNotSubmit  ?>]
         ],
       }
     });
 
     $.plot('#flotChart1', [{
-      data: dashData2,
+      data: <?= $dataSubmit ?>,
       color: '#00cccc'
     }], {
       series: {
@@ -121,7 +123,7 @@
     });
 
     $.plot('#flotChart2', [{
-      data: dashData2,
+      data: <?= $dataIsNotSubmit  ?>,
       color: '#007bff'
     }], {
       series: {
@@ -165,12 +167,12 @@
     new Chart(ctx5, {
       type: 'bar',
       data: {
-        labels: [0, 1, 2, 3, 4, 5, 6, 7],
+        labels: [<?= $dataSubmit ?>],
         datasets: [{
-          data: [2, 4, 10, 20, 45, 40, 35, 18],
+          data: [<?= $dataSubmit ?>],
           backgroundColor: '#560bd0'
         }, {
-          data: [3, 6, 15, 35, 50, 45, 35, 25],
+          data: [<?= $dataIsNotSubmit  ?>],
           backgroundColor: '#cad0e8'
         }]
       },
@@ -238,10 +240,6 @@
       options: optionpie
     });
 
-  });
-
-  $(document).ready(function() {
-    $('#myTable').DataTable();
   });
 </script>
 </body>

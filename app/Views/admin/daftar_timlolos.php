@@ -28,7 +28,7 @@ $segments = $uri->getSegments();
     <p class="mg-b-20">Data tim yang lolos ke tahap berikutnya.</p>
 
     <div class="table-responsive">
-        <table id="example1" class="table table-striped">
+        <table id="example" class="table table-striped">
             <thead>
                 <tr>
                     <th style="width: 10px">#</th>

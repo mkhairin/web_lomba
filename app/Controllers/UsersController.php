@@ -6,10 +6,23 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 use Exception;
+use App\Models\SubmitTugasModel;
 
 class UsersController extends BaseController
 {
+    protected $submitTugasModel;
 
+    public function __construct()
+    {
+        // untuk dashboard admin
+        $this->submitTugasModel = new SubmitTugasModel();
+
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
+        }
+    }
 
     public function daftarUser()
     {
@@ -29,6 +42,9 @@ class UsersController extends BaseController
         $data['dataTimLomba'] = $timLombaModel->getdata();
         $data['dataLomba'] = $lombaModel->getdata();
         $data['dataUsers'] = $userModel->getdata();
+
+        $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
+        $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
 
         $header['title'] = 'Daftar User';
         echo view('azia/header', $header);
@@ -119,6 +135,29 @@ class UsersController extends BaseController
         } catch (Exception $e) {
             session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
             return redirect()->back()->withInput();
+        }
+
+        return redirect()->to('/user');
+    }
+
+    public function delete($id): RedirectResponse
+    {
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
+        }
+
+        $userModel = new \App\Models\UsersModel();
+
+        try {
+            if ($userModel->delete($id)) {
+                session()->setFlashdata('success', 'Data berhasil dihapus!');
+            } else {
+                throw new Exception('Gagal menghapus data.');
+            }
+        } catch (Exception $e) {
+            session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
 
         return redirect()->to('/user');

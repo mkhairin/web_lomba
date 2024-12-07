@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\SoalModel;
+use App\Models\SubmitTugasModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 use Exception;
@@ -11,9 +12,13 @@ use Exception;
 class SoalController extends BaseController
 {
     protected $modelLomba, $modelSoal;
+    protected $submitTugasModel;
 
     public function __construct()
     {
+        // untuk dashboard admin
+        $this->submitTugasModel = new SubmitTugasModel();
+
         // Inisialisasi model
         $this->modelLomba = new \App\Models\LombaModel();
         $this->modelSoal = new \App\Models\SoalModel();
@@ -35,6 +40,9 @@ class SoalController extends BaseController
 
         $data['dataLomba'] = $this->modelLomba->getdata();
         $data['dataSoal'] = $this->modelSoal->getdata();
+
+        $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
+        $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
 
         $header['title'] = 'Daftar Soal';
 

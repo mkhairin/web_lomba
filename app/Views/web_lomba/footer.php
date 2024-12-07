@@ -7,7 +7,7 @@
     <div class="social-links d-flex justify-content-center">
       <a href=""><i class="bi bi-twitter-x"></i></a>
       <a href=""><i class="bi bi-facebook"></i></a>
-      <a href=""><i class="bi bi-instagram"></i></a>
+      <a href="https://www.instagram.com/hima_trkj_politala?igsh=MWY0MHlpaTkxNGM5MA=="><i class="bi bi-instagram"></i></a>
       <a href=""><i class="bi bi-linkedin"></i></a>
     </div>
     <div class="credits">
@@ -40,7 +40,8 @@
 <!-- Main JS File -->
 <script src="assets/js/main.js"></script>
 
-
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.7/dist/sweetalert2.min.js"></script>
 
 </body>
 

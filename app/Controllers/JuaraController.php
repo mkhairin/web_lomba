@@ -4,15 +4,20 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\JuaraModel;
+use App\Models\SubmitTugasModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\HTTP\RedirectResponse;
 
 class JuaraController extends BaseController
 {
     protected $juaraModel;
+    protected $submitTugasModel;
 
     public function __construct()
     {
+        // untuk dashboard admin
+        $this->submitTugasModel = new SubmitTugasModel();
+
         $this->juaraModel = new JuaraModel();
 
         // Check if user is admin
@@ -31,7 +36,12 @@ class JuaraController extends BaseController
         }
 
         $header['title'] = 'Daftar Juara';
+
+        $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
+        $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
+
         $data['dataJuara'] = $this->juaraModel->getdata();
+
         echo view('azia/header', $header);
         echo view('azia/top_menu');
         echo view('azia/side_menu');

@@ -1,0 +1,180 @@
+<!-- Modal Update -->
+<?php foreach ($dataEmail as $data) : ?>
+    <form action="" method="post">
+        <?= csrf_field() ?>
+        <div class="modal fade" id="modal-lg-update<?= $data->id_emails ?>">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Detail Pertanyaan</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Nama</label>
+                                    <input type="text" class="form-control" name="name" id="name" value="<?= $data->name ?>" disabled>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" name="email" id="email" value="<?= $data->email ?>" disabled>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subjek</label>
+                                    <input type="text" class="form-control" name="subject" id="subject" value="<?= $data->subject ?>" disabled>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" name="message" rows="3" required><?= $data->message ?></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Status</label>
+                                    <select class="form-control" id="status" name="status" disabled>
+                                        <option value="sent" <?= $data->status === 'sent' ? 'selected' : '' ?>>Sent</option>
+                                        <option value="draft" <?= $data->status === 'draft' ? 'selected' : '' ?>>Draft</option>
+                                        <option value="pending" <?= $data->status === 'pending' ? 'selected' : '' ?>>Pending</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </form>
+<?php endforeach; ?>
+
+<!-- Modal Delete -->
+<?php foreach ($dataEmail as $data) : ?>
+    <form action="/email/list/delete/<?= $data->id_emails ?>">
+        <?php csrf_field() ?>
+        <div class="modal fade" id="modal-delete<?= $data->id_emails ?>">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Delete</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <h1 class="mb-2 d-2">
+                                <i class="bi bi-exclamation-triangle p-1 px-2"></i>
+                            </h1>
+                            <p>Apakah Kamu benar ingin menghapus email ini?</p>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </form>
+<?php endforeach; ?>
+
+<?php
+$uri = service('uri');
+$segments = $uri->getSegments();
+?>
+
+<div class="az-content-body pd-lg-l-40 d-flex flex-column">
+
+    <?php $validation = \Config\Services::validation(); ?>
+
+    <!-- Pesan sukses -->
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success">
+            <?= session()->getFlashdata('success'); ?>
+        </div>
+    <?php endif; ?>
+
+    <!-- Pesan error general -->
+    <?php if (session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger">
+            <?= session()->getFlashdata('error'); ?>
+        </div>
+    <?php endif; ?>
+
+    <div class="az-content-breadcrumb">
+        <span><a href="<?= base_url('/') ?>">Home</a></span>
+        <?php if (!empty($segments)): ?>
+            <?php foreach ($segments as $index => $segment): ?>
+                <?php
+                // Ubah segmen URL menjadi label yang lebih deskriptif
+                $label = ucfirst(str_replace('-', ' ', $segment));
+                $url = base_url(implode('/', array_slice($segments, 0, $index + 1)));
+                ?>
+                <span>
+                    <?php if ($index + 1 < count($segments)): ?>
+                        <a href="<?= $url ?>"><?= $label ?></a>
+                    <?php else: ?>
+                        <?= $label ?>
+                    <?php endif; ?>
+                </span>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+    <h2 class="az-content-title">Daftar Email Masuk</h2>
+
+    <div class="az-content-label mg-b-5">Striped Rows</div>
+    <p class="mg-b-20">Data tim yang lolos ke tahap berikutnya.</p>
+
+    <br>
+
+    <div class="table-responsive">
+        <table id="example" class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Subjek</th>
+                    <th>Message</th>
+                    <th>Status</th>
+                    <th style="width: 200px">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $i = 1 ?>
+                <?php foreach ($dataEmail as $data) : ?>
+                    <tr>
+                        <td><?= $i++ ?></td>
+                        <td><?= $data->name ?></td>
+                        <td><?= $data->email ?></td>
+                        <td><?= $data->subject ?></td>
+                        <td><?= $data->message ?></td>
+                        <td><?= $data->status ?></td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                data-target="#modal-lg-update<?= $data->id_emails ?>">View</button>
+                            <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
+                                data-target="#modal-delete<?= $data->id_emails ?>"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                <!-- Tambahkan lebih banyak baris sesuai kebutuhan -->
+            </tbody>
+        </table>
+    </div>
+
+    <hr class="mg-y-30">
+
+    <div class="ht-40"></div>

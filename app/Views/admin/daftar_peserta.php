@@ -94,7 +94,7 @@
                        <!-- /.card-body -->
                    </div>
                    <div class="modal-footer justify-content-between">
-                       <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                        <button type="submit" class="btn btn-primary">Save changes</button>
                    </div>
                </div>
@@ -121,91 +121,126 @@
                        <div class="modal-body">
                            <div class="card-body">
                                <div class="row">
-                                   <!-- Kolom Kategori Lomba -->
-                                   <div class="col-md-4">
+                                   <!-- Kategori Lomba -->
+                                   <div class="col-md-6">
                                        <div class="form-group">
                                            <input type="hidden" name="id" id="id" value="<?= $data->id_peserta; ?>">
                                            <label for="id_lomba">Kategori Lomba</label>
-                                           <select class="form-control select" id="id_lomba" name="id_lomba"
-                                               style="width: 100%;" required>
+                                           <select class="form-control select" id="id_lomba" name="id_lomba" style="width: 100%;" required>
+                                               <option value="" disabled>Pilih Kategori</option>
                                                <?php foreach ($dataLomba as $lomba) : ?>
-                                                   <option value="<?= $lomba->id_lomba; ?>"
-                                                       <?= ($lomba->id_lomba == $data->id_lomba) ? 'selected' : ''; ?>>
+                                                   <option value="<?= $lomba->id_lomba; ?>" <?= ($lomba->id_lomba == $data->id_lomba) ? 'selected' : ''; ?>>
                                                        <?= $lomba->nama; ?>
                                                    </option>
                                                <?php endforeach; ?>
                                            </select>
                                        </div>
                                    </div>
-                                   <!-- Kolom Pembimbing -->
-                                   <div class="col-md-4">
+
+                                   <!-- Pembimbing -->
+                                   <div class="col-md-6">
                                        <div class="form-group">
                                            <label for="id_pembimbing">Pembimbing</label>
-                                           <select class="form-control select" id="id_pembimbing" name="id_pembimbing"
-                                               style="width: 100%;" required>
+                                           <select class="form-control select" id="id_pembimbing" name="id_pembimbing" style="width: 100%;" required>
+                                               <option value="" disabled>Pilih Pembimbing</option>
                                                <?php foreach ($dataPembimbing as $pembimbing) : ?>
-                                                   <option value="<?= $pembimbing->id_pembimbing; ?>"
-                                                       <?= ($pembimbing->id_pembimbing == $data->id_pembimbing) ? 'selected' : ''; ?>>
+                                                   <option value="<?= $pembimbing->id_pembimbing; ?>" <?= ($pembimbing->id_pembimbing == $data->id_pembimbing) ? 'selected' : ''; ?>>
                                                        <?= $pembimbing->nama_pembimbing; ?>
                                                    </option>
                                                <?php endforeach; ?>
                                            </select>
                                        </div>
                                    </div>
-                                   <!-- Kolom Sekolah -->
-                                   <div class="col-md-4">
+                               </div>
+
+                               <div class="row">
+                                   <!-- Sekolah -->
+                                   <div class="col-md-6">
                                        <div class="form-group">
                                            <label for="id_sekolah">Sekolah</label>
-                                           <select class="form-control select" id="id_sekolah" name="id_sekolah"
-                                               style="width: 100%;" required>
+                                           <select class="form-control select" id="id_sekolah" name="id_sekolah" style="width: 100%;" required>
+                                               <option value="" disabled>Pilih Sekolah</option>
                                                <?php foreach ($dataSekolah as $sekolah) : ?>
-                                                   <option value="<?= $sekolah->id_sekolah; ?>"
-                                                       <?= ($sekolah->id_sekolah == $data->id_sekolah) ? 'selected' : ''; ?>>
+                                                   <option value="<?= $sekolah->id_sekolah; ?>" <?= ($sekolah->id_sekolah == $data->id_sekolah) ? 'selected' : ''; ?>>
                                                        <?= $sekolah->nama_sekolah; ?>
                                                    </option>
                                                <?php endforeach; ?>
                                            </select>
                                        </div>
                                    </div>
-                                   <!-- /.col -->
+
+                                   <!-- Tim Lomba -->
                                    <div class="col-md-6">
                                        <div class="form-group">
                                            <label for="id_tim_lomba">Tim Lomba</label>
-                                           <select class="form-control select" id="id_tim_lomba" name="id_tim_lomba"
-                                               style="width: 100%;">
-                                               <option value="" selected>Pilih Tim</option>
+                                           <select class="form-control select" id="id_tim_lomba" name="id_tim_lomba" style="width: 100%;" required>
+                                               <option value="" disabled>Pilih Tim</option>
                                                <?php foreach ($dataTimLomba as $dataTim) : ?>
-                                                   <option value="<?= ($dataTim->id_tim_lomba == $data->id_tim_lomba) ? 'selected' : ''; ?>"><?= $dataTim->nama_tim; ?>
+                                                   <option value="<?= $dataTim->id_tim_lomba; ?>" <?= ($dataTim->id_tim_lomba == $data->id_tim_lomba) ? 'selected' : ''; ?>>
+                                                       <?= $dataTim->nama_tim; ?>
                                                    </option>
                                                <?php endforeach; ?>
                                            </select>
                                        </div>
                                    </div>
-                                   <!-- Kolom Nama Peserta -->
-                                   <div class="col-md-4">
+                               </div>
+
+                               <div class="row">
+                                   <!-- Nama Peserta -->
+                                   <div class="col-md-6">
                                        <div class="form-group">
                                            <label for="nama_peserta">Nama Peserta</label>
-                                           <input type="text" class="form-control" id="nama_peserta"
-                                               name="nama_peserta" placeholder="Masukkan Nama Peserta"
-                                               value="<?= $data->nama_peserta; ?>" required>
+                                           <input type="text" class="form-control" id="nama_peserta" name="nama_peserta" placeholder="Masukkan Nama Peserta" value="<?= $data->nama_peserta; ?>" required>
                                        </div>
                                    </div>
-                                   <!-- /.col -->
+
+                                   <!-- No Handphone -->
                                    <div class="col-md-6">
                                        <div class="form-group">
                                            <label for="no_handphone">No Handphone</label>
-                                           <input type="text" class="form-control" id="no_handphone"
-                                               name="no_handphone" placeholder="Masukkan No Peserta" value="<?= $data->no_handphone; ?>" required>
+                                           <input type="text" class="form-control" id="no_handphone" name="no_handphone" placeholder="Masukkan No Peserta" value="<?= $data->no_handphone; ?>" required>
                                        </div>
                                    </div>
                                </div>
-                               <!-- /.row -->
+                           </div>
+                       </div>
+
+                       <div class="modal-footer justify-content-between">
+                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                           <button type="submit" class="btn btn-primary">Save changes</button>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </form>
+   <?php endforeach; ?>
+
+
+   <!-- Modal Delete -->
+   <?php foreach ($dataPeserta as $data) : ?>
+       <form action="/daftar-peserta/delete/<?= $data->id_peserta ?>">
+           <?php csrf_field() ?>
+           <div class="modal fade" id="modal-delete<?= $data->id_peserta ?>">
+               <div class="modal-dialog modal-sm">
+                   <div class="modal-content">
+                       <div class="modal-header">
+                           <h4 class="modal-title">Delete</h4>
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                               <span aria-hidden="true">&times;</span>
+                           </button>
+                       </div>
+                       <div class="modal-body">
+                           <div class="card-body">
+                               <h1 class="mb-2 d-2">
+                                   <i class="bi bi-exclamation-triangle p-1 px-2"></i>
+                               </h1>
+                               <p>Apakah Kamu benar ingin menghapus data ini?</p>
                            </div>
                            <!-- /.card-body -->
                        </div>
                        <div class="modal-footer justify-content-between">
-                           <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-                           <button type="submit" class="btn btn-primary">Save changes</button>
+                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                           <button type="submit" class="btn btn-primary">Delete</button>
                        </div>
                    </div>
                    <!-- /.modal-content -->
@@ -272,7 +307,7 @@
        <br>
 
        <div class="table-responsive">
-           <table id="example1" class="table table-striped">
+           <table id="example" class="table table-striped">
                <thead>
                    <tr>
                        <th style="width: 10px">#</th>
@@ -300,8 +335,8 @@
 
                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                    data-target="#modal-lg-update<?= $data->id_peserta ?>">Update</button>
-                               <a class="btn btn-outline-primary btn-sm" href="/daftar-peserta/delete/<?= $data->id_peserta ?>"
-                                   role="button">Delete</a>
+                               <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
+                                   data-target="#modal-delete<?= $data->id_peserta ?>">Delete</button>
                            </td>
                        </tr>
                    <?php endforeach; ?>

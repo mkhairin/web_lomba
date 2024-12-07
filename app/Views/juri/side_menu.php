@@ -11,8 +11,9 @@
                 <nav class="nav flex-column">
                     <a href="/juri-dashboard/daftar-deadline" class="nav-link <?= (current_url() == base_url('/juri-dashboard/daftar-deadline')) ? 'active text-primary' : '' ?>">Deadline Tugas</a>
                     <a href="/juri-dashboard/tim-lomba" class="nav-link <?= (current_url() == base_url('/juri-dashboard/tim-lomba')) ? 'active text-primary' : '' ?>">Daftar Tim Lomba</a>
-                    <a href="/juri-dashboard/daftar-dinilai" class="nav-link <?= (current_url() == base_url('/daftar-sekolah')) ? 'active text-primary' : '' ?>">Daftar Penilaian Tim</a>
-                    <a href="/juri-dashboard/tim-lolos" class="nav-link <?= (current_url() == base_url('/daftar-pembimbing')) ? 'active text-primary' : '' ?>">Daftar Tim Lolos</a>
+                    <a href="/juri-dashboard/daftar-dinilai" class="nav-link <?= (current_url() == base_url('/juri-dashboard/daftar-dinilai')) ? 'active text-primary' : '' ?>">Daftar Penilaian Tim</a>
+                    <a href="/juri-dashboard/tim-lolos" class="nav-link <?= (current_url() == base_url('/juri-dashboard/tim-lolos')) ? 'active text-primary' : '' ?>">Daftar Tim Lolos</a>
+                    <a href="/juri-dashboard/tim-belum-lolos" class="nav-link <?= (current_url() == base_url('/juri-dashboard/tim-belum-lolos')) ? 'active text-primary' : '' ?>">Daftar Tim Belum Lolos</a>
                 </nav>
 
                 <label>Logout</label>

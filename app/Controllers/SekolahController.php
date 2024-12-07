@@ -3,15 +3,20 @@
 namespace App\Controllers;
 
 use App\Models\SekolahModel;
+use App\Models\SubmitTugasModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\HTTP\RedirectResponse;
 
 class SekolahController extends BaseController
 {
     protected $sekolahModel;
+    protected $submitTugasModel;
 
     public function __construct()
     {
+        // untuk dashboard admin
+        $this->submitTugasModel = new SubmitTugasModel();
+
         $this->sekolahModel = new SekolahModel();
         // Check if user is admin
         $session = session();
@@ -29,8 +34,13 @@ class SekolahController extends BaseController
             return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
-        $header['title'] = 'Daftar Sekolah';
+        $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
+        $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
+
         $data['dataSekolah'] = $this->sekolahModel->getdata();
+
+        $header['title'] = 'Daftar Sekolah';
+        
         echo view('azia/header', $header);
         echo view('azia/top_menu');
         echo view('azia/side_menu');

@@ -23,12 +23,33 @@ class TimLolosJuriModel extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
 
-    public function get()
+    public function getdata()
     {
         $db = \Config\Database::connect();
         $builder = $db->table('tim_lolos_new');
         $builder->select();
-        $builder->where('status', 'lolos');
+        $builder->where('status', 'Lolos');
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+    public function getDataNotLolos()
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('tim_lolos_new');
+        $builder->select();
+        $builder->where('status', 'Belum Lolos');
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+    public function getDataWhereTim($params, $namaTimLomba)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('tim_lolos_new');
+        $builder->select();
+        $builder->where('lomba', $params);
+        $builder->where('tim', $namaTimLomba);
         $query = $builder->get();
         return $query->getResult();
     }
@@ -39,6 +60,18 @@ class TimLolosJuriModel extends Model
         $builder = $db->table('tim_lolos_new');
         $builder->select();
         $builder->where('lomba', $params);
+        $builder->where('status', 'Lolos');
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+    public function getDataWhereNotLolos($params)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('tim_lolos_new');
+        $builder->select();
+        $builder->where('lomba', $params);
+        $builder->where('status', 'Belum Lolos'); // Misalnya, 0 menandakan belum lolos
         $query = $builder->get();
         return $query->getResult();
     }

@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\AdminModel;
+use App\Models\SubmitTugasModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 use Exception;
@@ -11,11 +12,21 @@ use Exception;
 class UserAdminController extends BaseController
 {
     protected $adminModel;
+    protected $submitTugasModel;
 
     public function __construct()
     {
+        // untuk dashboard admin
+        $this->submitTugasModel = new SubmitTugasModel();
+
         // Inisialisasi AdminModel
         $this->adminModel = new AdminModel();
+
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
+        }
     }
 
     // Method untuk mengecek apakah user adalah admin
@@ -37,6 +48,9 @@ class UserAdminController extends BaseController
 
         // Mengambil data admin dari model
         $data['dataAdmin'] = $this->adminModel->getdata();
+
+        $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
+        $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
 
         // Tampilkan view
         echo view('azia/header', $header);

@@ -6,116 +6,118 @@ use CodeIgniter\Config\BaseConfig;
 
 class Email extends BaseConfig
 {
-    public string $fromEmail  = '';
-    public string $fromName   = '';
-    public string $recipients = '';
-
     /**
-     * The "user agent"
+     * Alamat email pengirim.
      */
-    public string $userAgent = 'CodeIgniter';
+    public string $fromEmail = '';
 
     /**
-     * The mail sending protocol: mail, sendmail, smtp
+     * Nama pengirim email.
      */
-    public string $protocol = 'mail';
+    public string $fromName = '';
 
     /**
-     * The server path to Sendmail.
+     * Penerima email (opsional).
+     */
+    public string $recipients = 'mkhairin04@gmail.com';
+
+    /**
+     * Protokol pengiriman email: mail, sendmail, smtp.
+     */
+    public string $protocol = 'smtp';
+
+    /**
+     * Jalur ke Sendmail (hanya jika menggunakan protokol sendmail).
      */
     public string $mailPath = '/usr/sbin/sendmail';
 
     /**
-     * SMTP Server Hostname
+     * Host SMTP yang digunakan.
      */
-    public string $SMTPHost = '';
+    public string $SMTPHost = 'smtp.gmail.com';
 
     /**
-     * SMTP Username
+     * Username untuk autentikasi SMTP.
      */
-    public string $SMTPUser = '';
+    public string $SMTPUser = 'mkhairin04@gmail.com'; // Ganti dengan email Gmail Anda
 
     /**
-     * SMTP Password
+     * Password untuk autentikasi SMTP.
      */
-    public string $SMTPPass = '';
+    public string $SMTPPass = 'mrqd ciri joie aprd'; // Ganti dengan App Password Gmail Anda
 
     /**
-     * SMTP Port
+     * Port SMTP yang digunakan.
      */
-    public int $SMTPPort = 25;
+    public int $SMTPPort = 587;
 
     /**
-     * SMTP Timeout (in seconds)
+     * Timeout koneksi SMTP (dalam detik).
      */
-    public int $SMTPTimeout = 5;
+    public int $SMTPTimeout = 10;
 
     /**
-     * Enable persistent SMTP connections
+     * Apakah koneksi SMTP harus dipertahankan secara persisten.
      */
     public bool $SMTPKeepAlive = false;
 
     /**
-     * SMTP Encryption.
-     *
-     * @var string '', 'tls' or 'ssl'. 'tls' will issue a STARTTLS command
-     *             to the server. 'ssl' means implicit SSL. Connection on port
-     *             465 should set this to ''.
+     * Enkripsi SMTP: '', 'tls', atau 'ssl'.
      */
     public string $SMTPCrypto = 'tls';
 
     /**
-     * Enable word-wrap
+     * Aktifkan pemotongan kata.
      */
     public bool $wordWrap = true;
 
     /**
-     * Character count to wrap at
+     * Batas karakter untuk pemotongan kata.
      */
     public int $wrapChars = 76;
 
     /**
-     * Type of mail, either 'text' or 'html'
+     * Jenis email: 'text' atau 'html'.
      */
-    public string $mailType = 'text';
+    public string $mailType = 'text'; // Format teks biasa
 
     /**
-     * Character set (utf-8, iso-8859-1, etc.)
+     * Set karakter (utf-8, iso-8859-1, dll.).
      */
     public string $charset = 'UTF-8';
 
     /**
-     * Whether to validate the email address
+     * Validasi alamat email penerima.
      */
     public bool $validate = false;
 
     /**
-     * Email Priority. 1 = highest. 5 = lowest. 3 = normal
+     * Prioritas email: 1 = tertinggi, 5 = terendah, 3 = normal.
      */
     public int $priority = 3;
 
     /**
-     * Newline character. (Use “\r\n” to comply with RFC 822)
+     * Karakter newline. Gunakan "\r\n" untuk mematuhi RFC 822.
      */
     public string $CRLF = "\r\n";
 
     /**
-     * Newline character. (Use “\r\n” to comply with RFC 822)
+     * Karakter newline.
      */
     public string $newline = "\r\n";
 
     /**
-     * Enable BCC Batch Mode.
+     * Mode batch untuk BCC.
      */
     public bool $BCCBatchMode = false;
 
     /**
-     * Number of emails in each BCC batch
+     * Jumlah email dalam setiap batch BCC.
      */
     public int $BCCBatchSize = 200;
 
     /**
-     * Enable notify message from server
+     * Aktifkan pesan notifikasi dari server.
      */
     public bool $DSN = false;
 }

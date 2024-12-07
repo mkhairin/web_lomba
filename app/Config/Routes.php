@@ -21,6 +21,8 @@ $routes->post('/juri_login/auth', 'JuriLoginController::loginAuth');
 
 // Halaman Lomba (Public Route)
 $routes->get('/', 'HomeLombaTRKJ::home');
+$routes->get('/team', 'HomeLombaTRKJ::team');
+$routes->get('/contact', 'HomeLombaTRKJ::contact');
 
 // Admin dashboard
 $routes->get('/admin', 'DashboardController::index');
@@ -82,6 +84,8 @@ $routes->get('/daftar-soal/delete/(:num)', 'SoalController::delete/$1');
 
 $routes->get('/daftar-pertanyaan', 'FaQController::daftarQuestion');
 $routes->post('/daftar-pertanyaan/insert', 'FaQController::insert');
+$routes->post('/daftar-pertanyaan/update/(:num)', 'FaQController::update/$1');
+$routes->get('/daftar-pertanyaan/delete/(:num)', 'FaQController::delete/$1');
 
 // $routes->get('/daftar-pengumpulan', 'PengumpulanController::index');
 // $routes->post('/daftar-pengumpulan/insert', 'PengumpulanController::insert');
@@ -93,6 +97,7 @@ $routes->post('/user-dashboarduser/insert', 'SubmitTugasController::insert');
 $routes->get('/user', 'UsersController::daftarUser');
 $routes->post('/user/insert', 'UsersController::insert');
 $routes->post('/user/update/(:num)', 'UsersController::update/$1');
+$routes->get('/user/delete/(:num)', 'UsersController::delete/$1');
 
 // Admin management
 $routes->get('/daftar-admin', 'UserAdminController::daftarAdmin');
@@ -123,7 +128,18 @@ $routes->get('/juri-dashboard/tim-lomba', 'JuriController::daftarTimLomba');
 // Tim Lolos Juri
 $routes->get('/juri-dashboard/tim-lolos', 'JuriController::dashboardTimLolos');
 $routes->post('/juri-dashboard/tim-lolos/insert', 'TimLolosJuriController::insert');
+$routes->post('/juri-dashboard/tim-lolos/update/(:num)', 'TimLolosJuriController::update/$1');
+
+$routes->get('/juri-dashboard/tim-belum-lolos', 'JuriController::dashboardTimBelumLolos');
 
 // Daftar Deadline Soal
 $routes->get('/juri-dashboard/daftar-deadline', 'JuriController::daftarDeadline');
 $routes->post('/juri-dashboard/daftar-deadline/insert', 'DeadlineController::insert');
+$routes->post('/juri-dashboard/daftar-deadline/update/(:num)', 'DeadlineController::update/$1');
+$routes->get('/juri-dashboard/daftar-deadline/delete/(:num)', 'DeadlineController::delete/$1');
+
+
+// Email Helpdesk
+$routes->get('/email/list', 'MailController::MailsView');
+$routes->post('/contact/send', 'MailController::sendEmail');
+$routes->get('/email/list/delete/(:num)', 'MailController::delete/$1');

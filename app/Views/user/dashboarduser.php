@@ -54,7 +54,7 @@
   </div>
 <?php endforeach; ?>
 
-<?php foreach ($dataTimLolos as $nilai): ?>
+<?php foreach ($dataTimLolosTim as $nilai): ?>
   <div class="modal fade" id="modalNilai" tabindex="-1" aria-labelledby="modalNilaiLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -71,15 +71,10 @@
               <li>Kategori : <?= $nilai->lomba ?></li>
               <li>Pembimbing : <?= $nilai->pembimbing ?></li>
               <li>Sekolah : <?= $nilai->sekolah ?></li>
-              <li>Sekolah : <?= $nilai->skor_nilai ?></li>
+              <li>Skor Nilai : <?= $nilai->skor_nilai ?></li>
               <li>Status : <?= $nilai->status ?></li>
             </ul>
           </div>
-          <!-- /.card-body -->
-
-          <!-- <div class="card-footer">
-              <button type="submit" class="btn btn-sm btn-primary">Submit</button>
-            </div> -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -134,13 +129,13 @@
       </div>
     </div>
     <div class="row">
-      <?php foreach ($dataTimLomba as $data): ?>
+      <?php foreach ($dataTimLombaNama as $data): ?>
         <div class="col-md-6 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
               <p class="card-title">Tim <?= $data->nama_tim ?></p>
               <p class="font-weight-500">
-                Tim <?= $data->nama_tim ?> telah mendaftar ke lomba kaltek
+                Tim <?= $data->nama_tim ?> telah mendaftar ke lomba Kaltech
                 pada divisi <?= $data->nama ?>, team ini memiliki anggota:
               </p>
               <div class="d-flex mt-4">
@@ -180,12 +175,12 @@
                 <?php endforeach; ?>
               <?php else : ?>
                 <!-- <button
-                  type="button"
-                  class="btn btn-primary btn-icon-text"
-                  data-bs-toggle="modal"
-                  data-bs-target="#modalNilai">
-                  <i class="fa-solid fa-calendar-days"></i> Form Penilaian
-                </button> -->
+                    type="button"
+                    class="btn btn-primary btn-icon-text"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalTidakDinilai">
+                    <i class="fa-solid fa-calendar-days"></i> Form Penilaian
+                  </button> -->
               <?php endif; ?>
             </div>
           </div>
@@ -201,17 +196,29 @@
                 src="userStyle/dist/assets/images/dashboard/people.svg"
                 alt="people" />
               <div class="weather-info">
-                <div class="d-flex">
-                  <div>
-                    <h2 class="mb-0 font-weight-normal">
-                      <i class="mdi mdi-content-duplicate me-0"></i>
-                    </h2>
+                <div class=" d-flex flex-column">
+                  <div class="d-flex mb-3">
+                    <div>
+                      <h2 class="mb-0 font-weight-normal">
+                        <i class="mdi mdi-content-duplicate me-0"></i>
+                      </h2>
+                    </div>
+                    <div class="ms-2">
+                      <h4 class="location font-weight-normal">Kategori</h4>
+                      <?php foreach ($dataKategori as $data): ?>
+                        <h6 class="font-weight-normal"><?= esc($data->nama); ?></h6>
+                      <?php endforeach; ?>
+                    </div>
                   </div>
-                  <div class="ms-2">
-                    <h4 class="location font-weight-normal">Kategori</h4>
-                    <?php foreach ($dataKategori as $data): ?>
-                      <h6 class="font-weight-normal"><?= esc($data->nama); ?></h6>
-                    <?php endforeach; ?>
+                  <div class="row">
+                    <div class="deadline text-right mb-3">
+                      <p class="mb-2 text-muted"><i class="fa-regular fa-clock text-primary"></i> Deadline</p>
+                      <?php foreach ($dataDeadlineLomba as $deadline): ?>
+                        <h5 class="mb-0"><?= $deadline->deadline; ?></h5>
+                        <p id="countdown1-<?= $deadline->id_deadline; ?>" class="font-weight-500 text-danger"></p>
+                      <?php endforeach; ?>
+
+                    </div>
                   </div>
                 </div>
               </div>
@@ -226,8 +233,11 @@
           <div class="card-body">
             <div class="deadline text-right mb-3">
               <p class="mb-2 text-muted"><i class="fa-regular fa-clock text-primary"></i> Deadline</p>
-              <h3 class="mb-0">12:00</h3>
-              <p class="font-weight-500">14 Januari 2025</p>
+              <?php foreach ($dataDeadlineLomba as $deadline): ?>
+                <h3 class="mb-0"><?= $deadline->deadline; ?></h3>
+                <p id="countdown-<?= $deadline->id_deadline; ?>" class="font-weight-500 text-danger"></p>
+              <?php endforeach; ?>
+
             </div>
             <?php foreach ($dataKategori as $data) : ?>
               <p class="card-title mb-2">Preview Tugas Kategori <?= $data->nama ?></p>
@@ -264,8 +274,8 @@
                     <i class="ti-download btn-icon-prepend"></i>Unduh Tugas
                   </a>
                 <?php endforeach; ?>
-                <?php if (!empty($daftarTimSelesai)) : ?>
-                  <?php foreach ($daftarTimSelesai as $dataTugas) : ?>
+                <?php if (!empty($daftarTimSelesaiWhere)) : ?>
+                  <?php foreach ($daftarTimSelesaiWhere as $dataTugas) : ?>
                     <button
                       type="button"
                       class="btn btn-primary btn-icon-text"

@@ -21,27 +21,9 @@ class SponsorModel extends Model
     {
         $db = \Config\Database::connect();
         $builder = $db->table('sponsor');
+        $builder->orderBy('created_at', 'DESC');
         $query = $builder->get();
         return $query->getResult();
     }
 
-    public function insertData($data)
-    {
-        $db     =   \Config\Database::connect();
-        $builder = $db->table('sponsor');
-        $builder->insert($data);
-    }
-
-    public function updateData($id, $data)
-    {
-        $this->update($id, $data);
-    }
-
-    public function deleteData($id)
-    {
-        $db = \Config\Database::connect();
-        $builder = $db->table('sponsor');
-        $builder->where('id_sponsor', $id);
-        $builder->delete();
-    }
 }

@@ -4,6 +4,23 @@ $segments = $uri->getSegments();
 ?>
 
 <div class="az-content-body pd-lg-l-40 d-flex flex-column">
+
+    <?php $validation = \Config\Services::validation(); ?>
+
+    <!-- Pesan sukses -->
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success">
+            <?= session()->getFlashdata('success'); ?>
+        </div>
+    <?php endif; ?>
+
+    <!-- Pesan error general -->
+    <?php if (session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger">
+            <?= session()->getFlashdata('error'); ?>
+        </div>
+    <?php endif; ?>
+
     <div class="az-content-breadcrumb">
         <span><a href="<?= base_url('/') ?>">Home</a></span>
         <?php if (!empty($segments)): ?>
@@ -31,7 +48,7 @@ $segments = $uri->getSegments();
     <br>
 
     <div class="table-responsive">
-        <table id="example1" class="table table-striped">
+        <table id="example" class="table table-striped">
             <thead>
                 <tr>
                     <th style="width: 10px">#</th>
@@ -58,7 +75,6 @@ $segments = $uri->getSegments();
                         <td><?= $timLomba->ketua_tim ?></td>
                         <td><?= $timLomba->anggota ?></td>
                         <td><?= $timLomba->no_ketua ?></td>
-                        <td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

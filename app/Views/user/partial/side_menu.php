@@ -17,8 +17,8 @@
 
          <li class="nav-item">
              <a class="nav-link" href="/logout">
-                 <i class="icon-paper menu-icon"></i>
-                 <span class="menu-title">Logout</span>
+                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                 <span class="menu-title mx-3"> Logout</span>
              </a>
          </li>
      </ul>

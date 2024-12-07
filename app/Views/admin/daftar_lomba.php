@@ -32,7 +32,7 @@
                               <!-- Link Peraturan -->
                               <div class="col-md-4">
                                   <div class="form-group">
-                                      <label for="link_peraturan">Link</label>
+                                      <label for="link_peraturan">Link Aturan</label>
                                       <input type="text" class="form-control" id="link_peraturan"
                                           name="link_peraturan" placeholder="Masukkan link aturan" required>
                                   </div>
@@ -40,7 +40,7 @@
                               <!-- Link Pendaftaran -->
                               <div class="col-md-4">
                                   <div class="form-group">
-                                      <label for="link_pendaftaran">Link</label>
+                                      <label for="link_pendaftaran">Link Pendaftaran</label>
                                       <input type="text" class="form-control" id="link_pendaftaran"
                                           name="link_pendaftaran" placeholder="Masukkan link pendaftaran" required>
                                   </div>
@@ -71,21 +71,13 @@
                                       </select>
                                   </div>
                               </div>
-                              <!-- Peraturan Lomba -->
-                              <!-- <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="peraturan">Aturan</label>
-                                            <textarea class="form-control" id="peraturan" rows="4" name="peraturan"
-                                                placeholder="Masukkan aturan" required></textarea>
-                                        </div>
-                                    </div> -->
                           </div>
                           <!-- /.row -->
                       </div>
                       <!-- /.card-body -->
                   </div>
                   <div class="modal-footer justify-content-between">
-                      <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                       <button type="submit" class="btn btn-primary">Save changes</button>
                   </div>
               </div>
@@ -192,8 +184,43 @@
                           <!-- /.card-body -->
                       </div>
                       <div class="modal-footer justify-content-between">
-                          <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                           <button type="submit" class="btn btn-primary">Save changes</button>
+                      </div>
+                  </div>
+                  <!-- /.modal-content -->
+              </div>
+              <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
+      </form>
+  <?php endforeach; ?>
+
+  <!-- Modal Delete -->
+  <?php foreach ($dataLomba as $data) : ?>
+      <form action="/daftar-sponsor/delete/<?= $data->id_lomba ?>">
+          <?php csrf_field() ?>
+          <div class="modal fade" id="modal-delete<?= $data->id_lomba ?>">
+              <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h4 class="modal-title">Delete</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="card-body">
+                              <h1 class="mb-2 d-2">
+                                  <i class="bi bi-exclamation-triangle p-1 px-2"></i>
+                              </h1>
+                              <p>Apakah Kamu benar ingin menghapus data ini?</p>
+                          </div>
+                          <!-- /.card-body -->
+                      </div>
+                      <div class="modal-footer justify-content-between">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Delete</button>
                       </div>
                   </div>
                   <!-- /.modal-content -->
@@ -260,7 +287,7 @@
       <br>
 
       <div class="table-responsive">
-          <table id="example1" class="table table-striped">
+          <table id="example" class="table table-striped">
               <thead>
                   <tr>
                       <th style="width: 10px">#</th>
@@ -290,10 +317,10 @@
                           <td><?= $data->status ?></td>
                           <td>
 
-                              <button type="button" class="btn btn-primary btn-sm rounded" data-toggle="modal"
+                              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                   data-target="#modal-lg-update<?= $data->id_lomba ?>">Update</button>
-                              <a class="btn btn-outline-primary btn-sm rounded"
-                                  href="/daftar-lomba/delete/<?= $data->id_lomba ?>" role="button">Delete</a>
+                              <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
+                                  data-target="#modal-delete<?= $data->id_lomba ?>">Delete</button>
                           </td>
                       </tr>
                   <?php endforeach; ?>

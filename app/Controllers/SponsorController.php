@@ -3,15 +3,20 @@
 namespace App\Controllers;
 
 use App\Models\SponsorModel;
+use App\Models\SubmitTugasModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\HTTP\RedirectResponse;
 
 class SponsorController extends BaseController
 {
     protected $sponsorModel;
+    protected $submitTugasModel;
 
     public function __construct()
     {
+        // untuk dashboard admin
+        $this->submitTugasModel = new SubmitTugasModel();
+
         $this->sponsorModel = new SponsorModel();
         // Check if user is admin
         $session = session();
@@ -30,6 +35,10 @@ class SponsorController extends BaseController
         }
 
         $header['title'] = 'Daftar Sponsor';
+
+        $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
+        $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
+
         $data['dataSponsor'] = $this->sponsorModel->getdata();
 
         echo view('azia/header', $header);

@@ -111,6 +111,50 @@
   <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 
   <script>
+      // Fungsi untuk inisialisasi countdown
+      function initializeCountdown(deadlineId, deadlineTime) {
+          const deadline = new Date(deadlineTime).getTime();
+
+          const countdownInterval = setInterval(() => {
+              const now = new Date().getTime();
+              const distance = deadline - now;
+
+              if (distance < 0) {
+                  clearInterval(countdownInterval);
+                  document.getElementById(`countdown-${deadlineId}`).innerText = "EXPIRED";
+                  return;
+              }
+
+              if (distance < 0) {
+                  clearInterval(countdownInterval);
+                  document.getElementById(`countdown1-${deadlineId}`).innerText = "EXPIRED";
+                  return;
+              }
+
+              const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+              const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+              const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+              document.getElementById(`countdown-${deadlineId}`).innerText =
+                  `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+              document.getElementById(`countdown1-${deadlineId}`).innerText =
+                  `${days}d ${hours}h ${minutes}m ${seconds}s`;
+          }, 1000);
+      }
+
+      // Data deadline dari server
+      const deadlines = <?= json_encode($dataDeadlineLomba); ?>;
+
+      // Inisialisasi countdown untuk setiap deadline
+      deadlines.forEach(deadline => {
+          initializeCountdown(deadline.id_deadline, deadline.deadline);
+      });
+  </script>
+
+
+  <script>
       $(document).ready(function() {
           $('#myTable').DataTable();
           $('#myTable2').DataTable();

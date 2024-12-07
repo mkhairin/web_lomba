@@ -1,6 +1,7 @@
 <div class="az-header">
   <div class="container">
     <div class="az-header-left">
+      <img src="<?= base_url('/img/logo/logo.webp') ?>" class="mx-2" alt="Logo-Image" style="width: 21px;">
       <a href="index.html" class="az-logo text-primary "><span></span> Kaltech</a>
       <a href="" id="azMenuShow" class="az-header-menu-icon d-lg-none"><span></span></a>
     </div><!-- az-header-left -->
@@ -20,7 +21,7 @@
             <a href="/daftar-sekolah" class="nav-link <?= (current_url() == base_url('/daftar-sekolah')) ? 'active text-primary' : '' ?>">Daftar Sekolah</a>
             <a href="/daftar-pembimbing" class="nav-link <?= (current_url() == base_url('/daftar-pembimbing')) ? 'active text-primary' : '' ?>">Daftar Pembimbing</a>
             <a href="/daftar-peserta" class="nav-link <?= (current_url() == base_url('/daftar-peserta')) ? 'active text-primary' : '' ?>">Daftar Peserta</a>
-            <a href="/tim-lomba" class="nav-link <?= (current_url() == base_url('/tim-lomba')) ? 'active text-primary' : '' ?>">Daftar Tim Lomba</a>
+            <a href="/tim-lomba" class="nav-link <?= (current_url() == base_url('/tim-lomba')) ? 'active text-primary' : '' ?>">Daftar Tim</a>
             <a href="/tim-lolos" class="nav-link <?= (current_url() == base_url('/tim-lolos')) ? 'active text-primary' : '' ?>">Daftar Tim Lolos</a>
             <a href="/daftar-soal" class="nav-link <?= (current_url() == base_url('/daftar-soal')) ? 'active text-primary' : '' ?>">Daftar Soal Lomba</a>
             <a href="/daftar-juara" class="nav-link <?= (current_url() == base_url('/daftar-juara')) ? 'active text-primary' : '' ?>">Daftar Juara</a>
@@ -35,10 +36,14 @@
           </nav>
         </li>
         <li class="nav-item">
-          <a href="form-elements.html" class="nav-link"> Forms</a>
+          <a href="" class="nav-link with-sub"> Mails Inbox</a>
+          <nav class="az-menu-sub">
+            <a href="/email/list" class="nav-link <?= (current_url() == base_url('/email/list')) ? 'active text-primary' : '' ?>">Email</a>
+
+          </nav>
         </li>
         <li class="nav-item">
-          <a href="/admin/logout" class="nav-link <?= (current_url() == base_url('/admin/logout')) ? 'active text-primary' : '' ?>"> Logout</a>
+          <a href="/admin/logout" type="button" class="btn btn-primary"> Logout</a>
         </li>
       </ul>
     </div><!-- az-header-menu -->

@@ -34,6 +34,39 @@ class SubmitTugasModel extends Model
         $builder = $db->table('submit_pengumpulan');
         $builder->select();
         $builder->where('lomba', $params);
+        $builder->orderBy('created_at', 'DESC'); // Urutkan berdasarkan kolom created_at secara descending
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+
+    public function getDataSubmit()
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('submit_pengumpulan');
+        $builder->select();
+        $builder->where('status_pengumpulan', 'Telah Submit');
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+    public function getDataNotSubmit()
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('submit_pengumpulan');
+        $builder->select();
+        $builder->where('status_pengumpulan', '');
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+    public function getDataWhereTeam($params, $namaTimLomba)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('submit_pengumpulan');
+        $builder->select();
+        $builder->where('lomba', $params);
+        $builder->where('tim', $namaTimLomba);
         $query = $builder->get();
         return $query->getResult();
     }
@@ -45,6 +78,7 @@ class SubmitTugasModel extends Model
         $builder->select();
         $builder->where('lomba', $params);
         $builder->where('status_penilaian', 'Belum Dinilai');
+        $builder->orderBy('created_at', 'DESC');
         $query = $builder->get();
         return $query->getResult();
     }

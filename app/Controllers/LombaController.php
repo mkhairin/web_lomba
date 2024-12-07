@@ -4,15 +4,20 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\LombaModel;
+use App\Models\SubmitTugasModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use Exception;
 
 class LombaController extends BaseController
 {
     protected $lombaModel;
+    protected $submitTugasModel;
 
     public function __construct()
     {
+        // untuk dashboard admin
+        $this->submitTugasModel = new SubmitTugasModel();
+
         $this->lombaModel = new LombaModel();
         // Check if user is admin
         $session = session();
@@ -33,6 +38,9 @@ class LombaController extends BaseController
             // Ambil data lomba dari model
             $data['dataLomba'] = $this->lombaModel->getdata();
             $header['title'] = 'Daftar Lomba';
+
+            $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
+            $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
 
             // Load views
             echo view('azia/header', $header);

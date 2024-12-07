@@ -24,21 +24,21 @@
                                 <div class="form-group">
                                     <label for="ketua_tim">Ketua Tim</label>
                                     <input type="text" class="form-control" id="ketua_tim" name="ketua_tim"
-                                        placeholder="Masukkan Nama Tim" required>
+                                        placeholder="Masukkan Nama Ketua Tim" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="anggota">Nama Anggota</label>
                                     <input type="text" class="form-control" id="anggota" name="anggota"
-                                        placeholder="Masukkan Nama Tim" required>
+                                        placeholder="Masukkan Nama Anggota" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="no_ketua">No Ketua</label>
                                     <input type="text" class="form-control" id="no_ketua" name="no_ketua"
-                                        placeholder="Masukkan Nama Tim" required>
+                                        placeholder="Masukkan No Ketua Tim" required>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +91,7 @@
                     <!-- /.card-body -->
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
@@ -200,12 +200,47 @@
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
             </div>
         </div>
+    </form>
+<?php endforeach; ?>
+
+<!-- Modal Delete -->
+<?php foreach ($dataTimLomba as $data) : ?>
+    <form action="/tim-lomba/delete/<?= $data->id_tim_lomba ?>">
+        <?php csrf_field() ?>
+        <div class="modal fade" id="modal-delete<?= $data->id_tim_lomba ?>">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Delete</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <h1 class="mb-2 d-2">
+                                <i class="bi bi-exclamation-triangle p-1 px-2"></i>
+                            </h1>
+                            <p>Apakah Kamu benar ingin menghapus data ini?</p>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
     </form>
 <?php endforeach; ?>
 
@@ -266,7 +301,7 @@ $segments = $uri->getSegments();
     <br>
 
     <div class="table-responsive">
-        <table id="example1" class="table table-striped">
+        <table id="example" class="table table-striped">
             <thead>
                 <tr>
                     <th style="width: 10px">#</th>
@@ -297,8 +332,8 @@ $segments = $uri->getSegments();
                         <td class="d-flex">
                             <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal"
                                 data-target="#modal-lg-update<?= $timLomba->id_tim_lomba ?>">Update</button>
-                            <a class="btn btn-outline-primary btn-sm" href="/tim-lomba/delete/<?= $timLomba->id_tim_lomba ?>"
-                                role="button">Delete</a>
+                            <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
+                                data-target="#modal-delete<?= $data->id_tim_lomba ?>">Delete</button>
                         </td>
                     </tr>
                 <?php endforeach; ?>

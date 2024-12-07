@@ -3,7 +3,7 @@
         <h1 class="az-logo text-primary">kaltech</h1>
         <div class="az-signin-header">
             <h2 class="text-primary">Selamat Datang Peserta</h2>
-            <h4>Please sign in to continue</h4>
+            <h4>Please log in to continue</h4>
             <p>Jika kamu <b class="text-primary">Peserta</b> lomba, silahkan Login jika tidak jangan masuk!!!</p>
 
             <?php $validation = \Config\Services::validation(); ?>
@@ -31,7 +31,7 @@
                     <label>Password</label>
                     <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan password">
                 </div><!-- form-group -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">Sign In</button>
+                <button type="submit" class="btn btn-primary btn-block mb-4">Log In</button>
             </form>
         </div><!-- az-signin-header -->
     </div><!-- az-card-signin -->

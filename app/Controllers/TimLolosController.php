@@ -5,10 +5,27 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\SubmitTugasModel;
 use Exception;
 
 class TimLolosController extends BaseController
 {
+    protected $submitTugasModel;
+    protected $timLolosModel;
+
+    public function __construct()
+    {
+        // untuk dashboard admin
+        $this->submitTugasModel = new SubmitTugasModel();
+
+        $this->timLolosModel = new \App\Models\TimLolosJuriModel();
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
+        }
+    }
+
     public function daftarTimLolos()
     {
         // Check if user is admin
@@ -17,9 +34,10 @@ class TimLolosController extends BaseController
             return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
 
-        $timLolosModel = new \App\Models\TimLolosJuriModel();
+        $data['dataTimLolos'] = $this->timLolosModel->getdata();
 
-        $data['dataTimLolos'] = $timLolosModel->get();
+        $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
+        $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
 
         $header['title'] = 'Daftar Tim Lolos';
 
@@ -30,20 +48,6 @@ class TimLolosController extends BaseController
         echo view('azia/footer');
     }
 
-    public function azia()
-    {
-        $timLolosModel = new \App\Models\TimLolosJuriModel();
-
-        $data['dataTimLolos'] = $timLolosModel->get();
-
-        $header['title'] = 'Daftar Tim Lolos';
-
-        echo view('azia/header');
-        echo view('azia/top_menu');
-        echo view('azia/side_menu');
-        echo view('admin/daftar_timlolos1', $data);
-        echo view('azia/footer');
-    }
 
     public function insert(): RedirectResponse
     {

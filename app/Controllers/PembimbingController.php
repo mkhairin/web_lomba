@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\SubmitTugasModel;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use Exception;
@@ -11,19 +12,23 @@ class PembimbingController extends BaseController
     protected $modelPembimbing;
     protected $modelSekolah;
     protected $modelLomba;
+    protected $submitTugasModel;
 
     public function __construct()
     {
+        // untuk dashboard admin
+        $this->submitTugasModel = new SubmitTugasModel();
+
         // Inisialisasi model
         $this->modelPembimbing = new \App\Models\PembimbingModel();
         $this->modelSekolah = new \App\Models\SekolahModel();
         $this->modelLomba = new \App\Models\LombaModel();
-        
-      // Check if user is admin
-      $session = session();
-      if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-          return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
-      }
+
+        // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
+        }
     }
 
     // Method daftar pembimbing
@@ -34,11 +39,17 @@ class PembimbingController extends BaseController
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
             return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
         }
-        
+
         $data['dataPembimbing'] = $this->modelPembimbing->getdata();
         $data['dataSekolah'] = $this->modelSekolah->getdata();
         $data['dataLomba'] = $this->modelLomba->getdata();
+
+        $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
+        $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
+
+
         $header['title'] = 'Daftar Pembimbing';
+
         echo view('azia/header', $header);
         echo view('azia/top_menu');
         echo view('azia/side_menu');
@@ -84,7 +95,6 @@ class PembimbingController extends BaseController
             } else {
                 throw new Exception('Gagal menambahkan data.');
             }
-
         } catch (Exception $e) {
             session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
             return redirect()->back()->withInput();
@@ -127,7 +137,6 @@ class PembimbingController extends BaseController
             } else {
                 throw new Exception('Gagal mengubah data.');
             }
-
         } catch (Exception $e) {
             session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
             return redirect()->back()->withInput();
@@ -158,7 +167,6 @@ class PembimbingController extends BaseController
             } else {
                 throw new Exception('Gagal menghapus data.');
             }
-
         } catch (Exception $e) {
             session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }

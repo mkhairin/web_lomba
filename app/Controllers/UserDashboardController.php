@@ -19,6 +19,7 @@ class UserDashboardController extends BaseController
     protected $userModel;
     protected $submitTugasModel;
     protected $timLolosJuri;
+    protected $deadlineTugasModel;
 
     public function __construct()
     {
@@ -33,70 +34,22 @@ class UserDashboardController extends BaseController
         $this->userModel = new \App\Models\UsersModel();
         $this->submitTugasModel = new \App\Models\SubmitTugasModel();
         $this->timLolosJuri = new \App\Models\TimLolosJuriModel();
+        $this->deadlineTugasModel = new \App\Models\DeadlineTugasModel();
     }
-
-    // public function index()
-    // {
-    //     $session = session();
-    //     if (!$session->get('logged_in') || $session->get('role') !== 'user') {
-    //         return redirect()->to('/login')->with('error', 'You must be an user to access this page.');
-    //     }
-
-    //     $waktuSekarang = Time::now('Asia/Jakarta', 'id_ID');
-    //     $username = $session->get('username');
-
-    //     $data['dataTimLolos'] = $this->timLolosModel->getdata();
-    //     $data['dataTimLomba'] = $this->timLombaModel->getdata();
-    //     $data['dataSekolah'] = $this->sekolahModel->getdata();
-    //     $data['dataLomba'] = $this->lombaModel->getdata();
-    //     $data['dataPembimbing'] = $this->pembimbingModel->getdata();
-    //     $data['dataPeserta'] = $this->pesertaModel->getdata();
-
-    //     $data['Mikrotik'] = $this->timLolosModel->getDataWhere('Mikrotik');
-    //     $data['IT'] = $this->timLolosModel->getDataWhere('IT');
-    //     $data['desainGrafis'] = $this->timLolosModel->getDataWhere('Desain Grafis');
-    //     $data['cisco'] = $this->timLolosModel->getDataWhere('Cisco');
-
-    //     $data['dataUsername'] = $username;
-    //     $data['jam'] = $waktuSekarang;
-
-    //     $data['dataUser'] = $this->userModel->getDataWhere($username);
-
-    //     $header['title'] = 'Dashboard User';
-    //     echo view('partial/header', $header);
-    //     echo view('partial/top_menu');
-    //     echo view('user/side_menu', $data);
-    //     echo view('user/dashboard_user', $data);
-    //     echo view('partial/footer');
-    // }
-
-    // public function dashboardLomba()
-    // {
-    //     $session = session();
-    //     if (!$session->get('logged_in') || $session->get('role') !== 'user') {
-    //         return redirect()->to('/login')->with('error', 'You must be an user to access this page.');
-    //     }
-
-    //     $kategoriLomba = $session->get('lomba');
-    //     $username = $session->get('username');
-
-    //     $data['dataSoal'] = $this->soalModel->getDataWhere($kategoriLomba);
-    //     $data['dataUser'] = $this->userModel->getDataWhere($username);
-
-    //     $header['title'] = 'Dashboard User';
-    //     echo view('partial/header', $header);
-    //     echo view('partial/top_menu');
-    //     echo view('user/side_menu', $data);
-    //     echo view('user/dashboard_lomba', $data);
-    //     echo view('partial/footer');
-    // }
 
     public function dashboarduser()
     {
         $session = session();
+
+        // Cek apakah user sudah login dan memiliki role 'user'
         if (!$session->get('logged_in') || $session->get('role') !== 'user') {
-            return redirect()->to('/login')->with('error', 'You must be an user to access this page.');
+            return redirect()->to('/login')->with('error', 'You must be a user to access this page.');
         }
+
+        // Ambil informasi sesi
+        $kategoriLomba = $session->get('lomba');
+        $username = $session->get('username');
+        $namaTimLomba = $session->get('tim_lomba');
 
         // Get the current date and time in WITA
         $date = new DateTime('now', new DateTimeZone('Asia/Makassar')); // WITA timezone (UTC+8)
@@ -133,31 +86,37 @@ class UserDashboardController extends BaseController
             'Saturday' => 'Sabtu'
         ];
 
-        // Format date in "Hari, dd Bulan yyyy, HH:mm:ss" format
+        // Format tanggal lengkap
         $tanggalLengkap = $namaHari[$hari] . ', ' . $tanggal . ' ' . $namaBulan[$bulan] . ' ' . $tahun;
 
-        $kategoriLomba = $session->get('lomba');
-        $username = $session->get('username');
+        // Ambil data berdasarkan kategori lomba dan nama tim yang sesuai
+        $data['dataSoal'] = $this->soalModel->getDataWhere($kategoriLomba); // Data soal sesuai kategori
+        $data['dataUser'] = $this->userModel->getDataWhere($username); // Data user login
+        $data['dataKategori'] = $this->lombaModel->getDataWhere($kategoriLomba); // Detail kategori lomba
+        $data['dataTimLombaNama'] = $this->timLombaModel->getDataWhereTeam($kategoriLomba, $namaTimLomba); // Data tim sesuai nama tim
+        $data['dataTimLomba'] = $this->timLombaModel->getDataWhereTeam($kategoriLomba, $namaTimLomba);
+        $data['dataSubmitTugasTim'] = $this->submitTugasModel->getDataWhereTeam($kategoriLomba, $namaTimLomba);
+        $data['dataSubmitTugas'] = $this->submitTugasModel->getDataWhere($kategoriLomba); // Data tugas berdasarkan kategori
+        $data['daftarTimSelesai'] = $this->submitTugasModel->getData($kategoriLomba); // Daftar tim yang selesai
+        $data['daftarTimSelesaiWhere'] = $this->submitTugasModel->getDataWhereTeam($kategoriLomba, $namaTimLomba);
+        $data['dataTimDinilai'] = $this->submitTugasModel->getDataAfterWhere($kategoriLomba); // Data tim yang sudah dinilai
+        $data['dataTimLolos'] = $this->timLolosJuri->getDataWhere($kategoriLomba); // Tim yang lolos
+        $data['dataTimLolosTim'] = $this->timLolosJuri->getDataWhereTim($kategoriLomba, $namaTimLomba);
+        $data['dataDeadlineLomba'] = $this->deadlineTugasModel->getDataWhere($kategoriLomba); // Deadline lomba
+        $data['tanggalLengkap'] = $tanggalLengkap; // Tanggal lengkap
+        $data['jamSekarang'] = $jam . ' WITA'; // Waktu sekarang
 
-
-        $data['dataSoal'] = $this->soalModel->getDataWhere($kategoriLomba);
-        $data['dataUser'] = $this->userModel->getDataWhere($username);
-        $data['dataKategori'] = $this->lombaModel->getDataWhere($kategoriLomba);
-        $data['dataTimLomba'] = $this->timLombaModel->getDataWhere($kategoriLomba);
-        $data['dataSubmitTugas'] = $this->submitTugasModel->getDataWhere($kategoriLomba);
-        $data['daftarTimSelesai'] = $this->submitTugasModel->getData($kategoriLomba);
-        $data['dataTimDinilai'] = $this->submitTugasModel->getDataAfterWhere($kategoriLomba);
-        $data['dataTimLolos'] = $this->timLolosJuri->getDataWhere($kategoriLomba);
-        $data['tanggalLengkap'] = $tanggalLengkap;
-        $data['jamSekarang'] = $jam . ' WITA';
+        // Set judul halaman
         $header['title'] = 'Dashboard User';
 
-        echo view('user/partial/header');
+        // Tampilkan view
+        echo view('user/partial/header', $header);
         echo view('user/partial/top_menu');
         echo view('user/partial/side_menu');
         echo view('user/dashboarduser', $data);
         echo view('user/partial/footer');
     }
+
 
 
     public function informasiView()
@@ -169,10 +128,14 @@ class UserDashboardController extends BaseController
 
         $kategoriLomba = $session->get('lomba');
         $username = $session->get('username');
+        $namaTimLomba = $session->get('tim_lomba');
 
         $data['dataSoal'] = $this->soalModel->getDataWhere($kategoriLomba);
         $data['dataUser'] = $this->userModel->getDataWhere($username);
+        $data['dataTimLombaNama'] = $this->timLombaModel->getDataWhereTeam($kategoriLomba, $namaTimLomba);
         $data['dataTimLomba'] = $this->timLombaModel->getDataWhere($kategoriLomba);
+        $data['dataTimLombaAll'] = $this->timLombaModel->getdata();
+        $data['dataDeadlineLomba'] = $this->deadlineTugasModel->getDataWhere($kategoriLomba);
 
         $header['title'] = 'Dashboard User';
 

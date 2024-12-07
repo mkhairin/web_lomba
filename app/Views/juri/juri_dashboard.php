@@ -1,3 +1,74 @@
+        <!-- Modal Add Deadline -->
+        <form action="" method="">
+            <?= csrf_field() ?>
+            <div class="modal fade" id="modal-lg">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Data</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card card-dashboard-five">
+                                <div class="card-header">
+                                    <h6 class="card-title">Total Data Tim</h6>
+                                    <span class="card-text">Tells you where your visitors originated from, such as search engines, social networks or website referrals.</span>
+                                </div><!-- card-header -->
+                                <div class="card-body row row-sm">
+                                    <div class="col-6 d-sm-flex align-items-center">
+                                        <div class="card-chart bg-primary p-3">
+                                            <span class="peity-bar"><i class="bi bi-person-fill text-white"></i></span>
+                                        </div>
+                                        <div>
+                                            <label>Tim Mikrotik</label>
+                                            <h4><?= count($dataTimLomba) ?></h4>
+                                        </div>
+                                    </div><!-- col -->
+                                    <div class="col-6 d-sm-flex align-items-center">
+                                        <div class="card-chart bg-primary p-3">
+                                            <span class="peity-bar"><i class="bi bi-clipboard2-check-fill text-white"></i></span>
+                                        </div>
+                                        <div>
+                                            <label>Submit Tugas</label>
+                                            <h4><?= count($dataSubmitTugasTim) ?></h4>
+                                        </div>
+                                    </div><!-- col -->
+                                    <div class="col-6 d-sm-flex align-items-center">
+                                        <div class="card-chart bg-primary p-3">
+                                            <span class="peity-bar"><i class="bi bi-emoji-smile-fill text-white"></i></span>
+                                        </div>
+                                        <div>
+                                            <label>Tim Lolos</label>
+                                            <h4><?= count($dataTimLolos) ?></h4>
+                                        </div>
+                                    </div><!-- col -->
+                                    <div class="col-6 d-sm-flex align-items-center">
+                                        <div class="card-chart bg-primary p-3">
+                                            <span class="peity-bar"><i class="bi bi-emoji-tear-fill text-white"></i></span>
+                                        </div>
+                                        <div>
+                                            <label>Tim Belum Lolos</label>
+                                            <h4><?= count($dataTimNotLolos) ?></h4>
+                                        </div>
+                                    </div><!-- col -->
+                                </div><!-- card-body -->
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+        </form>
+
+
         <!-- Modal Update for each submission -->
         <?php foreach ($dataSubmitTugas as $data) : ?>
             <form action="/juri-dashboard/update/<?= $data->id_submit_pengumpulan ?>" method="post">
@@ -90,6 +161,23 @@
         ?>
 
         <div class="az-content-body pd-lg-l-40 d-flex flex-column">
+
+            <?php $validation = \Config\Services::validation(); ?>
+
+            <!-- Pesan sukses -->
+            <?php if (session()->getFlashdata('success')): ?>
+                <div class="alert alert-success">
+                    <?= session()->getFlashdata('success'); ?>
+                </div>
+            <?php endif; ?>
+
+            <!-- Pesan error general -->
+            <?php if (session()->getFlashdata('error')): ?>
+                <div class="alert alert-danger">
+                    <?= session()->getFlashdata('error'); ?>
+                </div>
+            <?php endif; ?>
+
             <div class="az-content-breadcrumb">
                 <span><a href="<?= base_url('/') ?>">Home</a></span>
                 <?php if (!empty($segments)): ?>
@@ -109,21 +197,35 @@
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
-            <h2 class="az-content-title">Daftar Kategori Lomba</h2>
+            <h2 class="az-content-title">Daftar Submit Tugas</h2>
 
-            <div class="az-content-label mg-b-5">Striped Rows</div>
-            <p class="mg-b-20">Data tim yang lolos ke tahap berikutnya.</p>
+            <div class="d-flex flex-row justify-content-between">
+                <div class="container flex-column">
+                    <div class="az-content-label mg-b-5">Tabel Submit Tugas</div>
+                    <p class="mg-b-20">Data tim yang telah submit tugas dan belum dinilai oleh para Juri.</p>
+                </div>
+                <div class="container justify-content-end">
+                    <div class="media-body">
+                        <label>Date</label>
+                        <h6><?= $tanggalLengkap ?></h6>
+                    </div><!-- media-body -->
+                    <div class="media-body">
+                        <label>Time</label>
+                        <h6><?= $jamSekarang ?></h6>
+                    </div><!-- media-body -->
+                </div>
+            </div>
 
             <div class="container">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
-                    Tambah Data
+                    Lihat Data
                 </button>
             </div>
 
             <br>
 
             <div class="table-responsive">
-                <table id="example1" class="table table-striped">
+                <table id="example" class="table table-striped">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -142,20 +244,27 @@
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <td><?= esc($data->tim) ?></td>
-                                <td><a href="<?= esc($data->link_tugas) ?>" target="_blank"><?= esc($data->link_tugas) ?></a></td>
+                                <td><a href="<?= esc($data->link_tugas) ?>" target="_blank"><i class="text-decoration-underline">link tugas</i></a></td>
                                 <td><?= esc($data->status_pengumpulan) ?></td>
                                 <td><?= esc($data->status_penilaian) ?></td>
                                 <td><?= esc($data->tgl) ?></td>
                                 <td><?= esc($data->jam) ?></td>
                                 <td>
-                                    <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#modal-lg-update<?= $data->id_submit_pengumpulan ?>">
-                                        <i class="bi bi-pencil-square"></i>
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-lg-update<?= $data->id_submit_pengumpulan ?>">
+                                        Nilai
                                     </button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+            </div>
+
+
+            <div class="container d-flex justify-content-start">
+                <div class="col-md-6 col-lg-12 mg-b-20 mg-md-b-0 mg-lg-b-20">
+                    <!-- card-dashboard-five -->
+                </div><!-- col -->
             </div>
 
             <hr class="mg-y-30">

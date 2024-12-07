@@ -30,30 +30,11 @@ class PesertaModel extends Model
         $builder->join('lomba', 'lomba.id_lomba = peserta.id_lomba', 'left');
         $builder->join('pembimbing', 'pembimbing.id_pembimbing = peserta.id_pembimbing', 'left');
         $builder->join('sekolah', 'sekolah.id_sekolah = peserta.id_sekolah', 'left');
-        $builder->join('tim_lomba', 'tim_lomba.id_sekolah = peserta.id_tim_lomba', 'left');
+        $builder->join('tim_lomba', 'tim_lomba.id_tim_lomba = peserta.id_tim_lomba', 'left');
         // Eksekusi query
         $query = $builder->get();
 
         return $query->getResult(); // Mengembalikan hasil sebagai objek
     }
-
-    public function insertData($data)
-    {
-        $db = \Config\Database::connect();
-        $builder = $db->table('peserta');
-        $builder->insert($data);
-    }
-
-    public function updateData($id, $data)
-    {
-        $this->update($id, $data);
-    }
-
-    public function deleteData($id)
-    {
-        $db = \Config\Database::connect();
-        $builder = $db->table('peserta');
-        $builder->where('id_peserta', $id);
-        $builder->delete();
-    }
 }
+

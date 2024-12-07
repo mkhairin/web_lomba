@@ -18,7 +18,7 @@
                                         <div class="form-group">
                                             <label for="nama_sponsor">Nama Sponsor</label>
                                             <input type="text" class="form-control" id="nama_sponsor"
-                                                name="nama_sponsor" placeholder="Masukkan kategori" required>
+                                                name="nama_sponsor" placeholder="Masukkan Nama Sponsor" required>
                                         </div>
                                     </div>
                                     <!-- /.col -->
@@ -26,7 +26,7 @@
                                         <div class="form-group">
                                             <label for="logo">Logo</label>
                                             <input type="file" class="form-control" id="logo" name="logo"
-                                                placeholder="Masukkan deskripsi" required>
+                                                placeholder="Masukkan Logo" required>
                                         </div>
                                     </div>
                                 </div>
@@ -35,7 +35,7 @@
                             <!-- /.card-body -->
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
@@ -84,8 +84,43 @@
                                 <!-- /.card-body -->
                             </div>
                             <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+            </form>
+        <?php endforeach; ?>
+
+        <!-- Modal Delete -->
+        <?php foreach ($dataSponsor as $data) : ?>
+            <form action="/daftar-sponsor/delete/<?= $data->id_sponsor ?>">
+                <?php csrf_field() ?>
+                <div class="modal fade" id="modal-delete<?= $data->id_sponsor ?>">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Delete</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-body">
+                                    <h1 class="mb-2 d-2">
+                                        <i class="bi bi-exclamation-triangle p-1 px-2"></i>
+                                    </h1>
+                                    <p>Apakah Kamu benar ingin menghapus data ini?</p>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Delete</button>
                             </div>
                         </div>
                         <!-- /.modal-content -->
@@ -152,7 +187,7 @@
             <br>
 
             <div class="table-responsive">
-                <table id="example1" class="table table-striped">
+                <table id="example" class="table table-striped">
                     <thead>
                         <tr>
                             <th style="width: 10px">#</th>
@@ -172,8 +207,8 @@
                                 <td>
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                         data-target="#modal-lg-update<?= $data->id_sponsor ?>">Update</button>
-                                    <a class="btn btn-outline-primary btn-sm" href="/daftar-sponsor/delete/<?= $data->id_sponsor ?>"
-                                        role="button">Delete</a>
+                                    <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
+                                        data-target="#modal-delete<?= $data->id_sponsor ?>">Delete</button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
