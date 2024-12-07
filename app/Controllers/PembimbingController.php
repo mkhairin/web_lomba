@@ -16,15 +16,19 @@ class PembimbingController extends BaseController
 
     public function __construct()
     {
-        // untuk dashboard admin
+        // Initialize models
         $this->submitTugasModel = new SubmitTugasModel();
-
-        // Inisialisasi model
         $this->modelPembimbing = new \App\Models\PembimbingModel();
         $this->modelSekolah = new \App\Models\SekolahModel();
         $this->modelLomba = new \App\Models\LombaModel();
 
-        // Check if user is admin
+        // Ensure user is admin
+        $this->checkAdminRole();
+    }
+
+    // Method to check if user is admin
+    private function checkAdminRole()
+    {
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
             return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
@@ -34,19 +38,14 @@ class PembimbingController extends BaseController
     // Method daftar pembimbing
     public function pembimbingView()
     {
-        // Check if user is admin
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
-        }
+        // Ensure user is admin
+        $this->checkAdminRole();
 
         $data['dataPembimbing'] = $this->modelPembimbing->getdata();
         $data['dataSekolah'] = $this->modelSekolah->getdata();
         $data['dataLomba'] = $this->modelLomba->getdata();
-
         $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
         $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
-
 
         $header['title'] = 'Daftar Pembimbing';
 
@@ -60,14 +59,10 @@ class PembimbingController extends BaseController
     // Method insert pembimbing
     public function insert(): ResponseInterface
     {
-        // Check if user is admin
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
-        }
+        // Ensure user is admin
+        $this->checkAdminRole();
 
-
-        // Aturan validasi
+        // Validation rules
         $validation = \Config\Services::validation();
         $validation->setRules([
             'id_sekolah' => 'required',
@@ -76,13 +71,12 @@ class PembimbingController extends BaseController
             'no_handphone' => 'required',
         ]);
 
-        // Cek validasi input
         if (!$this->validate($validation->getRules())) {
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
 
         try {
-            // Data yang akan di-insert
+            // Data to insert
             $data = [
                 'id_sekolah' => esc($this->request->getPost('id_sekolah')),
                 'id_lomba' => esc($this->request->getPost('id_lomba')),
@@ -93,7 +87,7 @@ class PembimbingController extends BaseController
             if ($this->modelPembimbing->insert($data)) {
                 session()->setFlashdata('success', 'Data Berhasil Ditambah!');
             } else {
-                throw new Exception('Gagal menambahkan data.');
+                throw new Exception('Gagal menambahkan data pembimbing.');
             }
         } catch (Exception $e) {
             session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
@@ -106,18 +100,16 @@ class PembimbingController extends BaseController
     // Method update pembimbing
     public function update($id): ResponseInterface
     {
-        // Check if user is admin
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
-        }
+        // Ensure user is admin
+        $this->checkAdminRole();
 
-        // Aturan validasi
+        // Validation rules
         $validation = \Config\Services::validation();
         $validation->setRules([
-            'id_sekolah' => 'required|numeric',
-            'nama_pembimbing' => 'required|min_length[3]|max_length[100]',
-            'lomba' => 'required|min_length[3]|max_length[100]'
+            'id_sekolah' => 'required',
+            'id_lomba' => 'required',
+            'nama_pembimbing' => 'required',
+            'no_handphone' => 'required',
         ]);
 
         if (!$this->validate($validation->getRules())) {
@@ -125,17 +117,18 @@ class PembimbingController extends BaseController
         }
 
         try {
-            // Data yang akan di-update
+            // Data to update
             $data = [
                 'id_sekolah' => esc($this->request->getPost('id_sekolah')),
+                'id_lomba' => esc($this->request->getPost('id_lomba')),
                 'nama_pembimbing' => esc($this->request->getPost('nama_pembimbing')),
-                'lomba' => esc($this->request->getPost('lomba'))
+                'no_handphone' => esc($this->request->getPost('no_handphone')),
             ];
 
             if ($this->modelPembimbing->update($id, $data)) {
                 session()->setFlashdata('success', 'Data Berhasil Diubah!');
             } else {
-                throw new Exception('Gagal mengubah data.');
+                throw new Exception('Gagal mengubah data pembimbing.');
             }
         } catch (Exception $e) {
             session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
@@ -148,24 +141,20 @@ class PembimbingController extends BaseController
     // Method delete pembimbing
     public function delete($id): ResponseInterface
     {
-        // Check if user is admin
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
-        }
-
+        // Ensure user is admin
+        $this->checkAdminRole();
 
         try {
-            // Cek apakah data ada
+            // Check if data exists
             $pembimbing = $this->modelPembimbing->find($id);
             if (!$pembimbing) {
-                throw new Exception('Data tidak ditemukan.');
+                throw new Exception('Data pembimbing tidak ditemukan.');
             }
 
             if ($this->modelPembimbing->delete($id)) {
                 session()->setFlashdata('success', 'Data Berhasil Dihapus!');
             } else {
-                throw new Exception('Gagal menghapus data.');
+                throw new Exception('Gagal menghapus data pembimbing.');
             }
         } catch (Exception $e) {
             session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
