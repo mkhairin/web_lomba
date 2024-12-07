@@ -16,9 +16,14 @@ class SekolahController extends BaseController
     {
         // untuk dashboard admin
         $this->submitTugasModel = new SubmitTugasModel();
-
         $this->sekolahModel = new SekolahModel();
+
         // Check if user is admin
+        $this->checkAdminAccess();
+    }
+
+    private function checkAdminAccess()
+    {
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
             return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
@@ -28,15 +33,8 @@ class SekolahController extends BaseController
     // sekolah methods
     public function sekolahView(): ResponseInterface
     {
-        // Check if user is admin
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
-        }
-
         $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
         $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
-
         $data['dataSekolah'] = $this->sekolahModel->getdata();
 
         $header['title'] = 'Daftar Sekolah';
@@ -52,12 +50,6 @@ class SekolahController extends BaseController
 
     public function insert(): RedirectResponse
     {
-        // Check if user is admin
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
-        }
-
         // Aturan validasi
         $validation = \Config\Services::validation();
         $validation->setRules([
@@ -77,7 +69,6 @@ class SekolahController extends BaseController
         ];
 
         try {
-            // Asumsikan insertData mengembalikan ID baru atau false jika gagal
             if ($this->sekolahModel->insert($data)) {
                 session()->setFlashdata('success', 'Data Berhasil Ditambah!');
             } else {
@@ -88,17 +79,11 @@ class SekolahController extends BaseController
             session()->setFlashdata('error', 'Terjadi kesalahan pada server!');
         }
 
-        return redirect()->to('/daftar-sekolah'); // Redirect ke halaman daftar setelah insert
+        return redirect()->to('/daftar-sekolah');
     }
 
     public function update($id): RedirectResponse
     {
-        // Check if user is admin
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
-        }
-
         // Aturan validasi
         $validation = \Config\Services::validation();
         $validation->setRules([
@@ -134,14 +119,8 @@ class SekolahController extends BaseController
 
     public function delete($id): RedirectResponse
     {
-        // Check if user is admin
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
-        }
-
         try {
-            if ($this->sekolahModel->deleteData($id)) {
+            if ($this->sekolahModel->delete($id)) { // Use default delete method
                 session()->setFlashdata('success', 'Data Berhasil Dihapus!');
             } else {
                 session()->setFlashdata('error', 'Data Gagal Dihapus!');
