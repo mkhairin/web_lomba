@@ -21,16 +21,18 @@ class PesertaController extends BaseController
 
     public function __construct()
     {
-        // untuk dashboard admin
-        $this->submitTugasModel = new SubmitTugasModel();
-
+        // Initialize Models
         $this->pesertaModel = new PesertaModel();
         $this->lombaModel = new LombaModel();
         $this->pembimbingModel = new PembimbingModel();
         $this->sekolahModel = new SekolahModel();
         $this->timLombaModel = new TimLombaModel();
+        $this->submitTugasModel = new SubmitTugasModel();
+    }
 
-        // Check if user is admin
+    public function before()
+    {
+        // Ensure admin is logged in before accessing any controller action
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
             return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
@@ -39,11 +41,7 @@ class PesertaController extends BaseController
 
     public function daftarPeserta()
     {
-        // Check if user is admin
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
-        }
+        $this->before(); // Ensure admin access
 
         $data = [
             'dataPeserta' => $this->pesertaModel->getdata(),
@@ -51,11 +49,10 @@ class PesertaController extends BaseController
             'dataPembimbing' => $this->pembimbingModel->getdata(),
             'dataSekolah' => $this->sekolahModel->getdata(),
             'dataTimLomba' => $this->timLombaModel->getdata(),
+            'dataSubmit' => count($this->submitTugasModel->getDataSubmit()),
+            'dataIsNotSubmit' => count($this->submitTugasModel->getDataNotSubmit()),
         ];
 
-        $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
-        $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
-        
         $header['title'] = 'Daftar Peserta';
 
         echo view('azia/header', $header);
@@ -67,11 +64,7 @@ class PesertaController extends BaseController
 
     public function insert()
     {
-        // Check if user is admin
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
-        }
+        $this->before(); // Ensure admin access
 
         $validation = \Config\Services::validation();
         $validation->setRules([
@@ -107,10 +100,7 @@ class PesertaController extends BaseController
 
     public function update($id)
     {
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
-        }
+        $this->before(); // Ensure admin access
 
         $validation = \Config\Services::validation();
         $validation->setRules([
@@ -146,10 +136,7 @@ class PesertaController extends BaseController
 
     public function delete($id)
     {
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
-        }
+        $this->before(); // Ensure admin access
 
         $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 
