@@ -5,11 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\HTTP\RedirectResponse;
-use CodeIgniter\I18n\Time;
-use DateTime;
-use DateTimeZone;
 use Exception;
-
 
 class DeadlineController extends BaseController
 {
@@ -19,21 +15,25 @@ class DeadlineController extends BaseController
     {
         $this->deadlineSoalModel = new \App\Models\DeadlineTugasModel();
 
-        // Check if user is juri
+        // Ensure that only authorized users (juri) can access
+        $this->checkAccess('juri');
+    }
+
+    // Helper function for session validation and redirect
+    private function checkAccess($role)
+    {
         $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'juri') {
-            return redirect()->to('/login')->with('error', 'You must be an juri to access this page.');
+        if (!$session->get('logged_in') || $session->get('role') !== $role) {
+            return redirect()->to('/login')->with('error', 'You must be a ' . $role . ' to access this page.');
         }
     }
 
     public function insert(): ResponseInterface
     {
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'juri') {
-            return redirect()->to('/login')->with('error', 'You must be an juri to access this page.');
-        }
+        // Check if the user has proper access
+        $this->checkAccess('juri');
 
-        // Aturan validasi
+        // Set validation rules
         $validation = \Config\Services::validation();
         $validation->setRules([
             'id_lomba' => 'required',
@@ -41,26 +41,27 @@ class DeadlineController extends BaseController
             'deadline' => 'required',
         ]);
 
-        // Cek validasi input
+        // Validate inputs
         if (!$this->validate($validation->getRules())) {
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
 
         try {
-            // Data yang akan di-insert
+            // Prepare data to insert
             $data = [
                 'id_lomba' => esc($this->request->getPost('id_lomba')),
                 'deskripsi' => esc($this->request->getPost('deskripsi')),
                 'deadline' => esc($this->request->getPost('deadline')),
             ];
 
+            // Insert data and handle the response
             if ($this->deadlineSoalModel->insert($data)) {
                 session()->setFlashdata('success', 'Data Berhasil Ditambah!');
             } else {
-                throw new Exception('Gagal menambahkan data.');
+                throw new Exception('Failed to add data. Please try again.');
             }
         } catch (Exception $e) {
-            session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            session()->setFlashdata('error', 'Error: ' . $e->getMessage());
             return redirect()->back()->withInput();
         }
 
@@ -69,12 +70,10 @@ class DeadlineController extends BaseController
 
     public function update($id): ResponseInterface
     {
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'juri') {
-            return redirect()->to('/login')->with('error', 'You must be an juri to access this page.');
-        }
+        // Check if the user has proper access
+        $this->checkAccess('juri');
 
-        // Aturan validasi
+        // Set validation rules
         $validation = \Config\Services::validation();
         $validation->setRules([
             'id_lomba' => 'required',
@@ -82,26 +81,27 @@ class DeadlineController extends BaseController
             'deadline' => 'required',
         ]);
 
-        // Cek validasi input
+        // Validate inputs
         if (!$this->validate($validation->getRules())) {
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
 
         try {
-            // Data yang akan di-insert
+            // Prepare data to update
             $data = [
                 'id_lomba' => esc($this->request->getPost('id_lomba')),
                 'deskripsi' => esc($this->request->getPost('deskripsi')),
                 'deadline' => esc($this->request->getPost('deadline')),
             ];
 
+            // Update data and handle the response
             if ($this->deadlineSoalModel->update($id, $data)) {
                 session()->setFlashdata('success', 'Data Berhasil diubah!');
             } else {
-                throw new Exception('Gagal menambahkan diubah.');
+                throw new Exception('Failed to update data. Please try again.');
             }
         } catch (Exception $e) {
-            session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            session()->setFlashdata('error', 'Error: ' . $e->getMessage());
             return redirect()->back()->withInput();
         }
 
@@ -110,19 +110,18 @@ class DeadlineController extends BaseController
 
     public function delete($id): RedirectResponse
     {
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'juri') {
-            return redirect()->to('/login')->with('error', 'You must be an juri to access this page.');
-        }
+        // Check if the user has proper access
+        $this->checkAccess('juri');
 
         try {
+            // Delete data and handle the response
             if ($this->deadlineSoalModel->delete($id)) {
                 session()->setFlashdata('success', 'Data berhasil dihapus!');
             } else {
-                throw new Exception('Gagal menghapus data.');
+                throw new Exception('Failed to delete data. Please try again.');
             }
         } catch (Exception $e) {
-            session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            session()->setFlashdata('error', 'Error: ' . $e->getMessage());
         }
 
         return redirect()->to('/juri-dashboard/daftar-deadline');
