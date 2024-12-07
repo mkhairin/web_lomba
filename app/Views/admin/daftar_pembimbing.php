@@ -239,7 +239,12 @@ $segments = $uri->getSegments();
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
-    <h2 class="az-content-title">Daftar Pembimbing</h2>
+
+    <h2 class="az-content-title">Daftar Pembimbing Tim/Peserta</h2>
+
+    <div class="az-content-label mg-b-5">Informasi Pembimbing</div>
+    <p class="mg-b-20">Data pembimbing yang mendampingi tim atau peserta dalam kompetisi.</p>
+
 
 
     <div class="container">

@@ -81,10 +81,12 @@
                       <?php endforeach; ?>
                   <?php endif; ?>
               </div>
+
               <h2 class="az-content-title">Daftar Tim Lolos</h2>
 
-              <div class="az-content-label mg-b-5">Tabel Tim Lolos</div>
-              <p class="mg-b-20">Data tim yang sudah lolos tahap seleksi.</p>
+              <div class="az-content-label mg-b-5">Informasi Tim Lolos</div>
+              <p class="mg-b-20">Daftar tim yang berhasil lolos seleksi dan berhak melanjutkan ke tahap selanjutnya dalam kompetisi.</p>
+
 
               <br>
 

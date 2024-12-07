@@ -23,9 +23,12 @@ $segments = $uri->getSegments();
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
-    <h2 class="az-content-title">Tim Lolos</h2>
 
-    <p class="mg-b-20">Data tim yang lolos ke tahap berikutnya.</p>
+    <h2 class="az-content-title">Daftar Tim Lolos</h2>
+
+    <div class="az-content-label mg-b-5">Informasi Tim Lolos</div>
+    <p class="mg-b-20">Data tim yang berhasil lolos ke tahap berikutnya dalam kompetisi, termasuk nama tim dan asal sekolah.</p>
+
 
     <div class="table-responsive">
         <table id="example" class="table table-striped">

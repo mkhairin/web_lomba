@@ -199,8 +199,8 @@ $segments = $uri->getSegments();
     </div>
     <h2 class="az-content-title">Daftar Deadline Tugas</h2>
 
-    <div class="az-content-label mg-b-5">Tabel Daftar Penilaian</div>
-    <p class="mg-b-20">Data tim yang sudah dinilai oleh para Juri.</p>
+    <div class="az-content-label mg-b-5">Informasi Deadline Tugas</div>
+    <p class="mg-b-20">Daftar deadline tugas yang harus disubmit oleh tim, termasuk tanggal dan waktu batas pengumpulan.</p>
 
     <div class="container">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">

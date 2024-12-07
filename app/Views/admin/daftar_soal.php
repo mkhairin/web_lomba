@@ -188,8 +188,10 @@
           </div>
 
           <h2 class="az-content-title">Daftar Soal Lomba</h2>
-          <div class="az-content-label mg-b-5">Tabel Soal Lomba</div>
-          <p class="mg-b-20">Data soal yang akan dilombakan pada acara Kaltech.</p>
+
+          <div class="az-content-label mg-b-5">Informasi Soal</div>
+          <p class="mg-b-20">Data soal yang tersedia untuk kompetisi, termasuk kategori, tingkat kesulitan, dan jumlah poin yang dapat diperoleh.</p>
+
 
           <div class="container">
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">

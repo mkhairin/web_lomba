@@ -174,10 +174,12 @@ $segments = $uri->getSegments();
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
-    <h2 class="az-content-title">Basic Tables</h2>
 
-    <div class="az-content-label mg-b-5">Striped Rows</div>
-    <p class="mg-b-20">Data tim yang lolos ke tahap berikutnya.</p>
+    <h2 class="az-content-title">Daftar Juara</h2>
+
+    <div class="az-content-label mg-b-5">Informasi Juara</div>
+    <p class="mg-b-20">Daftar tim atau peserta yang memenangkan kompetisi, termasuk posisi, nama tim/peserta, dan kategori lomba.</p>
+
 
     <div class="container">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">

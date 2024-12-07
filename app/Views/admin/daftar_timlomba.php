@@ -289,8 +289,9 @@ $segments = $uri->getSegments();
     </div>
     <h2 class="az-content-title">Daftar Tim Lomba</h2>
 
-    <div class="az-content-label mg-b-5">Striped Rows</div>
-    <p class="mg-b-20">Data tim yang berpartisipasi pada event.</p>
+    <div class="az-content-label mg-b-5">Informasi Tim</div>
+    <p class="mg-b-20">Data tim yang berpartisipasi dalam lomba, termasuk nama tim, anggota, dan asal sekolah.</p>
+
 
     <div class="container">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">

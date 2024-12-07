@@ -132,10 +132,12 @@ $segments = $uri->getSegments();
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
+    
     <h2 class="az-content-title">Daftar Email Masuk</h2>
 
-    <div class="az-content-label mg-b-5">Striped Rows</div>
-    <p class="mg-b-20">Data tim yang lolos ke tahap berikutnya.</p>
+    <div class="az-content-label mg-b-5">Informasi Email</div>
+    <p class="mg-b-20">Daftar email yang masuk ke sistem, termasuk pengirim, subjek, dan tanggal penerimaan.</p>
+
 
     <br>
 

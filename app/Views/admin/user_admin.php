@@ -192,7 +192,12 @@
               <?php endforeach; ?>
           <?php endif; ?>
       </div>
-      <h2 class="az-content-title">User Admin</h2>
+
+      <h2 class="az-content-title">Daftar Akun Admin</h2>
+
+      <div class="az-content-label mg-b-5">Informasi Akun Admin</div>
+      <p class="mg-b-20">Daftar akun admin yang terdaftar dalam sistem, termasuk nama, peran, dan status akun admin.</p>
+
 
 
       <div class="container">

@@ -274,9 +274,12 @@
               <?php endforeach; ?>
           <?php endif; ?>
       </div>
+
       <h2 class="az-content-title">Daftar Kategori Lomba</h2>
-      <div class="az-content-label mg-b-5">Tabel Kategori Lomba</div>
-      <p class="mg-b-20">Data kategori lomba Kaltech.</p>
+
+      <div class="az-content-label mg-b-5">Informasi Kategori Lomba</div>
+      <p class="mg-b-20">Data kategori lomba yang tersedia, termasuk deskripsi singkat dan jumlah peserta yang berpartisipasi.</p>
+
 
       <div class="container">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">

@@ -174,10 +174,10 @@
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
-            <h2 class="az-content-title">Basic Tables</h2>
+            <h2 class="az-content-title">Daftar Sekolah</h2>
 
-            <div class="az-content-label mg-b-5">Striped Rows</div>
-            <p class="mg-b-20">Data tim yang lolos ke tahap berikutnya.</p>
+            <div class="az-content-label mg-b-5">Informasi Sekolah</div>
+            <p class="mg-b-20">Data lengkap sekolah yang berpartisipasi dalam kompetisi.</p>
 
             <div class="container">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">

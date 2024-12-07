@@ -3,8 +3,8 @@
     <div class="az-content-body">
       <div class="az-dashboard-one-title">
         <div>
-          <h2 class="az-dashboard-title">Hi, welcome back!</h2>
-          <p class="az-dashboard-text">Your web analytics dashboard template.</p>
+          <h2 class="az-dashboard-title">Hi, selamat datang kembali!</h2>
+          <p class="az-dashboard-text">Dashboard admin Kaltech untuk mengelola kompetisi dan melihat data peserta/tim.</p>
         </div>
         <div class="az-content-header-right">
           <div class="media">
@@ -291,7 +291,7 @@
               <div class="card card-dashboard-five">
                 <div class="card-header">
                   <h6 class="card-title">Data Tim Lolos/Belum Lolos</h6>
-                  <span class="card-text">Tells you where your visitors originated from, such as search engines, social networks or website referrals.</span>
+                  <span class="card-text">Informasi mengenai status tim apakah sudah lolos atau belum dalam seleksi.</span>
                 </div><!-- card-header -->
                 <div class="card-body row row-sm">
                   <div class="col-6 d-sm-flex align-items-center">
@@ -348,7 +348,7 @@
         <div class="col-lg-7 col-xl-8 mg-t-20 mg-lg-t-0">
           <div class="card card-table-one">
             <h6 class="card-title">Daftar Tim Lomba Lolos</h6>
-            <p class="az-content-text mg-b-20">Part of this date range occurs before the new users metric had been calculated, so the old users metric is displayed.</p>
+            <p class="az-content-text mg-b-20">Berikut adalah daftar tim yang berhasil lolos seleksi pada lomba ini.</p>
             <div class="table-responsive">
               <table class="table" id="example" style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
                 <thead>

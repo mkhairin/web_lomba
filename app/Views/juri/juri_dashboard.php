@@ -14,7 +14,7 @@
                             <div class="card card-dashboard-five">
                                 <div class="card-header">
                                     <h6 class="card-title">Total Data Tim</h6>
-                                    <span class="card-text">Tells you where your visitors originated from, such as search engines, social networks or website referrals.</span>
+                                    <span class="card-text">Menampilkan jumlah total tim yang terdaftar dalam kompetisi, baik yang lolos maupun yang tidak lolos seleksi.</span>
                                 </div><!-- card-header -->
                                 <div class="card-body row row-sm">
                                     <div class="col-6 d-sm-flex align-items-center">
@@ -22,7 +22,7 @@
                                             <span class="peity-bar"><i class="bi bi-person-fill text-white"></i></span>
                                         </div>
                                         <div>
-                                            <label>Tim Mikrotik</label>
+                                            <label>Tim Divisi Mikrotik</label>
                                             <h4><?= count($dataTimLomba) ?></h4>
                                         </div>
                                     </div><!-- col -->
@@ -58,7 +58,7 @@
                             <!-- /.card-body -->
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Tutup</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -201,8 +201,8 @@
 
             <div class="d-flex flex-row justify-content-between">
                 <div class="container flex-column">
-                    <div class="az-content-label mg-b-5">Tabel Submit Tugas</div>
-                    <p class="mg-b-20">Data tim yang telah submit tugas dan belum dinilai oleh para Juri.</p>
+                    <div class="az-content-label mg-b-5">Informasi Submit Tugas</div>
+                    <p class="mg-b-20">Daftar tim yang telah mengirimkan tugas mereka, namun belum dinilai oleh juri.</p>
                 </div>
                 <div class="container justify-content-end">
                     <div class="media-body">

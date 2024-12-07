@@ -42,8 +42,8 @@ $segments = $uri->getSegments();
     </div>
     <h2 class="az-content-title">Daftar Tim Lomba</h2>
 
-    <div class="az-content-label mg-b-5">Tabel Daftar Tim</div>
-    <p class="mg-b-20">Data Tim yang mengikuti lomba.</p>
+    <div class="az-content-label mg-b-5">Informasi Tim Lomba</div>
+    <p class="mg-b-20">Daftar tim yang terdaftar dan mengikuti lomba, termasuk nama tim dan kategori lomba yang diikuti.</p>
 
     <br>
 

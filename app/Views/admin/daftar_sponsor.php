@@ -175,8 +175,10 @@
             </div>
 
             <h2 class="az-content-title">Daftar Sponsor Kaltech</h2>
-            <div class="az-content-label mg-b-5">Tabel Sponsor Lomba</div>
-            <p class="mg-b-20">Data sponsor yang mendanai pada acara Kaltech.</p>
+
+            <div class="az-content-label mg-b-5">Informasi Sponsor Lomba</div>
+            <p class="mg-b-20">Daftar sponsor yang mendukung dan mendanai acara Kaltech, termasuk nama sponsor dan kontribusinya.</p>
+
 
             <div class="container">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
