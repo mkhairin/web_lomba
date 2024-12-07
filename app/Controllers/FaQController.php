@@ -7,8 +7,6 @@ use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\I18n\Time;
 use App\Models\SubmitTugasModel;
-use DateTime;
-use DateTimeZone;
 use Exception;
 
 class FaQController extends BaseController
@@ -20,11 +18,15 @@ class FaQController extends BaseController
     {
         // untuk dashboard admin
         $this->submitTugasModel = new SubmitTugasModel();
-
         $this->faqModel = new \App\Models\FaQModel();
         $this->emailModel = new \App\Models\MailModel();
 
         // Check if user is admin
+        $this->checkAdmin();
+    }
+
+    private function checkAdmin()
+    {
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
             return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
@@ -33,14 +35,9 @@ class FaQController extends BaseController
 
     public function daftarQuestion()
     {
-        // Check if user is admin
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
-        }
+        $this->checkAdmin(); // Ensure admin access
 
         $data['dataQuestions'] = $this->faqModel->getdata();
-
         $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
         $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
 
@@ -52,14 +49,9 @@ class FaQController extends BaseController
         echo view('azia/footer');
     }
 
-
     public function insert(): ResponseInterface
     {
-        // Check if user is admin
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
-        }
+        $this->checkAdmin(); // Ensure admin access
 
         $validation = \Config\Services::validation();
         $validation->setRules([
@@ -67,7 +59,7 @@ class FaQController extends BaseController
             'answers'  => 'required'
         ]);
 
-        // Cek validasi input
+        // Validate input
         if (!$this->validate($validation->getRules())) {
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
@@ -84,7 +76,8 @@ class FaQController extends BaseController
                 throw new Exception('Gagal menambahkan data.');
             }
         } catch (Exception $e) {
-            session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            log_message('error', 'Error in FAQ insert: ' . $e->getMessage());
+            session()->setFlashdata('error', 'Terjadi kesalahan: Gagal menambahkan data.');
             return redirect()->back()->withInput();
         }
 
@@ -93,11 +86,7 @@ class FaQController extends BaseController
 
     public function update($id): ResponseInterface
     {
-        // Check if user is admin
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
-        }
+        $this->checkAdmin(); // Ensure admin access
 
         $validation = \Config\Services::validation();
         $validation->setRules([
@@ -105,7 +94,7 @@ class FaQController extends BaseController
             'answers'  => 'required'
         ]);
 
-        // Cek validasi input
+        // Validate input
         if (!$this->validate($validation->getRules())) {
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
@@ -122,7 +111,8 @@ class FaQController extends BaseController
                 throw new Exception('Gagal mengubah data.');
             }
         } catch (Exception $e) {
-            session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            log_message('error', 'Error in FAQ update: ' . $e->getMessage());
+            session()->setFlashdata('error', 'Terjadi kesalahan: Gagal mengubah data.');
             return redirect()->back()->withInput();
         }
 
@@ -131,11 +121,7 @@ class FaQController extends BaseController
 
     public function delete($id): RedirectResponse
     {
-        // Check if user is admin
-        $session = session();
-        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
-        }
+        $this->checkAdmin(); // Ensure admin access
 
         try {
             if ($this->faqModel->delete($id)) {
@@ -144,7 +130,8 @@ class FaQController extends BaseController
                 throw new Exception('Gagal menghapus data.');
             }
         } catch (Exception $e) {
-            session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            log_message('error', 'Error in FAQ delete: ' . $e->getMessage());
+            session()->setFlashdata('error', 'Terjadi kesalahan: Gagal menghapus data.');
         }
 
         return redirect()->to('/daftar-pertanyaan');

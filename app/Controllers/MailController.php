@@ -116,7 +116,7 @@ class MailController extends BaseController
     
         // Set layanan email
         $emailService = \Config\Services::email();
-        $emailService->setTo('mkhairin04@gmail.com');
+        $emailService->setTo($email);
         $emailService->setFrom($email, $name);
         $emailService->setSubject($subject);
         $emailService->setMessage($message);
