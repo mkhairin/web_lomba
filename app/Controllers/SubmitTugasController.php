@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class SubmitTugasController extends BaseController
@@ -14,20 +13,19 @@ class SubmitTugasController extends BaseController
         // Inisialisasi model
         $this->submitTugasModel = new \App\Models\SubmitTugasModel();
 
-        // Check if user is admin
+        // Check if user is logged in and has 'user' role
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'user') {
-            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/login')->with('error', 'You must be a user to access this page.');
         }
     }
 
-
     public function insert()
     {
-        // Check if user is admin
+        // Check if user is logged in and has 'user' role
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'user') {
-            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+            return redirect()->to('/login')->with('error', 'You must be a user to access this page.');
         }
 
         // Set validation rules
@@ -39,20 +37,19 @@ class SubmitTugasController extends BaseController
             'pembimbing'            => 'required',
             'sekolah'               => 'required',
             'link_tugas'            => 'required',
-            'status_pengumpulan'            => 'required',
-            'status_penilaian'            => 'required',
-            'tgl'            => 'required',
-            'jam'            => 'required',
+            'status_pengumpulan'    => 'required',
+            'status_penilaian'     => 'required',
+            'tgl'                   => 'required',
+            'jam'                   => 'required',
         ]);
 
         // Run validation
         if (!$validation->withRequest($this->request)->run()) {
-            // Jika validasi gagal, redirect dengan pesan error
+            // If validation fails, redirect with error messages
             return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
-
-        // Jika validasi berhasil, lanjutkan ke insert data
+        // If validation passes, continue with inserting data
         $data = [
             'id_submit_pengumpulan' => esc($this->request->getPost('id_submit_pengumpulan')),
             'tim'                   => esc($this->request->getPost('tim')),
@@ -61,24 +58,26 @@ class SubmitTugasController extends BaseController
             'pembimbing'            => esc($this->request->getPost('pembimbing')),
             'sekolah'               => esc($this->request->getPost('sekolah')),
             'link_tugas'            => esc($this->request->getPost('link_tugas')),
-            'status_pengumpulan'            => esc($this->request->getPost('status_pengumpulan')),
-            'status_penilaian'            => esc($this->request->getPost('status_penilaian')),
-            'tgl'            => esc($this->request->getPost('tgl')),
-            'jam'            => esc($this->request->getPost('jam')),
+            'status_pengumpulan'    => esc($this->request->getPost('status_pengumpulan')),
+            'status_penilaian'     => esc($this->request->getPost('status_penilaian')),
+            'tgl'                   => esc($this->request->getPost('tgl')),
+            'jam'                   => esc($this->request->getPost('jam')),
         ];
 
         try {
-            // Asumsikan insertData mengembalikan ID baru atau false jika gagal
+            // Try inserting data into the model
             if ($this->submitTugasModel->insert($data)) {
-                session()->setFlashdata('success', 'Horee Kamu berhasil menyelesaikan Tugas!!!');
+                session()->setFlashdata('success', 'Horee! Kamu berhasil menyelesaikan Tugas!');
             } else {
                 session()->setFlashdata('error', 'Data Gagal Ditambah!');
             }
         } catch (\Exception $e) {
-            log_message('error', $e->getMessage());  // Logging error details
+            // Log error message and show general error to user
+            log_message('error', $e->getMessage());
             session()->setFlashdata('error', 'Terjadi kesalahan pada server!');
         }
 
+        // Redirect back to the previous page after inserting
         return redirect()->back();
     }
 }
