@@ -256,21 +256,31 @@
 
         <div class="az-content-body pd-lg-l-40 d-flex flex-column">
 
-            <?php $validation = \Config\Services::validation(); ?>
+            <!-- Include SweetAlert2 -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-            <!-- Pesan sukses -->
-            <?php if (session()->getFlashdata('success')): ?>
-                <div class="alert alert-success">
-                    <?= session()->getFlashdata('success'); ?>
-                </div>
-            <?php endif; ?>
-
-            <!-- Pesan error general -->
-            <?php if (session()->getFlashdata('error')): ?>
-                <div class="alert alert-danger">
-                    <?= session()->getFlashdata('error'); ?>
-                </div>
-            <?php endif; ?>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    <?php if (session()->getFlashdata('success')): ?>
+                        Swal.fire({
+                            title: 'Success!',
+                            text: '<?= session()->getFlashdata('success'); ?>',
+                            icon: 'success',
+                            confirmButtonText: 'OK',
+                            confirmButtonColor: '#0d6efd' // Warna biru
+                        });
+                    <?php elseif (session()->getFlashdata('error')): ?>
+                        Swal.fire({
+                            title: 'Error!',
+                            text: '<?= session()->getFlashdata('error'); ?>',
+                            icon: 'error',
+                            confirmButtonText: 'OK',
+                            confirmButtonColor: '#0d6efd' // Warna biru
+                        });
+                    <?php endif; ?>
+                });
+            </script>
 
             <div class="az-content-breadcrumb">
                 <span><a href="<?= base_url('/') ?>">Home</a></span>
@@ -291,7 +301,7 @@
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
-            
+
             <h2 class="az-content-title">Daftar Akun User/Juri</h2>
 
             <div class="az-content-label mg-b-5">Informasi Akun</div>
