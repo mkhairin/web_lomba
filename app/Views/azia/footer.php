@@ -6,6 +6,8 @@
 </div><!-- az-footer -->
 
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script src="asset_azia/lib/jquery/jquery.min.js"></script>
 <script src="asset_azia/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="asset_azia/lib/ionicons/ionicons.js"></script>
