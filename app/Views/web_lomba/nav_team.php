@@ -18,7 +18,7 @@
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
 
-    <a class="btn-getstarted" href="index.html#about">Masuk</a>
+    <a class="btn-getstarted" href="index.html#about">Daftar Sekarang</a>
 
   </div>
 </header>

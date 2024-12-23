@@ -26,7 +26,7 @@ class MailModel extends Model
     {
         $db = \Config\Database::connect();
         $builder = $db->table('sent_emails');
-        $builder->orderBy('jam', 'DESC');
+        $builder->orderBy('jam', 'ASC');
         $query = $builder->get();
         return $query->getResult();
     }

@@ -19,7 +19,9 @@
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
 
-    <a class="btn-getstarted" href="index.html#about">Masuk</a>
+    <?php foreach ($dataLombaFirst as $lomba) : ?>
+      <a class="btn-getstarted" href="<?= $lomba->link_pendaftaran ?>" target="_blank">Daftar Sekarang</a>
+    <?php endforeach; ?>
 
   </div>
 </header>

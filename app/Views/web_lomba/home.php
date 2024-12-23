@@ -9,7 +9,9 @@
           <h1>Kaltech 2024: Tantang Dirimu di Kompetisi IT SMK/SMA</h1>
           <p>Jangan lewatkan kesempatan untuk berkompetisi dengan yang terbaik di bidang teknologi. Kembangkan potensimu sekarang!</p>
           <div class="d-flex">
-            <a href="#services" class="btn-get-started">Get Started</a>
+            <?php foreach($dataLombaFirst as $lomba) : ?>
+            <a href="<?= $lomba->link_pendaftaran ?>" target="_blank"  class="btn-get-started">Daftar Sekarang</a>
+            <?php endforeach; ?>
             <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"></a>
           </div>
         </div>
@@ -111,40 +113,30 @@
 
             <div class="col-lg-6">
               <div class="stats-item d-flex">
-                <i class="bi bi-emoji-smile flex-shrink-0"></i>
+                <i class="bi bi-trophy flex-shrink-0"></i>
                 <div>
                   <h1 class="fw-bold">Juara 1</h1>
-                  <p><strong>Happy Clients</strong> <span>consequuntur quae</span></p>
+                  <p><strong>Performance Excellence</strong> <span>mencapai hasil terbaik melalui keterampilan dan dedikasi yang luar biasa</span></p>
                 </div>
               </div>
             </div><!-- End Stats Item -->
 
             <div class="col-lg-6">
               <div class="stats-item d-flex">
-                <i class="bi bi-journal-richtext flex-shrink-0"></i>
+                <i class="bi bi-code-slash flex-shrink-0"></i>
                 <div>
                   <h1 class="fw-bold">Juara 2</h1>
-                  <p><strong>Projects</strong> <span>adipisci atque cum quia aut</span></p>
+                  <p><strong>Innovative Solutions</strong> <span>berhasil menciptakan solusi kreatif yang mengesankan dalam kompetisi</span></p>
                 </div>
               </div>
             </div><!-- End Stats Item -->
 
             <div class="col-lg-6">
               <div class="stats-item d-flex">
-                <i class="bi bi-headset flex-shrink-0"></i>
+                <i class="bi bi-palette flex-shrink-0"></i>
                 <div>
                   <h1 class="fw-bold">Juara 3</h1>
-                  <p><strong>Hours Of Support</strong> <span>aut commodi quaerat</span></p>
-                </div>
-              </div>
-            </div><!-- End Stats Item -->
-
-            <div class="col-lg-6">
-              <div class="stats-item d-flex">
-                <i class="bi bi-people flex-shrink-0"></i>
-                <div>
-                  <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-                  <p><strong>Hard Workers</strong> <span>rerum asperiores dolor</span></p>
+                  <p><strong>Creative Excellence</strong> <span>terpilih sebagai juara ketiga berkat karya yang penuh inovasi dan kreativitas</span></p>
                 </div>
               </div>
             </div><!-- End Stats Item -->
@@ -188,77 +180,6 @@
 
   </section>
   <!-- /Services Section -->
-
-  <!-- Alt Services Section -->
-  <!-- <section id="alt-services" class="alt-services section">
-
-    <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-      <div class="row gy-4">
-
-        <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
-          <div class="service-item position-relative">
-            <div class="img">
-              <img src="assets/img/services-1.jpg" class="img-fluid" alt="">
-            </div>
-            <div class="details">
-              <a href="service-details.html" class="stretched-link">
-                <h3>Nesciunt Mete</h3>
-              </a>
-              <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="300">
-          <div class="service-item position-relative">
-            <div class="img">
-              <img src="assets/img/services-2.jpg" class="img-fluid" alt="">
-            </div>
-            <div class="details">
-              <a href="service-details.html" class="stretched-link">
-                <h3>Eosle Commodi</h3>
-              </a>
-              <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="400">
-          <div class="service-item position-relative">
-            <div class="img">
-              <img src="assets/img/services-3.jpg" class="img-fluid" alt="">
-            </div>
-            <div class="details">
-              <a href="service-details.html" class="stretched-link">
-                <h3>Ledo Markt</h3>
-              </a>
-              <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="500">
-          <div class="service-item position-relative">
-            <div class="img">
-              <img src="assets/img/services-4.jpg" class="img-fluid" alt="">
-            </div>
-            <div class="details">
-              <a href="service-details.html" class="stretched-link">
-                <h3>Asperiores Commodit</h3>
-              </a>
-              <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
-              <a href="service-details.html" class="stretched-link"></a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section> -->
-  <!-- /Alt Services Section -->
 
   <!-- Features Section -->
   <section id="features" class="features section">

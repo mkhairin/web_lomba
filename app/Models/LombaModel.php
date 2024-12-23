@@ -30,6 +30,14 @@ class LombaModel extends Model
         return $query->getResult();
     }
 
+    public function getdataSingle()
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('lomba');
+        $query = $builder->limit(1)->get();
+        return $query->getResult();
+    }
+
 
     public function insertData($data)
     {

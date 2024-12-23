@@ -5,6 +5,7 @@
   </div><!-- container -->
 </div><!-- az-footer -->
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script src="/asset_azia/lib/jquery/jquery.min.js"></script>
 <script src="/asset_azia/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -19,6 +20,51 @@
 <script src="/asset_azia/js/dashboard.sampledata.js"></script>
 <script src="/asset_azia/js/jquery.cookie.js" type="text/javascript"></script>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+
+<!-- Loading Spinner -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Event untuk semua link (<a>) dan form
+    const links = document.querySelectorAll('a');
+    const forms = document.querySelectorAll('form');
+
+    // Event untuk klik link
+    links.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && href !== '#' && !href.startsWith('javascript')) {
+          e.preventDefault(); // Mencegah navigasi langsung
+          Swal.fire({
+            title: 'Loading...',
+            html: 'Please wait while the page loads.',
+            allowOutsideClick: false,
+            didOpen: () => {
+              Swal.showLoading();
+            }
+          });
+          setTimeout(() => {
+            window.location.href = href; // Navigasi ke halaman
+          }, 500); // Delay agar efek terlihat
+        }
+      });
+    });
+
+    // Event untuk submit form
+    forms.forEach(form => {
+      form.addEventListener('submit', function() {
+        Swal.fire({
+          title: 'Loading...',
+          html: 'Submitting data, please wait.',
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading();
+          }
+        });
+      });
+    });
+  });
+</script>
+
 
 <script>
   // Fungsi untuk inisialisasi countdown

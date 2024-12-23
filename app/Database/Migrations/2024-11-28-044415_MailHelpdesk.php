@@ -43,6 +43,11 @@ class MailHelpdesk extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255'
             ],
+            'read' => [
+                'type' => 'ENUM',
+                'constraint' => ['unread', 'read'],
+                'default' => 'unread',
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,

@@ -41,7 +41,7 @@
                           </div>
                       </div>
                       <div class="member-info">
-                          <h4>M.Kenny Chaniago</h4>
+                          <h4>Muhammad Kenny Chaniago</h4>
                           <span>Developer Team/IT Team</span>
                       </div>
                   </div>
@@ -59,7 +59,7 @@
                           </div>
                       </div>
                       <div class="member-info">
-                          <h4>M.Rizky Rindiani</h4>
+                          <h4>Muhammad Rizky Rindiani</h4>
                           <span>Developer Team/IT Team</span>
                       </div>
                   </div>
@@ -77,8 +77,8 @@
                           </div>
                       </div>
                       <div class="member-info">
-                          <h4>Amanda Jepson</h4>
-                          <span>Accountant</span>
+                          <h4>Deni Rusmana</h4>
+                          <span>IT Team Lead/Dev Leader</span>
                       </div>
                   </div>
               </div><!-- End Team Member -->

@@ -25,12 +25,26 @@
             <form action="/login/auth" method="post">
                 <div class="form-group">
                     <label>Username</label>
-                    <input type="text" name="username" id="username" class="form-control" placeholder="Masukkan username">
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Masukkan username"
+                        value="<?= isset($_COOKIE['remember_username']) ? esc($_COOKIE['remember_username']) : ''; ?>">
                 </div><!-- form-group -->
-                <div class="form-group">
+                <div class="form-group position-relative">
                     <label>Password</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan password">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan password"
+                        value="<?= isset($_COOKIE['remember_password']) ? esc($_COOKIE['remember_password']) : ''; ?>">
+                    <!-- Toggle show/hide password -->
+                    <span class="password-toggle" onclick="togglePassword()" style="cursor: pointer; position: absolute; right: 10px; top: 38px;">
+                        <i id="toggleIcon" class="fa fa-eye"></i>
+                    </span>
                 </div><!-- form-group -->
+
+                <!-- Checkbox Remember Me -->
+                <div class="form-check">
+                    <input type="checkbox" name="remember_me" id="remember_me" class="form-check-input"
+                        <?= isset($_COOKIE['remember_username']) ? 'checked' : ''; ?>>
+                    <label class="form-check-label" for="remember_me">Remember Me</label>
+                </div><!-- form-check -->
+
                 <button type="submit" class="btn btn-primary btn-block mb-4">Log In</button>
             </form>
         </div><!-- az-signin-header -->

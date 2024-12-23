@@ -62,19 +62,19 @@ class HomeLombaTRKJ extends BaseController
 
     public function home()
     {
-
         $header['title'] = 'Kaltech - 2024';
 
         $data['dataLomba'] = $this->lombaModel->getdata();
+        $data['dataLombaFirst'] = $this->lombaModel->getdataSingle();
         $data['dataSponsor'] = $this->sponsorModel->getdata();
         $data['dataPertanyaan'] = $this->faqModel->getdata();
         $data['tanggalLengkap'] =  $this->tanggalLengkap;
         $data['jamSekarang'] =  $this->jamSekarang;
 
         echo view('web_lomba/header', $header);
-        echo view('web_lomba/nav');
+        echo view('web_lomba/nav', $data);
         echo view('web_lomba/home', $data);
-        echo view('web_lomba/footer');;
+        echo view('web_lomba/footer');
     }
 
     public function team()

@@ -164,19 +164,31 @@
 
             <?php $validation = \Config\Services::validation(); ?>
 
-            <!-- Pesan sukses -->
-            <?php if (session()->getFlashdata('success')): ?>
-                <div class="alert alert-success">
-                    <?= session()->getFlashdata('success'); ?>
-                </div>
-            <?php endif; ?>
+            <!-- Include SweetAlert2 -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-            <!-- Pesan error general -->
-            <?php if (session()->getFlashdata('error')): ?>
-                <div class="alert alert-danger">
-                    <?= session()->getFlashdata('error'); ?>
-                </div>
-            <?php endif; ?>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    <?php if (session()->getFlashdata('success')): ?>
+                        Swal.fire({
+                            title: 'Success!',
+                            text: '<?= session()->getFlashdata('success'); ?>',
+                            icon: 'success',
+                            confirmButtonText: 'OK',
+                            confirmButtonColor: '#0d6efd' // Warna biru
+                        });
+                    <?php elseif (session()->getFlashdata('error')): ?>
+                        Swal.fire({
+                            title: 'Error!',
+                            text: '<?= session()->getFlashdata('error'); ?>',
+                            icon: 'error',
+                            confirmButtonText: 'OK',
+                            confirmButtonColor: '#0d6efd' // Warna biru
+                        });
+                    <?php endif; ?>
+                });
+            </script>
 
             <div class="az-content-breadcrumb">
                 <span><a href="<?= base_url('/') ?>">Home</a></span>
