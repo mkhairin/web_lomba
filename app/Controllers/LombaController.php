@@ -12,11 +12,13 @@ class LombaController extends BaseController
 {
     protected $lombaModel;
     protected $submitTugasModel;
+    protected $emailModel;
 
     public function __construct()
     {
         $this->submitTugasModel = new SubmitTugasModel();
         $this->lombaModel = new LombaModel();
+        $this->emailModel = new \App\Models\MailModel();
     }
 
     // Admin check method to avoid repetition
@@ -38,10 +40,11 @@ class LombaController extends BaseController
 
             $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
             $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
+            $data['unreadEmailCount'] = $this->emailModel->where('read_status', 'unread')->countAllResults();
 
             echo view('azia/header', $header);
-            echo view('azia/top_menu');
-            echo view('azia/side_menu');
+            echo view('azia/top_menu', $data);
+            echo view('azia/side_menu', $data);
             echo view('admin/daftar_lomba', $data);
             echo view('azia/footer');
         } catch (Exception $e) {

@@ -25,6 +25,30 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // Inisialisasi Toast Bootstrap
+    var toastList = [...document.querySelectorAll('.toast')].map(toastEl => new bootstrap.Toast(toastEl));
+
+    // Ambil elemen badge dan toast
+    const unreadEmailBadge = document.getElementById('unreadEmailBadge');
+    const unreadToast = document.getElementById('unreadToast');
+
+    // Cek jika elemen tersedia
+    if (unreadEmailBadge && unreadToast) {
+      // Inisialisasi Toast jika elemen tersedia
+      const toastInstance = new bootstrap.Toast(unreadToast);
+
+      // Tambahkan event listener untuk menampilkan toast ketika hover
+      unreadEmailBadge.addEventListener('mouseenter', function() {
+        // Tampilkan toast ketika badge dihover
+        toastInstance.show();
+      });
+    }
+  });
+</script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
     // Event untuk semua link (<a>) dan form
     const links = document.querySelectorAll('a');
     const forms = document.querySelectorAll('form');

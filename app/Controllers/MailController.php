@@ -78,10 +78,11 @@ class MailController extends BaseController
 
         $data['dataEmail'] = $this->emailModel->getdata();
         $data['dataDeadlineLomba'] = $this->deadlineTugasModel->getdata();
+        $data['unreadEmailCount'] = $this->emailModel->where('read_status', 'unread')->countAllResults();
 
         $header['title'] = 'Daftar Email';
         echo view('juri/header', $header);
-        echo view('azia/top_menu');
+        echo view('azia/top_menu', $data);
         echo view('azia/side_menu', $data);
         echo view('admin/daftar_email', $data);
         echo view('juri/footer');
@@ -132,7 +133,8 @@ class MailController extends BaseController
                 'message' => $message,
                 'status' => 'sent', // Status email yang berhasil terkirim
                 'tgl' => $tgl,
-                'jam' => $jam
+                'jam' => $jam,
+                'read_status' => 'unread',
             ]);
 
             return $this->response->setJSON(['success' => true, 'message' => 'Email berhasil dikirim!']);
@@ -144,6 +146,41 @@ class MailController extends BaseController
             return $this->response->setJSON(['success' => false, 'error' => 'Gagal mengirim email. Silakan coba lagi.']);
         }
     }
+
+    public function update($id)
+    {
+        // Validasi input
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'read_status' => 'required'
+        ]);
+
+        // Cek apakah validasi gagal
+        if (!$this->validate($validation->getRules())) {
+            return redirect()->back()->withInput()->with('validation', $this->validator);
+        }
+
+        // Ambil data dari form
+        $read_status = $this->request->getPost('read_status');
+
+
+        $data = [
+            'read_status' => $read_status
+        ];
+
+        try {
+            if ($this->emailModel->update($id, $data)) {
+                session()->setFlashdata('success', 'Status Berhasil Diubah!');
+                return redirect()->to('/email/list');
+            } else {
+                session()->setFlashdata('error', 'Status Gagal Diubah!');
+                return redirect()->back()->withInput();
+            }
+        } catch (Exception $e) {
+            session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
+    }
+
 
 
 

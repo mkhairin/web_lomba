@@ -18,6 +18,7 @@ class PesertaController extends BaseController
     protected $sekolahModel;
     protected $timLombaModel;
     protected $submitTugasModel;
+    protected $emailModel;
 
     public function __construct()
     {
@@ -28,6 +29,7 @@ class PesertaController extends BaseController
         $this->sekolahModel = new SekolahModel();
         $this->timLombaModel = new TimLombaModel();
         $this->submitTugasModel = new SubmitTugasModel();
+        $this->emailModel = new \App\Models\MailModel();
     }
 
     public function before()
@@ -51,13 +53,14 @@ class PesertaController extends BaseController
             'dataTimLomba' => $this->timLombaModel->getdata(),
             'dataSubmit' => count($this->submitTugasModel->getDataSubmit()),
             'dataIsNotSubmit' => count($this->submitTugasModel->getDataNotSubmit()),
+            'unreadEmailCount' => $this->emailModel->where('read_status', 'unread')->countAllResults()
         ];
 
         $header['title'] = 'Daftar Peserta';
 
         echo view('azia/header', $header);
-        echo view('azia/top_menu');
-        echo view('azia/side_menu');
+        echo view('azia/top_menu', $data);
+        echo view('azia/side_menu', $data);
         echo view('admin/daftar_peserta', $data);
         echo view('azia/footer');
     }

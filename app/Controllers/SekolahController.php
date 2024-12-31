@@ -11,12 +11,14 @@ class SekolahController extends BaseController
 {
     protected $sekolahModel;
     protected $submitTugasModel;
+    protected $emailModel;
 
     public function __construct()
     {
         // untuk dashboard admin
         $this->submitTugasModel = new SubmitTugasModel();
         $this->sekolahModel = new SekolahModel();
+        $this->emailModel = new \App\Models\MailModel();
 
         // Check if user is admin
         $this->checkAdminAccess();
@@ -36,12 +38,13 @@ class SekolahController extends BaseController
         $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
         $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
         $data['dataSekolah'] = $this->sekolahModel->getdata();
+        $data['unreadEmailCount'] = $this->emailModel->where('read_status', 'unread')->countAllResults();
 
         $header['title'] = 'Daftar Sekolah';
         
         echo view('azia/header', $header);
-        echo view('azia/top_menu');
-        echo view('azia/side_menu');
+        echo view('azia/top_menu', $data);
+        echo view('azia/side_menu', $data);
         echo view('admin/daftar_sekolah', $data);
         echo view('azia/footer');
 

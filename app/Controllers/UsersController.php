@@ -11,11 +11,13 @@ use App\Models\SubmitTugasModel;
 class UsersController extends BaseController
 {
     protected $submitTugasModel;
+    protected $emailModel;
 
     public function __construct()
     {
         // untuk dashboard admin
         $this->submitTugasModel = new SubmitTugasModel();
+        $this->emailModel = new \App\Models\MailModel();
 
         // Check if user is admin
         $session = session();
@@ -45,11 +47,12 @@ class UsersController extends BaseController
 
         $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
         $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
+        $data['unreadEmailCount'] = $this->emailModel->where('read_status', 'unread')->countAllResults();
 
         $header['title'] = 'Daftar User';
         echo view('azia/header', $header);
-        echo view('azia/top_menu');
-        echo view('azia/side_menu');
+        echo view('azia/top_menu', $data);
+        echo view('azia/side_menu', $data);
         echo view('admin/users', $data);
         echo view('azia/footer');
     }

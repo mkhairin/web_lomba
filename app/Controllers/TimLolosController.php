@@ -12,6 +12,8 @@ class TimLolosController extends BaseController
 {
     protected $submitTugasModel;
     protected $timLolosModel;
+    protected $deadlineTugasModel;
+    protected $emailModel;
 
     public function __construct()
     {
@@ -19,6 +21,8 @@ class TimLolosController extends BaseController
         $this->submitTugasModel = new SubmitTugasModel();
 
         $this->timLolosModel = new \App\Models\TimLolosJuriModel();
+        $this->deadlineTugasModel = new \App\Models\DeadlineTugasModel();
+
         // Check if user is admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
@@ -38,12 +42,13 @@ class TimLolosController extends BaseController
 
         $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
         $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
+        $data['unreadEmailCount'] = $this->emailModel->where('read_status', 'unread')->countAllResults();
 
         $header['title'] = 'Daftar Tim Lolos';
 
         echo view('azia/header', $header);
-        echo view('azia/top_menu');
-        echo view('azia/side_menu');
+        echo view('azia/top_menu', $data);
+        echo view('azia/side_menu', $data);
         echo view('admin/daftar_timlolos', $data);
         echo view('azia/footer');
     }

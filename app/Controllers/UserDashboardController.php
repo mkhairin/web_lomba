@@ -145,4 +145,30 @@ class UserDashboardController extends BaseController
         echo view('user/informasilainnya', $data);
         echo view('user/partial/footer');
     }
+
+    public function helpDesk() {
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'user') {
+            return redirect()->to('/login')->with('error', 'You must be an admin to access this page.');
+        }
+
+        $kategoriLomba = $session->get('lomba');
+        $username = $session->get('username');
+        $namaTimLomba = $session->get('tim_lomba');
+
+        $data['dataSoal'] = $this->soalModel->getDataWhere($kategoriLomba);
+        $data['dataUser'] = $this->userModel->getDataWhere($username);
+        $data['dataTimLombaNama'] = $this->timLombaModel->getDataWhereTeam($kategoriLomba, $namaTimLomba);
+        $data['dataTimLomba'] = $this->timLombaModel->getDataWhere($kategoriLomba);
+        $data['dataTimLombaAll'] = $this->timLombaModel->getdata();
+        $data['dataDeadlineLomba'] = $this->deadlineTugasModel->getDataWhere($kategoriLomba);
+
+        $header['title'] = 'Dashboard User';
+
+        echo view('user/partial/header');
+        echo view('user/partial/top_menu');
+        echo view('user/partial/side_menu');
+        echo view('user/helpdesk', $data);
+        echo view('user/partial/footer');
+    }
 }

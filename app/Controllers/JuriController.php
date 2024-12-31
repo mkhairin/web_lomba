@@ -91,11 +91,12 @@ class JuriController extends BaseController
         $data['dataTimNotLolos'] = $this->timLolosNew->getDataWhereNotLolos($kategoriLomba);
         $data['tanggalLengkap'] = $this->tanggalLengkap;
         $data['jamSekarang'] = $this->jamSekarang;
+        $data['submitTugasBelumDinilaiCount'] = $this->submitTugasModel->where('status_penilaian', 'Belum Dinilai')->countAllResults();
 
         $header['title'] = 'Dashboard Juri';
         echo view('juri/header', $header);
         echo view('juri/top_menu', $data);
-        echo view('juri/side_menu');
+        echo view('juri/side_menu', $data);
         echo view('juri/juri_dashboard', $data);
         echo view('juri/footer');
     }
@@ -113,11 +114,12 @@ class JuriController extends BaseController
         $data['dataDeadlineLomba'] = $this->deadlineTugasModel->getDataWhere($kategoriLomba);
         $data['tanggalLengkap'] = $this->tanggalLengkap;
         $data['jamSekarang'] = $this->jamSekarang;
+        $data['submitTugasBelumDinilaiCount'] = $this->submitTugasModel->where('status_penilaian', 'Belum Dinilai')->countAllResults();
 
         $header['title'] = 'Dashboard Juri';
         echo view('juri/header', $header);
         echo view('juri/top_menu', $data);
-        echo view('juri/side_menu');
+        echo view('juri/side_menu', $data);
         echo view('juri/daftar_dinilai', $data);
         echo view('juri/footer');
     }
@@ -137,12 +139,13 @@ class JuriController extends BaseController
         $data['tanggalLengkap'] = $this->tanggalLengkap;
         $data['jamSekarang'] = $this->jamSekarang;
         $data['dataTimLomba'] = $timLombaModel->getDataWhere($kategoriLomba);
+        $data['submitTugasBelumDinilaiCount'] = $this->submitTugasModel->where('status_penilaian', 'Belum Dinilai')->countAllResults();
 
 
         $header['title'] = 'Dashboard Juri';
         echo view('juri/header', $header);
         echo view('juri/top_menu', $data);
-        echo view('juri/side_menu');
+        echo view('juri/side_menu', $data);
         echo view('juri/tim_lomba', $data);
         echo view('juri/footer');
     }
@@ -161,11 +164,12 @@ class JuriController extends BaseController
         $data['dataDeadlineLomba'] = $this->deadlineTugasModel->getDataWhere($kategoriLomba);
         $data['tanggalLengkap'] = $this->tanggalLengkap;
         $data['jamSekarang'] = $this->jamSekarang;
+        $data['submitTugasBelumDinilaiCount'] = $this->submitTugasModel->where('status_penilaian', 'Belum Dinilai')->countAllResults();
 
         $header['title'] = 'Dashboard Juri';
         echo view('juri/header', $header);
         echo view('juri/top_menu', $data);
-        echo view('juri/side_menu');
+        echo view('juri/side_menu', $data);
         echo view('juri/tim_lolos', $data);
         echo view('juri/footer');
     }
@@ -188,11 +192,12 @@ class JuriController extends BaseController
         $data['dataTimBelumLolos'] = $this->timLolosNew->getDataWhereNotLolos($kategoriLomba);
         $data['tanggalLengkap'] = $this->tanggalLengkap;
         $data['jamSekarang'] = $this->jamSekarang;
+        $data['submitTugasBelumDinilaiCount'] = $this->submitTugasModel->where('status_penilaian', 'Belum Dinilai')->countAllResults();
 
         $header['title'] = 'Dashboard Juri';
         echo view('juri/header', $header);
         echo view('juri/top_menu', $data);
-        echo view('juri/side_menu');
+        echo view('juri/side_menu', $data);
         echo view('juri/tim_belum_lolos', $data);
         echo view('juri/footer');
     }
@@ -208,11 +213,12 @@ class JuriController extends BaseController
         $kategoriLomba = $session->get('lomba');
         $data['dataLomba'] = $this->lombaModel->getdata();
         $data['dataDeadlineLomba'] = $this->deadlineTugasModel->getDataWhere($kategoriLomba);
+        $data['submitTugasBelumDinilaiCount'] = $this->submitTugasModel->where('status_penilaian', 'Belum Dinilai')->countAllResults();
 
         $header['title'] = 'Dashboard Juri';
         echo view('juri/header', $header);
         echo view('juri/top_menu', $data);
-        echo view('juri/side_menu');
+        echo view('juri/side_menu',$data);
         echo view('juri/daftar_deadline', $data);
         echo view('juri/footer');
     }

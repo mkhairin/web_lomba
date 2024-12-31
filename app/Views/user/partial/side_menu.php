@@ -16,6 +16,13 @@
          </li>
 
          <li class="nav-item">
+             <a class="nav-link" href="/help-desk">
+                 <i class="fa-solid fa-sliders menu-icon"></i>
+                 <span class="menu-title">Pusat Bantuan</span>
+             </a>
+         </li>
+
+         <li class="nav-item">
              <a class="nav-link" href="/logout">
                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
                  <span class="menu-title mx-3"> Logout</span>

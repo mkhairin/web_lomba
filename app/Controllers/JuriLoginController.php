@@ -19,35 +19,71 @@ class JuriLoginController extends BaseController
         echo view('login/footer');
     }
 
-    public function loginAuth()
+    public function loginJuriAuth()
     {
-        // Mengambil data username dan password dari form
+        // Load helper cookie
+        helper('cookie', 'url');
+
+        // Load Encryption Library
+        $encrypter = \Config\Services::encrypter();
+
+        // Ambil data dari form
         $username = esc($this->request->getPost("username"));
         $password = esc($this->request->getPost("password"));
+        $rememberMe = $this->request->getPost('remember_me');
 
-        // Memanggil model Juri
-        $juriModel = new JuriModel();
-
-        // Cek apakah username ada di database tabel juri
-        $juri = $juriModel->where('username', $username)->first();
-
-        // Verifikasi password
-        if ($juri && password_verify($password, $juri['password'])) {
-
-            // Menyimpan data yang dibutuhkan di session
-            session()->set([
-                'id_juri' => $juri['id_juri'],
-                'username' => $juri['username'],
-                'role' => 'juri', // Set role ke juri
-                'logged_in' => true,
-            ]);
-
-            // Redirect ke halaman juri
-            return redirect()->to('/daftar-juri');
-        } else {
-            // Jika autentikasi gagal, tampilkan pesan kesalahan
-            session()->setFlashdata('error', 'Username or Password incorrect!');
+        // Pastikan input tidak kosong
+        if (empty($username) || empty($password)) {
+            session()->setFlashdata('error', 'Username and Password must be filled!');
             return redirect()->to('/juri_panel');
         }
+
+        // Memanggil model
+        $userModel = new UsersModel();
+
+        // Cek apakah username ada di database tabel user
+        $user = $userModel->where('username', $username)->first();
+
+        if ($user) {
+            if (password_verify($password, $user['password'])) {
+                if ($user['role'] !== 'juri') {
+                    session()->setFlashdata('error', 'You are not authorized to access this page!');
+                    return redirect()->to('/juri_panel');
+                }
+
+                // / Simpan data di session
+                session()->set([
+                    'id_user' => $user['id_user'],
+                    'username' => $user['username'],
+                    'role' => $user['role'], // Role user
+                    'logged_in' => true,
+                ]);
+                // Menyimpan cookie jika Remember Me dicentang
+                if ($rememberMe) {
+                    // Buat array data untuk disimpan dalam cookie
+                    $cookieData = [
+                        'username' => $username,
+                    ];
+
+                    // Enkripsi data cookie
+                    $encryptedData = base64_encode($encrypter->encrypt(json_encode($cookieData)));
+
+                    // Simpan cookie terenkripsi
+                    set_cookie('user_cookie', $encryptedData, 604800 * 7); // 7 hari
+                }
+
+                // Redirect ke dashboard juri
+                return redirect()->to('/juri-dashboard');
+            } else {
+                // Password salah
+                session()->setFlashdata('error', 'Password incorrect!');
+            }
+        } else {
+            // Username tidak ditemukan
+            session()->setFlashdata('error', 'Username not found!');
+        }
+
+        // Jika autentikasi gagal, kembali ke halaman login
+        return redirect()->to('/juri_panel');
     }
 }

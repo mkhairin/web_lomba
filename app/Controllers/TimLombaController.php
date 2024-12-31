@@ -13,11 +13,13 @@ class TimLombaController extends BaseController
 {
     protected $timLombaModel, $sekolahModel, $lombaModel, $pembimbingModel;
     protected $submitTugasModel;
+    protected $emailModel;
 
     public function __construct()
     {
         // untuk dashboard admin
         $this->submitTugasModel = new SubmitTugasModel();
+        $this->emailModel = new \App\Models\MailModel();
 
         $timLombaModel = new TimLombaModel();
         // Check if user is admin
@@ -50,10 +52,11 @@ class TimLombaController extends BaseController
 
         $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
         $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
-
+        $data['unreadEmailCount'] = $this->emailModel->where('read_status', 'unread')->countAllResults();
+        
         echo view('azia/header', $header);
-        echo view('azia/top_menu');
-        echo view('azia/side_menu');
+        echo view('azia/top_menu', $data);
+        echo view('azia/side_menu', $data);
         echo view('admin/daftar_timlomba', $data);
         echo view('azia/footer');
     }

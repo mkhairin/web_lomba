@@ -4,7 +4,11 @@
             <div class="component-item">
                 <label>Dashboard</label>
                 <nav class="nav flex-column">
-                    <a href="/juri-dashboard" class="nav-link <?= (current_url() == base_url('/juri-dashboard')) ? 'active text-primary' : '' ?>">Dashboard</a>
+                    <a href="/juri-dashboard" class="nav-link <?= (current_url() == base_url('/juri-dashboard')) ? 'active text-primary' : '' ?>">Dashboard
+                        <?php if ($submitTugasBelumDinilaiCount > 0) : ?>
+                            <span class="badge bg-danger text-white rounded-circle"><?= $submitTugasBelumDinilaiCount ?></span>
+                        <?php endif; ?>
+                    </a>
                 </nav>
 
                 <label>Tables</label>

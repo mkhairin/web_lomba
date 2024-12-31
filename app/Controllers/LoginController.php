@@ -72,6 +72,12 @@ class LoginController extends BaseController
         if ($user) {
             // Verifikasi password
             if (password_verify($password, $user['password'])) {
+                // Pastikan role user adalah 'user', jika bukan 'user' (misal 'juri'), redirect ke login
+                if ($user['role'] !== 'user') {
+                    session()->setFlashdata('error', 'Only users can login. Juri cannot login!');
+                    return redirect()->to('/login');
+                }
+
                 // Ambil kategori lomba berdasarkan id_lomba
                 $lomba = $lombaModel->where('id_lomba', $user['id_lomba'])->first();
                 $kategoriLomba = $lomba ? $lomba['nama'] : 'No category';
@@ -107,11 +113,7 @@ class LoginController extends BaseController
                 }
 
                 // Redirect berdasarkan role
-                if ($user['role'] === 'juri') {
-                    return redirect()->to('/juri-dashboard');
-                } elseif ($user['role'] === 'user') {
-                    return redirect()->to('/user-dashboard');
-                }
+                return redirect()->to('/user-dashboard');
             } else {
                 // Password salah
                 session()->setFlashdata('error', 'Password incorrect!');
@@ -124,6 +126,7 @@ class LoginController extends BaseController
         // Jika autentikasi gagal, kembali ke halaman login
         return redirect()->to('/login');
     }
+
 
     public function logout()
     {

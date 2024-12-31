@@ -36,10 +36,14 @@
           </nav>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link with-sub"> Mails Inbox</a>
+          <a href="" class="nav-link with-sub"> Mails Inbox  <?php if ($unreadEmailCount > 0) : ?>
+              <span class="badge bg-danger text-white rounded-circle"><?= $unreadEmailCount ?></span>
+            <?php endif; ?></a>
           <nav class="az-menu-sub">
             <a href="/email/list" class="nav-link <?= (current_url() == base_url('/email/list')) ? 'active text-primary' : '' ?>">Email</a>
-
+            <?php if ($unreadEmailCount > 0) : ?>
+              <span class="badge bg-danger text-white"><?= $unreadEmailCount ?></span>
+            <?php endif; ?>
           </nav>
         </li>
         <li class="nav-item">

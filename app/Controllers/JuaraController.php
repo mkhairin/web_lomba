@@ -12,12 +12,14 @@ class JuaraController extends BaseController
 {
     protected $juaraModel;
     protected $submitTugasModel;
+    protected $emailModel;
 
     public function __construct()
     {
         // Initialize models
         $this->submitTugasModel = new SubmitTugasModel();
         $this->juaraModel = new JuaraModel();
+        $this->emailModel = new \App\Models\MailModel();
 
         // Ensure the user is logged in as admin
         $session = session();
@@ -40,11 +42,12 @@ class JuaraController extends BaseController
         $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
         $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
         $data['dataJuara'] = $this->juaraModel->getdata();
+        $data['unreadEmailCount'] = $this->emailModel->where('read_status', 'unread')->countAllResults();
 
         // Render view
         echo view('azia/header', $header);
-        echo view('azia/top_menu');
-        echo view('azia/side_menu');
+        echo view('azia/top_menu', $data);
+        echo view('azia/side_menu', $data);
         echo view('admin/daftar_juara', $data);
         echo view('azia/footer');
 

@@ -13,6 +13,7 @@ class UserAdminController extends BaseController
 {
     protected $adminModel;
     protected $submitTugasModel;
+    protected $emailModel;
 
     public function __construct()
     {
@@ -21,6 +22,8 @@ class UserAdminController extends BaseController
 
         // Inisialisasi AdminModel
         $this->adminModel = new AdminModel();
+
+        $this->emailModel = new \App\Models\MailModel();
 
         // Check if user is admin
         $session = session();
@@ -51,11 +54,12 @@ class UserAdminController extends BaseController
 
         $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
         $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
+        $data['unreadEmailCount'] = $this->emailModel->where('read_status', 'unread')->countAllResults();
 
         // Tampilkan view
         echo view('azia/header', $header);
-        echo view('azia/top_menu');
-        echo view('azia/side_menu');
+        echo view('azia/top_menu', $data);
+        echo view('azia/side_menu', $data);
         echo view('admin/user_admin', $data);
         echo view('azia/footer');
     }

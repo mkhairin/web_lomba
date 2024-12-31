@@ -15,7 +15,8 @@ class MailModel extends Model
         'message',
         'status',
         'tgl',
-        'jam'
+        'jam',
+        'read_status'
     ];
 
     protected $useTimestamps = true;

@@ -13,6 +13,7 @@ class SoalController extends BaseController
 {
     protected $modelLomba, $modelSoal;
     protected $submitTugasModel;
+    protected $emailModel;
 
     public function __construct()
     {
@@ -20,6 +21,7 @@ class SoalController extends BaseController
         $this->submitTugasModel = new SubmitTugasModel();
         $this->modelLomba = new \App\Models\LombaModel();
         $this->modelSoal = new SoalModel();
+        $this->emailModel = new \App\Models\MailModel();
 
         // Check if user is logged in and is an admin
         $session = session();
@@ -41,12 +43,13 @@ class SoalController extends BaseController
         $data['dataSoal'] = $this->modelSoal->getdata();
         $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
         $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
+        $data['unreadEmailCount'] = $this->emailModel->where('read_status', 'unread')->countAllResults();
 
         // Set header and render view
         $header['title'] = 'Daftar Soal';
         echo view('azia/header', $header);
-        echo view('azia/top_menu');
-        echo view('azia/side_menu');
+        echo view('azia/top_menu', $data);
+        echo view('azia/side_menu', $data);
         echo view('admin/daftar_soal', $data);
         echo view('azia/footer');
     }

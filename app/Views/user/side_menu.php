@@ -53,7 +53,14 @@
                         </p>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a href="/help-desk" class="nav-link">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>
+                           Bantuan
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

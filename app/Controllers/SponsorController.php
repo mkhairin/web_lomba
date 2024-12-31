@@ -11,6 +11,7 @@ class SponsorController extends BaseController
 {
     protected $sponsorModel;
     protected $submitTugasModel;
+    protected $emailModel;
 
     public function __construct()
     {
@@ -18,6 +19,8 @@ class SponsorController extends BaseController
         $this->submitTugasModel = new SubmitTugasModel();
 
         $this->sponsorModel = new SponsorModel();
+        $this->emailModel = new \App\Models\MailModel();
+
         // Check if user is admin
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
@@ -38,12 +41,13 @@ class SponsorController extends BaseController
 
         $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
         $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
+        $data['unreadEmailCount'] = $this->emailModel->where('read_status', 'unread')->countAllResults();
 
         $data['dataSponsor'] = $this->sponsorModel->getdata();
 
         echo view('azia/header', $header);
-        echo view('azia/top_menu');
-        echo view('azia/side_menu');
+        echo view('azia/top_menu', $data);
+        echo view('azia/side_menu', $data);
         echo view('admin/daftar_sponsor', $data);
         echo view('azia/footer');
 

@@ -17,7 +17,8 @@ $routes->post('/admin_login/auth', 'AdminLoginController::loginAuth');
 $routes->get('/admin/logout', 'AdminLoginController::logout');
 
 $routes->get('/juri_panel', 'JuriLoginController::loginJuri');
-$routes->post('/juri_login/auth', 'JuriLoginController::loginAuth');
+$routes->post('/juri_login/auth', 'JuriLoginController::loginJuriAuth');
+
 
 // Halaman Lomba (Public Route)
 $routes->get('/', 'HomeLombaTRKJ::home');
@@ -116,7 +117,7 @@ $routes->get('/juri/delete/(:num)', 'UserJuriController::delete/$1');
 // $routes->get('/user-dashboard-lomba', 'UserDashboardController::dashboardLomba');
 $routes->get('/user-dashboard', 'UserDashboardController::dashboarduser');
 $routes->get('/informasi-lainnya', 'UserDashboardController::informasiView');
-
+$routes->get('/help-desk', 'UserDashboardController::helpDesk');
 
 // Juri Dashboard
 $routes->get('/juri-dashboard', 'JuriController::dashboardJuri');
@@ -142,4 +143,5 @@ $routes->get('/juri-dashboard/daftar-deadline/delete/(:num)', 'DeadlineControlle
 // Email Helpdesk
 $routes->get('/email/list', 'MailController::MailsView');
 $routes->post('/contact/send', 'MailController::sendEmail');
+$routes->post('/email/list/update/(:num)', 'MailController::update/$1');
 $routes->get('/email/list/delete/(:num)', 'MailController::delete/$1');

@@ -18,6 +18,7 @@ class DashboardController extends BaseController
     protected $sekolahModel, $pesertaModel, $timLombaModel, $pembimbingModel, $timLolosNew, $submitTugasModel;
     protected $tanggalLengkap;
     protected $jamSekarang;
+    protected $emailModel;
 
     public function __construct()
     {
@@ -27,6 +28,7 @@ class DashboardController extends BaseController
         $this->pembimbingModel = new PembimbingModel();
         $this->timLolosNew = new TimLolosJuriModel();
         $this->submitTugasModel = new SubmitTugasModel();
+        $this->emailModel = new \App\Models\MailModel();
 
         // Check if user is admin
         $session = session();
@@ -95,9 +97,12 @@ class DashboardController extends BaseController
         $data['dataTimNotlos'] = count($this->timLolosNew->getDataNotLolos());
         $data['tanggalLengkap'] = $this->tanggalLengkap;
         $data['jamSekarang'] = $this->jamSekarang;
+        $data['unreadEmailCount'] = $this->emailModel->where('read_status', 'unread')->countAllResults();
+
+
 
         echo view('azia/header', $header);
-        echo view('azia/top_menu');
+        echo view('azia/top_menu', $data);
         // echo view('azia/side_menu');
         echo view('admin/dashboard_admin', $data);
         echo view('azia/footer');

@@ -43,7 +43,7 @@ class MailHelpdesk extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255'
             ],
-            'read' => [
+            'read_status' => [
                 'type' => 'ENUM',
                 'constraint' => ['unread', 'read'],
                 'default' => 'unread',

@@ -13,6 +13,7 @@ class PembimbingController extends BaseController
     protected $modelSekolah;
     protected $modelLomba;
     protected $submitTugasModel;
+    protected $emailModel;
 
     public function __construct()
     {
@@ -21,6 +22,7 @@ class PembimbingController extends BaseController
         $this->modelPembimbing = new \App\Models\PembimbingModel();
         $this->modelSekolah = new \App\Models\SekolahModel();
         $this->modelLomba = new \App\Models\LombaModel();
+        $this->emailModel = new \App\Models\MailModel();
 
         // Ensure user is admin
         $this->checkAdminRole();
@@ -46,12 +48,13 @@ class PembimbingController extends BaseController
         $data['dataLomba'] = $this->modelLomba->getdata();
         $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
         $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
+        $data['unreadEmailCount'] = $this->emailModel->where('read_status', 'unread')->countAllResults();
 
         $header['title'] = 'Daftar Pembimbing';
 
         echo view('azia/header', $header);
-        echo view('azia/top_menu');
-        echo view('azia/side_menu');
+        echo view('azia/top_menu', $data);
+        echo view('azia/side_menu', $data);
         echo view('admin/daftar_pembimbing', $data);
         echo view('azia/footer');
     }

@@ -1,6 +1,6 @@
 <!-- Modal Update -->
 <?php foreach ($dataEmail as $data) : ?>
-    <form action="" method="post">
+    <form action="/email/list/update/<?= $data->id_emails ?>" method="post">
         <?= csrf_field() ?>
         <div class="modal fade" id="modal-lg-update<?= $data->id_emails ?>">
             <div class="modal-dialog modal-lg">
@@ -38,13 +38,16 @@
                                         <option value="pending" <?= $data->status === 'pending' ? 'selected' : '' ?>>Pending</option>
                                     </select>
                                 </div>
+                                <input type="hidden" class="form-control" name="tgl" id="tgl" value="<?= $data->tgl ?>">
+                                <input type="hidden" class="form-control" name="jam" id="jam" value="<?= $data->jam ?>">
+                                <input type="hidden" class="form-control" name="read_status" id="read_status" value="read">
                             </div>
                         </div>
                         <!-- /.card-body -->
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Mark as read <i class="fa-regular fa-circle-check"></i></button>
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -162,6 +165,7 @@ $segments = $uri->getSegments();
                     <th>Status</th>
                     <th>Tgl</th>
                     <th>Jam</th>
+                    <th>Read Status</th>
                     <th style="width: 200px">Aksi</th>
                 </tr>
             </thead>
@@ -176,6 +180,7 @@ $segments = $uri->getSegments();
                         <td><?= $data->status ?></td>
                         <td><?= $data->tgl ?></td>
                         <td><?= $data->jam ?></td>
+                        <td><?= $data->read_status ?></td>
                         <td>
                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                 data-target="#modal-lg-update<?= $data->id_emails ?>">View</button>
