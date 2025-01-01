@@ -33,7 +33,7 @@
                     </nav>
                 </li>
                 <li class="nav-item">
-                    <a href="/logout" type="button" class="btn btn-primary"> Logout</a>
+                    <a href="/juri_panel" type="button" class="btn btn-primary"> Logout</a>
                 </li>
             </ul>
         </div><!-- az-header-menu -->

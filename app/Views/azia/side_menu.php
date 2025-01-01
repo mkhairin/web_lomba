@@ -24,7 +24,8 @@
 
                 <label>User Role</label>
                 <nav class="nav flex-column">
-                    <a href="/user" class="nav-link <?= (current_url() == base_url('/user')) ? 'active text-primary' : '' ?>">Peserta/Juri</a>
+                    <a href="/user" class="nav-link <?= (current_url() == base_url('/user')) ? 'active text-primary' : '' ?>">Peserta</a>
+                    <a href="/daftar-juri" class="nav-link <?= (current_url() == base_url('/daftar-juri')) ? 'active text-primary' : '' ?>">Juri</a>
                     <a href="/daftar-admin" class="nav-link <?= (current_url() == base_url('/daftar-admin')) ? 'active text-primary' : '' ?>">Admin</a>
                 </nav>
 

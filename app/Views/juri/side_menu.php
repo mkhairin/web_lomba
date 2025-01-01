@@ -22,7 +22,7 @@
 
                 <label>Logout</label>
                 <nav class="nav flex-column">
-                    <a href="/logout" class="nav-link <?= (current_url() == base_url('/logout')) ? 'active text-primary' : '' ?>">Logout</a>
+                    <a href="/juri_panel" class="nav-link <?= (current_url() == base_url('/logout')) ? 'active text-primary' : '' ?>">Logout</a>
                 </nav>
             </div><!-- component-item -->
         </div><!-- az-content-left -->

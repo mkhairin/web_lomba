@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\JuriModel;
+use App\Models\SubmitTugasModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 use Exception;
@@ -11,11 +12,25 @@ use Exception;
 class UserJuriController extends BaseController
 {
     protected $juriModel;
+    protected $submitTugasModel;
+    protected $emailModel;
+    protected $lombaModel;
 
     public function __construct()
     {
         // Inisialisasi JuriModel
         $this->juriModel = new JuriModel();
+
+         // untuk dashboard admin
+         $this->submitTugasModel = new SubmitTugasModel();
+         $this->emailModel = new \App\Models\MailModel();
+         $this->lombaModel     = new \App\Models\LombaModel();
+
+          // Check if user is admin
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
+            return redirect()->to('/admin_panel')->with('error', 'You must be an admin to access this page.');
+        }
     }
 
     // Method untuk mengecek apakah user adalah Admin
@@ -30,18 +45,22 @@ class UserJuriController extends BaseController
     {
         // Pengecekan apakah user adalah juri
         if (!$this->isAdmin()) {
-            return redirect()->to('/login')->with('error', 'You must be a admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be a admin to access this page.');
         }
 
         $header['title'] = 'Daftar Juri';
 
         // Mengambil data juri dari model
-        $data['dataJuri'] = $this->juriModel->getData();
+        $data['dataJuri'] = $this->juriModel->getdata();
+        $data['dataLomba'] = $this->lombaModel->getdata();
+        $data['dataSubmit'] = count($this->submitTugasModel->getDataSubmit());
+        $data['dataIsNotSubmit'] = count($this->submitTugasModel->getDataNotSubmit());
+        $data['unreadEmailCount'] = $this->emailModel->where('read_status', 'unread')->countAllResults();
 
         // Tampilkan view
         echo view('azia/header', $header);
-        echo view('azia/top_menu');
-        echo view('azia/side_menu');
+        echo view('azia/top_menu', $data);
+        echo view('azia/side_menu', $data);
         echo view('admin/user_juri', $data);
         echo view('azia/footer');
     }
@@ -51,7 +70,7 @@ class UserJuriController extends BaseController
     {
         // Pengecekan apakah user adalah juri
         if (!$this->isAdmin()) {
-            return redirect()->to('/login')->with('error', 'You must be a admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be a admin to access this page.');
         }
 
         // Inisialisasi model Juri
@@ -61,6 +80,7 @@ class UserJuriController extends BaseController
         $validationRules = [
             'username' => 'required',
             'password' => 'required',
+            'id_lomba' => 'required',
         ];
 
         if (!$this->validate($validationRules)) {
@@ -76,7 +96,8 @@ class UserJuriController extends BaseController
             $data = [
                 'username' => esc($this->request->getPost('username')),
                 'password' => $passwordHash,
-                'role' => esc($this->request->getPost('role'))
+                'role' => esc($this->request->getPost('role')),
+                'id_lomba' => esc($this->request->getPost('id_lomba')),
             ];
 
             // Insert data ke tabel Juri
@@ -97,7 +118,7 @@ class UserJuriController extends BaseController
     {
         // Check if user is juri
         if (!$this->isAdmin()) {
-            return redirect()->to('/login')->with('error', 'You must be a admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be a admin to access this page.');
         }
 
         // Inisialisasi model Juri
@@ -107,6 +128,7 @@ class UserJuriController extends BaseController
         $validationRules = [
             'username' => 'required',
             'password' => 'required',
+            'id_lomba' => 'required',
         ];
 
         if (!$this->validate($validationRules)) {
@@ -119,7 +141,8 @@ class UserJuriController extends BaseController
             $data = [
                 'username' => esc($this->request->getPost('username')),
                 'password' => $passwordHash,
-                'role' => esc($this->request->getPost('role'))
+                'role' => esc($this->request->getPost('role')),
+                'id_lomba' => esc($this->request->getPost('id_lomba'))
             ];
 
             if ($juriModel->update($id, $data)) {
@@ -139,7 +162,7 @@ class UserJuriController extends BaseController
     {
         // Check if user is juri
         if (!$this->isAdmin()) {
-            return redirect()->to('/login')->with('error', 'You must be a admin to access this page.');
+            return redirect()->to('/admin_panel')->with('error', 'You must be a admin to access this page.');
         }
 
         // Inisialisasi model Juri

@@ -31,7 +31,7 @@ class JuriController extends BaseController
         // Check if user is juri
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'juri') {
-            return redirect()->to('/login')->with('error', 'You must be an juri to access this page.');
+            return redirect()->to('/juri_panel')->with('error', 'You must be an juri to access this page.');
         }
 
         // Get the current date and time in WITA
@@ -77,7 +77,7 @@ class JuriController extends BaseController
     {
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'juri') {
-            return redirect()->to('/login')->with('error', 'You must be an juri to access this page.');
+            return redirect()->to('/juri_panel')->with('error', 'You must be an juri to access this page.');
         }
 
         $kategoriLomba = $session->get('lomba');
@@ -105,7 +105,7 @@ class JuriController extends BaseController
     {
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'juri') {
-            return redirect()->to('/login')->with('error', 'You must be an juri to access this page.');
+            return redirect()->to('/juri_panel')->with('error', 'You must be an juri to access this page.');
         }
 
         $kategoriLomba = $session->get('lomba');
@@ -128,7 +128,7 @@ class JuriController extends BaseController
     {
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'juri') {
-            return redirect()->to('/login')->with('error', 'You must be an juri to access this page.');
+            return redirect()->to('/juri_panel')->with('error', 'You must be an juri to access this page.');
         }
 
         $timLombaModel = new \App\Models\TimLombaModel();
@@ -154,7 +154,7 @@ class JuriController extends BaseController
     {
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'juri') {
-            return redirect()->to('/login')->with('error', 'You must be an juri to access this page.');
+            return redirect()->to('/juri_panel')->with('error', 'You must be an juri to access this page.');
         }
 
         $kategoriLomba = $session->get('lomba');
@@ -179,7 +179,7 @@ class JuriController extends BaseController
     {
         $session = session();
         if (!$session->get('logged_in') || $session->get('role') !== 'juri') {
-            return redirect()->to('/login')->with('error', 'You must be an juri to access this page.');
+            return redirect()->to('/juri_panel')->with('error', 'You must be an juri to access this page.');
         }
 
         $kategoriLomba = $session->get('lomba');

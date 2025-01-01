@@ -28,7 +28,13 @@ class Juri extends Migration
             ],
             'role' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '30',
+                'constraint' => '10',
+            ],
+            'id_lomba' => [
+                'type'       => 'INT',
+                'constraint' => 5,
+                'unsigned'   => true,
+                'null' => true,
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -41,6 +47,7 @@ class Juri extends Migration
         ]);
 
         $this->forge->addKey('id_juri', true);
+        $this->forge->addForeignKey('id_lomba', 'lomba', 'id_lomba', 'CASCADE', 'CASCADE');
         $this->forge->createTable('juri');
 
         // Aktifkan kembali foreign key checks

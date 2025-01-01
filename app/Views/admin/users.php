@@ -78,8 +78,6 @@
                                             <select class="form-control select" id="role" name="role"
                                                 style="width: 100%;">
                                                 <option value="" disabled selected>Pilih Role</option>
-                                                <option value="admin">Admin</option>
-                                                <option value="juri">Juri</option>
                                                 <option value="user">User</option>
                                             </select>
                                         </div>

@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\UsersModel;
 use App\Models\LombaModel;
-use App\Models\AdminModel;
 use App\Models\TimLombaModel;
 
 class LoginController extends BaseController
