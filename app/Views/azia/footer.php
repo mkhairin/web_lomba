@@ -23,12 +23,13 @@
 
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 
+
 <script>
-    // Inisialisasi tooltip untuk elemen yang memiliki atribut data-bs-toggle="tooltip"
-    var tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-        new bootstrap.Tooltip(tooltipTriggerEl);
-    });
+  // Inisialisasi tooltip untuk elemen yang memiliki atribut data-bs-toggle="tooltip"
+  var tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.forEach(function(tooltipTriggerEl) {
+    new bootstrap.Tooltip(tooltipTriggerEl);
+  });
 </script>
 
 
