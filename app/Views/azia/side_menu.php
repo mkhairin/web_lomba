@@ -34,23 +34,12 @@
                     <a href="/email/list" class="nav-link <?= (current_url() == base_url('/email/list')) ? 'active text-primary' : '' ?>">
                         Email
                         <?php if ($unreadEmailCount > 0) : ?>
-                            <span class="badge bg-danger text-white rounded-circle" id="unreadEmailBadge"><?= $unreadEmailCount ?></span>
+                            <!-- Tooltip diterapkan pada badge yang ada -->
+                            <span class="badge bg-danger text-white rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="Anda memiliki <?= $unreadEmailCount ?> email yang belum dibaca."><?= $unreadEmailCount ?></span>
                         <?php endif; ?>
                     </a>
-
-                    <!-- Toast untuk menampilkan jumlah email unread -->
-                    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-                        <div id="unreadToast" class="toast" style="display: none;">
-                            <div class="toast-header">
-                                <strong class="me-auto">Notifikasi Email</strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                            </div>
-                            <div class="toast-body">
-                                Anda memiliki <?= $unreadEmailCount ?> email yang belum dibaca.
-                            </div>
-                        </div>
-                    </div>
                 </nav>
+
 
                 <label>Logout</label>
                 <nav class="nav flex-column">

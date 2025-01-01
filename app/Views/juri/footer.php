@@ -19,28 +19,14 @@
 <script src="/asset_azia/js/chart.flot.sampledata.js"></script>
 <script src="/asset_azia/js/dashboard.sampledata.js"></script>
 <script src="/asset_azia/js/jquery.cookie.js" type="text/javascript"></script>
+
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Inisialisasi Toast Bootstrap
-    var toastList = [...document.querySelectorAll('.toast')].map(toastEl => new bootstrap.Toast(toastEl));
-
-    // Ambil elemen badge dan toast
-    const unreadEmailBadge = document.getElementById('unreadEmailBadge');
-    const unreadToast = document.getElementById('unreadToast');
-
-    // Cek jika elemen tersedia
-    if (unreadEmailBadge && unreadToast) {
-      // Inisialisasi Toast jika elemen tersedia
-      const toastInstance = new bootstrap.Toast(unreadToast);
-
-      // Tambahkan event listener untuk menampilkan toast ketika hover
-      unreadEmailBadge.addEventListener('mouseenter', function() {
-        // Tampilkan toast ketika badge dihover
-        toastInstance.show();
-      });
-    }
+  // Inisialisasi tooltip untuk elemen yang memiliki atribut data-bs-toggle="tooltip"
+  var tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.forEach(function(tooltipTriggerEl) {
+    new bootstrap.Tooltip(tooltipTriggerEl);
   });
 </script>
 

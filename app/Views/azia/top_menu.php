@@ -37,14 +37,21 @@
           </nav>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link with-sub"> Mails Inbox  <?php if ($unreadEmailCount > 0) : ?>
-              <span class="badge bg-danger text-white rounded-circle"><?= $unreadEmailCount ?></span>
-            <?php endif; ?></a>
-          <nav class="az-menu-sub">
-            <a href="/email/list" class="nav-link <?= (current_url() == base_url('/email/list')) ? 'active text-primary' : '' ?>">Email</a>
+          <a href="" class="nav-link with-sub <?= (current_url() == base_url('/email/list')) ? 'active text-primary' : '' ?>">
+            Mails Inbox
             <?php if ($unreadEmailCount > 0) : ?>
-              <span class="badge bg-danger text-white"><?= $unreadEmailCount ?></span>
+              <!-- Tooltip diterapkan pada badge yang ada -->
+              <span class="badge bg-danger text-white rounded-circle mx-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Anda memiliki <?= $unreadEmailCount ?> email yang belum dibaca."><?= $unreadEmailCount ?></span>
             <?php endif; ?>
+          </a>
+          <nav class="az-menu-sub">
+            <a href="/email/list" class="nav-link <?= (current_url() == base_url('/email/list')) ? 'active text-primary' : '' ?>">
+              Daftar Email
+              <?php if ($unreadEmailCount > 0) : ?>
+                <!-- Tooltip diterapkan pada badge yang ada -->
+                <span class="badge bg-danger text-white rounded-circle mx-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Anda memiliki <?= $unreadEmailCount ?> email yang belum dibaca."><?= $unreadEmailCount ?></span>
+              <?php endif; ?>
+            </a>
           </nav>
         </li>
         <li class="nav-item">

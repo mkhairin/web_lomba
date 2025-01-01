@@ -67,6 +67,22 @@
       color: #3366ff !important;
       /* Warna biru primary Bootstrap */
     }
+
+    /* Gaya untuk notifikasi */
+    .notification {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+      border-radius: 5px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      font-size: 14px;
+      display: none;
+    }
+
+    /* Menampilkan notifikasi saat tombol di-hover */
+    #unreadEmailBtn:hover+#notification {
+      display: block;
+    }
   </style>
 
 </head>
