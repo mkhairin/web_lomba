@@ -6,9 +6,11 @@
                 <nav class="nav flex-column">
                     <a href="/juri-dashboard" class="nav-link <?= (current_url() == base_url('/juri-dashboard')) ? 'active text-primary' : '' ?>">Dashboard
                         <?php if ($submitTugasBelumDinilaiCount > 0) : ?>
-                            <span class="badge bg-danger text-white rounded-circle"><?= $submitTugasBelumDinilaiCount ?></span>
+                            <!-- Tooltip diterapkan pada badge yang ada -->
+                            <span class="badge bg-danger text-white rounded-circle mx-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Anda memiliki <?= $submitTugasBelumDinilaiCount ?> tugas yang belum dinilai."><?= $submitTugasBelumDinilaiCount ?></span>
                         <?php endif; ?>
                     </a>
+
                 </nav>
 
                 <label>Tables</label>
