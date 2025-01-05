@@ -28,7 +28,7 @@ class ContentSecurityPolicy extends BaseConfig
      * Specifies a URL where a browser will send reports
      * when a content security policy is violated.
      */
-    public ?string $reportURI = true;
+    public ?string $reportURI = null;
 
     /**
      * Instructs user agents to rewrite URL schemes, changing
