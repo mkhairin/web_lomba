@@ -44,43 +44,90 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.7/dist/sweetalert2.min.js"></script>
 
 <script>
-  // JavaScript to handle loading and success messages
   const form = document.querySelector('.php-email-form');
   const loading = form.querySelector('.loading');
   const successMessage = form.querySelector('.sent-message');
   const errorMessage = form.querySelector('.error-message');
+  const submitButton = form.querySelector('button[type="submit"]');
 
-  form.addEventListener('submit', function(e) {
+  // Fungsi untuk menampilkan atau menyembunyikan loading
+  function toggleLoading(isLoading) {
+    loading.style.display = isLoading ? 'block' : 'none';
+    submitButton.disabled = isLoading;
+  }
+
+  // Fungsi untuk menampilkan pesan error
+  function showError(message) {
+    errorMessage.textContent = message;
+    errorMessage.style.display = 'block';
+  }
+
+  // Fungsi untuk validasi form
+  function validateForm(form) {
+    const requiredFields = ['name', 'email', 'subject', 'message'];
+    for (const field of requiredFields) {
+      const input = form.elements[field];
+      if (!input || !input.value.trim()) {
+        showError(`${field} is required!`);
+        return false;
+      }
+    }
+    return true;
+  }
+
+  // Fungsi untuk menangani error
+  function handleError(error) {
+    toggleLoading(false);
+    if (error.name === 'AbortError') {
+      showError('Request timed out. Please try again later.');
+    } else if (error.message === 'Failed to fetch') {
+      showError('Network error. Please check your connection.');
+    } else {
+      showError('An unexpected error occurred: ' + error.message);
+    }
+  }
+
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    loading.style.display = 'block'; // Show loading
-    successMessage.style.display = 'none'; // Hide success message
-    errorMessage.style.display = 'none'; // Hide error message
+    toggleLoading(true); // Tampilkan loading
+    successMessage.style.display = 'none'; // Sembunyikan pesan sukses
+    errorMessage.style.display = 'none'; // Sembunyikan pesan error
 
-    // Use AJAX to submit the form data
+    // Validasi form
+    if (!validateForm(form)) {
+      toggleLoading(false);
+      return;
+    }
+
     const formData = new FormData(form);
 
+    // Tambahkan timeout untuk request
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    setTimeout(() => controller.abort(), 10000); // Timeout setelah 10 detik
+
     fetch('/contact/send', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-        loading.style.display = 'none'; // Hide loading
+      method: 'POST',
+      body: formData,
+      signal,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        toggleLoading(false); // Sembunyikan loading
         if (data.success) {
-          successMessage.style.display = 'block'; // Show success message
+          successMessage.style.display = 'block'; // Tampilkan pesan sukses
+          form.reset(); // Reset form setelah sukses
         } else {
-          errorMessage.textContent = data.error || 'Something went wrong. Please try again.';
-          errorMessage.style.display = 'block'; // Show error message
+          showError(data.error || 'Something went wrong. Please try again.');
         }
       })
-      .catch(error => {
-        loading.style.display = 'none'; // Hide loading
-        errorMessage.textContent = 'An error occurred: ' + error;
-        errorMessage.style.display = 'block'; // Show error message
-      });
+      .catch(handleError); // Tangani error
   });
 </script>
+
+
 
 </body>
 

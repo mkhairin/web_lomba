@@ -108,12 +108,25 @@ class MailController extends BaseController
         }
 
         // Ambil data dari form
-        $name = $this->request->getPost('name');
-        $email = $this->request->getPost('email');
-        $subject = $this->request->getPost('subject');
-        $message = $this->request->getPost('message');
-        $tgl = $this->request->getPost('tgl');
-        $jam = $this->request->getPost('jam');
+        $name = esc($this->request->getPost('name'));
+        $email = esc($this->request->getPost('email'));
+        $subject = esc($this->request->getPost('subject'));
+        $message = esc($this->request->getPost('message'));
+        $tgl = esc($this->request->getPost('tgl'));
+        $jam = esc($this->request->getPost('jam'));
+
+        // Cek apakah sudah ada data dengan kombinasi email, message, tgl, dan jam
+        $existingEmail = $this->emailModel
+            ->where('email', $email)
+            ->where('message', $message)
+            ->where('tgl', $tgl)
+            ->where('jam', $jam)
+            ->first();
+
+        // Jika sudah ada, jangan insert lagi
+        if ($existingEmail) {
+            return $this->response->setJSON(['success' => true, 'message' => 'This message has already been sent.']);
+        }
 
         // Set layanan email
         $emailService = \Config\Services::email();
@@ -131,7 +144,7 @@ class MailController extends BaseController
                 'email' => $email,
                 'subject' => $subject,
                 'message' => $message,
-                'status' => 'sent', // Status email yang berhasil terkirim
+                'status' => 'sent',
                 'tgl' => $tgl,
                 'jam' => $jam,
                 'read_status' => 'unread',
@@ -146,6 +159,8 @@ class MailController extends BaseController
             return $this->response->setJSON(['success' => false, 'error' => 'Gagal mengirim email. Silakan coba lagi.']);
         }
     }
+
+
 
     public function update($id)
     {
