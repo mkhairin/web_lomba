@@ -186,6 +186,8 @@ $segments = $uri->getSegments();
                                 data-target="#modal-lg-update<?= $data->id_emails ?>">View</button>
                             <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
                                 data-target="#modal-delete<?= $data->id_emails ?>"><i class="bi bi-trash"></i></button>
+                            <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
+                                data-target="#modal-delete<?= $data->id_emails ?>"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
