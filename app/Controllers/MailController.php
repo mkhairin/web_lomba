@@ -176,7 +176,7 @@ class MailController extends BaseController
         }
 
         // Ambil data dari form
-        $read_status = $this->request->getPost('read_status');
+        $read_status = esc($this->request->getPost('read_status'));
 
 
         $data = [
@@ -195,7 +195,6 @@ class MailController extends BaseController
             session()->setFlashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
-
 
 
 

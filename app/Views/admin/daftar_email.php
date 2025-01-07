@@ -185,7 +185,6 @@ $segments = $uri->getSegments();
                         <td> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                 data-target="#modal-lg-update<?= $data->id_emails ?>">View</button></td>
                         <td class="d-flex">
-                            <a class="btn btn-outline-primary btn-sm" href="/email/list/update/<?= $data->id_emails ?>" role="button"><i class="bi bi-check2"></i></a>
                             <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
                                 data-target="#modal-delete<?= $data->id_emails ?>"><i class="bi bi-trash"></i></button>
                         </td>

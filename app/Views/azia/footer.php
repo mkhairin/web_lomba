@@ -23,6 +23,35 @@
 
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 
+<!-- Read button email -->
+<script>
+  function submitPost(url) {
+    if (confirm('Are you sure you want to submit?')) { // Tambahkan konfirmasi jika diperlukan
+      fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: JSON.stringify({
+            _token: '<?= csrf_hash() ?>'
+          }) // Kirim data tambahan jika diperlukan
+        })
+        .then(response => {
+          if (response.ok) {
+            alert('Data berhasil dikirim.');
+            location.reload(); // Refresh halaman jika diperlukan
+          } else {
+            alert('Terjadi kesalahan.');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Gagal mengirim data.');
+        });
+    }
+  }
+</script>
+
 
 <script>
   // Inisialisasi tooltip untuk elemen yang memiliki atribut data-bs-toggle="tooltip"
