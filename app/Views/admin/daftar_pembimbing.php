@@ -275,8 +275,9 @@ $segments = $uri->getSegments();
                 <?php foreach ($dataPembimbing as $data) : ?>
                     <tr>
                         <td><?= $i++ ?></td>
-                        <td><?= $data->nama_sekolah ?></td>
-                        <td style="text-align: justify;"><?= $data->nama_pembimbing ?>
+                        <td><?= $data->nama_pembimbing ?></td>
+                        <td style="text-align: justify;">
+                            <?= $data->nama_sekolah ?>
                         </td>
                         <td><?= $data->nama ?></td>
                         <td><?= $data->no_handphone ?></td>
