@@ -187,8 +187,6 @@
                                                 <select class="form-control select" id="role" name="role"
                                                     style="width: 100%;">
                                                     <option value="" disabled>Pilih Role</option>
-                                                    <option value="admin"
-                                                        <?= ($user->role == 'admin') ? 'selected' : '' ?>>Admin</option>
                                                     <option value="user" <?= ($user->role == 'user') ? 'selected' : '' ?>>
                                                         User</option>
                                                 </select>
