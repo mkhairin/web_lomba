@@ -166,6 +166,7 @@ $segments = $uri->getSegments();
                     <th>Tgl</th>
                     <th>Jam</th>
                     <th>Read Status</th>
+                    <th>View</th>
                     <th style="width: 200px">Aksi</th>
                 </tr>
             </thead>
@@ -181,11 +182,10 @@ $segments = $uri->getSegments();
                         <td><?= $data->tgl ?></td>
                         <td><?= $data->jam ?></td>
                         <td><?= $data->read_status ?></td>
-                        <td>
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                data-target="#modal-lg-update<?= $data->id_emails ?>">View</button>
-                            <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
-                                data-target="#modal-delete<?= $data->id_emails ?>"><i class="bi bi-trash"></i></button>
+                        <td> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                data-target="#modal-lg-update<?= $data->id_emails ?>">View</button></td>
+                        <td class="d-flex">
+                            <a class="btn btn-outline-primary btn-sm" href="/email/list/update/<?= $data->id_emails ?>" role="button"><i class="bi bi-check2"></i></a>
                             <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
                                 data-target="#modal-delete<?= $data->id_emails ?>"><i class="bi bi-trash"></i></button>
                         </td>
