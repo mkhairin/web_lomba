@@ -22,6 +22,7 @@ class TimLolosController extends BaseController
 
         $this->timLolosModel = new \App\Models\TimLolosJuriModel();
         $this->deadlineTugasModel = new \App\Models\DeadlineTugasModel();
+        $this->emailModel = new \App\Models\MailModel();
 
         // Check if user is admin
         $session = session();
