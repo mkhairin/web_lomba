@@ -71,6 +71,18 @@ class SubmitTugasModel extends Model
         return $query->getResult();
     }
 
+    public function getDataWhereTeamPenilaian($params, $namaTimLomba)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('submit_pengumpulan');
+        $builder->select();
+        $builder->where('lomba', $params);
+        $builder->where('status_penilaian', 'Sudah Dinilai');
+        $builder->where('tim', $namaTimLomba);
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
     public function getDataWhere($params)
     {
         $db = \Config\Database::connect();

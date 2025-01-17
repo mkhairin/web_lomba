@@ -169,7 +169,7 @@
                     type="button"
                     class="btn btn-primary btn-icon-text"
                     data-bs-toggle="modal"
-                    data-bs-target="#modalNilai" <?php echo ($dataNilai->status_penilaian === 'Sudah Dinilai') ? '' : 'disabled'; ?>>
+                    data-bs-target="#modalNilai" <?php echo ($dataNilai->status_penilaian === 'Sudah Dinilai') ? '' : 'Belum Dinilai'; ?>>
                     <i class="fa-solid fa-calendar-days"></i> Form Penilaian
                   </button>
                 <?php endforeach; ?>
