@@ -99,7 +99,7 @@ class UserDashboardController extends BaseController
         $data['dataSubmitTugas'] = $this->submitTugasModel->getDataWhere($kategoriLomba); // Data tugas berdasarkan kategori
         $data['daftarTimSelesai'] = $this->submitTugasModel->getData($kategoriLomba); // Daftar tim yang selesai
         $data['daftarTimSelesaiWhere'] = $this->submitTugasModel->getDataWhereTeam($kategoriLomba, $namaTimLomba);
-        $data['dataTimDinilai'] = $this->submitTugasModel->getDataWhereTeamPenilaian($kategoriLomba, $namaTimLomba); // Data tim yang sudah dinilai
+        $data['dataTimDinilai'] = $this->submitTugasModel->getDataWhereTeamPenilaian($kategoriLomba, $namaTimLomba);<? // Data tim yang sudah dinilai
         $data['dataTimLolos'] = $this->timLolosJuri->getDataWhere($kategoriLomba); // Tim yang lolos
         $data['dataTimLolosTim'] = $this->timLolosJuri->getDataWhereTim($kategoriLomba, $namaTimLomba);
         $data['dataDeadlineLomba'] = $this->deadlineTugasModel->getDataWhere($kategoriLomba); // Deadline lomba
