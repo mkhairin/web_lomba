@@ -276,14 +276,16 @@
                 <?php endforeach; ?>
                 <?php if (!empty($daftarTimSelesaiWhere)) : ?>
                   <?php foreach ($daftarTimSelesaiWhere as $dataTugas) : ?>
-                    <button
-                      type="button"
-                      class="btn btn-primary btn-icon-text"
-                      data-bs-toggle="modal"
-                      data-bs-target="#exampleModal"
-                      <?php echo ($dataTugas->status_pengumpulan === 'Telah Submit') ? 'disabled' : ''; ?>>
-                      <i class="ti-file btn-icon-prepend"></i> Submit Tugas
-                    </button>
+                    <?php foreach ($dataDeadlineLomba as $dataDeadline) : ?>
+                      <button
+                        type="button"
+                        class="btn btn-primary btn-icon-text"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                        <?php echo ($dataTugas->status_pengumpulan === 'Telah Submit') ? 'disabled' : ''; ?>>
+                        <i class="ti-file btn-icon-prepend"></i> Submit Tugas
+                      </button>
+                    <?php endforeach; ?>
                   <?php endforeach; ?>
                 <?php else : ?>
                   <button
