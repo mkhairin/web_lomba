@@ -277,12 +277,18 @@
                 <?php if (!empty($daftarTimSelesaiWhere)) : ?>
                   <?php foreach ($daftarTimSelesaiWhere as $dataTugas) : ?>
                     <?php foreach ($dataDeadlineLomba as $dataDeadline) : ?>
+                      <?php
+                      // Periksa apakah waktu sekarang melebihi deadline
+                      $isExpired = strtotime($dataDeadline->deadline) < time();
+                      // Periksa apakah tugas sudah disubmit
+                      $isDisabled = ($dataTugas->status_pengumpulan === 'Telah Submit') || $isExpired;
+                      ?>
                       <button
                         type="button"
                         class="btn btn-primary btn-icon-text"
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal"
-                        <?php echo ($dataTugas->status_pengumpulan === 'Telah Submit') ? 'disabled' : ''; ?>>
+                        <?php echo $isDisabled ? 'disabled' : ''; ?>>
                         <i class="ti-file btn-icon-prepend"></i> Submit Tugas
                       </button>
                     <?php endforeach; ?>
@@ -296,8 +302,6 @@
                     <i class="ti-file btn-icon-prepend"></i> Submit Tugas
                   </button>
                 <?php endif; ?>
-
-
               </div>
             </div>
 
