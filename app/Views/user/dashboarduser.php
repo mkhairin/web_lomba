@@ -279,7 +279,7 @@
                     <?php foreach ($dataDeadlineLomba as $dataDeadline) : ?>
                       <?php
                       // Periksa apakah waktu sekarang melebihi deadline
-                      $isExpired = $dataDeadline->deadline < time();
+                      $isExpired = strtotime($dataDeadline->deadline) < time();
                       // Periksa apakah tugas sudah disubmit
                       $isDisabled = ($dataTugas->status_pengumpulan === 'Telah Submit') || $isExpired;
                       ?>
