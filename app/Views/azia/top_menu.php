@@ -2,7 +2,7 @@
   <div class="container">
     <div class="az-header-left">
       <img src="<?= base_url('/img/logo/logo.webp') ?>" class="mx-2" alt="Logo-Image" style="width: 21px;">
-      <a href="index.html" class="az-logo text-primary "><span></span> Kaltech</a>
+      <a href="index.html" class="az-logo text-primary "><span></span> Kaltek</a>
       <a href="" id="azMenuShow" class="az-header-menu-icon d-lg-none"><span></span></a>
     </div><!-- az-header-left -->
     <div class="az-header-menu">
