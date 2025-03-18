@@ -4,7 +4,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
           <h2>Team</h2>
-          <p>Kami adalah tim yang berdedikasi untuk menginspirasi generasi muda di dunia teknologi. Dengan semangat kolaborasi dan inovasi, kami menghadirkan Kaltech sebagai wadah untuk mengasah kreativitas dan keahlian di bidang IT, khususnya bagi siswa SMK/SMA.</p>
+          <p>Kami adalah tim yang berdedikasi untuk menginspirasi generasi muda di dunia teknologi. Dengan semangat kolaborasi dan inovasi, kami menghadirkan Kaltek sebagai wadah untuk mengasah kreativitas dan keahlian di bidang IT, khususnya bagi siswa SMK/SMA.</p>
       </div><!-- End Section Title -->
 
       <div class="container">
