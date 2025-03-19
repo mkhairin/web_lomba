@@ -6,7 +6,7 @@
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h1>Kaltek 2024: Tantang Dirimu di Kompetisi IT SMK/SMA</h1>
+          <h1>Kaltek <?= $year = date('Y') ?>: Tantang Dirimu di Kompetisi IT SMK/SMA</h1>
           <p>Jangan lewatkan kesempatan untuk berkompetisi dengan yang terbaik di bidang teknologi. Kembangkan potensimu sekarang!</p>
           <div class="d-flex">
             <?php foreach($dataLombaFirst as $lomba) : ?>
@@ -29,7 +29,7 @@
     <div class="container fl" data-aos="fade-up">
       <marquee behavior="" direction="">
         <div class="col-12 d-flex flex-row justify-content-evenly">
-          <p>Kesuksesan dimulai dari keberanian untuk mencoba. Tunjukkan potensi terbaikmu di Kaltek 2024!</p> <i class="bi bi-asterisk px-3"></i>
+          <p>Kesuksesan dimulai dari keberanian untuk mencoba. Tunjukkan potensi terbaikmu di Kaltek <?= $year = date('Y') ?>!</p> <i class="bi bi-asterisk px-3"></i>
           <p>Setiap tantangan adalah kesempatan untuk berkembang. Jadilah bintang di dunia IT dengan berkompetisi di Kaltek!</p> <i class="bi bi-asterisk px-3"></i>
           <p>Jangan takut gagal, karena kegagalan adalah bagian dari proses menuju keberhasilan. Kaltek adalah langkah pertamamu menuju masa depan gemilang.</p> <i class="bi bi-asterisk px-3"></i>
           <p>Tidak ada batasan untuk kreativitas dan inovasi. Kaltek adalah tempatmu untuk mengubah ide menjadi prestasi nyata!</p> <i class="bi bi-asterisk px-3"></i>
@@ -157,7 +157,7 @@
     <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
       <h2>Kategori Lomba</h2>
-      <p>Kaltek 2024 menghadirkan berbagai kategori lomba untuk pelajar SMK/SMA yang ingin menunjukkan kemampuan terbaik mereka di bidang teknologi informasi. </p>
+      <p>Kaltek <?= $year = date('Y') ?> menghadirkan berbagai kategori lomba untuk pelajar SMK/SMA yang ingin menunjukkan kemampuan terbaik mereka di bidang teknologi informasi. </p>
     </div><!-- End Section Title -->
 
     <div class="container">

@@ -5,7 +5,7 @@
       <!-- Uncomment the line below if you also wish to use an image logo -->
       <!-- <img src="assets/img/logo.png" alt=""> -->
       <img src="<?= base_url('/img/logo/logo.webp') ?>" class="mx-2" alt="Logo-Image" style="width: 23px;">
-      <h1 class="sitename">Kaltech</h1>
+      <h1 class="sitename">Kaltek</h1>
     </a>
 
     <nav id="navmenu" class="navmenu">
