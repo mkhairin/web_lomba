@@ -76,7 +76,7 @@ $routes->post('/tim-lolos/insert', 'TimLolosController::insert');
 $routes->post('/tim-lolos/update/(:num)', 'TimLolosController::update/$1');
 $routes->get('/tim-lolos/delete/(:num)', 'TimLolosController::delete/$1');
 
-$routes->get('/azia', 'TimLolosController::azia');
+// $routes->get('/azia', 'TimLolosController::azia');
 
 $routes->get('/daftar-soal', 'SoalController::index');
 $routes->post('/daftar-soal/insert', 'SoalController::insert');
