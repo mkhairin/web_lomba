@@ -11,7 +11,7 @@
       <a href=""><i class="bi bi-linkedin"></i></a>
     </div> -->
     <div class="credits">
-      Designed by <a href="https://bootstrapmade.com/">@desainnya.ereenn</a>
+      Designed by <a href="#">@desainnya.ereenn</a>
     </div>
   </div>
 
